@@ -37,7 +37,6 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
-	<link rel="stylesheet" type="text/css" href="${commonCss}main.css">
 <!--===============================================================================================-->
 </head>
 <body class="animsition">
