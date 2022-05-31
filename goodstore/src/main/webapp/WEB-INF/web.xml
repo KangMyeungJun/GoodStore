@@ -8,17 +8,13 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>/WEB-INF/spring/root-context.xml</param-value>
 	</context-param>
-<!-- 	<context-param>
-		<param-name>domain</param-name>
-		<param-value>localhost</param-value>
-	</context-param> -->
 	
 	<!-- Creates the Spring Container shared by all Servlets and Filters -->
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 	<listener>
-		<listener-class>kr.co.goodstore.config.WebConfig</listener-class>
+		<listener-class>kr.co.goodstore.config.ParameterConfig</listener-class>
 	</listener>
 
 	<!-- Processes application requests -->
