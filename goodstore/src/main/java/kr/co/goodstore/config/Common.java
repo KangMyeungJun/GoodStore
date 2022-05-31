@@ -1,15 +1,9 @@
 package kr.co.goodstore.config;
 
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.stereotype.Component;
+public final class Common {
+	private Common() {}
 
-import lombok.Getter;
-import lombok.Setter;
+    public static final String DOMAIN="localhost";
+	
 
-@Component
-@Getter
-@Setter
-@ConfigurationProperties("common")
-public class Common {
-	private String domain;
 }
