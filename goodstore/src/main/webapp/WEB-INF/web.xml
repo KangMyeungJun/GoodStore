@@ -18,7 +18,7 @@
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 	<listener>
-		<listener-class>kr.co.goodstore.config.WebConfig</listener-class>
+		<listener-class>kr.co.goodstore.config.ParameterConfig</listener-class>
 	</listener>
 
 	<!-- Processes application requests -->
