@@ -3393,16 +3393,17 @@ input.num-product::-webkit-inner-spin-button {
 
 
 
-
 .tag-separator:after{content:", ";}
 .blog-detail-comment{border-bottom: 1px solid #222;}
 .line-border-btm{border-bottom: 1px solid rgb(201, 200, 200);}
 
 
 
-/* -------------------0531 추가 j----------------- */
 
 
+
+
+/* /////////////0531 추가 j */
 .completed-order-option-modal{
   position: fixed;
   z-index: -1;
@@ -3413,18 +3414,13 @@ input.num-product::-webkit-inner-spin-button {
   background: #000;
   opacity: 0.5;
 }
-/* ///////////////// */
+
 .wrap-table-shopping-cart-j {
   overflow: auto;
 }
-/* ///////////////// */
-.table-shopping-cart {
-  border-collapse: collapse;
-  width: 100%;
-  min-width: 680px;
-}
 
-/* ////////////////////// */
+
+
 
 .table-shopping-cart .column-1-j {
   width: 60px;
@@ -3441,10 +3437,22 @@ input.num-product::-webkit-inner-spin-button {
   font-size: 16px;
 }
 
-/* //////////////// /////////////*/
-.table-shopping-cart .column_4 {
+
+
+
+.table-shopping-cart .column_4_j {
   width: 145px;
   text-align: center;
+}
+
+
+
+
+.table-shopping-cart .column-5-1 {
+  width: 120px;
+  padding-right: 50px;
+  text-align: right;
+  font-size: 16px;
 }
 
 
@@ -3494,10 +3502,17 @@ input.num-product::-webkit-inner-spin-button {
 }
 
 
+
+
+
+
 .size-118-1 {
   /* min-width: 150px; */
   height: 45px;
 }
+
+
+
 
 
 
@@ -3515,3 +3530,4 @@ input.num-product::-webkit-inner-spin-button {
   margin-right: 20px;
   cursor: pointer;
 }
+/* ///////////////// */
