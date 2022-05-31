@@ -11,8 +11,10 @@ public class ParameterConfig implements ServletContextListener{
 	@Override
 	public void contextInitialized(ServletContextEvent sce) {
 		String domain =  Common.DOMAIN;
+		String staticPath =  Common.STATICPATH;
 		
 		sce.getServletContext().setInitParameter("domain",domain);
+		sce.getServletContext().setInitParameter("staticPath",staticPath);
 		
 	}
 

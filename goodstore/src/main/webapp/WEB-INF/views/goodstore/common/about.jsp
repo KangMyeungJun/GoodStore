@@ -8,33 +8,11 @@
 	<title>About</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="images/icons/favicon.png"/>
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/linearicons-v1.0.0/icon-font.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="css/util.css">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
-<!--===============================================================================================-->
+<%@ include file="static_link.jsp" %>
 </head>
 <body class="animsition">
-	
+<%@ include file="header.jsp" %>
+<%@ include file="sidebar.jsp" %>
 	<!-- Header -->
 	<header class="header-v4">
 		<!-- Header desktop -->
@@ -71,7 +49,7 @@
 					
 					<!-- Logo desktop -->		
 					<a href="#" class="logo">
-						<img src="images/icons/logo-01.png" alt="IMG-LOGO">
+						<img src="${initParam.staticPath}images/icons/logo-01.png" alt="IMG-LOGO">
 					</a>
 
 					<!-- Menu desktop -->
@@ -130,7 +108,7 @@
 		<div class="wrap-header-mobile">
 			<!-- Logo moblie -->		
 			<div class="logo-mobile">
-				<a href="index.html"><img src="images/icons/logo-01.png" alt="IMG-LOGO"></a>
+				<a href="index.html"><img src="${initParam.staticPath}images/icons/logo-01.png" alt="IMG-LOGO"></a>
 			</div>
 
 			<!-- Icon header -->
@@ -226,7 +204,7 @@
 		<div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
 			<div class="container-search-header">
 				<button class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
-					<img src="images/icons/icon-close2.png" alt="CLOSE">
+					<img src="${initParam.staticPath}images/icons/icon-close2.png" alt="CLOSE">
 				</button>
 
 				<form class="wrap-search-header flex-w p-l-15">
@@ -258,7 +236,7 @@
 				<ul class="header-cart-wrapitem w-full">
 					<li class="header-cart-item flex-w flex-t m-b-12">
 						<div class="header-cart-item-img">
-							<img src="images/item-cart-01.jpg" alt="IMG">
+							<img src="${initParam.staticPath}images/item-cart-01.jpg" alt="IMG">
 						</div>
 
 						<div class="header-cart-item-txt p-t-8">
@@ -274,7 +252,7 @@
 
 					<li class="header-cart-item flex-w flex-t m-b-12">
 						<div class="header-cart-item-img">
-							<img src="images/item-cart-02.jpg" alt="IMG">
+							<img src="${initParam.staticPath}images/item-cart-02.jpg" alt="IMG">
 						</div>
 
 						<div class="header-cart-item-txt p-t-8">
@@ -290,7 +268,7 @@
 
 					<li class="header-cart-item flex-w flex-t m-b-12">
 						<div class="header-cart-item-img">
-							<img src="images/item-cart-03.jpg" alt="IMG">
+							<img src="${initParam.staticPath}images/item-cart-03.jpg" alt="IMG">
 						</div>
 
 						<div class="header-cart-item-txt p-t-8">
@@ -344,25 +322,25 @@
 						</h3>
 
             <p class="stext-113 cl6 p-b-26">
-              âì¬íì ê¸°ìâì´ë ì·¨ì½ê³ì¸µìê² ì¬íìë¹ì¤ ëë ì¼ìë¦¬ë¥¼ ì ê³µíê±°ë ì§ì­ì¬íì ê³µíí¨ì¼ë¡ì¨ ì§ì­ì£¼ë¯¼ì ì¶ì ì§ì ëì´ë ë±ì ì¬íì  ëª©ì ì ì¶êµ¬íë©´ì ì¬í ë° ìë¹ì¤ì ìì°Â·íë§¤ ë± ììíëì íë ê¸°ìì¼ë¡ì ì¬íì ê¸°ìì¼ë¡ ì¸ì¦ì ë°ì ìë¥¼ ë§í©ëë¤(ãì¬íì ê¸°ì ì¡ì±ë²ã ì 2ì¡°ì 1í¸).
+              “사회적기업”이란 취약계층에게 사회서비스 또는 일자리를 제공하거나 지역사회에 공헌함으로써 지역주민의 삶의 질을 높이는 등의 사회적 목적을 추구하면서 재화 및 서비스의 생산·판매 등 영업활동을 하는 기업으로서 사회적기업으로 인증을 받은 자를 말합니다(「사회적기업 육성법」 제2조제1호).
 						</p>
             <p class="stext-113 cl6 p-b-26">
-              ì¬íì ê¸°ìì<br/>
-              ì·¨ì½ê³ì¸µì ë¸ë ìì¥ì¼ë¡ íµí©íì¬ ì§ì ê°ë¥í ì¼ìë¦¬ë¥¼ ì ê³µíë ê²ì¼ë¡ ì·¨ì½ê³ì¸µì ìíì ëìµëë¤. <br/>
-              ì§ì­ì¬í íµí© ë° ì¬íì í¬ìíì¶©ì íµí ì§ì­ ê²½ì  ë°ì ì ëìì´ ë©ëë¤.<br/>
-              ê³µê³µìë¹ì¤ ìì íì¶©ì íµí ì¬í ìë¹ì¤ íì¶©ì ì´ë°ì§ í©ëë¤.<br/>
-              ê¸°ìì ì¬í ê³µíê³¼ ì¤ë¦¬ì  ê²½ìë¬¸íë¥¼ íì°ìì¼ ì°©í ìë¹ë¬¸íë¥¼ ì¡°ì±í©ëë¤.<br/>
+              사회적기업은<br/>
+              취약계층을 노동 시장으로 통합하여 지속 가능한 일자리를 제공하는 것으로 취약계층의 자활을 돕습니다. <br/>
+              지역사회 통합 및 사회적투자확충을 통한 지역 경제 발전에 도움이 됩니다.<br/>
+              공공서비스 수요 확충을 통한 사회 서비스 확충에 이바지 합니다.<br/>
+              기업의 사회 공헌과 윤리적 경영문화를 확산시켜 착한 소비문화를 조성합니다.<br/>
 								<a class="stext-111 cl8" href="http://www.pns.or.kr/default/mp1/mp1_sub2.php?sub=02">-ì¬ëê³¼ ì¸ì</a> 
 						</p>
 
 
 						<p class="stext-113 cl6 p-b-26">
-              Good Storeë<br/>
-              ì¬íì  ê¸°ììì ìì°ë ìíì íë§¤íê³  ë¤ìí ë¶ì¼ì ì¬íì  ê¸°ìë¤ì ìê°íë ê²ì ëª©ì ì¼ë¡ ì ìë ì¹íì´ì§ ìëë¤.<br/>
-              ì¤ì  ìí íë§¤ë ì´ë£¨ì´ì§ì§ ìê³  ììµëë¤.<br/>
-              ííì´ì§ì ì íë¤ì í¬í¨í ë ë¤ìí ìíë¤ì<br/>
+              Good Store는<br/>
+              사회적 기업에서 생산된 상품을 판매하고 다양한 분야의 사회적 기업들을 소개하는 것을 목적으로 제작된 웹페이지 입니다.<br/>
+              실제 상품 판매는 이루어지지 않고 있습니다.<br/>
+              홈페이지의 제품들을 포함한 더 다양한 상품들은<br/>
               <a href="https://www.sepp.or.kr/sepp/main">e-store 36.5</a> / 
-              <a href="https://www.hknuri.co.kr/main.do">í¨ê»ëë¦¬ëª°</a> ííì´ì§ìì íë§¤íê³  ììµëë¤<br/>
+              <a href="https://www.hknuri.co.kr/main.do">함께누리몰</a> 홈페이지에서 판매하고 있습니다<br/>
 						</p>
 
 					</div>
@@ -371,7 +349,7 @@
 				<div class="col-11 col-md-5 col-lg-4 m-lr-auto">
 					<div class="how-bor1 ">
 						<div class="hov-img0">
-							<img src="images/about-01.jpg" alt="IMG">
+							<img src="${initParam.staticPath}images/about-01.jpg" alt="IMG">
 						</div>
 					</div>
 				</div>
@@ -385,7 +363,7 @@
             </h3>
 
 						<p class="stext-113 cl6 p-b-26">
-              Good Store ííì´ì§ ì ììë ë¤ìê³¼ ê°ì ê¸°ì ë¤ì´ ì¬ì©ëììµëë¤.
+              Good Store 홈페이지 제작에는 다음과 같은 기술들이 사용되었습니다.
             </p>
 
             <div class="bor20 p-l-29 p-tb-9" style="margin-right:500px;">
@@ -417,7 +395,7 @@
 				<div class="order-md-1 col-11 col-md-5 col-lg-4 m-lr-auto p-b-30">
 					<div class="how-bor2">
 						<div class="hov-img0">
-							<img src="images/about-02.jpg" alt="IMG">
+							<img src="${initParam.staticPath}images/about-02.jpg" alt="IMG">
 						</div>
 					</div>
 				</div>
@@ -425,199 +403,7 @@
 		</div>
 	</section>	
 	
-		
-
-	<!-- Footer -->
-	<footer class="bg3 p-t-75 p-b-32">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-6 col-lg-3 p-b-50">
-					<h4 class="stext-301 cl0 p-b-30">
-						Categories
-					</h4>
-
-					<ul>
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Women
-							</a>
-						</li>
-
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Men
-							</a>
-						</li>
-
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Shoes
-							</a>
-						</li>
-
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Watches
-							</a>
-						</li>
-					</ul>
-				</div>
-
-				<div class="col-sm-6 col-lg-3 p-b-50">
-					<h4 class="stext-301 cl0 p-b-30">
-						Help
-					</h4>
-
-					<ul>
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Track Order
-							</a>
-						</li>
-
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Returns 
-							</a>
-						</li>
-
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Shipping
-							</a>
-						</li>
-
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								FAQs
-							</a>
-						</li>
-					</ul>
-				</div>
-
-				<div class="col-sm-6 col-lg-3 p-b-50">
-					<h4 class="stext-301 cl0 p-b-30">
-						GET IN TOUCH
-					</h4>
-
-					<p class="stext-107 cl7 size-201">
-						Any questions? Let us know in store at 8th floor, 379 Hudson St, New York, NY 10018 or call us on (+1) 96 716 6879
-					</p>
-
-					<div class="p-t-27">
-						<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
-							<i class="fa fa-facebook"></i>
-						</a>
-
-						<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
-							<i class="fa fa-instagram"></i>
-						</a>
-
-						<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
-							<i class="fa fa-pinterest-p"></i>
-						</a>
-					</div>
-				</div>
-
-				<div class="col-sm-6 col-lg-3 p-b-50">
-					<h4 class="stext-301 cl0 p-b-30">
-						Newsletter
-					</h4>
-
-					<form>
-						<div class="wrap-input1 w-full p-b-4">
-							<input class="input1 bg-none plh1 stext-107 cl7" type="text" name="email" placeholder="email@example.com">
-							<div class="focus-input1 trans-04"></div>
-						</div>
-
-						<div class="p-t-18">
-							<button class="flex-c-m stext-101 cl0 size-103 bg1 bor1 hov-btn2 p-lr-15 trans-04">
-								Subscribe
-							</button>
-						</div>
-					</form>
-				</div>
-			</div>
-
-			<div class="p-t-40">
-				<div class="flex-c-m flex-w p-b-18">
-					<a href="#" class="m-all-1">
-						<img src="images/icons/icon-pay-01.png" alt="ICON-PAY">
-					</a>
-
-					<a href="#" class="m-all-1">
-						<img src="images/icons/icon-pay-02.png" alt="ICON-PAY">
-					</a>
-
-					<a href="#" class="m-all-1">
-						<img src="images/icons/icon-pay-03.png" alt="ICON-PAY">
-					</a>
-
-					<a href="#" class="m-all-1">
-						<img src="images/icons/icon-pay-04.png" alt="ICON-PAY">
-					</a>
-
-					<a href="#" class="m-all-1">
-						<img src="images/icons/icon-pay-05.png" alt="ICON-PAY">
-					</a>
-				</div>
-
-				<p class="stext-107 cl6 txt-center">
-					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a> &amp; distributed by <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-
-				</p>
-			</div>
-		</div>
-	</footer>
-
-
-	<!-- Back to top -->
-	<div class="btn-back-to-top" id="myBtn">
-		<span class="symbol-btn-back-to-top">
-			<i class="zmdi zmdi-chevron-up"></i>
-		</span>
-	</div>
-
-<!--===============================================================================================-->	
-	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/animsition/js/animsition.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/bootstrap/js/popper.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/select2/select2.min.js"></script>
-	<script>
-		$(".js-select2").each(function(){
-			$(this).select2({
-				minimumResultsForSearch: 20,
-				dropdownParent: $(this).next('.dropDownSelect2')
-			});
-		})
-	</script>
-<!--===============================================================================================-->
-	<script src="vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-	<script>
-		$('.js-pscroll').each(function(){
-			$(this).css('position','relative');
-			$(this).css('overflow','hidden');
-			var ps = new PerfectScrollbar(this, {
-				wheelSpeed: 1,
-				scrollingThreshold: 1000,
-				wheelPropagation: false,
-			});
-
-			$(window).on('resize', function(){
-				ps.update();
-			})
-		});
-	</script>
-<!--===============================================================================================-->
-	<script src="js/main.js"></script>
-	
+<%@ include file="footer.jsp" %>
+<%@ include file="common_js.jsp" %>	
 </body>
 </html>
