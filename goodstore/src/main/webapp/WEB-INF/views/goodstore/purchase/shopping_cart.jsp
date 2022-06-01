@@ -30,7 +30,7 @@
 	<link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="css/util.css">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="css/main3.css">
 <!--===============================================================================================-->
 <style type="text/css">
 	
@@ -549,13 +549,13 @@ border-bottom:1px solid #e6e6e6;
 								<span  style="padding-left: 50px;">주문번호 </span><span>20220526ABAB</span>
 			
 							</div>
-							<table class="table-shopping-cart">
+							<table class="table-shopping-cart" style="margin-bottom: 80px;">
 								<tr class="table_head">
 									<td class="column-1-j"></td>
 									<th class="column-1">상품</th>
 									<th class="column-2">상품명</th>
 									<th class="column-3">가격</th>
-									<th class="column_4">진행상태</th>
+									<th class="column_4_j">진행상태</th>
 									<th class="column-5-1"></th>
 								</tr>
 
@@ -568,7 +568,7 @@ border-bottom:1px solid #e6e6e6;
 									</td>
 									<td class="column-2">Fresh Strawberries</td>
 									<td class="column-3">$ 36.00</td>
-									<td class="column_4">배송완료</td>
+									<td class="column_4_j">배송완료</td>
 									<td class="column_5">
 										<div class="btn-complete-order" style="width: 120px;">
 											구매확정
@@ -587,7 +587,7 @@ border-bottom:1px solid #e6e6e6;
 									</td>
 									<td class="column-2">Fresh Strawberries</td>
 									<td class="column-3">$ 36.00</td>
-									<td class="column_4" id="col">배송완료</td>
+									<td class="column_4_j" id="col">배송완료</td>
 									<td class="column_5">
 										<div id="buttons">
 											<div class="btn-complete-order" style="width: 120px;">
@@ -617,7 +617,7 @@ border-bottom:1px solid #e6e6e6;
 									<th class="column-1">상품</th>
 									<th class="column-2">상품명</th>
 									<th class="column-3">가격</th>
-									<th class="column_4">진행상태</th>
+									<th class="column_4_j">진행상태</th>
 									<th class="column-5-1"></th>
 								</tr>
 
@@ -630,7 +630,7 @@ border-bottom:1px solid #e6e6e6;
 									</td>
 									<td class="column-2">Fresh Strawberries</td>
 									<td class="column-3">$ 36.00</td>
-									<td class="column_4">배송완료</td>
+									<td class="column_4_j">배송완료</td>
 									<td class="column_5">
 										<div class="btn-complete-order" style="width: 120px;">
 											구매확정
