@@ -1,14 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>         
 <%@ page session="false" %>
 <!DOCTYPE html>
-<html>
 <head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Page Title</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
+	<title>GOOD STORE</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<%@ include file="../common/static_link.jsp" %>
+<!-- 개별파트 -->
     <link rel='stylesheet' href="css/login.css">  
     <link rel='stylesheet' type='text/css' media='screen' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.1/css/bootstrap.min.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/css/bootstrap-select.min.css'>
@@ -340,6 +340,10 @@ function chkNull(){
 </script>
 
 </head>
+<body class="animsition">
+<%@ include file="../common/header.jsp" %>
+<%@ include file="../common/sidebar.jsp" %>
+
     <body onload="noBack();" 
    onpageshow="if (event.persisted) noBack();" onunload="">
 
@@ -538,5 +542,8 @@ $("#complete-btn").mouseout(function(){
 	$("#complete-btn").css("color","#9a9ba7");
 })
 </script>
+<!-- 개별파트 end -->
+<%@ include file="../common/footer.jsp" %>
+<%@ include file="../common/common_js.jsp" %>		
 </body>
 </html>
