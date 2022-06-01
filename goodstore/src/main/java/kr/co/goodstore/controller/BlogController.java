@@ -18,5 +18,9 @@ public class BlogController {
 		return "goodstore/blog/blog_detail";
 	}
 	
+	@GetMapping("about")
+	public String about() {
+		return "goodstore/common/about";
+	}
 	
 }
