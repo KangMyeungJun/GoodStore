@@ -5,6 +5,8 @@
 <configuration>
 <properties resource="properties/database.properties"/>
 <typeAliases>
+<typeAlias type="kr.co.goodstore.domain.admin.CategoryDomain" alias="cd"/>
+<typeAlias type="kr.co.goodstore.domain.admin.MemberDomain" alias="md"/>
 </typeAliases>
   <environments default="development">
     <environment id="development">
@@ -18,6 +20,6 @@
     </environment>
   </environments>
   <mappers>
-
+		<mapper resource="kr/co/goodstore/mapper/admin/AdminMapper.xml"/>
   </mappers>
 </configuration>

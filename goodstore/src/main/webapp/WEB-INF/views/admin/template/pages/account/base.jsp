@@ -1,15 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-    
-      <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Store Admin</title>
+    <title>Kmong Admin</title>
     <!-- plugins:css -->
     <!-- 아이콘관련 -->
     <link rel="stylesheet" href="${initParam.staticPath}assets/vendors/mdi/css/materialdesignicons.min.css">
@@ -28,15 +25,118 @@
   <body>
     <div class="container-scroller">
       <!-- partial:../../partials/_sidebar.jsp -->
-       <!-- leftSide -->     
- <%@ include file="../../include/leftnavi.jsp" %>
- <script>
-		const navActive = document.getElementById("nav-users");
-		const uiShow = document.getElementById("ui-user");
-		navActive.classList.add('active');
-		uiShow.classList.add('show');
-</script>
- 
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
+          <a class="sidebar-brand brand-logo" href="../../index.jsp" style="color:white; font-weight: bold;">
+            <i class="mdi mdi-baby-face text-warning"></i>
+            <span >Kmong Admin</span>
+          </a>
+          <a class="sidebar-brand brand-logo-mini" href="../../index.jsp"><i class="mdi mdi-baby-face"></i></a>
+        </div>
+
+        <!-- 목록창 -->
+        <ul class="nav">
+          <li class="nav-item profile">
+
+          <!-- 프로필시작 -->
+            <div class="profile-desc">
+
+              <div class="profile-pic">
+                <div class="count-indicator">
+                  <img class="img-xs rounded-circle " src="${initParam.staticPath}assets/images/faces/squidGame.jpg" alt="">
+                  <span class="count bg-success"></span>
+                </div>
+                <div class="profile-name">
+                  <h5 class="mb-0 font-weight-normal">Admin</h5>
+                  <span>Administrator</span>
+                </div>
+              </div>
+
+            </div>
+          </li>
+
+
+          <li class="nav-item nav-category">
+            <span class="nav-link">Navigation</span>
+          </li>
+
+          <!-- 대시보드 -->
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="../../index.jsp">
+              <span class="menu-icon">
+                <i class="mdi mdi-speedometer"></i>
+              </span>
+              <span class="menu-title">Dashboard</span>
+            </a>
+          </li>
+
+          <!-- 게시판관리 -->
+          <li class="nav-item menu-items active">
+            <!-- <a class="nav-link" data-toggle="collapse" href="#ui-post" aria-expanded="false" aria-controls="ui-basic"> -->
+            <a class="nav-link" data-toggle="collapse" data-target="#ui-post" aria-expanded="false" aria-controls="ui-basic">
+              <span class="menu-icon">
+                <i class="mdi mdi-calendar-text"></i>
+              </span>
+              <span class="menu-title">Posts</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse show" id="ui-post">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="../../pages/posts/posts.jsp">Post List</a></li>
+              </ul>
+            </div>
+          </li>
+
+          <!-- 회원관리 -->
+          <li class="nav-item menu-items">
+            <a class="nav-link" data-toggle="collapse" href="#ui-user" aria-expanded="false" aria-controls="ui-basic">
+              <span class="menu-icon">
+                <i class="mdi mdi-contacts"></i>
+              </span>
+              <span class="menu-title">Users</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="ui-user">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="../../pages/users/users.jsp">Users</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../../pages/users/experts.jsp">Experts</a></li>
+              </ul>
+            </div>
+          </li>
+
+          <!-- 결제관리 -->
+          <li class="nav-item menu-items">
+            <a class="nav-link" data-toggle="collapse" href="#ui-order" aria-expanded="false" aria-controls="ui-basic">
+              <span class="menu-icon">
+                <i class="mdi mdi-basket"></i>
+              </span>
+              <span class="menu-title">Orders</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="ui-order">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="../../pages/orders/orders.jsp">Order Status</a></li>
+              </ul>
+            </div>
+          </li>
+
+          <!-- 서비스관리 -->
+          <li class="nav-item menu-items">
+            <a class="nav-link" data-toggle="collapse" href="#ui-category" aria-expanded="false" aria-controls="ui-basic">
+              <span class="menu-icon">
+                <i class="mdi mdi-wrench"></i>
+              </span>
+              <span class="menu-title">Categories</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="ui-category">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="../../pages/categories/categories.jsp">Category List</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </nav>
 
 
       <!-- 본문 -->
@@ -68,7 +168,7 @@
               <li class="nav-item dropdown">
                 <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
                   <div class="navbar-profile">
-                    <img class="img-xs rounded-circle" src="${initParam.staticPath}assets/images/faces/squidGame.jpg" alt="">
+                    <img class="img-xs rounded-circle" src="../../assets/images/faces/squidGame.jpg" alt="">
                     <p class="mb-0 d-none d-sm-block navbar-profile-name">Admin</p>
                     <i class="mdi mdi-menu-down d-none d-sm-block"></i>
                   </div>
@@ -130,121 +230,6 @@
             <!-- 여기에 본문 내용 채울 것. -->
 
 
-            <div class="page-header">
-              <h3 class="page-title"> Users </h3>
-              <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="#">Users</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">User Status</li>
-                </ol>
-              </nav>
-            </div>
-            <div class="row">
-
-              <!-- 표 테이블 시작 . JSP에서 자동화할것-->
-              <div class="col-lg-12 grid-margin stretch-card">
-                <div class="card">
-                  <div class="card-body">
-                    <h4 class="card-title">User Status</h4>
-                    <div>총 사용자 수 : 15건 | 오늘 가입한 사용자 수: 11건</div><br/>
-                    <div class="form-group">
-                      <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search Post title" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                        <div class="input-group-append">
-                          <button class="btn btn-fw btn-outline-secondary" type="button">Search</button>
-                        </div>
-                      </div>
-                    </div><br/>
-                    <div class="table-responsive">
-                      <table class="table table-striped">
-                        <thead>
-                          <tr>
-                            <th> UserNo. </th>
-                            <th> E-mail </th>
-                            <th> Name </th>
-                            <th> Join Date </th>
-                            <th> delete </th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                        
-                         <c:forEach var="usersList" items="${usersList }">
-                          <tr>
-                            <td class="py-1">
-                              <c:out value="${usersList.member_id }"/>
-                            </td>
-                           <td><c:out value="${usersList.email}"/></td> 
-                            <td><c:out value="${usersList.name}"/></td>
-                            <td><c:out value="${usersList.join_date}"/></td>
-                            <td> 
-                              <a href="user_delete?member_id=${usersList.member_id}" style="color:white;">
-                                삭제
-                              </a>
-                            </td>
-                          </tr>
-                          </c:forEach>
-                          
-                         
-                          
-                           
-                          <tr>
-                            <td class="py-1">
-                              1
-                            </td>
-                            <td> user1@naver.com </td>
-                            <td>의뢰인1</td>
-                            <td>April 9, 2022</td>
-                            <td> 
-                              <a href="#void" style="color:white;">
-                                삭제
-                              </a>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td class="py-1">
-                              1
-                            </td>
-                            <td> user1@naver.com </td>
-                            <td>의뢰인1</td>
-                            <td>April 9, 2022</td>
-                            <td> 
-                              <a href="#void" style="color:white;">
-                                삭제
-                              </a>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td class="py-1">
-                              1
-                            </td>
-                            <td> user1@naver.com </td>
-                            <td>의뢰인1</td>
-                            <td>April 9, 2022</td>
-                            <td> 
-                              <a href="#void" style="color:white;">
-                                삭제
-                              </a>
-                            </td>
-                          </tr>
-                          
-
-
-                        </tbody>
-                      </table>
-                    </div> 
-                  </div>
-                  <div style="text-align: center;">Pagination 여기서 구현</div>
-
-                </div>
-              </div>
-
-
-
-
-
-
-
-
 
 
 
@@ -266,16 +251,12 @@
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
-    <script src="${initParam.staticPath}assets/vendors/js/vendor.bundle.base.js"></script>
+
     <!-- endinject -->
     <!-- Plugin js for this page -->
     <!-- End plugin js for this page -->
     <!-- inject:js -->
-    <script src="${initParam.staticPath}assets/js/off-canvas.js"></script>
-    <script src="${initParam.staticPath}assets/js/hoverable-collapse.js"></script>
-    <script src="${initParam.staticPath}assets/js/misc.js"></script>
-    <script src="${initParam.staticPath}assets/js/settings.js"></script>
-    <script src="${initParam.staticPath}assets/js/todolist.js"></script>
+
     <!-- endinject -->
     <!-- Custom js for this page -->
     <!-- End custom js for this page -->
