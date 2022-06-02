@@ -10,8 +10,8 @@
     <title>Store Admin</title>
     <!-- plugins:css -->
     <!-- 아이콘관련 -->
-    <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="${initParam.staticPath}assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="${initParam.staticPath}assets/vendors/css/vendor.bundle.base.css">
 
     <!-- endinject -->
     <!-- Plugin css for this page -->
@@ -19,15 +19,19 @@
     <!-- inject:css -->
     <!-- endinject -->
     <!-- Layout styles -->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="${initParam.staticPath}assets/css/style.css">
     <!-- End layout styles -->
-    <link rel="shortcut icon" href="assets/images/favicon.png" />
+    <link rel="shortcut icon" href="${initParam.staticPath}assets/images/favicon.png" />
   </head>
   <body>
     <div class="container-scroller">
       <!-- partial:partials/_sidebar.jsp -->
  <!-- leftSide -->     
  <%@ include file="include/leftnavi.jsp" %>
+ <script>
+		const navActive = document.getElementById("nav-dashboard");
+		navActive.classList.add('active');
+		</script>
 
 
       <!-- 본문 -->
@@ -328,20 +332,20 @@
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
-    <script src="assets/vendors/js/vendor.bundle.base.js"></script>
+    <script src="${initParam.staticPath}assets/vendors/js/vendor.bundle.base.js"></script>
     <!-- endinject -->
     <!-- Plugin js for this page -->
-    <script src="assets/vendors/chart.js/Chart.min.js"></script>
+    <script src="${initParam.staticPath}assets/vendors/chart.js/Chart.min.js"></script>
     <!-- End plugin js for this page -->
     <!-- inject:js -->
-    <script src="assets/js/off-canvas.js"></script>
+    <script src="${initParam.staticPath}assets/js/off-canvas.js"></script>
     <!-- <script src="assets/js/hoverable-collapse.js"></script> -->
     <!-- <script src="assets/js/misc.js"></script> -->
     <!-- <script src="assets/js/settings.js"></script> -->
     <!-- <script src="assets/js/todolist.js"></script> -->
     <!-- endinject -->
     <!-- Custom js for this page -->
-    <script src="assets/js/chart.js"></script>
+    <script src="${initParam.staticPath}assets/js/chart.js"></script>
     <!-- End custom js for this page -->
   </body>
 </html>

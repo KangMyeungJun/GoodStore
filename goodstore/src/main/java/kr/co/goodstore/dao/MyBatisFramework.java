@@ -32,7 +32,7 @@ public class MyBatisFramework {
 			Reader reader=null;
 			try {
 			//1.설정파일연결
-			reader=Resources.getResourceAsReader("com/goodstore/dao/SqlMapConfig.xml");
+			reader=Resources.getResourceAsReader("kr/co/goodstore/dao/SqlMapConfig.xml");
 			//2.MyBatis Framework생성
 			ssf=new SqlSessionFactoryBuilder().build(reader);
 			}finally {

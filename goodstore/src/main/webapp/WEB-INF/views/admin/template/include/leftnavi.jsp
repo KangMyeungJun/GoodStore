@@ -34,7 +34,7 @@
           </li>
 
           <!-- 대시보드 -->
-          <li class="nav-item menu-items active">
+          <li class="nav-item menu-items active" id="nav-dashboard">
             <a class="nav-link" href="#void">
               <span class="menu-icon">
                 <i class="mdi mdi-speedometer"></i>
@@ -44,7 +44,7 @@
           </li>
 
           <!-- products -->
-          <li class="nav-item menu-items">
+          <li class="nav-item menu-items" id="nav-product">
             <!-- <a class="nav-link" data-toggle="collapse" href="#ui-post" aria-expanded="false" aria-controls="ui-basic"> -->
 
             <a class="nav-link" data-toggle="collapse" data-target="#ui-product" aria-expanded="false" aria-controls="ui-basic">
@@ -62,7 +62,7 @@
           </li>
           
           <!-- 게시판관리 -->
-          <li class="nav-item menu-items">
+          <li class="nav-item menu-items" id="nav-posts">
             <!-- <a class="nav-link" data-toggle="collapse" href="#ui-post" aria-expanded="false" aria-controls="ui-basic"> -->
 
             <a class="nav-link" data-toggle="collapse" data-target="#ui-post" aria-expanded="false" aria-controls="ui-basic">
@@ -83,7 +83,7 @@
           </li>
 
           <!-- 회원관리 -->
-          <li class="nav-item menu-items">
+          <li class="nav-item menu-items" id="nav-users">
             <a class="nav-link" data-toggle="collapse" href="#ui-user" aria-expanded="false" aria-controls="ui-basic">
               <span class="menu-icon">
                 <i class="mdi mdi-contacts"></i>
@@ -93,13 +93,13 @@
             </a>
             <div class="collapse" id="ui-user">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="#void">Users</a></li>
+                <li class="nav-item"> <a class="nav-link" href="users">Users</a></li>
               </ul>
             </div>
           </li>
 
           <!-- 결제관리 -->
-          <li class="nav-item menu-items">
+          <li class="nav-item menu-items" id="nav-orders">
             <a class="nav-link" data-toggle="collapse" href="#ui-order" aria-expanded="false" aria-controls="ui-basic">
               <span class="menu-icon">
                 <i class="mdi mdi-basket"></i>
@@ -115,7 +115,7 @@
           </li>
 
           <!-- 서비스관리 -->
-          <li class="nav-item menu-items">
+          <li class="nav-item menu-items" id="nav-category">
             <a class="nav-link" data-toggle="collapse" href="#ui-category" aria-expanded="false" aria-controls="ui-basic">
               <span class="menu-icon">
                 <i class="mdi mdi-wrench"></i>
@@ -125,12 +125,12 @@
             </a>
             <div class="collapse" id="ui-category">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="#void">Category List</a></li>
+                <li class="nav-item"> <a class="nav-link" href="selectCategory">Category List</a></li>
               </ul>
             </div>
           </li>
           <!-- coupon -->
-          <li class="nav-item menu-items">
+          <li class="nav-item menu-items" id="nav-coupon">
             <a class="nav-link" data-toggle="collapse" href="#ui-coupon" aria-expanded="false" aria-controls="ui-basic">
               <span class="menu-icon">
                 <i class="mdi mdi-wrench"></i>
