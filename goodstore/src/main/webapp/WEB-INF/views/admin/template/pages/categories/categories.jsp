@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+       <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+    
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -9,8 +12,8 @@
     <title>Store Admin</title>
     <!-- plugins:css -->
     <!-- 아이콘관련 -->
-    <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="${initParam.staticPath}assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="${initParam.staticPath}assets/vendors/css/vendor.bundle.base.css">
 
     <!-- endinject -->
     <!-- Plugin css for this page -->
@@ -18,15 +21,20 @@
     <!-- inject:css -->
     <!-- endinject -->
     <!-- Layout styles -->
-    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="${initParam.staticPath}assets/css/style.css">
     <!-- End layout styles -->
-    <link rel="shortcut icon" href="../../assets/images/favicon.png" />
+    <link rel="shortcut icon" href="${initParam.staticPath}assets/images/favicon.png" />
   </head>
   <body>
     <div class="container-scroller">
       <!-- partial:../../partials/_sidebar.jsp -->
       <%@ include file="../../include/leftnavi.jsp" %>
-
+<script>
+		const navActive = document.getElementById("nav-category");
+		const uiShow = document.getElementById("ui-category");
+		navActive.classList.add('active');
+		uiShow.classList.add('show');
+		</script>
 
 
 
@@ -60,7 +68,7 @@
               <li class="nav-item dropdown">
                 <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
                   <div class="navbar-profile">
-                    <img class="img-xs rounded-circle" src="../../assets/images/faces/squidGame.jpg" alt="">
+                    <img class="img-xs rounded-circle" src="${initParam.staticPath}assets/images/faces/squidGame.jpg" alt="">
                     <p class="mb-0 d-none d-sm-block navbar-profile-name">Admin</p>
                     <i class="mdi mdi-menu-down d-none d-sm-block"></i>
                   </div>
@@ -147,6 +155,9 @@
                       <div class="col-12">
                         <div class="preview-list">
 
+						<c:forEach var="categoryList" items="${categoryList}">
+						
+						
                           <div class="preview-item border-bottom">
                             <div class="preview-thumbnail">
                               <div class="preview-icon bg-primary">
@@ -155,11 +166,13 @@
                             </div>
                             <div class="preview-item-content d-sm-flex flex-grow">
                               <div class="flex-grow">
-                                <h4 class="preview-subject">음식</h4>
+                                <h4 class="preview-subject"><c:out value="${categoryList.name }"/></h4>
                                 <a class="text-muted mb-0" href="categories-edit.jsp">edit</a>
                               </div>
                             </div>
                           </div>
+                          </c:forEach>
+                          
 
                           <div class="preview-item border-bottom">
                             <div class="preview-thumbnail">
@@ -262,16 +275,16 @@
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
-    <script src="../../assets/vendors/js/vendor.bundle.base.js"></script>
+    <script src="${initParam.staticPath}assets/vendors/js/vendor.bundle.base.js"></script>
     <!-- endinject -->
     <!-- Plugin js for this page -->
     <!-- End plugin js for this page -->
     <!-- inject:js -->
-    <script src="../../assets/js/off-canvas.js"></script>
-    <script src="../../assets/js/hoverable-collapse.js"></script>
-    <script src="../../assets/js/misc.js"></script>
-    <script src="../../assets/js/settings.js"></script>
-    <script src="../../assets/js/todolist.js"></script>
+    <script src="${initParam.staticPath}assets/js/off-canvas.js"></script>
+    <script src="${initParam.staticPath}assets/js/hoverable-collapse.js"></script>
+    <script src="${initParam.staticPath}assets/js/misc.js"></script>
+    <script src="${initParam.staticPath}assets/js/settings.js"></script>
+    <script src="${initParam.staticPath}assets/js/todolist.js"></script>
     <!-- endinject -->
     <!-- Custom js for this page -->
     <!-- End custom js for this page -->
