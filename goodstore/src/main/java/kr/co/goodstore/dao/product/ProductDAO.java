@@ -6,8 +6,10 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Component;
 
 import kr.co.goodstore.dao.MyBatisFramework;
+import kr.co.goodstore.domain.product.ProductCommentDomain;
 import kr.co.goodstore.domain.product.ProductDomain;
 import kr.co.goodstore.domain.product.ProductListDomain;
+import kr.co.goodstore.domain.product.SubImageDomain;
 import kr.co.goodstore.vo.product.ProductListVO;
 
 @Component
@@ -32,5 +34,23 @@ public class ProductDAO {
 		
 		if(ss!=null) {ss.close();}
 		return result;
+	}
+	
+	public List<SubImageDomain> subImageList(int item_id){
+		List<SubImageDomain> list = null;
+		SqlSession ss=MyBatisFramework.getInstance().getMyBatisHandler();
+		list=ss.selectList(namespace+"subImage", item_id);
+		
+		if(ss!=null) {ss.close();}
+		return list;
+	}
+	
+	public List<ProductCommentDomain> productComment(int item_id){
+		List<ProductCommentDomain> list=null;
+		SqlSession ss=MyBatisFramework.getInstance().getMyBatisHandler();
+		list=ss.selectList(namespace+"productComment", item_id);
+		
+		if(ss!=null) {ss.close();}
+		return list;
 	}
 }

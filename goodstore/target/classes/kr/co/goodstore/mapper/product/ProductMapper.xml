@@ -47,5 +47,16 @@ JOIN category cat
 on i.category_id = cat.category_id
 where i.item_id = #{item_id}
 </select>
-<select id="subImgList" parameterType="int"
+<select id="subImage" parameterType="int" resultType="sid">
+select item_id, sub_image
+from sub_image
+where item_id=#{item_id}
+</select>
+<select id="productComment" parameterType="int" resultType="pcd">
+select review, item_id, email, star, upload_date
+from item_comment i
+join member m
+on i.member_id = m.member_id
+where item_id=#{item_id}
+</select>
 </mapper>

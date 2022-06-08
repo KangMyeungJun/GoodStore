@@ -25,6 +25,9 @@ public class ProductController {
 	  @GetMapping("product_detail/{item_id}") 
 	  public String productDetail(Model model, @PathVariable("item_id") int item_id) { 
 		  model.addAttribute("productDetail", ps.productDetail(item_id)); 
+		  model.addAttribute("subImageList", ps.subImageList(item_id)); 
+		  model.addAttribute("productComment", ps.productComment(item_id));
+		  
 		  return "goodstore/purchase/product_detail"; 
 	  }
 	 

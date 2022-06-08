@@ -43,35 +43,27 @@
 							<div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
 
 							<div class="slick3 gallery-lb">
-								<div class="item-slick3" data-thumb="${initParam.staticPath}images/${ productList.image }">
+								<div class="item-slick3" data-thumb="${initParam.staticPath}images/${ productDetail.image }">
 									<div class="wrap-pic-w pos-relative">
 										<img src="${initParam.staticPath}images/${ productDetail.image }" alt="IMG-PRODUCT">
 
-										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="images/product-detail-01.jpg">
+										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="${initParam.staticPath}images/${ productDetail.image }">
 											<i class="fa fa-expand"></i>
 										</a>
 									</div>
 								</div>
-
-								<div class="item-slick3" data-thumb="images/product-detail-02.jpg">
+								
+								<c:forEach items="${subImageList}" var="subImage">
+								<div class="item-slick3" data-thumb="${initParam.staticPath}images/<c:out value="${ subImage.sub_image }"/>">
 									<div class="wrap-pic-w pos-relative">
-										<img src="images/product-detail-02.jpg" alt="IMG-PRODUCT">
+										<img src="${initParam.staticPath}images/<c:out value="${ subImage.sub_image }"/>" alt="IMG-PRODUCT">
 
-										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="images/product-detail-02.jpg">
+										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="${initParam.staticPath}images/<c:out value="${ subImage.sub_image }"/>">
 											<i class="fa fa-expand"></i>
 										</a>
 									</div>
 								</div>
-
-								<div class="item-slick3" data-thumb="images/product-detail-03.jpg">
-									<div class="wrap-pic-w pos-relative">
-										<img src="images/product-detail-03.jpg" alt="IMG-PRODUCT">
-
-										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="images/product-detail-03.jpg">
-											<i class="fa fa-expand"></i>
-										</a>
-									</div>
-								</div>
+								</c:forEach>
 							</div>
 						</div>
 					</div>
@@ -167,80 +159,18 @@
 							</div>
 						</div>
 
-						<!-- - -->
-						<!-- <div class="tab-pane fade" id="information" role="tabpanel">
-							<div class="row">
-								<div class="col-sm-10 col-md-8 col-lg-6 m-lr-auto">
-									<ul class="p-lr-28 p-lr-15-sm">
-										<li class="flex-w flex-t p-b-7">
-											<span class="stext-102 cl3 size-205">
-												Weight
-											</span>
-
-											<span class="stext-102 cl6 size-206">
-												0.79 kg
-											</span>
-										</li>
-
-										<li class="flex-w flex-t p-b-7">
-											<span class="stext-102 cl3 size-205">
-												Dimensions
-											</span>
-
-											<span class="stext-102 cl6 size-206">
-												110 x 33 x 100 cm
-											</span>
-										</li>
-
-										<li class="flex-w flex-t p-b-7">
-											<span class="stext-102 cl3 size-205">
-												Materials
-											</span>
-
-											<span class="stext-102 cl6 size-206">
-												60% cotton
-											</span>
-										</li>
-
-										<li class="flex-w flex-t p-b-7">
-											<span class="stext-102 cl3 size-205">
-												Color
-											</span>
-
-											<span class="stext-102 cl6 size-206">
-												Black, Blue, Grey, Green, Red, White
-											</span>
-										</li>
-
-										<li class="flex-w flex-t p-b-7">
-											<span class="stext-102 cl3 size-205">
-												Size
-											</span>
-
-											<span class="stext-102 cl6 size-206">
-												XL, L, M, S
-											</span>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div> -->
-
-						<!-- - -->
 						<div class="tab-pane fade" id="reviews" role="tabpanel">
 							<div class="row">
 								<div class="col-sm-10 col-md-8 col-lg-6 m-lr-auto">
 									<div class="p-b-30 m-lr-15-sm">
 										<!-- Review -->
+										<c:forEach var="comment" items="${productComment}">
 										<div class="flex-w flex-t p-b-68">
-											<!-- <div class="wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6">
-												<img src="images/avatar-01.jpg" alt="AVATAR">
-											</div> -->
 
 											<div class="size-207">
 												<div class="flex-w flex-sb-m p-b-17">
 													<span class="mtext-107 cl2 p-r-20">
-														사용자 이메일
+														<c:out value="${comment.email}"/>
 													</span>
 
 													<span class="fs-18 cl11">
@@ -253,11 +183,11 @@
 												</div>
 
 												<p class="stext-102 cl6">
-												리뷰 내용
+													<c:out value="${comment.review}"/>
 												</p>
 											</div>
 										</div>
-										
+										</c:forEach>
 										<!-- Add review -->
 										<form class="w-full">
 											<h5 class="mtext-108 cl2 p-b-7">
