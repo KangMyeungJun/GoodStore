@@ -5,6 +5,7 @@
 <configuration>
 <properties resource="properties/database.properties"/>
 <typeAliases>
+<typeAlias type="kr.co.goodstore.purchase.vo.ItemVO" alias="itemVO"/>
 </typeAliases>
   <environments default="development">
     <environment id="development">
@@ -17,7 +18,11 @@
       </dataSource>
     </environment>
   </environments>
+  
   <mappers>
+
+    <mapper resource="kr/co/goodstore/purchase/mapper/cartMapper.xml"/>
+    <mapper resource="kr/co/goodstore/purchase/mapper/orderListMapper.xml"/>
 
   </mappers>
 </configuration>

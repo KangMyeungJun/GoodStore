@@ -1,37 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ page session="false" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Shoping Cart</title>
+	<title>GOOD STORE</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="images/icons/favicon.png"/>
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/linearicons-v1.0.0/icon-font.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="css/util.css">
-	<link rel="stylesheet" type="text/css" href="css/main3.css">
-<!--===============================================================================================-->
+<%@ include file="../common/static_link.jsp" %>
 <style type="text/css">
 	
 .outer.show {
@@ -237,205 +215,8 @@ border-bottom:1px solid #e6e6e6;
 </head>
 <body class="animsition">
 	
-	<!-- Header -->
-	<header class="header-v4">
-		<!-- Header desktop -->
-		<div class="container-menu-desktop">
-			<!-- Topbar -->
-			<div class="top-bar">
-				<div class="content-topbar flex-sb-m h-full container">
-					<div class="left-top-bar">
-						Free shipping for standard order over $100
-					</div>
-
-					<div class="right-top-bar flex-w h-full">
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
-							Help & FAQs
-						</a>
-
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
-							My Account
-						</a>
-
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
-							EN
-						</a>
-
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
-							USD
-						</a>
-					</div>
-				</div>
-			</div>
-
-			<div class="wrap-menu-desktop how-shadow1">
-				<nav class="limiter-menu-desktop container">
-					
-					<!-- Logo desktop -->		
-					<a href="#" class="logo">
-						<img src="images/icons/logo-01.png" alt="IMG-LOGO">
-					</a>
-
-					<!-- Menu desktop -->
-					<div class="menu-desktop">
-						<ul class="main-menu">
-							<li>
-								<a href="index.html">Home</a>
-							</li>
-
-							<li>
-								<a href="product.html">Shop</a>
-							</li>
-
-							<li class="label1" data-label1="hot">
-								<a href="shoping-cart.html">Features</a>
-							</li>
-
-							<li>
-								<a href="blog.html">Blog</a>
-							</li>
-
-							<li>
-								<a href="about.html">About</a>
-							</li>
-
-							<li>
-								<a href="contact.html">Contact</a>
-							</li>
-						</ul>
-					</div>	
-
-					<!-- Icon header -->
-					<div class="wrap-icon-header flex-w flex-r-m">
-						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
-							<i class="zmdi zmdi-search"></i>
-						</div>
-
-						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="2">
-							<i class="zmdi zmdi-shopping-cart"></i>
-						</div>
-
-						<a href="#" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="0">
-							<i class="zmdi zmdi-favorite-outline"></i>
-						</a>
-					</div>
-				</nav>
-			</div>	
-		</div>
-
-		<!-- Header Mobile -->
-		<div class="wrap-header-mobile">
-			<!-- Logo moblie -->		
-			<div class="logo-mobile">
-				<a href="index.html"><img src="images/icons/logo-01.png" alt="IMG-LOGO"></a>
-			</div>
-
-			<!-- Icon header -->
-			<div class="wrap-icon-header flex-w flex-r-m m-r-15">
-				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 js-show-modal-search">
-					<i class="zmdi zmdi-search"></i>
-				</div>
-
-				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify="2">
-					<i class="zmdi zmdi-shopping-cart"></i>
-				</div>
-
-				<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti" data-notify="0">
-					<i class="zmdi zmdi-favorite-outline"></i>
-				</a>
-			</div>
-
-			<!-- Button show menu -->
-			<div class="btn-show-menu-mobile hamburger hamburger--squeeze">
-				<span class="hamburger-box">
-					<span class="hamburger-inner"></span>
-				</span>
-			</div>
-		</div>
-
-
-		<!-- Menu Mobile -->
-		<div class="menu-mobile">
-			<ul class="topbar-mobile">
-				<li>
-					<div class="left-top-bar">
-						Free shipping for standard order over $100
-					</div>
-				</li>
-
-				<li>
-					<div class="right-top-bar flex-w h-full">
-						<a href="#" class="flex-c-m p-lr-10 trans-04">
-							Help & FAQs
-						</a>
-
-						<a href="#" class="flex-c-m p-lr-10 trans-04">
-							My Account
-						</a>
-
-						<a href="#" class="flex-c-m p-lr-10 trans-04">
-							EN
-						</a>
-
-						<a href="#" class="flex-c-m p-lr-10 trans-04">
-							USD
-						</a>
-					</div>
-				</li>
-			</ul>
-
-			<ul class="main-menu-m">
-				<li>
-					<a href="index.html">Home</a>
-					<ul class="sub-menu-m">
-						<li><a href="index.html">Homepage 1</a></li>
-						<li><a href="home-02.html">Homepage 2</a></li>
-						<li><a href="home-03.html">Homepage 3</a></li>
-					</ul>
-					<span class="arrow-main-menu-m">
-						<i class="fa fa-angle-right" aria-hidden="true"></i>
-					</span>
-				</li>
-
-				<li>
-					<a href="product.html">Shop</a>
-				</li>
-
-				<li>
-					<a href="shoping-cart.html" class="label1 rs1" data-label1="hot">Features</a>
-				</li>
-
-				<li>
-					<a href="blog.html">Blog</a>
-				</li>
-
-				<li>
-					<a href="about.html">About</a>
-				</li>
-
-				<li>
-					<a href="contact.html">Contact</a>
-				</li>
-			</ul>
-		</div>
-
-		<!-- Modal Search -->
-		<div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
-			<div class="container-search-header">
-				<button class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
-					<img src="images/icons/icon-close2.png" alt="CLOSE">
-				</button>
-
-				<form class="wrap-search-header flex-w p-l-15">
-					<button class="flex-c-m trans-04">
-						<i class="zmdi zmdi-search"></i>
-					</button>
-					<input class="plh3" type="text" name="search" placeholder="Search...">
-				</form>
-			</div>
-		</div>
-	</header>
-
+<%@ include file="../common/header.jsp" %>
+<%@ include file="../common/sidebar.jsp" %>
 	<!-- Cart -->
 	<div class="wrap-header-cart js-panel-cart">
 		<div class="s-full js-hide-cart"></div>
@@ -539,169 +320,126 @@ border-bottom:1px solid #e6e6e6;
 
 	<!-- 주문내역 -->
 	<div class="bg0 p-t-75 p-b-85">
-		<div class="container">
+		<div class="container" style="align-items: margin: 0px auto;">
 			<div class="row">
 				<div class="col-lg-10 m-lr-auto m-b-50" style="width: 2000px;">
+					
 					<div class="m-l-25 m-r--38 m-lr-0-xl"  style="width: 1100px;">
-						<div class="wrap-table-shopping-cart-j" >
-							<div class="order-info">
-								<span  style="padding-left: 0px;">결제일자 </span><span>20220526ABAB</span>
-								<span  style="padding-left: 50px;">주문번호 </span><span>20220526ABAB</span>
-			
+						
+						
+						
+						<div class="wrap-table-shopping-cart-j" id="wrap-table-shopping-cart-j" >
+						
+							<!-- 오더!! //////////////////////-->
+							<%-- <div class="order-info">
+								 <span  style="padding-left: 0px;">결제일자 </span><span></span>
+								<span  style="padding-left: 30px;">주문번호 </span><span></span>
 							</div>
+							
+							
 							<table class="table-shopping-cart" style="margin-bottom: 80px;">
 								<tr class="table_head">
 									<td class="column-1-j"></td>
 									<th class="column-1">상품</th>
 									<th class="column-2">상품명</th>
+									<th class="column-3">수량</th>
 									<th class="column-3">가격</th>
 									<th class="column_4_j">진행상태</th>
 									<th class="column-5-1"></th>
 								</tr>
-
+							<!-- 오더!!///////////////////////////////// -->	
+							
+							
 								<tr class="table_row">
 									<td class="column-1-j">1</td>
 									<td class="column-1">
 										<div class="how-itemcart1">
-											<img src="images/item-cart-04.jpg" alt="IMG">
+											<img src="${initParam.staticPath}images/item-cart-04.jpg" alt="IMG">
 										</div>
 									</td>
-									<td class="column-2">Fresh Strawberries</td>
-									<td class="column-3">$ 36.00</td>
+									<td class="column-2">이름</td>
+									<td class="column-3">수량</td>
+									<td class="column-3">100원</td>
 									<td class="column_4_j">배송완료</td>
 									<td class="column_5">
-										<div class="btn-complete-order" style="width: 120px;">
+										<div class="btn-complete-order" style="width: 120px;" onclick="btnClickHandle(39)">
 											구매확정
 										</div>
-										<div class="btn-complete-order" style="width: 120px; margin-top: 10px;">
+										<div class="btn-complete-order" id="refund-btn" 
+											style="width: 120px; margin-top: 10px;" 
+											onclick="btnClickHandle(40)">
 											반품
 										</div>
-									</div></td>
-								</tr>
-								<tr class="table_row">
-									<td class="column-1-j">2</td>
-									<td class="column-1">
-										<div class="how-itemcart1">
-											<img src="images/item-cart-04.jpg" alt="IMG">
-										</div>
-									</td>
-									<td class="column-2">Fresh Strawberries</td>
-									<td class="column-3">$ 36.00</td>
-									<td class="column_4_j" id="col">배송완료</td>
-									<td class="column_5">
-										<div id="buttons">
-											<div class="btn-complete-order" style="width: 120px;">
-												구매확정
-											</div>
-											<div class="btn-complete-order" style="width: 120px; margin-top: 10px;">
-												반품
-											</div>
-										</div>
-									</div></td>
-								</tr>
+										</td>
+									</tr>
+								
+									
+							</table> --%>
+							<!-- -///////////////////////////////////////////////////////////// -->
+					</div>
 
-							</table>
-
-
-
-
-
-							<div class="order-info">
-								<span  style="padding-left: 0px;">결제일자 </span><span>20220526ABAB</span>
-								<span  style="padding-left: 50px;">주문번호 </span><span>20220526ABAB</span>
-			
-							</div>
-							<table class="table-shopping-cart">
-								<tr class="table_head">
-									<td class="column-1-j"></td>
-									<th class="column-1">상품</th>
-									<th class="column-2">상품명</th>
-									<th class="column-3">가격</th>
-									<th class="column_4_j">진행상태</th>
-									<th class="column-5-1"></th>
-								</tr>
-
-								<tr class="table_row">
-									<td class="column-1-j">1</td>
-									<td class="column-1">
-										<div class="how-itemcart1">
-											<img src="images/item-cart-04.jpg" alt="IMG">
-										</div>
-									</td>
-									<td class="column-2">Fresh Strawberries</td>
-									<td class="column-3">$ 36.00</td>
-									<td class="column_4_j">배송완료</td>
-									<td class="column_5">
-										<div class="btn-complete-order" style="width: 120px;">
-											구매확정
-										</div>
-										<div class="btn-complete-order" style="width: 120px; margin-top: 10px;">
-											반품
-										</div>
-									</div></td>
-								</tr>
-
-
-							</table>
-
-
-
-
-
-						</div>
 
 						<div class="more-info trans-04" id="more-info" >
 							<span> + 더보기</span>
-		
 						</div>
+						
+						
 					</div>
 				</div>
 
 				
 			</div>
 		</div>
-	</div>
+	</div> 
 		
 
 
-	<!-- 모달 1 -->
+	<!-- 모달창  -->
 	<div class="outer">
+	
+	<!-- 모달 1 -->
 		<div class="inner">
 			<div class="inner-wrap">
+			
+			
 				<!-- 해당 주문 정보 -->
 				<div class="row-div" style="font-family: Poppins-Bold;">
+					
+					<div id="row-div-info">
 					<span>결제일자 </span><span style="padding-left: 10px;">20220526ABAB</span>
 					<span  style="padding-left: 20px;">주문번호 </span><span style="padding-left: 10px;">20220526ABAB</span>
+					</div>
+					
 				</div>
 
 				<div class="row-div" style="font-family: Poppins-Bold; font-weight: bold;">
 					<input type="checkbox" name="checkAll" value="chooseAll" style="zoom:1.3;" class="checkAll"/> 
 					<span  style="padding-left:10px;">전체 선택</span>
 				</div>	
-
-				<!-- 해당 주문 상품 -->
-				<div class="row-div">
-					<input type="checkbox" name="check" value="chooseAll1" style="zoom:1.3;" class="check"/>
-					<div class="how-itemcart-j" style="margin-right: 0px;">
-						<img src="images/item-cart-04.jpg" alt="IMG">
-					</div>
-					<div class="product-info">Fresh Strawberries</div>
-					<div class="product-info1">35,000원</div>
-				</div>	
-				<div class="row-div">
-					<input type="checkbox" name="check" value="chooseAll2" style="zoom:1.3;" class="check"/>
-					<div class="how-itemcart-j" style="margin-right: 0px;">
-						<img src="images/item-cart-04.jpg" alt="IMG">
-					</div>
-					<div class="product-info">Fresh Strawberries</div>
-					<div class="product-info1">35,000원</div>
-				</div>	
+				
+				<!-- 해당 주문 상품 --><!-- for -->
+				<div id="row-div-m">
+					<div class="row-div">
+						<input type="checkbox" name="check" value="" style="zoom:1.3;" class="check"/>
+						<div class="how-itemcart-j" style="margin-right: 0px;">
+							<img src="images/item-cart-04.jpg" alt="IMG">
+						</div>
+						<div class="product-info">Fresh Strawberries</div>
+						<div class="product-info1">35,000원</div>
+					</div>	
+					
+				</div>
+				<!-- //////////////////////////////// -->
+				
 
 				<div style="display: flex; flex-direction: row; align-items: center; justify-content: center; margin-top: 20px; margin-bottom: 20px;">
+					
 					<div class="flex-c-m stext-101 cl2 size-118-1 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5" style="width: 110px;" id="complete-purchase">
 						구매확정
 					</div>
+					
 					<div style="width:20px;"></div>
+					
 					<div class="refund-btn" style="width: 110px;">
 						반품
 					</div>
@@ -709,25 +447,22 @@ border-bottom:1px solid #e6e6e6;
 		</div>
 		</div>
 
+
+
 		<!--modal2-->
 		<div class="inner1">
 			<div class="inner-wrap1">
 					<span  style="border-bottom:1px solid #e6e6e6; padding-bottom: 10px; text-align: left;"> > 반품</span>
 					<!-- 해당 주문 상품 -->
-					<div class="row-div">
+					<div id="refund-list">
+					<div class="row-div" >
 						<div class="how-itemcart-j1" style="margin-right: 0px;">
 							<img src="images/item-cart-04.jpg" alt="IMG">
 						</div>
 						<div class="product-info">Fresh Strawberries</div>
 						<div class="product-info1">35,000원</div>
 					</div>	
-					<div class="row-div">
-						<div class="how-itemcart-j1" style="margin-right: 0px;">
-							<img src="images/item-cart-04.jpg" alt="IMG">
-						</div>
-						<div class="product-info">Fresh Strawberries</div>
-						<div class="product-info1">35,000원</div>
-					</div>	
+					</div>
 	
 					
 					<div style="margin-top: 30px;">
@@ -739,12 +474,12 @@ border-bottom:1px solid #e6e6e6;
 							<div class="size-204 respon6-next">
 								<div class="rs1-select2 bor8 bg0" style="z-index: 10001;">
 									<select class="js-select2" name="time" id="refund-select">
-										<option>반품 사유를 선택해주세요.</option>
-										<option>구매 의사 취소</option>
-										<option>색상 및 사이즈 변경</option>
-										<option>상품 잘못 주문</option>
-										<option>서비스 불만족</option>
-										<option>상품 파손</option>
+										<option value="반품 사유를 선택해주세요.">반품 사유를 선택해주세요.</option>
+										<option value="구매 의사 취소">구매 의사 취소</option>
+										<option value="색상 및 사이즈 변경">색상 및 사이즈 변경</option>
+										<option value="상품 잘못 주문">상품 잘못 주문</option>
+										<option value="서비스 불만족">서비스 불만족</option>
+										<option value="상품 파손">상품 파손</option>
 									</select>
 									<div class="dropDownSelect2"></div>
 								</div>
@@ -767,222 +502,505 @@ border-bottom:1px solid #e6e6e6;
 
 
 
+<%@ include file="../common/footer.jsp" %>
+<%@ include file="../common/common_js.jsp" %>
 
 
+<!-- -================================================================================================= -->
+
+<script type="text/javascript">
+
+$(document).ready(function(){
 	
+	//alert("처음");
+	
+	// 읽은 알림 총 갯수
+	var listCnt = "<c:out value='${listCnt}'/>";
+	//alert(listCnt)
+	//alert(listCnt);
+	// 조회 인덱스
+	var startIndex = 1;	// 인덱스 초기값
+	var searchStep = 2;	// 5개씩 로딩
+	
+	// 페이지 로딩 시 첫 실행
+	readOrderDetail(startIndex);
+	
+	// 더보기 클릭시
+	$('#more-info').click(function(){
+		startIndex += searchStep;
+		readOrderDetail(startIndex);
+	})//click
 		
+	
+	// 더보기 실행함수 **
+	function readOrderDetail(index){
+		//alert("ajax 들어옴")
+		let endIndex = index+searchStep-1;	// endIndex설정
+		
+		$.ajax({
+			url: "orderList/moreList",
+			type: "post",
+			async: "false",
+			dataType: "json",
+			data: {
+				startIndex: index,
+				endIndex: endIndex
+			},
+			success: function (json, textStatus) {
+				
+				
+				if(json.flag!=0){
+					//alert("데이터있음");
+					//alert(json);
+					//const obj=JSON.parse(json.data[0]);
+					//alert(json.data[0].value[0].image)
+					
+					//alert(JSON.stringify(json.data));
+					
+					
+					
+					var orderId="";
+					var orderInfo="";
+					var tableString="<table class='table-shopping-cart' style='margin-bottom: 80px;'><tr class='table_head'>";
+					tableString+="<td class='column-1-j'></td><th class='column-1'>상품</th><th class='column-2'>상품명</th>";
+					tableString+="<th class='column-3'>수량</th><th class='column-3'>가격</th><th class='column_4_j'>진행상태</th><th class='column-5-1'></th></tr>"
+					
+					var orderInfo="";
+					var trInfo="";
+					var cnt=1;
+					var NodeList="";
+					
+					for(var i=0;i<json.data.length;i++){ //length=6
+					
+					var orderId=json.data[i].order_id;	
+					var price=parseInt(json.data[i].price)*parseInt(json.data[i].amount);
+					price=price.toLocaleString('ko-KR');
+					
+					var status=json.data[i].status;
+					
+					
+						if(i+1<json.data.length){
+							if(orderId!=json.data[i+1].order_id){//들어온 아이디와 다음아이디와 다르다면
+								//해당 오더id마지막애
+								
+								//orderinfo설정---
+								orderInfo+="<div class='order-info'><span style='padding-left: 0px;'>결제일자&nbsp;&nbsp;&nbsp;"+json.data[i].order_date+"</span><span></span>";
+								orderInfo+="<span style='padding-left: 30px;'>주문번호&nbsp;&nbsp;&nbsp;"+json.data[i].order_id+"</span><span></span></div>";
+								
+								
+								//str+= tr 
+								trInfo+="<tr class='table_row'><td class='column-1-j'>"+cnt+"</td>";
+								trInfo+="<td class='column-1'><div class='how-itemcart1'>"
+								
+								//경로 수정해야함
+								trInfo+="<img src='${initParam.staticPath}images/item-cart-04.jpg' alt='IMG'></div></td>";
+								trInfo+="<td class='column-2'>"+json.data[i].item_name+"</td>"		
+								trInfo+="<td class='column-3'>"+json.data[i].amount+"개</td>"
+								trInfo+="<td class='column-3'>"+price+"원</td>"
+								
+								
+								if(status=='배송완료'){
+									trInfo+="<td class='column_4_j' id='s-"+json.data[i].detail_id+"'>"+status+"</td>";
+									trInfo+="<td class='column_5'><div class='btn-complete-order' id='b-"+json.data[i].detail_id+"' style='width: 120px;' onclick='btnClickHandle("+json.data[i].order_id+")'>구매확정</div>";
+									trInfo+="<div class='btn-complete-order' id='r-"+json.data[i].detail_id+"' style='width: 120px; margin-top: 10px;' onclick='btnClickHandle("+json.data[i].order_id+")'>반품</div></td></tr>";
+								}else{
+									trInfo+="<td class='column_4_j' id='s-"+json.data[i].detail_id+"'>"+status+"</td></tr>";
+								}
+								trInfo+="</table>";
+								
+									//cnt 초기화
+									cnt=1;
+									
+									//str=String+str+</table>
+									NodeList=orderInfo+tableString+trInfo;
+									
+									//$(orderinfo+str).appendTo("#wrap")
+									$(NodeList).appendTo($("#wrap-table-shopping-cart-j")).slideDown();
+									
+									NodeList="";
+									//orderId초기화
+									//str초기화
+									trInfo="";
+									//orderInfo 초기화
+									orderInfo="";
+							}else{
+								//str+= <tr></tr>
+								//str+= tr 
+								trInfo+="<tr class='table_row'><td class='column-1-j'>"+cnt+"</td>";
+								trInfo+="<td class='column-1'><div class='how-itemcart1'>"
+								
+								//경로 수정해야함
+								trInfo+="<img src='${initParam.staticPath}images/item-cart-04.jpg' alt='IMG'></div></td>";
+								trInfo+="<td class='column-2'>"+json.data[i].item_name+"</td>"		
+								trInfo+="<td class='column-3'>"+json.data[i].amount+"개</td>"
+								trInfo+="<td class='column-3'>"+price+"원</td>"
+								
+								
+								if(status=='배송완료'){
+									trInfo+="<td class='column_4_j' id='s-"+json.data[i].detail_id+"'>"+status+"</td>";
+									trInfo+="<td class='column_5'><div class='btn-complete-order' id='b-"+json.data[i].detail_id+"' style='width: 120px;' onclick='btnClickHandle("+json.data[i].order_id+")'>구매확정</div>";
+									trInfo+="<div class='btn-complete-order'id='r-"+json.data[i].detail_id+"'style='width: 120px; margin-top: 10px;' onclick='btnClickHandle("+json.data[i].order_id+")'>반품</div></td></tr>";
+								}else{
+									trInfo+="<td class='column_4_j' id='s-"+json.data[i].detail_id+"'>"+status+"</td></tr>";
+								}
+								
+								
+								//cnt늘리기
+								cnt++;
+								
+							}
+						}else if(i+1==json.data.length){//마지막 행
+							
+							//orderinfo설정---
+							orderInfo+="<div class='order-info'><span style='padding-left: 0px;'>결제일자&nbsp;&nbsp;&nbsp; "+json.data[i].order_date+"</span><span></span>";
+							orderInfo+="<span style='padding-left: 30px;'>주문번호&nbsp;&nbsp;&nbsp; "+json.data[i].order_id+"</span><span></span></div>";
+							
+							//str+= tr 
+							trInfo+="<tr class='table_row'><td class='column-1-j'>"+cnt+"</td>";
+							trInfo+="<td class='column-1'><div class='how-itemcart1'>"
+							
+							//경로 수정해야함
+							trInfo+="<img src='${initParam.staticPath}images/item-cart-04.jpg' alt='IMG'></div></td>";
+							trInfo+="<td class='column-2'>"+json.data[i].item_name+"</td>"		
+							trInfo+="<td class='column-3'>"+json.data[i].amount+"개</td>"
+							trInfo+="<td class='column-3'>"+price+"원</td>"
+							
+							
+							if(status=='배송완료'){
+								trInfo+="<td class='column_4_j' id='s-"+json.data[i].detail_id+"'>"+status+"</td>";
+								trInfo+="<td class='column_5'><div class='btn-complete-order' id='b-"+json.data[i].detail_id+"' style='width: 120px;' onclick='btnClickHandle("+json.data[i].order_id+")'>구매확정</div>";
+								trInfo+="<div class='btn-complete-order' id='r-"+json.data[i].detail_id+"'style='width: 120px; margin-top: 10px;' onclick='btnClickHandle("+json.data[i].order_id+")'>반품</div></td></tr>";
+							}else{
+								trInfo+="<td class='column_4_j' id='s-"+json.data[i].detail_id+"'>"+status+"</td></tr>";
+							}
+							trInfo+="</table>";
+							
+								//cnt 초기화
+								cnt=1;
+								
+								//str=String+str+</table>
+								NodeList=orderInfo+tableString+trInfo;
+								
+								//$(orderinfo+str).appendTo("#wrap")
+								$(NodeList).appendTo($("#wrap-table-shopping-cart-j")).slideDown();
+								NodeList="";
+								//orderId초기화
+								//str초기화
+								trInfo="";
+								//orderInfo 초기화
+								orderInfo="";
+							
+						}//마지막행 else if
 
-	<!-- Footer -->
-	<footer class="bg3 p-t-75 p-b-32">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-6 col-lg-3 p-b-50">
-					<h4 class="stext-301 cl0 p-b-30">
-						Categories
-					</h4>
-
-					<ul>
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Women
-							</a>
-						</li>
-
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Men
-							</a>
-						</li>
-
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Shoes
-							</a>
-						</li>
-
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Watches
-							</a>
-						</li>
-					</ul>
-				</div>
-
-				<div class="col-sm-6 col-lg-3 p-b-50">
-					<h4 class="stext-301 cl0 p-b-30">
-						Help
-					</h4>
-
-					<ul>
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Track Order
-							</a>
-						</li>
-
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Returns 
-							</a>
-						</li>
-
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Shipping
-							</a>
-						</li>
-
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								FAQs
-							</a>
-						</li>
-					</ul>
-				</div>
-
-				<div class="col-sm-6 col-lg-3 p-b-50">
-					<h4 class="stext-301 cl0 p-b-30">
-						GET IN TOUCH
-					</h4>
-
-					<p class="stext-107 cl7 size-201">
-						Any questions? Let us know in store at 8th floor, 379 Hudson St, New York, NY 10018 or call us on (+1) 96 716 6879
-					</p>
-
-					<div class="p-t-27">
-						<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
-							<i class="fa fa-facebook"></i>
-						</a>
-
-						<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
-							<i class="fa fa-instagram"></i>
-						</a>
-
-						<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
-							<i class="fa fa-pinterest-p"></i>
-						</a>
-					</div>
-				</div>
-
-				<div class="col-sm-6 col-lg-3 p-b-50">
-					<h4 class="stext-301 cl0 p-b-30">
-						Newsletter
-					</h4>
-
-					<form>
-						<div class="wrap-input1 w-full p-b-4">
-							<input class="input1 bg-none plh1 stext-107 cl7" type="text" name="email" placeholder="email@example.com">
-							<div class="focus-input1 trans-04"></div>
-						</div>
-
-						<div class="p-t-18">
-							<button class="flex-c-m stext-101 cl0 size-103 bg1 bor1 hov-btn2 p-lr-15 trans-04">
-								Subscribe
-							</button>
-						</div>
-					</form>
-				</div>
-			</div>
-
-			<div class="p-t-40">
-				<div class="flex-c-m flex-w p-b-18">
-					<a href="#" class="m-all-1">
-						<img src="images/icons/icon-pay-01.png" alt="ICON-PAY">
-					</a>
-
-					<a href="#" class="m-all-1">
-						<img src="images/icons/icon-pay-02.png" alt="ICON-PAY">
-					</a>
-
-					<a href="#" class="m-all-1">
-						<img src="images/icons/icon-pay-03.png" alt="ICON-PAY">
-					</a>
-
-					<a href="#" class="m-all-1">
-						<img src="images/icons/icon-pay-04.png" alt="ICON-PAY">
-					</a>
-
-					<a href="#" class="m-all-1">
-						<img src="images/icons/icon-pay-05.png" alt="ICON-PAY">
-					</a>
-				</div>
-
-				<p class="stext-107 cl6 txt-center">
-					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a> &amp; distributed by <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-
-				</p>
-			</div>
-		</div>
-	</footer>
-
-
-	<!-- Back to top -->
-	<div class="btn-back-to-top" id="myBtn">
-		<span class="symbol-btn-back-to-top">
-			<i class="zmdi zmdi-chevron-up"></i>
-		</span>
-	</div>
-
-
-<!--===============================================================================================-->	
-	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/animsition/js/animsition.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/bootstrap/js/popper.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
-<script src="vendor/select2/select2.min.js"></script>
-<script>
-	$(".js-select2").each(function(){
-		$(this).select2({
-			minimumResultsForSearch: 20,
-			dropdownParent: $(this).next('.dropDownSelect2')
-		});
-	})
+						
+					
+					}//end for
+					
+				}else{
+					
+					var noItem="<table class='table-shopping-cart' style='margin-bottom: 80px; height:80px; font-size:15px;'><tr class='table_head'><td class='column-2'>구매하신 상품이 존재하지 않습니다.</td></tr><table>";
+									
+					//var noItem="<h2>구매하신 상품이 존재하지 않습니다.</h2>"
+					$(noItem).appendTo($("#wrap-table-shopping-cart-j")).slideDown();
+				}//end if
+					
+				
+				// 더보기 버튼 삭제
+				 if(startIndex + searchStep > listCnt){
+					$('#more-info').remove();
+				}			
+			}//success
+		});//ajax
+		}//function
+});
 </script>
+
+
 <!--===============================================================================================-->
-	<script src="vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 	<script>
-		$('.js-pscroll').each(function(){
-			$(this).css('position','relative');
-			$(this).css('overflow','hidden');
-			var ps = new PerfectScrollbar(this, {
-				wheelSpeed: 1,
-				scrollingThreshold: 1000,
-				wheelPropagation: false,
-			});
-
-			$(window).on('resize', function(){
-				ps.update();
-			})
-		});
-
 		$(".checkAll").click(function(){
 				$(".check").prop('checked',this.checked);
 		})
-			
-			
 	</script>
 <!--===============================================================================================-->
-	<script src="js/main.js"></script>
 	<script>
 		const body = document.querySelector('body');
 		const outer = document.querySelector('.outer');
 		const inner = document.querySelector('.inner');
 		const inner1 = document.querySelector('.inner1');
 		const btnCompleteOrder = document.querySelector('.btn-complete-order');
+		//const btnRefund = document.getElementById('refund-btn');
 		const refundBtn = document.querySelector('.refund-btn');
 		const completePurchase = document.getElementById('complete-purchase');
 		const refundComplete = document.getElementById('refund-complete');
 		const checkAll = document.getElementById('checkAll');
 	
 
-		btnCompleteOrder.addEventListener('click', () => {
+		
+	//모달 창의 환불버튼 눌렀을 때 
+		refundBtn.addEventListener('click', () => {
+			
+			var chk=false;
+			
+			var checkArr=[]; //배열 초기화
+			$("input:checkbox[name=productCheck]:checked").each(function(index){
+				chk=true;
+				checkArr.push($(this).val()); //체크된것만 배열에 push
+			})
+			
+			if(chk){
+				
+					$.ajax({
+						url:"orderList/refund",
+						data:{valueArr:checkArr},
+						async:false,
+						type:"post",
+						dataType:"json",
+						error:function(xhr){
+							alert(xhr.status+"/"+xhr.statusText);
+						},
+						success:function(json){
+							
+							if(json.flag==1){
+								//alert(JSON.stringify(json.data));
+								
+								var list="";
+								for(var i=0; i<json.data.length;i++){
+									
+									var price=parseInt(json.data[i].price)*parseInt(json.data[i].amount);
+									price=price.toLocaleString('ko-KR');
+									
+									list+="<div class='row-div' ><div class='how-itemcart-j1' style='margin-right: 0px;'>";
+									//경로 변경 이미지!!!!!!
+									list+="<img src='${initParam.staticPath}images/item-cart-04.jpg' alt='IMG'></div>";
+									list+="<div class='product-info' style='width:150px;margin-left:20px;'>"+json.data[i].item_name+"</div>";
+									list+="<div class='product-info1'>"+price+"원</div></div>";
+									list+="<input type='hidden' name='refundId' value='"+json.data[i].detail_id+"'/>";
+	
+								}//end for 
+								
+								document.getElementById('refund-list').innerHTML=list;
+								// outer.classList.toggle('show');
+								document.querySelector(".inner").style.display='none';
+								document.querySelector(".inner1").style.display='block';
+							 
+								if (outer.classList.contains('show')) {
+								document.querySelector(".inner").style.display='none';
+								document.querySelector(".inner1").style.display='block';
+								}//out if
+							}//flag if
+						
+						}//success
+						
+					});//ajax
+				
+			//alert("버튼 환불");
+		  
+			
+			}else{
+				alert("반품하실 상품을 선택해주세요.")
+			}//end else
+			
+		});//click
+
+	
+  
+		outer.addEventListener('click', (event) => {
+		  if (event.target === outer) {
+			outer.classList.toggle('show');
+			if (!outer.classList.contains('show')) {
+				
+				document.querySelector(".inner").style.display='none';
+		  		document.querySelector(".outer").style.display='none';
+			 	body.style.overflow = 'auto';
+			 	$(".checkAll").prop('checked',false);
+			}
+		  }
+		});
+  
+
+		
+		//모달 구매확정 버튼 이벤트
+		completePurchase.addEventListener('click', (event) => {
+			
+			var chk=false;
+			
+			var checkArr=[]; //배열 초기화
+			$("input:checkbox[name=productCheck]:checked").each(function(index){
+				chk=true;
+				checkArr.push($(this).val()); //체크된것만 배열에 push
+			})
+			
+			if(chk){
+				if(confirm("해당 상품의 구매를 확정하시겠습니까?")){
+					
+					$.ajax({
+						url:"orderList/status",
+						data:{valueArr:checkArr},
+						async:false,
+						type:"post",
+						dataType:"json",
+						error:function(xhr){
+							alert(xhr.status+"/"+xhr.statusText);
+						},
+						success:function(json){
+							if(json.success==1){
+								for(var i=0; i<checkArr.length;i++){
+								var id="s-"
+								var btn="b-"
+								var refund="r-"
+									id=id+checkArr[i];
+									btn=btn+checkArr[i];
+									refund=refund+checkArr[i];
+									document.getElementById(id).innerHTML='구매확정'
+									document.getElementById(btn).style.display='none';
+									document.getElementById(refund).style.display='none';
+									
+									
+								}
+									alert('구매가 확정되었습니다.')
+							}
+						}//success
+						
+					});
+					
+				}
+				document.querySelector(".inner").style.display='none';
+				  document.querySelector(".outer").style.display='none';
+				  //document.getElementById("buttons").innerHTML='';
+				  body.style.overflow = 'auto';
+			}else{
+				alert("구매를 확정하실 상품을 선택해주세요.")
+				
+			} 
+		 /*  document.querySelector(".inner").style.display='none';
+		  document.querySelector(".outer").style.display='none';
+		  document.getElementById("buttons").innerHTML='';
+		  body.style.overflow = 'auto';
+			 */
+		  
+		});
+  
+
+		
+		
+		//반품 확정 버튼
+		refundComplete.addEventListener('click', (event) => {
+			
+			$(".checkAll").prop('checked',false);
+			
+			
+			if(document.getElementById("refund-select").selectedIndex==0){
+				alert("반품 사유를 선택해주세요.")
+				return;
+			}///
+			
+			
+			var selectIndex=0;;
+			selectIndex=document.getElementById("refund-select").selectedIndex;
+			//alert(selectIndex+"index")
+			
+			var checkArr=[];
+			$("input:hidden[name=refundId]").each(function(index){
+				//alert($(this).val());
+				checkArr.push($(this).val()); //체크된것만 배열에 push
+			})
+			
+			if(confirm("반품을 확정하시겠습니까?")){
+				
+				$.ajax({
+					url:"orderList/refund/status",
+					data:{valueArr:checkArr, selectIndex:selectIndex},
+					async:true,
+					type:"post",
+					dataType:"json",
+					error:function(xhr){
+						alert(xhr.status+"/"+xhr.statusText);
+					},
+					success:function(json){
+						 if(json.success==1){
+							//alert("성공")
+							for(var i=0; i<checkArr.length;i++){
+							var id="s-"
+							var btn="b-"
+							var refund="r-"
+								id=id+checkArr[i];
+								btn=btn+checkArr[i];
+								refund=refund+checkArr[i];
+								document.getElementById(id).innerHTML='반품'
+								document.getElementById(btn).style.display='none';
+								document.getElementById(refund).style.display='none';
+							}
+						alert('반품되었습니다.')
+						} 
+					}//success
+					
+				});
+				
+			}
+			
+		  document.querySelector(".inner").style.display='none';
+		  document.querySelector(".outer").style.display='none';
+		  document.getElementById("buttons").innerHTML='';
+		  document.getElementById("col").innerHTML='반품';
+		  body.style.overflow = 'auto';
+		  
+		});
+
+		
+
+		function btnClickHandle(order_id){ //구매확정이나 반품눌었을 때
+			
+			//alert(order_id);
+		
+			//ajax로 해당 order_id의 오더 디테일 불러오기	
+			$.ajax({
+					url:"orderList/check",
+					data:{order_id:order_id},
+					async:false,
+					type:"get",
+					dataType:"json",
+					error:function(xhr){
+						alert(xhr.status+"/"+xhr.statusText);
+					},
+					success:function(json){
+						if(json.flag!=0){
+							//alert("데이터있음");
+							//alert(json.data);
+							//alert(JSON.stringify(json));
+							
+							//$("#row-div-info").empty(); //주문날짜 번호 초기화
+							var sentence1="<span>결제일자 </span><span style='padding-left: 10px;'>"+json.data[0].order_date+"</span>";
+							sentence1+="<span style='padding-left: 20px;'>주문번호 </span>"+
+										"<span style='padding-left: 10px;'>"+json.data[0].order_id+"</span>";
+
+							//주문날짜 번호 입력			
+							document.getElementById('row-div-info').innerHTML=sentence1
+								
+							var sentence2=""
+							
+							for(var i=0;i<json.data.length;i++){
+								//alert(json.data[i].detail_id);
+								var p=parseInt(json.data[i].amount)*parseInt(json.data[i].price);
+								var price=p.toLocaleString('ko-KR');
+								sentence2+="<div class='row-div'>"+
+									"<input type='checkbox' name='productCheck' value='"+json.data[i].detail_id+"' style='zoom:1.3;' class='check'/>";
+								sentence2+="<div class='how-itemcart-j' style='margin-right: 0px;'>"
+								//경로 다시 설정해줘야함 json.data[i].image로
+								sentence2+="<img src='http://localhost/goodstore/resources/images/item-cart-04.jpg' alt='IMG'></div>"
+								sentence2+="<div class='product-info' style='width:150px;margin-left:20px;'>"+json.data[i].item_name+"</div>"
+								sentence2+="<div class='product-info1' style='margin-left:30px;'>"+json.data[i].amount+"개</div>"
+								sentence2+="<div class='product-info1' style=' margin-right:20px;'>"+price+"원</div></div>"
+								
+							}
+								document.getElementById('row-div-m').innerHTML=sentence2;
+							
+							
+						}//end if
+					}
+				});
+		
+			
 			document.querySelector(".outer").style.display='block';
 			document.querySelector(".inner").style.display='block';
 			document.querySelector(".inner1").style.display='none';
@@ -990,74 +1008,11 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 			outer.classList.toggle('show');
   
 		  if (outer.classList.contains('show')) {
-			  body.style.overflow = 'hidden';
+			  body.style.overflow = 'auto';
 			  
 		  }
-			// document.querySelector(".inner").style.display='block';
-			// document.querySelector(".inner1").style.display='none';
-		});
-
-
-
-		refundBtn.addEventListener('click', () => {
-			// outer.classList.toggle('show');
-			document.querySelector(".inner").style.display='none';
-			document.querySelector(".inner1").style.display='block';
-		  if (outer.classList.contains('show')) {
-			document.querySelector(".inner").style.display='none';
-			document.querySelector(".inner1").style.display='block';
-		  }
-  
-		});
-
-  
-		outer.addEventListener('click', (event) => {
-		  if (event.target === outer) {
-			outer.classList.toggle('show');
-  
-			if (!outer.classList.contains('show')) {
-				document.querySelector(".inner").style.display='none';
-		  		document.querySelector(".outer").style.display='none';
-			 	body.style.overflow = 'auto';
-			}
-		  }
-		});
-  
-
-		completePurchase.addEventListener('click', (event) => {
-			
-		  document.querySelector(".inner").style.display='none';
-		  document.querySelector(".outer").style.display='none';
-		  document.getElementById("buttons").innerHTML='';
-		  document.getElementById("col").innerHTML='구매확정';
-		  body.style.overflow = 'auto';
-			
-		  
-		});
-  
-
-		refundComplete.addEventListener('click', (event) => {
-		
-			if(document.getElementById("refund-select").selectedIndex==0){
-				alert("반품 사유를 선택해주세요.")
-				return;
-			}
-
-		  document.querySelector(".inner").style.display='none';
-		  document.querySelector(".outer").style.display='none';
-		  document.getElementById("buttons").innerHTML='';
-		  document.getElementById("col").innerHTML='반품';
-		  body.style.overflow = 'auto';
-			
-		  
-		});
-
-
-
-		
+		}
 	  </script>
-
-
 
 
 
