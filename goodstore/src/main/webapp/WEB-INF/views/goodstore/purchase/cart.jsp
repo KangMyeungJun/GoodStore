@@ -53,6 +53,7 @@ padding-right: 15px;
 <body class="animsition">
 
 <%@ include file="../common/header.jsp" %>
+
 <%@ include file="../common/sidebar.jsp" %>
 
 	<!-- Cart -->
@@ -126,14 +127,14 @@ padding-right: 15px;
 						Total: $75.00
 					</div>
 
-					<div class="header-cart-buttons flex-w w-full">
-						<a href="shoping-cart.html" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
-							View Cart
+					<div class="header-cart-buttons flex-w w-full" style="justify-content: center;">
+						<a href="cart" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
+							구매하기
 						</a>
 
-						<a href="shoping-cart.html" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
+						<!-- <a href="shoping-cart.html" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
 							Check Out
-						</a>
+						</a> -->
 					</div>
 				</div>
 			</div>
@@ -150,7 +151,7 @@ padding-right: 15px;
 			</a>
 
 			<span class="stext-109 cl4">
-				쇼핑 카트
+				장바구니
 			</span>
 		</div>
 	</div>
@@ -867,8 +868,38 @@ function purchaseDone(){
     	
     }
 </script>
+<!-- <script>
+		//alert(document.getElementById('cart-icon-chg').data)
+		//alert($("div[data-notify]").val());
+		//$("[data-notify]").val()
+		
+	$.ajax({
+		url:"cart/header",
+		async:false,
+		type:"get",
+		dataType:"json",
+		error:function(xhr){
+			alert(xhr.status+"/"+xhr.statusText);
+		},
+		success:function(json){
+			var string="<div class='icon-header-item cl2 hov-cl1 trans-04 p-lr-11 icon-header-noti js-show-cart'";
+			if(json.count!=0){
+				alert(json.count);
+				alert("dddddddddddd")
+				string+="data-notify='"+json.count+"'><i class='zmdi zmdi-shopping-cart'></i></div>";
+				document.getElementById('cart-icon-chg').innerHTML=string;
+			}else{
+				alert("0이다");
+				string+="data-notify='0'><i class='zmdi zmdi-shopping-cart'></i></div>";
+				document.getElementById('cart-icon-chg').innerHTML=string;
+			}
+					
+		}//success
+		
+	});
+	
+	</script> -->
 
-
-
+<%@ include file="../common/header_cart.jsp" %>
 </body>
 </html>

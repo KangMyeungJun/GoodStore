@@ -8,6 +8,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -153,4 +154,24 @@ public class CartController {
 		
 		return "goodstore/purchase/purchase_success";
 	} //purchaseSuccess
+	
+	
+	
+	@GetMapping("cart/header")
+	@ResponseBody
+	public String headerCart(HttpSession session) {
+		int cnt=0;
+		cnt=cs.searchCartItems(1).size();
+		JSONObject json=new JSONObject();
+			json.put("count",cnt);
+		String data="";
+		data=json.toJSONString();
+		return data;
+	} 
+	
+	
+	
+	
+	
+	
 }
