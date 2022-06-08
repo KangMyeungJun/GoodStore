@@ -174,11 +174,12 @@
 													</span>
 
 													<span class="fs-18 cl11">
+													<c:forEach begin="1" end="${comment.star}" step="1">
 														<i class="zmdi zmdi-star"></i>
-														<i class="zmdi zmdi-star"></i>
-														<i class="zmdi zmdi-star"></i>
-														<i class="zmdi zmdi-star"></i>
-														<i class="zmdi zmdi-star-half"></i>
+													</c:forEach>
+													<c:forEach begin="1" end="${5-comment.star}" step="1">
+														<i class="zmdi zmdi-star-outline"></i>
+													</c:forEach>
 													</span>
 												</div>
 
@@ -215,15 +216,6 @@
 													<textarea class="size-110 bor8 stext-102 cl2 p-lr-20 p-tb-10" id="review" name="review"></textarea>
 												</div>
 
-												<div class="col-sm-6 p-b-5">
-													<label class="stext-102 cl3" for="name">Name</label>
-													<input class="size-111 bor8 stext-102 cl2 p-lr-20" id="name" type="text" name="name">
-												</div>
-
-												<div class="col-sm-6 p-b-5">
-													<label class="stext-102 cl3" for="email">Email</label>
-													<input class="size-111 bor8 stext-102 cl2 p-lr-20" id="email" type="text" name="email">
-												</div>
 											</div>
 
 											<button class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10">

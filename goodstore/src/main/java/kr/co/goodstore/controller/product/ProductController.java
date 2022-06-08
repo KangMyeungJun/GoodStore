@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import kr.co.goodstore.domain.product.ProductListDomain;
+import kr.co.goodstore.service.admin.AdminService;
 import kr.co.goodstore.service.product.ProductService;
 import kr.co.goodstore.vo.product.ProductListVO;
 
@@ -14,10 +15,13 @@ import kr.co.goodstore.vo.product.ProductListVO;
 public class ProductController {
 	@Autowired(required = false)
 	private ProductService ps;
+	@Autowired(required = false)
+	private AdminService cs;
 
 	@GetMapping("product")
 	public String product(Model model, ProductListVO plVO) {
 		model.addAttribute("productList", ps.productList(plVO));
+		model.addAttribute("categoryList", cs.searchCategory());
 		return "goodstore/purchase/product";
 	}
 

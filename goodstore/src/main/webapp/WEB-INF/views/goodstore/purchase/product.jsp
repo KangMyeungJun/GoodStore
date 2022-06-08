@@ -21,31 +21,14 @@
 						All Products
 					</button>
 
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".woman">
-						Fashion
+					<c:forEach var="category" items="${categoryList}">
+					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".<c:out value="${ category.category_name }"/>">
+						<c:out value="${ category.category_name }"/>
 					</button>
-
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".man">
-						Food
-					</button>
-
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".bag">
-						Beauty
-					</button>
-
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".shoes">
-						Furniture
-					</button>
-
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".watches">
-						Plants
-					</button>
+					</c:forEach>
 				</div>
 
 				<div class="flex-w flex-c-m m-tb-10">
-					<div class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4 js-show-filter">
-						 Post
-					</div>
 					<div class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4 js-show-filter">
 						<i class="icon-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-filter-list"></i>
 						<i class="icon-close-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
@@ -60,18 +43,18 @@
 				</div>
 				
 				<!-- Search product -->
-				<div class="dis-none panel-search w-full p-t-10 p-b-15">
+				<form class="dis-none panel-search w-full p-t-10 p-b-15">
 					<div class="bor8 dis-flex p-l-15">
 						<button class="size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04">
 							<i class="zmdi zmdi-search"></i>
 						</button>
 
-						<input class="mtext-107 cl2 size-114 plh2 p-r-15" type="text" name="search-product" placeholder="Search">
+						<input class="mtext-107 cl2 size-114 plh2 p-r-15" type="text" name="keyword" placeholder="Search">
 					</div>	
-				</div>
+				</form>
 
 				<!-- Filter -->
-				<div class="dis-none panel-filter w-full p-t-10" style="width: 500px">
+				<form class="dis-none panel-filter w-full p-t-10" style="width: 500px">
 					<div class="wrap-filter flex-w bg6 w-full p-lr-40 p-t-27 p-lr-15-sm" style="width: 500px">
 						<div class="filter-col1 p-r-15 p-b-27" style="width: 40%">
 							<div class="mtext-102 cl2 p-b-15">
@@ -86,6 +69,7 @@
 								</li>
 
 								<li class="p-b-6">
+<!-- 									<input type="submit" name="sort" value="price"/> -->
 									<a href="#" class="filter-link stext-106 trans-04">
 										인기순
 									</a>
@@ -161,13 +145,13 @@
 							</ul>
 						</div>
 					</div>
-				</div>
+				</form>
 			</div>
 
 			<div class="row isotope-grid">
 		
 				<c:forEach var="productList" items="${ productList }">
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
+				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item ${productList.category_name}">
 					<!-- Block2 -->
 					<div class="block2">
 						<div class="block2-pic hov-img0">

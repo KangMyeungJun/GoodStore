@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Component;
 
 import kr.co.goodstore.dao.MyBatisFramework;
+import kr.co.goodstore.domain.admin.CategoryDomain;
 import kr.co.goodstore.domain.product.ProductCommentDomain;
 import kr.co.goodstore.domain.product.ProductDomain;
 import kr.co.goodstore.domain.product.ProductListDomain;
@@ -53,4 +54,5 @@ public class ProductDAO {
 		if(ss!=null) {ss.close();}
 		return list;
 	}
+	
 }
