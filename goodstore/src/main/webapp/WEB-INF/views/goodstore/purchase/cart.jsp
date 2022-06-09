@@ -292,8 +292,8 @@ padding-right: 15px;
 
 							<div class="size-209 p-r-18 p-r-0-sm w-full-ssm">
 								<p class="stext-111 cl6 p-t-2">
-									There are no shipping methods available. Please double check your address, or contact us if you need any help.
-								</p>
+									배송은 결제일 2~3일 후 완료됩니다.
+									</p>
 										
 								</div>
 							</div>
@@ -569,19 +569,22 @@ var coupon_id=0;
 		
 		
 		if(updown==0 && parseInt(quantity)<=1){//개수 0일때 새로고침
-			alert("1개 이상 구매 가능합니다.")
 			quantity=1;
 			location.href="http://localhost/goodstore/cart"
+			alert("1개 이상 구매 가능합니다.")
 			
 		}else{
 				 
 			if(updown==1){//db에 넘겨주기 위해 원래 수량에 +1
+				
 				quantity=parseInt(quantity)+1
 				
 				if(checkbox.checked){
 					t=parseInt(p)+parseInt(t); //최총 금액에 추가된 수량에 따른 해당상품의 값 넣어주기
 				}
 			}else if(updown==0){//db에 넘겨주기 위해 원래 수량에 -1
+				
+				
 				quantity=parseInt(quantity)-1
 				//alert(quantity)
 					if(checkbox.checked){
