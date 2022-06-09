@@ -6,7 +6,7 @@
  
  <!-- 카테고리 조회 -->
 <select id="searchCategory" resultType="cd">
-select name 
+select category_name 
 from category 
 where delete_flag='N'
 </select>
