@@ -34,8 +34,8 @@
           </li>
 
           <!-- 대시보드 -->
-          <li class="nav-item menu-items active" id="nav-dashboard">
-            <a class="nav-link" href="#void">
+          <li class="nav-item menu-items " id="nav-dashboard">
+            <a class="nav-link" href="index2">
               <span class="menu-icon">
                 <i class="mdi mdi-speedometer"></i>
               </span>
@@ -109,7 +109,7 @@
             </a>
             <div class="collapse" id="ui-order">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="#void">Order Status</a></li>
+                <li class="nav-item"> <a class="nav-link" href="orders">Order Status</a></li>
               </ul>
             </div>
           </li>

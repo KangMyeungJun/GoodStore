@@ -24,17 +24,39 @@
     <link rel="stylesheet" href="${initParam.staticPath}assets/css/style.css">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="${initParam.staticPath}assets/images/favicon.png" />
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
   </head>
   <body>
     <div class="container-scroller">
       <!-- partial:../../partials/_sidebar.jsp -->
        <!-- leftSide -->     
  <%@ include file="../../include/leftnavi.jsp" %>
- <script>
+ <script type="text/javascript"> 
 		const navActive = document.getElementById("nav-users");
 		const uiShow = document.getElementById("ui-user");
 		navActive.classList.add('active');
 		uiShow.classList.add('show');
+		
+		$(function(){
+			$("#btnEmailSearch").click(function(){
+				chkNull();
+			});
+			$("#keyword").keydown(function( evt ){
+				if( evt.which == 13 ){
+					chkNull();
+				}//end if
+			});
+		});//ready
+
+		function chkNull(){
+			if($("#keyword").val() == "" ){
+				alert("검색 키워드를 입력해주세요.");
+				$("#keyword").focus();
+				return;
+			}//end if
+			$("#emailSearchFrm").submit();
+		}//chkNull
+		
 </script>
  
 
@@ -146,15 +168,29 @@
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title">User Status</h4>
-                    <div>총 사용자 수 : 15건 | 오늘 가입한 사용자 수: 11건</div><br/>
+                    <div>총 사용자 수 : <c:out value="${userCount}"/>건 | 오늘 가입한 사용자 수: <c:out value="${todayCnt }"/>건</div><br/>
+                      <form action="users" id="emailSearchFrm" method="get">
                     <div class="form-group">
-                      <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search Post title" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                      <div class="input-group" >
+                        <input type="text"  name="keyword" id="keyword"  class="form-control" placeholder="Search Email" aria-label="Recipient's username" aria-describedby="basic-addon2">
                         <div class="input-group-append">
-                          <button class="btn btn-fw btn-outline-secondary" type="button">Search</button>
+                          <button class="btn btn-fw btn-outline-secondary"  id="btnEmailSearch"   type="button">Search</button>
                         </div>
                       </div>
                     </div><br/>
+                          </form>
+                    
+                    
+                    <div>
+                    전체레코드의 수 : ${ totalCnt }<br/>
+					한 화면에 보여줄 게시물의 수 : ${ pageScale }<br/>
+					총페이지 수 : ${ pageCnt }<br/>
+					시작번호  : ${ startNum }<br/>
+					끝번호  : ${  endNum }<br/>
+                    </div> 
+                    
+                    
+                    
                     <div class="table-responsive">
                       <table class="table table-striped">
                         <thead>
@@ -168,10 +204,27 @@
                         </thead>
                         <tbody>
                         
+                        
+                        
+                        
+                        
+                        <c:if test="${ empty usersList  }">
+                        <tr>
+						<td colspan="7" style="width:100px; text-align:center">
+						 검색하신 [<c:out value="${param.keyword }"/>]이메일은 존재하지 않습니다.<br/>
+                        </td>
+						</tr>
+                        </c:if>
+                        
+                        
+                        
+                        <c:if test="${not empty usersList  }">
                          <c:forEach var="usersList" items="${usersList }">
+                            <%--  <c:set var="i" value="${ i+1 }"/>
+								<c:set var="total" value="${  totalCnt -( currentPage-1)*pageScale-i+1}"/>  --%>
                           <tr>
                             <td class="py-1">
-                              <c:out value="${usersList.member_id }"/>
+                              <c:out value="${usersList.member_id}"/>
                             </td>
                            <td><c:out value="${usersList.email}"/></td> 
                             <td><c:out value="${usersList.name}"/></td>
@@ -183,11 +236,12 @@
                             </td>
                           </tr>
                           </c:forEach>
+                          </c:if>
                           
                          
                           
                            
-                          <tr>
+                          <!-- <tr>
                             <td class="py-1">
                               1
                             </td>
@@ -225,7 +279,7 @@
                                 삭제
                               </a>
                             </td>
-                          </tr>
+                          </tr> -->
                           
 
 
@@ -233,7 +287,17 @@
                       </table>
                     </div> 
                   </div>
-                  <div style="text-align: center;">Pagination 여기서 구현</div>
+                 <div id="pageNation" style="text-align: center">
+<%
+//String field=request.getParameter("field");
+String keyword=request.getParameter("keyword");
+%>
+<c:forEach var="i" begin="1" end="${ pageCnt }" step="1" >
+[ <a href="users?currentPage=${ i }<%= !"".equals(keyword) && keyword !=null?"&keyword="+keyword:"" %>"><c:out value="${ i }"/></a> ]
+</c:forEach>
+</div> 
+                  
+                  <!-- <div style="text-align: center;">Pagination 여기서 구현</div> -->
 
                 </div>
               </div>

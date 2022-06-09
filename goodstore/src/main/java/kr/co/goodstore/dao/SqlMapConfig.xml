@@ -8,6 +8,8 @@
 <typeAlias type="kr.co.goodstore.purchase.vo.ItemVO" alias="itemVO"/>
 <typeAlias type="kr.co.goodstore.domain.admin.CategoryDomain" alias="cd"/>
 <typeAlias type="kr.co.goodstore.domain.admin.MemberDomain" alias="md"/>
+<typeAlias type="kr.co.goodstore.domain.admin.OrdersDomain" alias="od"/>
+<typeAlias type="kr.co.goodstore.domain.admin.BoardVO" alias="boardVO"/>
 </typeAliases>
   <environments default="development">
     <environment id="development">
