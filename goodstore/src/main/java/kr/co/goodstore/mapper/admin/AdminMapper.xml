@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.goodstore.dao">
+ 
+ <!-- 카테고리 조회 -->
+<select id="searchCategory" resultType="cd">
+select name 
+from category 
+where delete_flag='N'
+</select>
+
+ <!-- Users 조회 -->
+<select id="searchUsers" resultType="md">
+select member_id, email, name, join_date
+from member 
+</select>
+
+<!-- User_detail 조회 -->
+<select id="detailUser" resultType="md" parameterType="int">
+select member_id, email, join_date, name, address, tel
+from member 
+where member_id=#{member_id}
+</select>
+ 
+
+</mapper>

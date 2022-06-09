@@ -10,8 +10,8 @@
     <title>Store Admin</title>
     <!-- plugins:css -->
     <!-- 아이콘관련 -->
-    <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="${initParam.staticPath}assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="${initParam.staticPath}assets/vendors/css/vendor.bundle.base.css">
 
     <!-- endinject -->
     <!-- Plugin css for this page -->
@@ -19,9 +19,9 @@
     <!-- inject:css -->
     <!-- endinject -->
     <!-- Layout styles -->
-    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="${initParam.staticPath}assets/css/style.css">
     <!-- End layout styles -->
-    <link rel="shortcut icon" href="../../assets/images/favicon.png" />
+    <link rel="shortcut icon" href="${initParam.staticPath}assets/images/favicon.png" />
   </head>
   <body>
     <div class="container-scroller">
@@ -59,7 +59,7 @@
               <li class="nav-item dropdown">
                 <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
                   <div class="navbar-profile">
-                    <img class="img-xs rounded-circle" src="../../assets/images/faces/squidGame.jpg" alt="">
+                    <img class="img-xs rounded-circle" src="${initParam.staticPath}assets/images/faces/squidGame.jpg" alt="">
                     <p class="mb-0 d-none d-sm-block navbar-profile-name">Admin</p>
                     <i class="mdi mdi-menu-down d-none d-sm-block"></i>
                   </div>
@@ -289,7 +289,7 @@
                                <input type="checkbox" style="margin-left:80px">
                             <label class="col-sm-3 col-form-label"></label>
                             <div class="col-sm-9">
-                              <img src="../../assets/images/auth/Login_bg.jpg" style="height:100px;" alt="thumbnail"/>
+                              <img src="${initParam.staticPath}assets/images/auth/Login_bg.jpg" style="height:100px;" alt="thumbnail"/>
                             </div>
                           </div>
                                              
@@ -297,7 +297,7 @@
                             <input type="checkbox" style="margin-left:80px">
                             <label class="col-sm-3 col-form-label"></label>
                             <div class="col-sm-9">
-                              <img src="../../assets/images/auth/Login_bg.jpg" style="height:100px;" alt="thumbnail"/>
+                              <img src="${initParam.staticPath}assets/images/auth/Login_bg.jpg" style="height:100px;" alt="thumbnail"/>
                             </div>
                           </div>
                                              
@@ -305,7 +305,7 @@
                             <input type="checkbox" style="margin-left:80px">
                             <label class="col-sm-3 col-form-label"></label>
                             <div class="col-sm-9">
-                              <img src="../../assets/images/auth/Login_bg.jpg" style="height:100px;" alt="thumbnail"/>
+                              <img src="${initParam.staticPath}assets/images/auth/Login_bg.jpg" style="height:100px;" alt="thumbnail"/>
                             </div>
                           </div>
                                              
@@ -313,7 +313,7 @@
                             <input type="checkbox" style="margin-left:80px">
                             <label class="col-sm-3 col-form-label"></label>
                             <div class="col-sm-9">
-                              <img src="../../assets/images/auth/Login_bg.jpg" style="height:100px;" alt="thumbnail"/>
+                              <img src="${initParam.staticPath}assets/images/auth/Login_bg.jpg" style="height:100px;" alt="thumbnail"/>
                             </div>
                           </div>
                    
@@ -493,16 +493,16 @@
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
-    <script src="../../assets/vendors/js/vendor.bundle.base.js"></script>
+    <script src="${initParam.staticPath}assets/vendors/js/vendor.bundle.base.js"></script>
     <!-- endinject -->
     <!-- Plugin js for this page -->
     <!-- End plugin js for this page -->
     <!-- inject:js -->
-    <script src="../../assets/js/off-canvas.js"></script>
-    <script src="../../assets/js/hoverable-collapse.js"></script>
-    <script src="../../assets/js/misc.js"></script>
-    <script src="../../assets/js/settings.js"></script>
-    <script src="../../assets/js/todolist.js"></script>
+    <script src="${initParam.staticPath}assets/js/off-canvas.js"></script>
+    <script src="${initParam.staticPath}assets/js/hoverable-collapse.js"></script>
+    <script src="${initParam.staticPath}assets/js/misc.js"></script>
+    <script src="${initParam.staticPath}assets/js/settings.js"></script>
+    <script src="${initParam.staticPath}assets/js/todolist.js"></script>
     <!-- endinject -->
     <!-- Custom js for this page -->
     <!-- End custom js for this page -->
