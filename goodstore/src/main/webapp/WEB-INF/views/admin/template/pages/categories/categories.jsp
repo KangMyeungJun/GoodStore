@@ -166,8 +166,8 @@
                             </div>
                             <div class="preview-item-content d-sm-flex flex-grow">
                               <div class="flex-grow">
-                                <h4 class="preview-subject"><c:out value="${categoryList.name }"/></h4>
-                                <a class="text-muted mb-0" href="categories-edit.jsp">edit</a>
+                                <h4 class="preview-subject"><c:out value="${categoryList.category_name }"/></h4>
+                                <a class="text-muted mb-0" href="categories_edit?category_id=${categoryList.category_id }">edit</a>
                               </div>
                             </div>
                           </div>

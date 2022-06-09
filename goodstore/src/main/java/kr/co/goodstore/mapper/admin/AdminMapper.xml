@@ -6,15 +6,72 @@
  
  <!-- 카테고리 조회 -->
 <select id="searchCategory" resultType="cd">
-select name 
+select category_name ,category_id,image
 from category 
 where delete_flag='N'
 </select>
 
+ <!-- 카테고리 상세조회 -->
+<select id="categoryDetail" resultType="cd">
+select category_name ,image
+from category 
+where category_id=#{category_id}
+</select>
+
+<!-- 카테고리 수정 -->
+<update id="modifyCategory" parameterType="cd">
+update category
+<set>
+<if test="category_name != null and category_name !='' ">
+category_name=#{category_name}
+</if>
+<if test="image != null and image !='' ">
+image=#{image}
+</if>
+</set>
+where category_id=#{category_id}
+</update>
+
+<!-- 카테고리 추가 -->
+<insert id="">
+insert into category(category_name, image)
+</insert>
+
+
+
+<!-- 전체 사용자 수 구하기(검색) -->
+<select id="userCount" resultType="int"  parameterType="boardVO">
+select count(*)
+from member
+where withdrawal_flag='N'
+
+<if test="keyword != null and keyword !='' ">
+and ${field} like '%' || #{keyword} ||'%'
+</if>
+
+</select>
+
+<!-- 전체 사용자 수 구하기() -->
+<select id="userCount1" resultType="int">
+select count(*)
+from member
+where withdrawal_flag='N'
+</select>
+
+
  <!-- Users 조회 -->
-<select id="searchUsers" resultType="md">
-select member_id, email, name, join_date
-from member 
+<select id="searchUsers" resultType="md" parameterType="boardVO">
+select member_id, email, name,join_date   <!-- 여기에 rnum 을 써줄지 안써줄지 이따가 생각  -->
+from (select  row_number() over(order by join_date desc) rnum, member_id, email,name,join_date
+from member
+ where withdrawal_flag = 'N'
+<!-- where 에러 나면 여기에 where 태그 써주기 -->
+		<if test="keyword != null and keyword !='' ">
+		and ${field} like '%'||#{keyword} ||'%'
+		</if>
+		
+		)
+  where rnum between #{startNum} and #{endNum} 
 </select>
 
 <!-- User_detail 조회 -->
@@ -23,6 +80,134 @@ select member_id, email, join_date, name, address, tel
 from member 
 where member_id=#{member_id}
 </select>
- 
+
+ <!--User 탈퇴   -->
+<update id="updateMemberStatus" parameterType="int">
+
+update member
+set    withdrawal_flag='Y'
+where  member_id=#{member_id}
+
+</update> 
+
+
+<!-- 전체 주문 수 구하기(검색) -->
+<select id="ordersCount" resultType="int"  parameterType="boardVO">
+select   count(*)
+from member m
+inner join  orders o
+on   o.member_id=m.member_id
+inner join order_detail od
+on   od.order_id=o.order_id
+inner join item i
+on od.item_id=i.item_id
+inner join category c
+on i.category_id=c.category_id
+<where>
+<if test="keyword != null and keyword !='' ">
+${field} like '%' || #{keyword} ||'%'
+</if>
+</where>
+</select>
+
+
+<!-- 주문 조회 -->
+<select id="orders" resultType="od"  parameterType="boardVO">
+<!-- select  row_number() over(order by order_date desc) rnum,  m.name, o.order_id, o.order_date, od.status , i.item_id, i.item_name, i.price , c.category_name
+from member m
+inner join  orders o
+on   o.member_id=m.member_id
+inner join order_detail od
+on   od.order_id=o.order_id
+inner join item i
+on od.item_id=i.item_id
+inner join category c
+on i.category_id=c.category_id
+
+ where rnum between #{startNum} and #{endNum}
+
+		<if test="keyword != null and keyword !='' ">
+		and ${field} like '%'||#{keyword} ||'%'
+		</if> -->
+		
+select   name, order_id, order_date, status , item_id, item_name, price , category_name
+from (select row_number() over(order by order_date desc) as rnum,
+			 				m.name, o.order_id, o.order_date, od.status , i.item_id, i.item_name, i.price , c.category_name
+			 from member m, orders o, order_detail od, item i, category c
+				where(o.member_id=m.member_id and od.order_id=o.order_id and i.item_id=od.item_id and c.category_id=i.category_id)
+				<if test="keyword != null and keyword !='' ">
+					and ${field} like '%'||#{keyword} ||'%'
+					</if> 
+				)where rnum between #{startNum} and #{endNum}
+
+</select>
+
+<!-- 주문 상세조회 -->
+<select id="orderDetail" resultType="od" parameterType="int">
+select    m.name, o.order_id, o.order_date, od.status , i.item_id, i.item_name, i.price , c.category_name
+from member m
+inner join  orders o
+on   o.member_id=m.member_id
+inner join order_detail od
+on   od.order_id=o.order_id
+inner join item i
+on od.item_id=i.item_id
+inner join category c
+on i.category_id=c.category_id
+where o.order_id=#{order_id}
+</select>
+
+<!-- 주문환불 -->
+<update id="updateOrderStatus" parameterType="int">
+update order_detail
+set    status='R'
+where  order_id=#{order_id}
+</update> 
+
+
+<!-- 오늘 가입한 사람 수 구하기 -->
+ <select id="todayCount" resultType="int">
+select count(*) 
+from member 
+where to_char(join_date,'YYYY-MM-DD')=to_char(sysdate,'YYYY-MM-DD') and withdrawal_flag='N' 
+</select>
+
+<!-- 전체 블로그 수 구하기() -->
+<select id="blogCount" resultType="int">
+select count(*)
+from blog
+</select>
+
+<!-- 오늘 쓴 블로그 수  -->
+<select id="todayBlogCount" resultType="int">
+select count(*) 
+from blog 
+where to_char(upload_date,'YYYY-MM-DD')=to_char(sysdate,'YYYY-MM-DD')
+</select>
+
+<!-- 전체 아이템 수 구하기() -->
+<select id="itemCount" resultType="int">
+select count(*)
+from item
+where delete_flag='N'
+</select>
+
+<!-- 완료된 주문 수 구하기() -->
+<select id="orderCount" resultType="int">
+select count(*)
+from order_detail
+where status='C'
+</select>
+
+<!-- 오늘 주문 수  -->
+<select id="todayOrdersCount" resultType="int">
+select count(*)
+from orders o
+inner join order_detail od
+on od.order_id=o.order_id
+where status='C'    and to_char(order_date,'YYYY-MM-DD')=to_char(sysdate,'YYYY-MM-DD')
+</select>
+
+
 
 </mapper>
