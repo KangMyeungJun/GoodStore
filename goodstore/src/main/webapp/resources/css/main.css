@@ -1933,9 +1933,20 @@ input.num-product::-webkit-inner-spin-button {
   border-bottom: 1px solid #e6e6e6;
 }
 
+
+
 .table-shopping-cart .column-1 {
   width: 133px;
   padding-left: 50px;
+}
+
+
+
+
+/* 0605 추가 */
+.table-shopping-cart .column-1-c {
+  width: 50px;
+  padding-left: 30px;
 }
 
 .table-shopping-cart .column-2 {
@@ -3531,3 +3542,9 @@ input.num-product::-webkit-inner-spin-button {
   cursor: pointer;
 }
 /* ///////////////// */
+
+.divWidth {width: 350px;}
+.inputBorder {border: 1px solid #e6e6e6; display: inline-block; margin-top: 10px; height: 30px;}
+
+
+/*///////////////////////////////  */
