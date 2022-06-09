@@ -15,31 +15,25 @@
 				<ul class="sidebar-link w-full">
 					<li class="p-b-13">
 						<a href="index.html" class="stext-102 cl2 hov-cl1 trans-04">
-							Home
+							홈
 						</a>
 					</li>
 
 					<li class="p-b-13">
-						<a href="#" class="stext-102 cl2 hov-cl1 trans-04">
-							My Wishlist
+						<a href="cart" class="stext-102 cl2 hov-cl1 trans-04">
+							장바구니
 						</a>
 					</li>
 
 					<li class="p-b-13">
 						<a href="account_edit_chk.html" class="stext-102 cl2 hov-cl1 trans-04">
-							My Account
+							나의 계정
 						</a>
 					</li>
 
 					<li class="p-b-13">
 						<a href="orderList" class="stext-102 cl2 hov-cl1 trans-04">
-							Track Oder
-						</a>
-					</li>
-
-					<li class="p-b-13">
-						<a href="#" class="stext-102 cl2 hov-cl1 trans-04">
-							Refunds
+							주문내역
 						</a>
 					</li>
 
@@ -47,62 +41,62 @@
 
 				<div class="sidebar-gallery w-full p-tb-30">
 					<span class="mtext-101 cl5">
-						@ CozaStore
+						@GoodStore
 					</span>
 
 					<div class="flex-w flex-sb p-t-36 gallery-lb">
 						<!-- item gallery sidebar -->
 						<div class="wrap-item-gallery m-b-10">
-							<a class="item-gallery bg-img1" href="images/gallery-01.jpg" data-lightbox="gallery" 
-							style="background-image: url('images/gallery-01.jpg');"></a>
+							<a class="item-gallery bg-img1" href="https://www.sepp.or.kr/upload/item/031LPSE202110190000093049/20211019130323M.jpg" data-lightbox="gallery" 
+							style="background-image: url('https://www.sepp.or.kr/upload/item/031LPSE202110190000093049/20211019130323M.jpg');"></a>
 						</div>
 
 						<!-- item gallery sidebar -->
 						<div class="wrap-item-gallery m-b-10">
-							<a class="item-gallery bg-img1" href="images/gallery-02.jpg" data-lightbox="gallery" 
-							style="background-image: url('images/gallery-02.jpg');"></a>
+							<a class="item-gallery bg-img1" href="	https://www.sepp.or.kr/upload/item/033LPSE202008240000083492/20200824190423M.png" data-lightbox="gallery" 
+							style="background-image: url('	https://www.sepp.or.kr/upload/item/033LPSE202008240000083492/20200824190423M.png');"></a>
 						</div>
 
 						<!-- item gallery sidebar -->
 						<div class="wrap-item-gallery m-b-10">
-							<a class="item-gallery bg-img1" href="images/gallery-03.jpg" data-lightbox="gallery" 
-							style="background-image: url('images/gallery-03.jpg');"></a>
+							<a class="item-gallery bg-img1" href="https://www.sepp.or.kr/upload/item/053LPSE202108240000091379/20210824170137M.jpg" data-lightbox="gallery" 
+							style="background-image: url('https://www.sepp.or.kr/upload/item/053LPSE202108240000091379/20210824170137M.jpg');"></a>
 						</div>
 
 						<!-- item gallery sidebar -->
 						<div class="wrap-item-gallery m-b-10">
-							<a class="item-gallery bg-img1" href="images/gallery-04.jpg" data-lightbox="gallery" 
-							style="background-image: url('images/gallery-04.jpg');"></a>
+							<a class="item-gallery bg-img1" href="https://www.sepp.or.kr/upload/item/002LPSE201904020000012418/20210422164501M(1).jpg" data-lightbox="gallery" 
+							style="background-image: url('https://www.sepp.or.kr/upload/item/002LPSE201904020000012418/20210422164501M(1).jpg');"></a>
 						</div>
 
 						<!-- item gallery sidebar -->
 						<div class="wrap-item-gallery m-b-10">
-							<a class="item-gallery bg-img1" href="images/gallery-05.jpg" data-lightbox="gallery" 
-							style="background-image: url('images/gallery-05.jpg');"></a>
+							<a class="item-gallery bg-img1" href="${initParam.staticPath}images/gallery-05.jpg" data-lightbox="gallery" 
+							style="background-image: url('${initParam.staticPath}images/gallery-05.jpg');"></a>
 						</div>
 
 						<!-- item gallery sidebar -->
 						<div class="wrap-item-gallery m-b-10">
-							<a class="item-gallery bg-img1" href="images/gallery-06.jpg" data-lightbox="gallery" 
-							style="background-image: url('images/gallery-06.jpg');"></a>
+							<a class="item-gallery bg-img1" href="${initParam.staticPath}images/gallery-06.jpg" data-lightbox="gallery" 
+							style="background-image: url('${initParam.staticPath}images/gallery-06.jpg');"></a>
 						</div>
 
 						<!-- item gallery sidebar -->
 						<div class="wrap-item-gallery m-b-10">
-							<a class="item-gallery bg-img1" href="images/gallery-07.jpg" data-lightbox="gallery" 
-							style="background-image: url('images/gallery-07.jpg');"></a>
+							<a class="item-gallery bg-img1" href="${initParam.staticPath}images/gallery-07.jpg" data-lightbox="gallery" 
+							style="background-image: url('${initParam.staticPath}images/gallery-07.jpg');"></a>
 						</div>
 
 						<!-- item gallery sidebar -->
 						<div class="wrap-item-gallery m-b-10">
-							<a class="item-gallery bg-img1" href="images/gallery-08.jpg" data-lightbox="gallery" 
-							style="background-image: url('images/gallery-08.jpg');"></a>
+							<a class="item-gallery bg-img1" href="${initParam.staticPath}images/gallery-08.jpg" data-lightbox="gallery" 
+							style="background-image: url('${initParam.staticPath}images/gallery-08.jpg');"></a>
 						</div>
 
 						<!-- item gallery sidebar -->
 						<div class="wrap-item-gallery m-b-10">
-							<a class="item-gallery bg-img1" href="images/gallery-09.jpg" data-lightbox="gallery" 
-							style="background-image: url('images/gallery-09.jpg');"></a>
+							<a class="item-gallery bg-img1" href="${initParam.staticPath}images/gallery-09.jpg" data-lightbox="gallery" 
+							style="background-image: url('${initParam.staticPath}images/gallery-09.jpg');"></a>
 						</div>
 					</div>
 				</div>
@@ -113,93 +107,9 @@
 					</span>
 
 					<p class="stext-108 cl6 p-t-27">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur maximus vulputate hendrerit. Praesent faucibus erat vitae rutrum gravida. Vestibulum tempus mi enim, in molestie sem fermentum quis. 
+					사회적 기업 생산품 판매
 					</p>
 				</div>
 			</div>
 		</div>
 	</aside>
-	<!-- Cart -->
-	<div class="wrap-header-cart js-panel-cart">
-		<div class="s-full js-hide-cart"></div>
-
-		<div class="header-cart flex-col-l p-l-65 p-r-25">
-			<div class="header-cart-title flex-w flex-sb-m p-b-8">
-				<span class="mtext-103 cl2">
-					Your Cart
-				</span>
-
-				<div class="fs-35 lh-10 cl2 p-lr-5 pointer hov-cl1 trans-04 js-hide-cart">
-					<i class="zmdi zmdi-close"></i>
-				</div>
-			</div>
-			
-			<div class="header-cart-content flex-w js-pscroll">
-				<ul class="header-cart-wrapitem w-full">
-					<li class="header-cart-item flex-w flex-t m-b-12">
-						<div class="header-cart-item-img">
-							<img src="${initParam.staticPath}images/item-cart-01.jpg" alt="IMG">
-						</div>
-
-						<div class="header-cart-item-txt p-t-8">
-							<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-								White Shirt Pleat
-							</a>
-
-							<span class="header-cart-item-info">
-								1 x $19.00
-							</span>
-						</div>
-					</li>
-
-					<li class="header-cart-item flex-w flex-t m-b-12">
-						<div class="header-cart-item-img">
-							<img src="${initParam.staticPath}images/item-cart-02.jpg" alt="IMG">
-						</div>
-
-						<div class="header-cart-item-txt p-t-8">
-							<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-								Converse All Star
-							</a>
-
-							<span class="header-cart-item-info">
-								1 x $39.00
-							</span>
-						</div>
-					</li>
-
-					<li class="header-cart-item flex-w flex-t m-b-12">
-						<div class="header-cart-item-img">
-							<img src="${initParam.staticPath}images/item-cart-03.jpg" alt="IMG">
-						</div>
-
-						<div class="header-cart-item-txt p-t-8">
-							<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-								Nixon Porter Leather
-							</a>
-
-							<span class="header-cart-item-info">
-								1 x $17.00
-							</span>
-						</div>
-					</li>
-				</ul>
-				
-				<div class="w-full">
-					<div class="header-cart-total w-full p-tb-40">
-						Total: $75.00
-					</div>
-
-					<div class="header-cart-buttons flex-w w-full">
-						<a href="shoping-cart.html" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
-							View Cart
-						</a>
-
-						<a href="shoping-cart.html" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
-							Check Out
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>

@@ -34,8 +34,8 @@
 				<nav class="limiter-menu-desktop container">
 					
 					<!-- Logo desktop -->		
-					<a href="#" class="logo">
-						<img src="${initParam.staticPath}images/icons/logo-01.png" alt="IMG-LOGO">
+					<a href="index.html" class="logo">
+						<img src="${initParam.staticPath}images/goodstore5.png" alt="IMG-LOGO">
 					</a>
 
 					<!-- Menu desktop -->
@@ -90,14 +90,14 @@
 							</div>
 						</div>
 							
-						<div class="flex-c-m h-full p-l-18" id="cart-icon-chg" > 
-							<div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 icon-header-noti js-show-cart"data-notify="3">
+						<div class="flex-c-m h-full p-l-18"> 
+							<a href="cart" class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11">
 								<i class="zmdi zmdi-shopping-cart"></i>
-							</div>
+							</a>
 						</div>
 						
             <div class="flex-c-m h-full p-l-18">
-            <a href="#" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="0">
+            <a href="#" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-" >
 							<i class="zmdi zmdi-favorite-outline"></i>
 						</a>
             </div>
@@ -116,7 +116,7 @@
 		<div class="wrap-header-mobile">
 			<!-- Logo moblie -->		
 			<div class="logo-mobile">
-				<a href="index.html"><img src="${initParam.staticPath}images/icons/logo-01.png" alt="IMG-LOGO"></a>
+				<a href="index.html"><img src="${initParam.staticPath}images/goodstore5.png" alt="IMG-LOGO"></a>
 			</div>
 
 			<!-- Icon header -->
@@ -169,19 +169,23 @@
 				</li>
 
 				<li>
-					<a href="about.html">About</a>
+					<a href="#">About</a>
 				</li>
 
 			</ul>
 		</div>
 
+
+
 		<!-- Modal Search -->
 		<div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
 			<div class="container-search-header">
+			<!-- 검색 설정해줘야함 -->
 				<button class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
 					<img src="${initParam.staticPath}images/icons/icon-close2.png" alt="CLOSE">
 				</button>
 
+				<!-- 검색으로 넘겨주기 -->
 				<form class="wrap-search-header flex-w p-l-15">
 					<button class="flex-c-m trans-04">
 						<i class="zmdi zmdi-search"></i>
@@ -191,33 +195,3 @@
 			</div>
 		</div>
 	</header>
-<!-- <script>
-		//alert(document.getElementById('cart-icon-chg').data)
-		//alert($("div[data-notify]").val());
-		//$("[data-notify]").val()
-$(document).ready(function(){
-
-	$.ajax({
-		url:"cart/header",
-		async:false,
-		type:"get",
-		dataType:"json",
-		error:function(xhr){
-			alert(xhr.status+"/"+xhr.statusText);
-		},
-		success:function(json){
-			var string="<div class='icon-header-item cl2 hov-cl1 trans-04 p-lr-11 icon-header-noti js-show-cart'";
-			if(json.count!=0){
-				string+="data-notify='"+json.count+"'><i class='zmdi zmdi-shopping-cart'></i></div>";
-				document.getElementById('cart-icon-chg').innerHTML=string;
-			}else{
-				string+="data-notify='0'><i class='zmdi zmdi-shopping-cart'></i></div>";
-				document.getElementById('cart-icon-chg').innerHTML=string;
-			}
-					
-		}//success
-		
-	});
-    //your stuff
-});			
-	</script> -->
