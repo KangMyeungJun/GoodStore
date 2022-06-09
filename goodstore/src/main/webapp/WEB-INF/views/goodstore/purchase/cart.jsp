@@ -687,7 +687,7 @@ function couponHandle(){
 					var start_date=new Date(json.start_date);
 					var end_date= new Date(json.end_date);
 					
-					if(today>start_date && today<end_date && t>json.discount_price){
+					if(today>=start_date && today<=end_date && t>=json.discount_price){
 						
 						document.getElementById("coupon_input").value=json.name;
 						couponPrice=t-(t*(parseInt(json.discount_rate)/100));
