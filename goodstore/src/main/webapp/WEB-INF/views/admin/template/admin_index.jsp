@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+    
+           <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,13 +25,14 @@
     <link rel="stylesheet" href="${initParam.staticPath}assets/css/style.css">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="${initParam.staticPath}assets/images/favicon.png" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
   </head>
   <body>
     <div class="container-scroller">
       <!-- partial:partials/_sidebar.jsp -->
  <!-- leftSide -->     
  <%@ include file="include/leftnavi.jsp" %>
- <script>
+<script type="text/javascript"> 
 		const navActive = document.getElementById("nav-dashboard");
 		navActive.classList.add('active');
 		</script>
@@ -63,7 +67,7 @@
               <li class="nav-item dropdown">
                 <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
                   <div class="navbar-profile">
-                    <img class="img-xs rounded-circle" src="assets/images/faces/squidGame.jpg" alt="">
+                    <img class="img-xs rounded-circle" src="${initParam.staticPath}assets/images/faces/squidGame.jpg" alt="">
                     <p class="mb-0 d-none d-sm-block navbar-profile-name">Admin</p>
                     <i class="mdi mdi-menu-down d-none d-sm-block"></i>
                   </div>
@@ -132,8 +136,8 @@
                     <div class="row">
                       <div class="col-8 col-sm-12 col-xl-8 my-auto">
                         <div class="d-flex d-sm-block d-md-flex align-items-center">
-                          <h2 class="mb-0">30 명</h2>
-                          <p class="text-success ml-2 mb-0 font-weight-medium">+5</p>
+                          <h2 class="mb-0">${userCount } 명</h2>
+                          <p class="text-success ml-2 mb-0 font-weight-medium">+${todayCnt}</p>
                         </div>
                       </div>
                       <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
@@ -148,12 +152,12 @@
               <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4>전체 전문가 수</h4>
+                    <h4>전체 블로그 수</h4>
                     <div class="row">
                       <div class="col-8 col-sm-12 col-xl-8 my-auto">
                         <div class="d-flex d-sm-block d-md-flex align-items-center">
-                          <h2 class="mb-0">30 명</h2>
-                          <p class="text-success ml-2 mb-0 font-weight-medium">+3.5%</p>
+                          <h2 class="mb-0">${blogCount} 개</h2>
+                           <p class="text-success ml-2 mb-0 font-weight-medium">+${todayBlogCount } 개</p>
                         </div>
                       </div>
                       <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
@@ -168,12 +172,11 @@
               <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4>등록된 게시글 수</h4>
+                    <h4>등록된 아이템 수</h4>
                     <div class="row">
                       <div class="col-8 col-sm-12 col-xl-8 my-auto">
                         <div class="d-flex d-sm-block d-md-flex align-items-center">
-                          <h2 class="mb-0">30 개</h2>
-                          <p class="text-success ml-2 mb-0 font-weight-medium">+3.5%</p>
+                          <h2 class="mb-0">${itemCount } 개</h2>
                         </div>
                       </div>
                       <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
@@ -192,8 +195,8 @@
                     <div class="row">
                       <div class="col-8 col-sm-12 col-xl-8 my-auto">
                         <div class="d-flex d-sm-block d-md-flex align-items-center">
-                          <h2 class="mb-0">30 건</h2>
-                          <p class="text-success ml-2 mb-0 font-weight-medium">+3.5%</p>
+                          <h2 class="mb-0">${ordersCount } 건</h2>
+                          <p class="text-success ml-2 mb-0 font-weight-medium">+${todayordersCount }</p>
                         </div>
                       </div>
                       <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
@@ -238,20 +241,22 @@
                     <div class="row">
                       <div class="col-12">
                         <div class="preview-list">
+                        
+                        
+                        <c:forEach var="categoryList" items="${categoryList }">
                           <div class="preview-item border-bottom">
                             <div class="preview-thumbnail">
-                              <div class="preview-icon bg-primary">
-                                <i class="mdi mdi-monitor"></i>
-                              </div>
+                              <img src="http://localhost/goodstore/upload/${categoryList.image }"/>
                             </div>
                             <div class="preview-item-content d-sm-flex flex-grow">
                               <div class="flex-grow">
-                                <h6 class="preview-subject">IT/프로그래밍</h6>
+                                <h6 class="preview-subject">${categoryList.category_name }</h6>
                               </div>
                             </div>
                           </div>
+                          </c:forEach>
 
-                          <div class="preview-item border-bottom">
+                        <!--   <div class="preview-item border-bottom">
                             <div class="preview-thumbnail">
                               <div class="preview-icon bg-success">
                                 <i class="mdi mdi-auto-fix"></i>
@@ -299,9 +304,11 @@
                             <div class="preview-item-content d-sm-flex flex-grow">
                               <div class="flex-grow">
                                 <h6 class="preview-subject">번역/통역</h6>
+                                
                               </div>
                             </div>
-                          </div>
+                          </div> -->
+                          
                         </div>
                       </div>
                     </div>

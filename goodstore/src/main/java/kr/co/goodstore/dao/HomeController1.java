@@ -24,11 +24,13 @@ public class HomeController1 {
 	 * return "admin/template/index"; }
 	 */
 	
-	  @GetMapping("/index2")
-	  public String welcome1() {
-	  
-	  return "admin/template/admin_index";
-	  }
+	//  @GetMapping("/index2")
+	//  public String welcome1(Model model) {
+		
+		  
+		  
+	//  return "admin/template/admin_index";
+	 // }
 	 
 }
 
