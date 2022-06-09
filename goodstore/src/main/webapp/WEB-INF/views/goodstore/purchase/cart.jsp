@@ -704,7 +704,7 @@ function couponHandle(){
 			}
 			
 			}); //ajax
-		}//end else
+		}//end else  
 		
 }
 
