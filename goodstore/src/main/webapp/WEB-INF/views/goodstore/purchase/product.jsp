@@ -54,31 +54,25 @@
 				</form>
 
 				<!-- Filter -->
-				<form class="dis-none panel-filter w-full p-t-10" style="width: 500px">
-					<div class="wrap-filter flex-w bg6 w-full p-lr-40 p-t-27 p-lr-15-sm" style="width: 500px">
-						<div class="filter-col1 p-r-15 p-b-27" style="width: 40%">
+				<form class="dis-none panel-filter w-full p-t-10">
+					<div class="wrap-filter flex-w bg6 w-full p-lr-40 p-t-27 p-lr-15-sm">
+						<div class="filter-col1 p-r-15 p-b-27">
 							<div class="mtext-102 cl2 p-b-15">
 								Sort By
 							</div>
 
 							<ul>
 								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
+									<a href="${pageContext.request.contextPath}/product" class="filter-link stext-106 trans-04">
 										기본
 									</a>
 								</li>
 
 								<li class="p-b-6">
-<!-- 									<input type="submit" name="sort" value="price"/> -->
-									<a href="#" class="filter-link stext-106 trans-04">
-										인기순
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										별점순
-									</a>
+ 									<input class="filter-link stext-106 trans-04" type="submit" name="sort" value="wish_count"/> 
+<!-- 									<a href="wish_count" class="filter-link stext-106 trans-04">
+										인기순;
+									</a> -->
 								</li>
 
 								<li class="p-b-6">
@@ -88,9 +82,10 @@
 								</li>
 
 								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
+ 									<input class="filter-link stext-106 trans-04" type="submit" name="sort" value="price"/> 
+<!-- 									<a href="#" class="filter-link stext-106 trans-04">
 										낮은 가격 순
-									</a>
+									</a> -->
 								</li>
 
 								<li class="p-b-6">
