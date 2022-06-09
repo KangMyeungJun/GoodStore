@@ -699,7 +699,7 @@ function couponHandle(){
 					}else{
 						alert("쿠폰 적용이 불가능합니다.")
 					}
-				}//end else
+				}//end else   
 				
 			}
 			
