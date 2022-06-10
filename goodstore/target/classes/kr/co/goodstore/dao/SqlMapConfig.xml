@@ -10,6 +10,16 @@
 <typeAlias type="kr.co.goodstore.domain.admin.MemberDomain" alias="md"/>
 <typeAlias type="kr.co.goodstore.domain.admin.OrdersDomain" alias="od"/>
 <typeAlias type="kr.co.goodstore.domain.admin.BoardVO" alias="boardVO"/>
+<typeAlias type="kr.co.goodstore.domain.product.ProductListDomain" alias="pld"/>
+<typeAlias type="kr.co.goodstore.domain.product.ProductDomain" alias="pd"/>
+<typeAlias type="kr.co.goodstore.domain.product.ProductCommentDomain" alias="pcd"/>
+<typeAlias type="kr.co.goodstore.domain.product.SubImageDomain" alias="sid"/>
+<typeAlias type="kr.co.goodstore.vo.product.ProductListVO" alias="plVO"/>
+<typeAlias type="kr.co.goodstore.domain.main.CategoryDomain" alias="maincd"/>
+<typeAlias type="kr.co.goodstore.domain.main.BlogDomain" alias="mainbd"/>
+<typeAlias type="kr.co.goodstore.domain.main.ItemDomain" alias="mainid"/>
+<typeAlias type="kr.co.goodstore.domain.member.MemberDomain" alias="memberdomain"/>
+<typeAlias type="kr.co.goodstore.vo.member.MemberVO" alias="membervo"/>
 </typeAliases>
   <environments default="development">
     <environment id="development">
@@ -26,5 +36,10 @@
 		<mapper resource="kr/co/goodstore/mapper/admin/AdminMapper.xml"/>
 		    <mapper resource="kr/co/goodstore/purchase/mapper/cartMapper.xml"/>
     <mapper resource="kr/co/goodstore/purchase/mapper/orderListMapper.xml"/>
+		<mapper resource="kr/co/goodstore/mapper/product/ProductMapper.xml"/>
+				<mapper resource="kr/co/goodstore/mapper/main/MainPageMapper.xml"/>
+		<mapper resource="kr/co/goodstore/mapper/login/loginMapper.xml"/>
+		<mapper resource="kr/co/goodstore/mapper/register/RegisterMapper.xml"/>
+		<mapper resource="kr/co/goodstore/mapper/account/FindAccountMapper.xml"/>
   </mappers>
 </configuration>

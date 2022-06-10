@@ -13,6 +13,8 @@ local.properties
 .settings/
 .loadpath
 .recommenders
+.classpath
+.project
 
 # External tool builders
 .externalToolBuilders/
@@ -119,4 +121,17 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+# Maven
+log/
+target/
+
+# Intellij
+.idea/
+*.iml
+*.iws
+
+# Mac
+.DS_Store
+
 # End of https://www.toptal.com/developers/gitignore/api/windows,java,eclipse
+
