@@ -145,7 +145,7 @@
                           <div class="form-group row">
                             <label class="col-sm-3 col-form-label">Title</label>
                             <div class="col-sm-9">
-                              <input type="text" class="form-control" value="카테고리이름">
+                              <input type="text" class="form-control" value="${categoryDetail.category_name }">
                             </div>
                           </div>
                         </div>
@@ -155,8 +155,8 @@
                         <div class="col-md-6">
                           <div class="form-group row">
                             <label class="col-sm-3 col-form-label">Category Image</label>
-                            <div class="col-sm-9">
-                              <img src="${initParam.staticPath}assets/images/auth/Login_bg.jpg" style="height:200px;" alt="thumbnail">
+                            <div class="col-sm-9"><!-- 나중에 이미지 경로 바꾸기!!!!  -->
+                              <img src="${initParam.staticPath}assets/images/auth/${categoryDetail.image }" style="height:200px;" alt="thumbnail">
                             </div>
                           </div>
                         </div>

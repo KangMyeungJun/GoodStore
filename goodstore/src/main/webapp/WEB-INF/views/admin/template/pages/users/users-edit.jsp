@@ -24,12 +24,32 @@
     <link rel="stylesheet" href="${initParam.staticPath}assets/css/style.css">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="${initParam.staticPath}assets/images/favicon.png" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
   </head>
   <body>
     <div class="container-scroller">
       <!-- partial:../../partials/_sidebar.jsp -->
        <!-- leftSide -->     
  <%@ include file="../../include/leftnavi.jsp" %>
+ <script type="text/javascript">   
+ 
+ $(function(){
+		const navActive = document.getElementById("nav-users");
+		const uiShow = document.getElementById("ui-user");
+		navActive.classList.add('active');
+		uiShow.classList.add('show');
+		
+		
+	 
+	  $("#deleteUser").click(function(){
+			alert("삭제하시겠습니까?");
+			$("#frm").submit();
+		})//click 
+
+	});
+ 
+</script>
+ 
 
 
       <!-- 본문 -->
@@ -201,11 +221,12 @@
                           </div>
                     <br/>
 
-
-                    <button type="button" class="btn btn-outline-danger btn-icon-text">
+					<form id="frm" action="user_remove?member_id=${userDetail.member_id} " method="post">
+                    <button id="deleteUser"  type="button" class="btn btn-outline-danger btn-icon-text">
                       <i class="mdi mdi-delete-forever btn-icon-prepend"></i>Delete</button>
+                      
                     
-                  </form>
+                  </form> 
                 </div>
               </div>
             </div>
