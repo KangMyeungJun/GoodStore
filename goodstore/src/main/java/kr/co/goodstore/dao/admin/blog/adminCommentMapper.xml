@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.goodstore.admin.comment">
+<select id="selectComments" parameterType="PagingVO" resultType="AdminBlogCommentDomain">
+select blog_comment_id,name,review
+from(
+select row_number() over(order by blog_comment_id desc) rnum, blog_comment_id,member.name,review 
+from BLOG_COMMENT,member 
+where (member.member_id=blog_comment.member_id) and blog_id=#{id}
+)
+<where>
+rnum between #{first} and #{last}
+</where>
+</select>
+
+<select id="selectCommentsCnt" parameterType="int" resultType="int">
+select count(*)
+from BLOG_COMMENT,member 
+where (member.member_id=blog_comment.member_id) and blog_id=#{blog_id}
+</select>
+
+<delete id="deleteComment" parameterType="int">
+delete from BLOG_COMMENT
+where BLOG_COMMENT_ID = #{BLOG_COMMENT_ID}
+</delete>
+
+</mapper>

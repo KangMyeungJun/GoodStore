@@ -6,7 +6,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Kmong Admin</title>
+    <title>Store Admin</title>
     <!-- plugins:css -->
     <!-- 아이콘관련 -->
     <link rel="stylesheet" href="${initParam.staticPath}assets/vendors/mdi/css/materialdesignicons.min.css">
@@ -21,7 +21,68 @@
     <link rel="stylesheet" href="${initParam.staticPath}assets/css/style.css">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="${initParam.staticPath}assets/images/favicon.png" />
+    <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
   </head>
+  <script type="text/javascript">
+ 
+  function chkNull() {
+  	
+  	if ( $("#number").val() === "" ) {
+  		alert("숫자를 입력해주세요!");
+  		$("#number").focus();
+  		return;
+  	}
+  	if ( $("#name").val() === "" ) {
+  		alert("이름을 입력해주세요!");
+  		$("#name").focus();
+  		return;
+  	}
+  	
+  	if ( $("#discount_rate").val() === "" ) {
+  		alert("할인률을 입력해주세요!");
+  		$("#discount_rate").focus();
+  		return;
+  	}
+  	if ( $("#discount_rate").val() < 0 ) {
+  		alert("할인률은 0보다 작을 수 없습니다.");
+  		$("#discount_rate").focus();
+  		return;
+  	}
+  	if ( $("#discount_rate").val() > 100 ) {
+  		alert("할인률은 100보다 클 수 없습니다.");
+  		$("#discount_rate").focus();
+  		return;
+  	}
+  	
+  	if ( $("#discount_price").val() === "" ) {
+  		alert("할인가격을 입력해주세요!");
+  		$("#discount_price").focus();
+  		return;
+  	}
+  	
+  	
+  	if ( $("#start_date").val() === "" ) {
+  		alert("시작날짜를 입력해주세요!");
+  		$("#start_date").focus();
+  		return;
+  	}
+  	
+  	if ( $("#end_date").val() === "" ) {
+  		alert("끝 날짜를 입력해주세요!");
+  		$("#end_date").focus();
+  		return;
+  	}
+  	
+		  $("#couponFrm").submit();
+  	
+  }
+  
+  $(function() {
+	  $("#frmBtn").click(function(){
+		  chkNull()
+	  })
+  })
+  </script>
   <body>
     <div class="container-scroller">
       <!-- partial:../../partials/_sidebar.jsp -->
@@ -136,54 +197,48 @@
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title">Coupon Add</h4>
-                    <form class="form-sample">
                       <p class="card-description">Coupon Add </p>
 
                       <!-- 이름, 작성자 -->
+                          <form method="post" id="couponFrm" name="couponFrm" action="http://${initParam.domain}${initParam.middlePath}/admin/coupon/add">
                       <div class="row">
                         <div class="col-md-6">
                           <div class="form-group row">
-                          
-                            <label class="col-sm-3 col-form-label">쿠폰번호</label>
+                            <label class="col-sm-3 col-form-label">쿠폰개수</label>
                             <div class="col-sm-9" style="margin-bottom: 10px">
-                              <input type="text" class="form-control"/>
+                              <input type="number" class="form-control" placeholder="개수를 입력해주세요" id="number" name="number"/>
                             </div>
                             <label class="col-sm-3 col-form-label">쿠폰이름</label>
                             <div class="col-sm-9" style="margin-bottom: 10px">
-                              <input type="text" class="form-control"/>
+                              <input type="text" class="form-control" id="name" name="name"/>
                             </div>
                             <label class="col-sm-3 col-form-label">할인율</label>
-                            <div class="col-sm-9" style="margin-bottom: 10px">
-                              <input type="text" class="form-control"/>
+                            <div class="col-sm-9" style="margin-bottom: 10px" >
+                              <input type="number"  min="0" max="100" class="form-control" id="discount_rate" name="discount_rate"/>
                             </div>
                             <label class="col-sm-3 col-form-label">할인금액</label>
                             <div class="col-sm-9" style="margin-bottom: 10px">
-                              <input type="text" class="form-control"/>
-                            </div>
-                            <label class="col-sm-3 col-form-label">생성일</label>
-                            <div class="col-sm-9" style="margin-bottom: 10px">
-                              <input type="text" class="form-control"/>
+                              <input type="number" class="form-control" id="discount_price" name="discount_price"/>
                             </div>
                             <label class="col-sm-3 col-form-label">쿠폰적용시작일</label>
                             <div class="col-sm-9" style="margin-bottom: 10px">
-                              <input type="text" class="form-control"/>
+                              <input type="date" class="form-control" placeholder="yyyy-MM-dd" id="start_date" name="start_date"/>
                             </div>
                             <label class="col-sm-3 col-form-label">쿠폰적용마감일</label>
                             <div class="col-sm-9" style="margin-bottom: 10px">
-                              <input type="text" class="form-control"/>
+                              <input type="date" class="form-control" placeholder="yyyy-MM-dd" id="end_date" name="end_date"/>
                             </div>
-                            
                           </div>
                         </div>
                       </div>
+                            </form>
 
                       
                    
-                      <button type="button" class="btn btn-outline-primary btn-icon-text">
+                      <button type="button" class="btn btn-outline-primary btn-icon-text" id="frmBtn">
                         <i class="mdi mdi-file-check btn-icon-prepend"></i> Submit </button>
                           &emsp;
-                         <button type="button" class="btn btn-outline-warning btn-icon-text">
-                        <i class="mdi mdi-reload btn-icon-prepend"></i> Reset </button>
+                         
                         
 
 

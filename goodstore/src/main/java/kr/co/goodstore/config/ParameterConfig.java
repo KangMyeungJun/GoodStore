@@ -13,10 +13,13 @@ public class ParameterConfig implements ServletContextListener{
 		String domain =  Common.DOMAIN;
 		String staticPath =  Common.STATICPATH;
 		String commonUrl = Common.COMMONURL;
-		
+		String uploadPath = Common.UPLOADPATH;
+		String middlePath = Common.MIDDLEPATH;
 		sce.getServletContext().setInitParameter("domain",domain);
 		sce.getServletContext().setInitParameter("staticPath",staticPath);
 		sce.getServletContext().setInitParameter("commonUrl",commonUrl);
+		sce.getServletContext().setInitParameter("uploadPath",uploadPath);
+		sce.getServletContext().setInitParameter("middlePath",middlePath);
 		
 	}
 

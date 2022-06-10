@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
      <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
@@ -34,8 +35,8 @@
           </li>
 
           <!-- 대시보드 -->
-          <li class="nav-item menu-items " id="nav-dashboard">
-            <a class="nav-link" href="index2">
+          <li class="nav-item menu-items active" id="nav-dashboard">
+            <a class="nav-link" href="#void">
               <span class="menu-icon">
                 <i class="mdi mdi-speedometer"></i>
               </span>
@@ -56,7 +57,7 @@
             </a>
             <div class="collapse" id="ui-product">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="#void">Product List</a></li>
+                <li class="nav-item"> <a class="nav-link" href="${initParam.middlePath }/admin/products/">Product List</a></li>
               </ul>
             </div>
           </li>
@@ -74,10 +75,10 @@
             </a>
             <div class="collapse" id="ui-post">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="#void">Post List</a></li>
+                <li class="nav-item"> <a class="nav-link" href="${initParam.middlePath }/admin/posts/">Post List</a></li>
               </ul>
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="#void">Comment</a></li>
+                <li class="nav-item"> <a class="nav-link" href="${initParam.middlePath }/admin/comment/">Comment</a></li>
               </ul>
             </div>
           </li>
@@ -109,7 +110,7 @@
             </a>
             <div class="collapse" id="ui-order">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="orders">Order Status</a></li>
+                <li class="nav-item"> <a class="nav-link" href="#void">Order Status</a></li>
               </ul>
             </div>
           </li>
@@ -140,7 +141,7 @@
             </a>
             <div class="collapse" id="ui-coupon">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="#void">Coupon List</a></li>
+                <li class="nav-item"> <a class="nav-link" href="${initParam.middlePath }/admin/coupon/">Coupon List</a></li>
               </ul>
             </div>
           </li>

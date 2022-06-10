@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.goodstore.login">
+
+<!-- 로그인 -->
+<select id="loginchk" parameterType="memberVO" resultType="kr.co.goodstore.domain.member.MemberDomain">
+select email, password
+from member
+where email=#{email} and password=#{password}
+</select>
+
+
+</mapper>

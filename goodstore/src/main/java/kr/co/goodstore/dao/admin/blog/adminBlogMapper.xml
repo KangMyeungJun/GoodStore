@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.goodstore.admin.blog">
+
+<select id="selectAdminPosts" resultType="AdminBlogDomain" parameterType="PagingVO">
+select blog_id,title,summary,image,upload_date
+from (
+select row_number() over(order by upload_date desc) rnum,blog_id,title,summary,image,upload_date
+from blog 
+where status='N'
+)
+<where>
+rnum between #{first} and #{last}
+</where>
+</select>
+
+<select id="selectCntPosts" resultType="int" parameterType="String">
+select count(*) 
+from blog 
+<where>
+<if test="String != null or String != ''">
+title like '%'|| #{keyword} || '%'
+</if>
+</where>
+</select>
+
+<select id="selectOnePost" resultType="AdminBlogDomain" parameterType="Integer">
+select blog_id,title,summary,image,upload_date
+from blog
+where blog_id=#{blog_id}
+</select>
+
+<select id="selectTags" resultType="AdminTagDomain" parameterType="Integer">
+select blog_tag_id,name,blog_id from blog_tag where blog_id=#{blog_id}
+</select>
+
+
+
+
+  
+<update id="updatePost" parameterType="AdminPostVO">
+update blog
+<trim prefix="SET" suffixOverrides=",">
+		<if test="title != null">title=#{title},</if>
+		<if test="summary != null">summary=#{summary},</if>
+		<if test="image != null">image=#{image},</if>
+</trim>
+<where>
+blog_id=#{blog_id}
+</where>
+</update>
+
+<delete id="deleteTag" parameterType="AdminTagVO">
+delete from blog_tag
+where name=#{name} and blog_id=#{blog_id}
+</delete>
+
+
+<update id="insertTags" parameterType="AdminPostVO">
+<foreach collection="tagList" item="item" separator=" " open="insert all" close="select*from dual">
+into blog_tag(blog_tag_id,name,blog_id) values
+(get_seq(),#{item},#{blog_id})
+</foreach>
+</update>
+
+<update id="insertNewTags" parameterType="AdminPostVO">
+<foreach collection="tagList" item="item" separator=" " open="insert all" close="select*from dual">
+into blog_tag(blog_tag_id,name,blog_id) values
+(get_seq(),#{item},GOOD.SEQ_BLOG_ID.CURRVAL)
+</foreach>
+</update>
+
+<update id="delPost" parameterType="int">
+update blog set status='Y' where blog_id=#{blog_id}
+</update>
+
+
+
+<insert id="insertPost" parameterType="AdminPostVO">
+insert into blog(title,summary,image) 
+values(#{title},#{summary},#{image})
+</insert>
+</mapper>
