@@ -5,7 +5,7 @@
 <mapper namespace="kr.co.goodstore.login">
 
 <!-- 로그인 -->
-<select id="loginchk" parameterType="memberVO" resultType="loginDomain">
+<select id="loginchk" parameterType="memberVO" resultType="kr.co.goodstore.domain.member.MemberDomain">
 select email, password
 from member
 where email=#{email} and password=#{password}

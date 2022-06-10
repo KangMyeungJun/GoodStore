@@ -38,7 +38,7 @@
     <mapper resource="kr/co/goodstore/purchase/mapper/orderListMapper.xml"/>
 		<mapper resource="kr/co/goodstore/mapper/product/ProductMapper.xml"/>
 				<mapper resource="kr/co/goodstore/mapper/main/MainPageMapper.xml"/>
-		<mapper resource="kr/co/goodstore/mapper/login/loginMapper.xml"/>
+		<mapper resource="kr/co/goodstore/mapper/login/LoginMapper.xml"/>
 		<mapper resource="kr/co/goodstore/mapper/register/RegisterMapper.xml"/>
 		<mapper resource="kr/co/goodstore/mapper/account/FindAccountMapper.xml"/>
   </mappers>
