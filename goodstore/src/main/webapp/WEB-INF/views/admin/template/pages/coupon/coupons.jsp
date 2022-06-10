@@ -6,7 +6,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Kmong Admin</title>
+    <title>Store Admin</title>
     <!-- plugins:css -->
     <!-- 아이콘관련 -->
     <link rel="stylesheet" href="${initParam.staticPath}assets/vendors/mdi/css/materialdesignicons.min.css">
@@ -21,7 +21,19 @@
     <link rel="stylesheet" href="${initParam.staticPath}assets/css/style.css">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="${initParam.staticPath}assets/images/favicon.png" />
+    <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
   </head>
+  <script type="text/javascript">
+  function search() {
+	  $("#searchFrm").submit();
+  }
+  function prevSubmit() {
+	 $("#prevFrm").submit();
+  }
+  function nextSubmit() {
+	  $("#nextFrm").submit();
+  }
+  </script>
   <body>
     <div class="container-scroller">
       <!-- partial:../../partials/_sidebar.jsp -->
@@ -139,9 +151,11 @@
                     
                     <div class="form-group">
                       <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search Post title" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                      <form id="searchFrm">
+                        <input type="text" id="keyword" name="keyword" class="form-control" placeholder="Search Coupon name" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                        </form>
                         <div class="input-group-append">
-                          <button class="btn btn-fw btn-outline-secondary" type="button">Search</button>
+                          <button class="btn btn-fw btn-outline-secondary" type="button" onclick="search()">Search</button>
                         </div>
                       </div>
                     </div><br/>
@@ -163,45 +177,23 @@
                         </thead>
                         <tbody>
 
+                          
+                          
+                          <c:forEach items="${list }" var="item">
                           <tr>
-                            <td class="py-1">
-                              1
+                          <td class="py-1">
+                              ${item.code }
                             </td>
-                            <td><a href="coupon-edit.jsp" style="color:white"> 대박할인쿠폰</a></td>
-                            <td>50%</td>
-                            <td>0원</td>
-                            <td>2022-05-23</td>
-                            <td>2022-05-23</td>
-                            <td>2022-05-25</td>
+                            <td><a href="http://${initParam.domain}${initParam.middlePath}/admin/coupon/${item.coupon_id}"> ${item.name }</a></td>
+                            <td>${item.discount_rate }%</td>
+                            <td>${item.discount_price }</td>
+                            <td>${item.upload_date }</td>
+                            <td>${item.start_date }</td>
+                            <td>${item.end_date }</td>
                           </tr>
+                          </c:forEach>
                           
-                          
-                          
-                          <tr>
-                            <td class="py-1">
-                              15
-                            </td>
-                            <td><a href="coupon-edit.jsp" style="color:white"> 해바라기</a></td>
-                            <td>식물</td>
-                            <td>1</td>
-                            <td>user5</td>
-                            <td>admin</td>
-                            <td>50,000</td>
-                          </tr>
-                          
-                          
-                          
-                          <tr>
-                            <td class="py-1">
-                              15
-                            </td>
-                            <td><a href="coupon-edit.jsp" style="color:white"> 해바라기</a></td>
-                            <td>식물</td>
-                            <td>1</td>
-                            <td>user5</td>
-                            <td>admin</td>
-                            <td>50,000</td>
-                          </tr>
+                        
 
                          
 
@@ -212,13 +204,36 @@
                         </tbody>
                       </table>
                     </div>
-                  <a href="coupon-add.jsp">
-                          <button type="button" class="btn btn-primary btn-icon-text">
+                  
+                          <button type="button" class="btn btn-primary btn-icon-text" onclick="location.href='http://${initParam.domain}${initParam.middlePath}/admin/coupon/add'">
                             <i class="mdi mdi-upload btn-icon-prepend"></i>쿠폰추가 </button>
-                          </a>
+                          
                   </div>
                   
-                  <div style="text-align: center;">Pagination 여기서 구현</div>
+                   <div style="text-align:center;">
+					<form id="prevFrm">
+					<input type="hidden" value="${prev }" name="p">
+					<input type="hidden" value="${param.keyword }" name="keyword">
+					</form>
+					<form id="nextFrm">
+					<input type="hidden" value="${next }" name="p">
+					<input type="hidden" value="${param.keyword } %>" name="keyword">
+					</form>
+					
+					<div style="text-align:center;height: 40px;">
+					<c:if test="${ isPrevPage }">
+					<a href="#void" onclick="prevSubmit()">prev</a>
+					</c:if>
+					<c:forEach var="i" begin="${firstPage}" end="${lastPage}" step="1">
+					<a href="?p=${i}&keyword=${param.keyword}">${i}</a>
+					</c:forEach>
+					<c:if test="${ isNextPage }">
+					<a href="#void" onclick="nextSubmit()">next</a>
+                   </c:if>
+                   
+                  </div>
+
+                </div>
 
                 </div>
               </div>
