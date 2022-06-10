@@ -5,5 +5,5 @@ public final class Common {
 
     public static final String DOMAIN="localhost";
     public static final String STATICPATH="http://localhost/goodstore/resources/";
-
+    public static final String COMMONURL="http://localhost/goodstore/";
 }

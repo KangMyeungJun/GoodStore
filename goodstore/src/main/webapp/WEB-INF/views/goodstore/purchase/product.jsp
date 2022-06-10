@@ -37,7 +37,6 @@ if(request.getParameter("keyword") != null){
 					</button>
 					</c:forEach>
 				</div>
-
 				<div class="flex-w flex-c-m m-tb-10">
 					<div class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4 js-show-filter">
 						<i class="icon-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-filter-list"></i>
@@ -100,51 +99,6 @@ if(request.getParameter("keyword") != null){
 								</div>
 							</div>
 						</div>
-
-<%-- 						<form class="filter-col2 p-r-15 p-b-27" style="width: 40%">
-						<input type="hidden" name="keyword" value="<%=keywordValue%>"/>
-							<div class="mtext-102 cl2 p-b-15">
-								Price
-							</div>
-
-							<ul>
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04 filter-link-active">
-										All
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										0원 - 50000원
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										50000원 - 100000원
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										100000원 - 150000원
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										150000원 - 200000원
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										200000원 -
-									</a>
-								</li>
-							</ul>
-						</form> --%>
 					</div>
 				</form>
 			</div>
@@ -157,12 +111,10 @@ if(request.getParameter("keyword") != null){
 					<div class="block2">
 						<div class="block2-pic hov-img0">
 							<img src="${initParam.staticPath}images/${ productList.image }" alt="IMG-PRODUCT">
-
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+							<button class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1" value="${ productList.item_id}">
 								Quick View
-							</a>
+							</button>
 						</div>
-
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
 								<span class="stext-105 cl3">
@@ -198,8 +150,57 @@ if(request.getParameter("keyword") != null){
 			</div>
 		</div>
 	</div>
-		
+<%-- <script src="${initParam.staticPath}js/main.js"></script> --%>
 <%@ include file="../common/footer.jsp" %>
+<%@ include file="../common/quick_view.jsp" %>
 <%@ include file="../common/common_js.jsp" %>
+
+<script>
+$('.js-show-modal1').on('click',function(e){
+    e.preventDefault();
+    var bno = this.value;
+
+$.ajax({
+	url : "quick_view.action",
+	type : 'get',
+	data : {
+		item_id : bno
+	},
+	success:function(data){
+/* 		initialize image link attribute */
+	    $('.quick-view-main').attr('src','');
+	    $('.quick-view-sub').attr('src', '');
+	    $('.quick-view-expand').attr('href','');
+	    
+/* 	    first image box is filled with productDetail domain */
+		if(data.productDetail){
+		    $('.quick-view-title').html(data.productDetail.item_name);
+		    $('.quick-view-price').html(data.productDetail.price);
+		    $('.quick-view-summary').html(data.productDetail.summary);
+			$('.quick-view-main').eq(0).attr('src','${initParam.staticPath}images/'+data.productDetail.image);
+			$('.quick-view-sub').eq(0).attr('src','${initParam.staticPath}images/'+data.productDetail.image);
+			$('.quick-view-expand').eq(0).attr('href','${initParam.staticPath}images/'+data.productDetail.image);
+		}
+		
+/* 		other images are filled with subImage domain */
+		if(data.subImageList && data.subImageList.length){
+			var subImage = data['subImageList'];
+	    	for(var i in subImage){
+		    	var index = i-0+1;
+			    $('.quick-view-main').eq(index).attr('src','${initParam.staticPath}images/'+subImage[i]['sub_image']);
+			    $('.quick-view-sub').eq(index).attr('src', '${initParam.staticPath}images/'+subImage[i]['sub_image']);
+			    $('.quick-view-expand').eq(index).attr('href','${initParam.staticPath}images/'+subImage[i]['sub_image']);
+	    	}
+		}
+		
+	    $('.js-modal1').addClass('show-modal1');
+	},
+	error:function(request, status, error){
+		alert(request.status+"\n"+request.responseText+"\n"+error);
+	}
+	});//ajax
+
+});
+</script>
 </body>
 </html>
