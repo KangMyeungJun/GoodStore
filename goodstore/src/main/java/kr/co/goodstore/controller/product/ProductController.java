@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import kr.co.goodstore.domain.product.ProductListDomain;
@@ -20,6 +21,7 @@ public class ProductController {
 
 	@GetMapping("product")
 	public String product(Model model, ProductListVO plVO) {
+		
 		model.addAttribute("productList", ps.productList(plVO));
 		model.addAttribute("categoryList", cs.searchCategory());
 		return "goodstore/purchase/product";

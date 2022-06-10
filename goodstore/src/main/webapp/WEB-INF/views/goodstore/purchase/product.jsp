@@ -7,6 +7,16 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <%@ include file="../../goodstore/common/static_link.jsp" %>
+<% 
+String sortValue = "";
+String keywordValue = "";
+if(request.getParameter("sort") != null){
+	sortValue = request.getParameter("sort");
+}
+if(request.getParameter("keyword") != null){
+	keywordValue = request.getParameter("keyword");
+}
+%>
 </head>
 <body class="animsition">
 <%@ include file="../../goodstore/common/header.jsp" %>
@@ -48,55 +58,51 @@
 						<button class="size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04">
 							<i class="zmdi zmdi-search"></i>
 						</button>
-
+						<input type="hidden" name="sort" value="<%=sortValue%>"/>
 						<input class="mtext-107 cl2 size-114 plh2 p-r-15" type="text" name="keyword" placeholder="Search">
+						
 					</div>	
 				</form>
 
 				<!-- Filter -->
-				<form class="dis-none panel-filter w-full p-t-10">
+				<form class="dis-none panel-filter w-full p-t-10 filter-frm">
 					<div class="wrap-filter flex-w bg6 w-full p-lr-40 p-t-27 p-lr-15-sm">
-						<div class="filter-col1 p-r-15 p-b-27">
-							<div class="mtext-102 cl2 p-b-15">
+						<div class=" p-r-15 p-b-27 w-full">
+						<input type="hidden" name="keyword" value="<%=keywordValue%>"/>
+							<div class="mtext-106 cl2 p-b-15 w-full">
 								Sort By
 							</div>
-
-							<ul>
-								<li class="p-b-6">
-									<a href="${pageContext.request.contextPath}/product" class="filter-link stext-106 trans-04">
+							<div class="flex-sa" style="width:50%">
+								<div class="p-b-6 ">
+									<a href="${pageContext.request.contextPath}/product" class="filter-link mtext-101 trans-04 <%= sortValue.equals("") ? "filter-link-active" : ""%>">
 										기본
 									</a>
-								</li>
+								</div>
 
-								<li class="p-b-6">
- 									<input class="filter-link stext-106 trans-04" type="submit" name="sort" value="wish_count"/> 
-<!-- 									<a href="wish_count" class="filter-link stext-106 trans-04">
-										인기순;
-									</a> -->
-								</li>
+								<div class="p-b-6">
+									<button name="sort" value="wish_count" class="filter-link mtext-101 trans-04 <%= sortValue.equals("wish_count") ? "filter-link-active" : ""%>">인기순</button>
+								</div>
 
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04 filter-link-active">
-										신상품
-									</a>
-								</li>
+								<div class="p-b-6">
+									<button name="sort" value="upload_date" class="filter-link mtext-101 trans-04 <%= sortValue.equals("upload_date") ? "filter-link-active" : ""%>">최신순</button>
+								</div>
+								
+								<div class="p-b-6">
+									<button name="sort" value="item_name" class="filter-link mtext-101 trans-04 <%= sortValue.equals("item_name") ? "filter-link-active" : ""%>">이름순</button>
+								</div>
 
-								<li class="p-b-6">
- 									<input class="filter-link stext-106 trans-04" type="submit" name="sort" value="price"/> 
-<!-- 									<a href="#" class="filter-link stext-106 trans-04">
-										낮은 가격 순
-									</a> -->
-								</li>
+								<div class="p-b-6">
+									<button name="sort" value="price" class="filter-link mtext-101 trans-04 <%= sortValue.equals("price") ? "filter-link-active" : ""%>">가격 낮은 순</button>
+								</div>
 
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										높은 가격순
-									</a>
-								</li>
-							</ul>
+								<div class="p-b-6">
+									<button name="sort" value="price_high" class="filter-link mtext-101 trans-04 <%= sortValue.equals("price_high") ? "filter-link-active" : ""%>">가격 높은 순</button>
+								</div>
+							</div>
 						</div>
 
-						<div class="filter-col2 p-r-15 p-b-27" style="width: 40%">
+<%-- 						<form class="filter-col2 p-r-15 p-b-27" style="width: 40%">
+						<input type="hidden" name="keyword" value="<%=keywordValue%>"/>
 							<div class="mtext-102 cl2 p-b-15">
 								Price
 							</div>
@@ -138,7 +144,7 @@
 									</a>
 								</li>
 							</ul>
-						</div>
+						</form> --%>
 					</div>
 				</form>
 			</div>
