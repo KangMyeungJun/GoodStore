@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+          <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+    
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -11,7 +14,7 @@
     <!-- 아이콘관련 -->
     <link rel="stylesheet" href="${initParam.staticPath}assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="${initParam.staticPath}assets/vendors/css/vendor.bundle.base.css">
-
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <!-- endinject -->
     <!-- Plugin css for this page -->
     <!-- End Plugin css for this page -->
@@ -27,6 +30,34 @@
       <!-- partial:../../partials/_sidebar.jsp -->
        <!-- leftSide -->     
  <%@ include file="../../include/leftnavi.jsp" %>
+<script type="text/javascript"> 
+		const navActive = document.getElementById("nav-orders");
+		const uiShow = document.getElementById("ui-order");
+		navActive.classList.add('active');
+		uiShow.classList.add('show');
+		
+		
+		$(function(){
+			$("#btnNameSearch").click(function(){
+				chkNull();
+			});
+			$("#keyword").keydown(function( evt ){
+				if( evt.which == 13 ){
+					chkNull();
+				}//end if
+			});
+		});//ready
+
+		function chkNull(){
+			if($("#keyword").val() == "" ){
+				alert("검색 키워드를 입력해주세요.");
+				$("#keyword").focus();
+				return;
+			}//end if
+			$("#btnNameSearch").submit();
+		}//chkNull
+		</script>
+ 
 
       <!-- 본문 -->
       <div class="container-fluid page-body-wrapper">
@@ -139,14 +170,31 @@
                     <h4 class="card-title">Order Status</h4>
                     <div>총 결제내역 : 15건 | 완료: 11건 | 대기중: 2건 | 취소:2건</div>
                     <div>오늘 결제내역 : 15건 | 완료: 11건 | 대기중: 2건 | 취소:2건</div><br/>
+                    <form action="orders" id="nameSearchFrm" method="get">
                     <div class="form-group">
                       <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search Post title" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                        <input type="text" class="form-control"  name="keyword"  id="keyword"  placeholder="Search Name" aria-label="Recipient's username" aria-describedby="basic-addon2">
                         <div class="input-group-append">
-                          <button class="btn btn-fw btn-outline-secondary" type="button">Search</button>
+                          <button class="btn btn-fw btn-outline-secondary"  id="btnNameSearch" type="button">Search</button>
                         </div>
                       </div>
                     </div><br/>
+                    </form>
+                    
+                    
+                       <div>
+                    전체레코드의 수 : ${ totalCnt }<br/>
+					한 화면에 보여줄 게시물의 수 : ${ pageScale }<br/>
+					총페이지 수 : ${ pageCnt }<br/>
+					시작번호  : ${ startNum }<br/>
+					끝번호  : ${  endNum }<br/>
+                    </div> 
+                    
+                    
+                    
+                    
+                    
+                    
                     <div class="table-responsive">
                       <table class="table">
                         <thead>
@@ -165,23 +213,39 @@
                           </tr>
                         </thead>
                         <tbody>
-
+                        
+                        <c:if test="${ empty ordersList  }">
+                        <tr>
+						<td colspan="7" style="width:100px; text-align:center">
+						 검색하신 [<c:out value="${param.keyword }"/>]사용자는 존재하지 않습니다.<br/>
+                        </td>
+						</tr>
+                        </c:if>
+                        
+                        
+                        
+                        
+						<c:if test="${not empty ordersList}">
+						<c:forEach var="ordersList" items="${ordersList}">
                           <tr>
                             <td class="py-1">
-                              15
+                              <c:out value="${ordersList.order_id }"/>
                             </td>
-                            <td>1</td>
-                            <td>의류</td>
-                            <td><a href="#void" style="color:white">상품명</a></td>
-                            <td>buyer</td>
-                            <td>seller</td>
-                            <td>50,000</td>
-                            <td>April 9, 2023</td>
+                            <td><c:out value="${ordersList.item_id }"/></td>
+                            <td><c:out value="${ordersList.category_name }"/></td>
+                            <td><a href="order_detail?order_id=${ordersList.order_id }" style="color:white"><c:out value="${ordersList.item_name }"/></a></td>
+                            <td><c:out value="${ordersList.name }"/></td>
+                            <td>관리자</td>
+                            <td><c:out value="${ordersList.price }"/></td>
+                            <td><c:out value="${ordersList.order_date }"/></td>
                             <td>
-                              <div class="badge badge-outline-warning">Pending</div>
+                              <div class="badge badge-outline-warning"><c:out value="${ordersList.status }"/></div>
                             </td>
                           </tr>
-                          <tr>
+                          </c:forEach>
+                          </c:if>
+                          
+                          <!-- <tr>
                             <td class="py-1">
                               15
                             </td>
@@ -210,12 +274,27 @@
                             <td>
                               <label class="badge badge-outline-danger">Canceled</label>
                             </td>
-                          </tr>
+                          </tr> -->
+                          
                         </tbody>
                       </table>
                     </div>
                   </div>
-                  <div style="text-align: center;">Pagination 여기서 구현</div>
+                  
+                  <div id="pageNation" style="text-align: center">
+<%
+//String field=request.getParameter("field");
+String keyword=request.getParameter("keyword");
+%>
+<c:forEach var="i" begin="1" end="${ pageCnt }" step="1" >
+[ <a href="orders?currentPage=${ i }<%= !"".equals(keyword) && keyword !=null?"&keyword="+keyword:"" %>"><c:out value="${ i }"/></a> ]
+</c:forEach>
+</div> 
+                  
+                  
+                  
+                  
+                  <!-- <div style="text-align: center;">Pagination 여기서 구현</div> -->
                 </div>
               </div>
           </div>

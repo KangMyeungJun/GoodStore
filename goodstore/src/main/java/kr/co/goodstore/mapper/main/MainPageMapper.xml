@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.goodstore.main">
+
+<!-- 카테고리 보여주기 -->
+<select id="searchMainCategory" resultType="maincd">
+select category_name, image
+from category
+</select>
+
+<!-- 주문 많은 순 아이템 보여주기 -->
+<select id="searchBestItem" resultType="mainid">
+
+</select>
+
+<!-- 별점 순 아이템 보여주기 -->
+<select id="searchItemStar" resultType="mainid">
+select i.item_name, i.price, i.image
+from item i, item_comment ic
+where i.item_id = ic.item_id order by ic.star desc
+</select>
+
+<!-- 블로그 보여주기 -->
+<select id="searchMainCBlog" resultType="mainbd">
+select title, summary, image
+from blog
+</select>
+
+</mapper>
