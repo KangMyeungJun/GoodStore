@@ -39,7 +39,7 @@
   		return false;
   	}
   		
-  	if (fileNum == 0 || !document.getElementByName("sub_images")){	
+  	if (fileNum == 0){	
   		alert("이미지를 추가해주세요!");
   		return false;
   	}	

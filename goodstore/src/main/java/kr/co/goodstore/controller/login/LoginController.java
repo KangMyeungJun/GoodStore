@@ -18,7 +18,7 @@ public class LoginController {
 	@Autowired(required = false)
 	private LoginService ls;
 	
-	@GetMapping("/signin")
+	//@GetMapping("/signin")
 	public String loginResult(MemberVO mVO, HttpSession session, Model model) {
 		MemberDomain md = ls.searchLoginInfo(mVO);
 		

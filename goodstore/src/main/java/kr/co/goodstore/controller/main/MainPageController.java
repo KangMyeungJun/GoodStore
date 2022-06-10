@@ -15,7 +15,7 @@ public class MainPageController {
 	@Autowired(required = false)
 	private MainPageService mps;
 	
-	@GetMapping("/index")
+	//@GetMapping("/index")
 	public String mainPage(Model model, HttpSession session) {
 		
 		
