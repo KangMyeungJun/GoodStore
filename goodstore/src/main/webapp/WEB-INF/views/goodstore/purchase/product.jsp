@@ -194,6 +194,33 @@ $.ajax({
 		}
 		
 	    $('.js-modal1').addClass('show-modal1');
+		  
+ 	    $('.js-addcart-detail').each(function(){
+	    	//var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
+	    	var nameProduct = $('.quick-view-title').html();
+	    	var numProduct = $('.num-product').val();
+	    	$(this).on('click', function(){
+	    		$.ajax({
+	    			url : "add_cart.action",
+	    			type : "post",
+	    			data : {
+	    				item_id : bno,
+	    				quantity : numProduct
+	    			},
+	    			success:function(result){
+	    				
+	    				if(result == 1){
+		    	    		swal(nameProduct, "is added to cart !", "success");
+	    				}else{
+	    					alert("로그인이 필요합니다");
+	    				}
+	    			},
+	    			error:function(){
+	    				alert("카트 담기 실패");
+	    			}
+	    		})
+	    	});
+	    }); 
 	},
 	error:function(request, status, error){
 		alert(request.status+"\n"+request.responseText+"\n"+error);
@@ -201,6 +228,10 @@ $.ajax({
 	});//ajax
 
 });
+</script>
+<script>
+
+
 </script>
 </body>
 </html>

@@ -214,7 +214,7 @@
 
     /*==================================================================
     [ +/- num product ]*/
-/*    $('.btn-num-product-down').on('click', function(){
+    $('.btn-num-product-down').on('click', function(){
         var numProduct = Number($(this).next().val());
         if(numProduct > 0) $(this).next().val(numProduct - 1);
     });
@@ -222,7 +222,7 @@
     $('.btn-num-product-up').on('click', function(){
         var numProduct = Number($(this).prev().val());
         $(this).prev().val(numProduct + 1);
-    });*/
+    });
 
     /*==================================================================
     [ Rating ]*/
@@ -270,12 +270,6 @@
     [ Show modal1 ]*/
 /*    $('.js-show-modal1').on('click',function(e){
         e.preventDefault();
-        $('.quick-view-title').html('item_name');
-        $('.quick-view-price').html('price');
-        $('.quick-view-summary').html('summary');
-        $('.quick-view-sub1').attr('src','${initParam.staticPath}images/product-dummy1.jpg');
-        $('.quick-view-main1').attr('src','${initParam.staticPath}images/product-dummy1.jpg');
-        $('.quick-view-expand1').html('exp_img');
         $('.js-modal1').addClass('show-modal1');
     });*/
 
