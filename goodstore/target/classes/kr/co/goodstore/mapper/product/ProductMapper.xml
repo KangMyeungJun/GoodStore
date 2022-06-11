@@ -99,4 +99,9 @@ on i.member_id = m.member_id
 where item_id=#{item_id}
 </select>
 
+<insert id="addCart">
+insert into cart(member_id, item_id, cart_id, quantity)
+values(#{member_id}, #{item_id}, SEQ_CART_ID.nextval, #{quantity});
+</insert>
+
 </mapper>

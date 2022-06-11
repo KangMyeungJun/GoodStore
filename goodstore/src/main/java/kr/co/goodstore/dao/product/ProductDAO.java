@@ -11,6 +11,7 @@ import kr.co.goodstore.domain.product.ProductCommentDomain;
 import kr.co.goodstore.domain.product.ProductDomain;
 import kr.co.goodstore.domain.product.ProductListDomain;
 import kr.co.goodstore.domain.product.SubImageDomain;
+import kr.co.goodstore.vo.product.AddCartVO;
 import kr.co.goodstore.vo.product.ProductListVO;
 
 @Component
@@ -55,4 +56,9 @@ public class ProductDAO {
 		return list;
 	}
 	
+	public void addCart(AddCartVO cart) throws Exception{
+		SqlSession ss=MyBatisFramework.getInstance().getMyBatisHandler();
+		ss.insert(namespace+"addCart", cart);
+		
+	}
 }

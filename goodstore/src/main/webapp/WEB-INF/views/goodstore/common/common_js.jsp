@@ -74,12 +74,12 @@
 
 		/*---------------------------------------------*/
 
-		$('.js-addcart-detail').each(function(){
+/* 		$('.js-addcart-detail').each(function(){
 			var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
 			$(this).on('click', function(){
 				swal(nameProduct, "is added to cart !", "success");
 			});
-		});
+		}); */
 	</script>
 <!--===============================================================================================-->
 	<script src="${initParam.staticPath}vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
