@@ -7,6 +7,16 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <%@ include file="../../goodstore/common/static_link.jsp" %>
+<% 
+String sortValue = "";
+String keywordValue = "";
+if(request.getParameter("sort") != null){
+	sortValue = request.getParameter("sort");
+}
+if(request.getParameter("keyword") != null){
+	keywordValue = request.getParameter("keyword");
+}
+%>
 </head>
 <body class="animsition">
 <%@ include file="../../goodstore/common/header.jsp" %>
@@ -27,7 +37,6 @@
 					</button>
 					</c:forEach>
 				</div>
-
 				<div class="flex-w flex-c-m m-tb-10">
 					<div class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4 js-show-filter">
 						<i class="icon-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-filter-list"></i>
@@ -48,96 +57,47 @@
 						<button class="size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04">
 							<i class="zmdi zmdi-search"></i>
 						</button>
-
+						<input type="hidden" name="sort" value="<%=sortValue%>"/>
 						<input class="mtext-107 cl2 size-114 plh2 p-r-15" type="text" name="keyword" placeholder="Search">
+						
 					</div>	
 				</form>
 
 				<!-- Filter -->
-				<form class="dis-none panel-filter w-full p-t-10">
+				<form class="dis-none panel-filter w-full p-t-10 filter-frm">
 					<div class="wrap-filter flex-w bg6 w-full p-lr-40 p-t-27 p-lr-15-sm">
-						<div class="filter-col1 p-r-15 p-b-27">
-							<div class="mtext-102 cl2 p-b-15">
+						<div class=" p-r-15 p-b-27 w-full">
+						<input type="hidden" name="keyword" value="<%=keywordValue%>"/>
+							<div class="mtext-106 cl2 p-b-15 w-full">
 								Sort By
 							</div>
-
-							<ul>
-								<li class="p-b-6">
-									<a href="${pageContext.request.contextPath}/product" class="filter-link stext-106 trans-04">
+							<div class="flex-sa" style="width:50%">
+								<div class="p-b-6 ">
+									<a href="${pageContext.request.contextPath}/product" class="filter-link mtext-101 trans-04 <%= sortValue.equals("") ? "filter-link-active" : ""%>">
 										기본
 									</a>
-								</li>
+								</div>
 
-								<li class="p-b-6">
- 									<input class="filter-link stext-106 trans-04" type="submit" name="sort" value="wish_count"/> 
-<!-- 									<a href="wish_count" class="filter-link stext-106 trans-04">
-										인기순;
-									</a> -->
-								</li>
+								<div class="p-b-6">
+									<button name="sort" value="wish_count" class="filter-link mtext-101 trans-04 <%= sortValue.equals("wish_count") ? "filter-link-active" : ""%>">인기순</button>
+								</div>
 
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04 filter-link-active">
-										신상품
-									</a>
-								</li>
+								<div class="p-b-6">
+									<button name="sort" value="upload_date" class="filter-link mtext-101 trans-04 <%= sortValue.equals("upload_date") ? "filter-link-active" : ""%>">최신순</button>
+								</div>
+								
+								<div class="p-b-6">
+									<button name="sort" value="item_name" class="filter-link mtext-101 trans-04 <%= sortValue.equals("item_name") ? "filter-link-active" : ""%>">이름순</button>
+								</div>
 
-								<li class="p-b-6">
- 									<input class="filter-link stext-106 trans-04" type="submit" name="sort" value="price"/> 
-<!-- 									<a href="#" class="filter-link stext-106 trans-04">
-										낮은 가격 순
-									</a> -->
-								</li>
+								<div class="p-b-6">
+									<button name="sort" value="price" class="filter-link mtext-101 trans-04 <%= sortValue.equals("price") ? "filter-link-active" : ""%>">가격 낮은 순</button>
+								</div>
 
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										높은 가격순
-									</a>
-								</li>
-							</ul>
-						</div>
-
-						<div class="filter-col2 p-r-15 p-b-27" style="width: 40%">
-							<div class="mtext-102 cl2 p-b-15">
-								Price
+								<div class="p-b-6">
+									<button name="sort" value="price_high" class="filter-link mtext-101 trans-04 <%= sortValue.equals("price_high") ? "filter-link-active" : ""%>">가격 높은 순</button>
+								</div>
 							</div>
-
-							<ul>
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04 filter-link-active">
-										All
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										0원 - 50000원
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										50000원 - 100000원
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										100000원 - 150000원
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										150000원 - 200000원
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										200000원 -
-									</a>
-								</li>
-							</ul>
 						</div>
 					</div>
 				</form>
@@ -151,12 +111,10 @@
 					<div class="block2">
 						<div class="block2-pic hov-img0">
 							<img src="${initParam.staticPath}images/${ productList.image }" alt="IMG-PRODUCT">
-
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+							<button class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1" value="${ productList.item_id}">
 								Quick View
-							</a>
+							</button>
 						</div>
-
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
 								<span class="stext-105 cl3">
@@ -192,8 +150,57 @@
 			</div>
 		</div>
 	</div>
-		
+<%-- <script src="${initParam.staticPath}js/main.js"></script> --%>
 <%@ include file="../common/footer.jsp" %>
+<%@ include file="../common/quick_view.jsp" %>
 <%@ include file="../common/common_js.jsp" %>
+
+<script>
+$('.js-show-modal1').on('click',function(e){
+    e.preventDefault();
+    var bno = this.value;
+
+$.ajax({
+	url : "quick_view.action",
+	type : 'get',
+	data : {
+		item_id : bno
+	},
+	success:function(data){
+/* 		initialize image link attribute */
+	    $('.quick-view-main').attr('src','');
+	    $('.quick-view-sub').attr('src', '');
+	    $('.quick-view-expand').attr('href','');
+	    
+/* 	    first image box is filled with productDetail domain */
+		if(data.productDetail){
+		    $('.quick-view-title').html(data.productDetail.item_name);
+		    $('.quick-view-price').html(data.productDetail.price);
+		    $('.quick-view-summary').html(data.productDetail.summary);
+			$('.quick-view-main').eq(0).attr('src','${initParam.staticPath}images/'+data.productDetail.image);
+			$('.quick-view-sub').eq(0).attr('src','${initParam.staticPath}images/'+data.productDetail.image);
+			$('.quick-view-expand').eq(0).attr('href','${initParam.staticPath}images/'+data.productDetail.image);
+		}
+		
+/* 		other images are filled with subImage domain */
+		if(data.subImageList && data.subImageList.length){
+			var subImage = data['subImageList'];
+	    	for(var i in subImage){
+		    	var index = i-0+1;
+			    $('.quick-view-main').eq(index).attr('src','${initParam.staticPath}images/'+subImage[i]['sub_image']);
+			    $('.quick-view-sub').eq(index).attr('src', '${initParam.staticPath}images/'+subImage[i]['sub_image']);
+			    $('.quick-view-expand').eq(index).attr('href','${initParam.staticPath}images/'+subImage[i]['sub_image']);
+	    	}
+		}
+		
+	    $('.js-modal1').addClass('show-modal1');
+	},
+	error:function(request, status, error){
+		alert(request.status+"\n"+request.responseText+"\n"+error);
+	}
+	});//ajax
+
+});
+</script>
 </body>
 </html>

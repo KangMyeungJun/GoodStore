@@ -268,10 +268,16 @@
     
     /*==================================================================
     [ Show modal1 ]*/
-    $('.js-show-modal1').on('click',function(e){
+/*    $('.js-show-modal1').on('click',function(e){
         e.preventDefault();
+        $('.quick-view-title').html('item_name');
+        $('.quick-view-price').html('price');
+        $('.quick-view-summary').html('summary');
+        $('.quick-view-sub1').attr('src','${initParam.staticPath}images/product-dummy1.jpg');
+        $('.quick-view-main1').attr('src','${initParam.staticPath}images/product-dummy1.jpg');
+        $('.quick-view-expand1').html('exp_img');
         $('.js-modal1').addClass('show-modal1');
-    });
+    });*/
 
     $('.js-hide-modal1').on('click',function(){
         $('.js-modal1').removeClass('show-modal1');

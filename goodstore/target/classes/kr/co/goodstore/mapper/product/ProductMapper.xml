@@ -4,6 +4,27 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.goodstore.mapper.product.ProductMapper">
 
+<sql id="sort">
+	<if test="sort == null or sort == ''">
+	order by i.upload_date desc
+	</if>
+	<if test="sort == 'item_name'">
+	order by i.item_name
+	</if>
+	<if test="sort == 'price'">
+	order by price
+	</if>
+	<if test="sort == 'price_high'">
+	order by price desc
+	</if>
+	<if test="sort == 'upload_date'">
+	order by i.upload_date desc
+	</if>
+	<if test="sort == 'wish_count'">
+	order by wish_count desc nulls last
+	</if>
+</sql>
+
 <resultMap type="pld" id="pldResult">
 <result column="rnum" property="rnum"/>
 <result column="item_id" property="item_id"/>
@@ -17,7 +38,7 @@
 <result column="category_name" property="category_name"/>
 </resultMap>
 <select id="productList" parameterType="plVO" resultMap="pldResult">
-select row_number() over(order by price) rnum, i.item_id, i.item_name, i.image, i.upload_date, 
+select row_number() over(<include refid="sort"/>) rnum, i.item_id, i.item_name, i.image, i.upload_date, 
 i.price, c.name com_name, c.type com_type, nvl(w.wish_count,0) wish_count, category_name
 from item i
 JOIN company c
@@ -28,7 +49,7 @@ LEFT OUTER JOIN (select item_id, count(*) wish_count from wishlist group by item
 ON i.item_id = w.item_id
 <where>
 <if test="category_id != null and category_id != ''">
-category_id=#{category_id}
+i.category_id=#{category_id}
 </if>
 <if test="keyword != null and keyword != ''">
 <trim prefix="and" prefixOverrides="and">
@@ -36,9 +57,6 @@ item_name like '%'||#{keyword}||'%'
 </trim>
 </if>
 </where>
-<if test="sort != null and sort != ''">
-order by #{sort}
-</if> 
 </select>
 
 
