@@ -25,6 +25,7 @@
 <typeAlias type="kr.co.goodstore.domain.product.ProductListDomain" alias="pld"/>
 <typeAlias type="kr.co.goodstore.domain.product.ProductDomain" alias="pd"/>
 <typeAlias type="kr.co.goodstore.domain.product.ProductCommentDomain" alias="pcd"/>
+<typeAlias type="kr.co.goodstore.domain.product.ProductCategoryDomain" alias="pcatd"/>
 <typeAlias type="kr.co.goodstore.domain.product.SubImageDomain" alias="sid"/>
 <typeAlias type="kr.co.goodstore.vo.product.ProductListVO" alias="plVO"/>
 <typeAlias type="kr.co.goodstore.domain.main.CategoryDomain" alias="maincd"/>

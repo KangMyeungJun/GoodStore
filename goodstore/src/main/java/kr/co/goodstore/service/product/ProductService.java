@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import kr.co.goodstore.dao.product.ProductDAO;
+import kr.co.goodstore.domain.product.ProductCategoryDomain;
 import kr.co.goodstore.domain.product.ProductCommentDomain;
 import kr.co.goodstore.domain.product.ProductDomain;
 import kr.co.goodstore.domain.product.ProductListDomain;
@@ -48,6 +49,18 @@ public class ProductService {
 
 		try {
 			list=pDAO.subImageList(item_id);
+		}catch(PersistenceException pe){
+			pe.printStackTrace();
+		}
+
+		return list;
+	}//subImageList
+	
+	public List<ProductCategoryDomain> productCategory(){
+		List<ProductCategoryDomain> list=null;
+
+		try {
+			list=pDAO.productCategory();
 		}catch(PersistenceException pe){
 			pe.printStackTrace();
 		}
