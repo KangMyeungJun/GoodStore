@@ -20,7 +20,7 @@
 					<c:out value="${ productList.com_name }"/>
 				</span>
 				
-					<a href="product_detail/${ productList.item_id }" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+					<a href="product_detail/${productList.category_id}/${ productList.item_id }" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
 					<c:out value="${ productList.item_name }"/>									 
 				</a>
 
@@ -42,7 +42,7 @@
 </div>
 </div>
 
-<script>
+<!-- <script>
 $('.js-show-modal1').on('click',function(e){
 	console.log('클릭');
     e.preventDefault();
@@ -117,4 +117,4 @@ $.ajax({
 	});//ajax
 
 });
-</script>
+</script> -->

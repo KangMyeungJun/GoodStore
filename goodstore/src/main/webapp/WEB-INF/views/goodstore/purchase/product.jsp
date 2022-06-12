@@ -121,7 +121,7 @@ if(request.getParameter("keyword") != null){
  								<c:out value="${ productList.com_name }"/>
 								</span>
 								
- 								<a href="product_detail/${ productList.item_id }" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+ 								<a href="product_detail/${productList.category_id}/${ productList.item_id }" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
  								<c:out value="${ productList.item_name }"/>									 
 								</a>
 
@@ -172,12 +172,11 @@ $('#load-more').click(function(){
 		},
 		success :function(result){
 			console.log("결과확인");
+//			$("#product_content").replaceWith(result);
 			var html = jQuery('<div>').html(result);
 			var contents = html.find('div#product_content').html();
 			$("#product-wrap").html(contents) 
 			quickBtn();
-///////////////////////main.js의 data-filter가 안먹힘 에러 해결필요 ///////////////////////
-//			<c:import url="${initParam.staticPath}js/main.js"/>
 
 		},
 		error : function(){
@@ -207,10 +206,9 @@ function quickBtn(){
 			    $('.js-modal1').addClass('show-modal1');
 				<c:import url="${initParam.staticPath}js/main.js"/>
 				<c:import url="${initParam.staticPath}js/slick-custom.js"/>
-
+				chkNumPro();
 				$('.js-addcart-detail').each(function(){
-			    	var nameProduct = $('.quick-view-title').html();
-			    	var numProduct = $('.num-product').val();
+			    	var nameProduct = $.trim(html.find('h4.quick-view-name').text())
 			    	$(this).on('click', function(){
 			    		$.ajax({
 			    			url : "add_cart.action",
@@ -222,7 +220,7 @@ function quickBtn(){
 			    			success:function(result){
 			    				
 			    				if(result == 1){
-				    	    		swal(nameProduct, "is added to cart !", "success");
+ 				    	    		swal(nameProduct, "이/가 장바구니에 담겼습니다.", "success"); 
 			    				}else{
 			    					alert("로그인이 필요합니다");
 			    				}
@@ -240,6 +238,13 @@ function quickBtn(){
 			});//ajax
 		});
 	};
+var numProduct = 1;
+function chkNumPro(){
+    $('.btn-num-product-up').on('click', function(){
+        numProduct += 1;
+		console.log(numProduct);
+    });
+}
 </script>
 <!---------------------------------- 하드코딩 에러없으면 지움 ----------------------------->
 <!-- <script>

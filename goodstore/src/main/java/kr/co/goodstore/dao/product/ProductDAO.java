@@ -12,6 +12,7 @@ import kr.co.goodstore.domain.product.ProductDomain;
 import kr.co.goodstore.domain.product.ProductListDomain;
 import kr.co.goodstore.domain.product.SubImageDomain;
 import kr.co.goodstore.vo.product.AddCartVO;
+import kr.co.goodstore.vo.product.ProductCommentVO;
 import kr.co.goodstore.vo.product.ProductListVO;
 
 @Component
@@ -56,6 +57,17 @@ public class ProductDAO {
 		return list;		
 	}
 	
+	public List<ProductListDomain> relatedProducts(int category_id){
+		
+		List<ProductListDomain> list=null;
+		
+		SqlSession ss=MyBatisFramework.getInstance().getMyBatisHandler();
+		list=ss.selectList(namespace+"relatedProducts", category_id);
+		
+		if(ss!=null) {ss.close();}
+		return list;
+	}
+	
 	public List<ProductCommentDomain> productComment(int item_id){
 		List<ProductCommentDomain> list=null;
 		SqlSession ss=MyBatisFramework.getInstance().getMyBatisHandler();
@@ -65,9 +77,17 @@ public class ProductDAO {
 		return list;
 	}
 	
+	public void addProductComment(ProductCommentVO comment) throws Exception{
+		SqlSession ss=MyBatisFramework.getInstance().getMyBatisHandler();
+		ss.insert(namespace+"productCommentAdd", comment);
+		ss.commit();
+		if(ss!=null) {ss.close();}
+	}
+	
 	public void addCart(AddCartVO cart) throws Exception{
 		SqlSession ss=MyBatisFramework.getInstance().getMyBatisHandler();
 		ss.insert(namespace+"addCart", cart);
-		
+		ss.commit();
+		if(ss!=null) {ss.close();}		
 	}
 }

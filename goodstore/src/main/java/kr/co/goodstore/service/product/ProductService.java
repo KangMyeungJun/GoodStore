@@ -13,6 +13,7 @@ import kr.co.goodstore.domain.product.ProductDomain;
 import kr.co.goodstore.domain.product.ProductListDomain;
 import kr.co.goodstore.domain.product.SubImageDomain;
 import kr.co.goodstore.vo.product.AddCartVO;
+import kr.co.goodstore.vo.product.ProductCommentVO;
 import kr.co.goodstore.vo.product.ProductListVO;
 
 @Component
@@ -68,6 +69,18 @@ public class ProductService {
 		return list;
 	}//subImageList
 
+	public List<ProductListDomain> relatedProducts(int category_id){
+		List<ProductListDomain> list=null;
+
+		try {
+			list=pDAO.relatedProducts(category_id);
+		}catch(PersistenceException pe){
+			pe.printStackTrace();
+		}
+
+		return list;
+	}//relatedProducts
+	
 	public List<ProductCommentDomain> productComment(int item_id){
 		List<ProductCommentDomain> list=null;
 
@@ -79,6 +92,10 @@ public class ProductService {
 
 		return list;
 	}//productComment
+	
+	public void addProductComment(ProductCommentVO comment) throws Exception{
+		pDAO.addProductComment(comment);
+	}
 	
 	public void addCart(AddCartVO cart) throws Exception{
 		pDAO.addCart(cart);
