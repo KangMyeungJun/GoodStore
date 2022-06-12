@@ -38,19 +38,7 @@ public class ProductController {
 
 		return "goodstore/purchase/product_detail";
 	}
-	
 
-	/*
-	 * @GetMapping("quick_view.action")
-	 * 
-	 * @ResponseBody public Map<String, Object> quickView(Model
-	 * model, @RequestParam("item_id") int item_id) { Map<String, Object> map = new
-	 * HashMap<String, Object>(); map.put("productDetail",
-	 * ps.productDetail(item_id)); map.put("subImageList",
-	 * ps.subImageList(item_id));
-	 * 
-	 * return map; }
-	 */
 	
 	@GetMapping("quick_view.action")
 	public String quickView(Model model, @RequestParam("item_id") int item_id) {

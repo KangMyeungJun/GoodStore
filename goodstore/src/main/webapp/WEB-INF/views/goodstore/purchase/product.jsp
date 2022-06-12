@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html lang="en">
 <head>
 	<title>Product</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-<%@ include file="../../goodstore/common/static_link.jsp" %>
 <% 
 String sortValue = "";
 String keywordValue = "";
@@ -17,6 +17,21 @@ if(request.getParameter("keyword") != null){
 	keywordValue = request.getParameter("keyword");
 }
 %>
+<style>
+.product-list-img{height:20vw;}
+@media (max-width: 1600px) {
+	.product-list-img{height:25vw;}  
+  }  
+@media (max-width: 1300px){
+	.product-list-img{height:30vw;}
+  }
+@media (max-width: 991px) {
+    .product-list-img{height:35vw;}    
+  }
+@media (max-width: 767px) {
+    .product-list-img{height:60vw;}    
+  }
+</style>
 </head>
 <body class="animsition">
 <%@ include file="../../goodstore/common/header.jsp" %>
@@ -62,7 +77,6 @@ if(request.getParameter("keyword") != null){
 						
 					</div>	
 				</form>
-
 				<!-- Filter -->
 				<form class="dis-none panel-filter w-full p-t-10 filter-frm">
 					<div class="wrap-filter flex-w bg6 w-full p-lr-40 p-t-27 p-lr-15-sm">
@@ -110,7 +124,7 @@ if(request.getParameter("keyword") != null){
 					<!-- Block2 -->
 					<div class="block2">
 						<div class="block2-pic hov-img0">
-							<img src="${initParam.staticPath}images/${ productList.image }" alt="IMG-PRODUCT">
+							<img class="product-list-img" src="${ initParam.uploadPath }${ productList.image }" alt="IMG-PRODUCT">
 							<button class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1" value="${ productList.item_id}">
 								Quick View
 							</button>
@@ -126,7 +140,7 @@ if(request.getParameter("keyword") != null){
 								</a>
 
 								<span class="stext-105 cl3">
- 								<c:out value="${ productList.price }"/>원
+								<fmt:formatNumber pattern="#,###" value="${productList.price}"/>원
 								</span>
 							</div>
 
@@ -153,7 +167,11 @@ if(request.getParameter("keyword") != null){
 	</div>
 <%@ include file="../common/footer.jsp" %>
 <div id="quick-view-wrap"></div>
+<div id="reload-js">
+<%@ include file="../../goodstore/common/static_link.jsp" %>
 <%@ include file="../common/common_js.jsp" %>
+</div>
+<!----------- load more 구현 js ------------>
 <script>
 $('#load-more').click(function(){
 	var startNum = $('#product-list-wrap .product-list-each').length;
@@ -177,21 +195,70 @@ $('#load-more').click(function(){
 			var contents = html.find('div#product_content').html();
 			$("#product-wrap").html(contents) 
 			quickBtn();
-
+			isotope();
+			if($('.how-active1') != null){
+				$('.how-active1').trigger('click');
+			}
 		},
 		error : function(){
 			alert('에러입니다');
 		}
 	})
 }); 
+
+function isotope(){
+ var $topeContainer = $('.isotope-grid');
+ var $filter = $('.filter-tope-group');
+
+ // filter items on button click
+ $filter.each(function () {
+     $filter.on('click', 'button', function () {
+         var filterValue = $(this).attr('data-filter');
+         $topeContainer.isotope({filter: filterValue});
+     });
+     
+ });
+
+ // init Isotope
+ $(window).on('load', function () {
+     var $grid = $topeContainer.each(function () {
+         $(this).isotope({
+             itemSelector: '.isotope-item',
+             layoutMode: 'fitRows',
+             percentPosition: true,
+             animationEngine : 'best-available',
+             masonry: {
+                 columnWidth: '.isotope-item'
+             }
+         });
+     });
+ });
+
+ var isotopeButton = $('.filter-tope-group button');
+
+ $(isotopeButton).each(function(){
+     $(this).on('click', function(){
+         for(var i=0; i<isotopeButton.length; i++) {
+             $(isotopeButton[i]).removeClass('how-active1');
+         }
+
+         $(this).addClass('how-active1');
+     });
+ });
+}
 </script>
+<!--------- quickView, addToCart 구현 js ---------->
 <script>
-$(function(){quickBtn();});
+$(function(){
+	quickBtn();
+	keepSort();
+	$('.js-show-filter').trigger('click');
+});
+
 function quickBtn(){
 	$('.js-show-modal1').on('click',function(e){
 	    e.preventDefault();
 	    var bno = this.value;
-		console.log('click');
 		$.ajax({
 			url : "quick_view.action",
 			type : 'get',
@@ -204,9 +271,11 @@ function quickBtn(){
 				var contents = html.find('div#quick_view').html();
 				$("#quick-view-wrap").html(contents) 
 			    $('.js-modal1').addClass('show-modal1');
-				<c:import url="${initParam.staticPath}js/main.js"/>
-				<c:import url="${initParam.staticPath}js/slick-custom.js"/>
+				modal1();
+				slick3();
+				quantityBtn();
 				chkNumPro();
+				
 				$('.js-addcart-detail').each(function(){
 			    	var nameProduct = $.trim(html.find('h4.quick-view-name').text())
 			    	$(this).on('click', function(){
@@ -238,90 +307,77 @@ function quickBtn(){
 			});//ajax
 		});
 	};
+	
 var numProduct = 1;
-function chkNumPro(){
+function quantityBtn(){
+    $('.btn-num-product-down').on('click', function(){
+        var numProduct = Number($(this).next().val());
+        if(numProduct > 0) $(this).next().val(numProduct - 1);
+    });
+
+    $('.btn-num-product-up').on('click', function(){
+        var numProduct = Number($(this).prev().val());
+        $(this).prev().val(numProduct + 1);
+    });
+}
+ function chkNumPro(){
     $('.btn-num-product-up').on('click', function(){
         numProduct += 1;
-		console.log(numProduct);
+    });
+    $('.btn-num-product-down').on('click', function(){
+    	numProduct -= 1;
+    });
+}  
+function modal1(){
+    $('.js-show-modal1').on('click',function(e){
+        e.preventDefault();
+        $('.js-modal1').addClass('show-modal1');
+    });
+
+    $('.js-hide-modal1').on('click',function(){
+        $('.js-modal1').removeClass('show-modal1');
+    });
+}
+function slick3(){
+    $('.wrap-slick3').each(function(){
+        $(this).find('.slick3').slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            fade: true,
+            infinite: true,
+            autoplay: false,
+            autoplaySpeed: 6000,
+
+            arrows: true,
+            appendArrows: $(this).find('.wrap-slick3-arrows'),
+            prevArrow:'<button class="arrow-slick3 prev-slick3"><i class="fa fa-angle-left" aria-hidden="true"></i></button>',
+            nextArrow:'<button class="arrow-slick3 next-slick3"><i class="fa fa-angle-right" aria-hidden="true"></i></button>',
+
+            dots: true,
+            appendDots: $(this).find('.wrap-slick3-dots'),
+            dotsClass:'slick3-dots',
+            customPaging: function(slick, index) {
+                var portrait = $(slick.$slides[index]).data('thumb');
+                return '<img class="quick-view-sub" src=" ' + portrait + ' "/><div class="slick3-dot-overlay"></div>';
+            },  
+        });
     });
 }
 </script>
-<!---------------------------------- 하드코딩 에러없으면 지움 ----------------------------->
-<!-- <script>
-function quickBtn(){
-$('.js-show-modal1').on('click',function(e){
-    e.preventDefault();
-    var bno = this.value;
-	console.log('click');
-	$.ajax({
-		url : "quick_view.action",
-		type : 'get',
-		data : {
-			item_id : bno
-		},
-		success:function(data){
-	/* 		initialize image link attribute */
-		    $('.quick-view-main').attr('src','');
-		    $('.quick-view-sub').attr('src', '');
-		    $('.quick-view-expand').attr('href','');
-		    $('.num-product').val(1);
-		    
-	/* 	    first image box is filled with productDetail domain */
-			if(data.productDetail){
-			    $('.quick-view-title').html(data.productDetail.item_name);
-			    $('.quick-view-price').html(data.productDetail.price);
-			    $('.quick-view-summary').html(data.productDetail.summary);
-				$('.quick-view-main').eq(0).attr('src','${initParam.staticPath}images/'+data.productDetail.image);
-				$('.quick-view-sub').eq(0).attr('src','${initParam.staticPath}images/'+data.productDetail.image);
-				$('.quick-view-expand').eq(0).attr('href','${initParam.staticPath}images/'+data.productDetail.image);
-			}
-			
-	/* 		other images are filled with subImage domain */
-			if(data.subImageList && data.subImageList.length){
-				var subImage = data['subImageList'];
-		    	for(var i in subImage){
-			    	var index = i-0+1;
-				    $('.quick-view-main').eq(index).attr('src','${initParam.staticPath}images/'+subImage[i]['sub_image']);
-				    $('.quick-view-sub').eq(index).attr('src', '${initParam.staticPath}images/'+subImage[i]['sub_image']);
-				    $('.quick-view-expand').eq(index).attr('href','${initParam.staticPath}images/'+subImage[i]['sub_image']);
-		    	}
-			}
-			
-		    $('.js-modal1').addClass('show-modal1');
-			  
-	 	    $('.js-addcart-detail').each(function(){
-		    	//var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
-		    	var nameProduct = $('.quick-view-title').html();
-		    	var numProduct = $('.num-product').val();
-		    	$(this).on('click', function(){
-		    		$.ajax({
-		    			url : "add_cart.action",
-		    			type : "post",
-		    			data : {
-		    				item_id : bno,
-		    				quantity : numProduct
-		    			},
-		    			success:function(result){
-		    				
-		    				if(result == 1){
-			    	    		swal(nameProduct, "is added to cart !", "success");
-		    				}else{
-		    					alert("로그인이 필요합니다");
-		    				}
-		    			},
-		    			error:function(){
-		    				alert("카트 담기 실패");
-		    			}
-		    		})
-		    	});
-		    }); 
-		},
-		error:function(request, status, error){
-			alert(request.status+"\n"+request.responseText+"\n"+error);
+<!------- 정렬 필터 유지 ------->
+<script>
+function keepSort(){
+	$(".filter-tope-group").children("button").each(function(index, obj){
+		var index = sessionStorage.getItem("filterIndex");
+		if($(this).index() == index){
+			$(this).trigger('click');
+			return;
 		}
-		});//ajax
-	});
-};
-</script> -->
+	});		
+}
+$(".filter-tope-group").children("button").on('click', function(){
+	sessionStorage.setItem("filterIndex", $(this).index() ); // 저장
+});
+</script>
 </body>
 </html>
