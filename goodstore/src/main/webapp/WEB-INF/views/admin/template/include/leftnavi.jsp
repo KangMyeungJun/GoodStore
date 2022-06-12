@@ -4,7 +4,7 @@
     
      <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-          <a class="sidebar-brand brand-logo kmong-title" href="index.jsp">
+          <a class="sidebar-brand brand-logo kmong-title" href="admin_index">
             <i class="mdi mdi-baby-face text-warning"></i>
             <span>Store Admin</span>
           </a>
@@ -35,8 +35,8 @@
           </li>
 
           <!-- 대시보드 -->
-          <li class="nav-item menu-items active" id="nav-dashboard">
-            <a class="nav-link" href="#void">
+          <li class="nav-item menu-items" id="nav-dashboard">
+            <a class="nav-link" href="admin_index">
               <span class="menu-icon">
                 <i class="mdi mdi-speedometer"></i>
               </span>
@@ -110,7 +110,7 @@
             </a>
             <div class="collapse" id="ui-order">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="#void">Order Status</a></li>
+                <li class="nav-item"> <a class="nav-link" href="orders">Order Status</a></li>
               </ul>
             </div>
           </li>
@@ -126,7 +126,7 @@
             </a>
             <div class="collapse" id="ui-category">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="selectCategory">Category List</a></li>
+                <li class="nav-item"> <a class="nav-link" href="categories">Category List</a></li>
               </ul>
             </div>
           </li>

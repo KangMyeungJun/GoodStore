@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 import kr.co.goodstore.config.Common;
 
 @Component
+
 public class FileConvert {
 	String fileDir = Common.FILE_DIR;
 	

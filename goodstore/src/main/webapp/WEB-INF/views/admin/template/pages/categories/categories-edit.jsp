@@ -11,7 +11,7 @@
     <!-- 아이콘관련 -->
     <link rel="stylesheet" href="${initParam.staticPath}assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="${initParam.staticPath}assets/vendors/css/vendor.bundle.base.css">
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <!-- endinject -->
     <!-- Plugin css for this page -->
     <!-- End Plugin css for this page -->
@@ -26,9 +26,34 @@
     <div class="container-scroller">
       <!-- partial:../../partials/_sidebar.jsp -->
       <%@ include file="../../include/leftnavi.jsp" %>
+      <%@ include file="../../include/topnavi.jsp" %>
+      
+      
+      <script type="text/javascript">
+      const navActive = document.getElementById("nav-category");
+		const uiShow = document.getElementById("ui-category");
+		navActive.classList.add('active');
+		uiShow.classList.add('show');
+		
+		$(function(){
+			 $("#btnCategoryStatus").click(function(){
+					alert("카테고리를 삭제하시겠습니까?");
+					$("#categoryStatus").submit();
+				})//click 
+				
+				
+			 $("#btnModifyCategory").click(function(){
+					alert("변경하시겠습니까?");
+					$("#ModifyCategoryfrm").submit();
+				})//click 
+			
+		});
+      
+      
+      </script>
 
 
-      <!-- 본문 -->
+     <%--  <!-- 본문 -->
       <div class="container-fluid page-body-wrapper">
         <!-- partial:../../partials/_navbar.jsp -->
         <nav class="navbar p-0 fixed-top d-flex flex-row">
@@ -57,7 +82,7 @@
               <li class="nav-item dropdown">
                 <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
                   <div class="navbar-profile">
-                    <img class="img-xs rounded-circle" src="../../assets/images/faces/squidGame.jpg" alt="">
+                    <img class="img-xs rounded-circle" src="${initParam.staticPath}assets/images/faces/squidGame.jpg" alt="">
                     <p class="mb-0 d-none d-sm-block navbar-profile-name">Admin</p>
                     <i class="mdi mdi-menu-down d-none d-sm-block"></i>
                   </div>
@@ -110,7 +135,7 @@
               <span class="mdi mdi-format-line-spacing"></span>
             </button>
           </div>
-        </nav>
+        </nav> --%>
 <!----------------------------------------------------- 여기까지 좌,상단 nav bar ---------------------------------------------------------->
 
         <!-- partial -->
@@ -123,7 +148,7 @@
               <h3 class="page-title"> Categories </h3>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="categories.jsp">Categories</a></li>
+                  <li class="breadcrumb-item"><a href="categories">Categories</a></li>
                   <li class="breadcrumb-item active" aria-current="page">Category List</li>
                   <li class="breadcrumb-item active" aria-current="page">Category Edit</li>
                 </ol>
@@ -136,16 +161,16 @@
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title">Category Edit</h4>
-                    <form class="form-sample">
                       <p class="card-description">Category info </p>
 
+                    <form class="form-sample" id="ModifyCategoryfrm" action="categories/detail/edit?category_id=${categoryDetail.category_id }" method="post" enctype="multipart/form-data">
                       <!-- 이름, 작성자 -->
                       <div class="row">
                         <div class="col-md-6">
                           <div class="form-group row">
                             <label class="col-sm-3 col-form-label">Title</label>
                             <div class="col-sm-9">
-                              <input type="text" class="form-control" value="${categoryDetail.category_name }">
+                              <input type="text" id="category_name" name="category_name"class="form-control" value="${categoryDetail.category_name }"/>
                             </div>
                           </div>
                         </div>
@@ -167,11 +192,10 @@
                           <div class="form-group row">
                             <label class="col-sm-3 col-form-label">Image Upload</label>
                             <div class="col-sm-9">
-                              <input type="file" name="img[]" class="file-upload-default">
+                              <input type="file"  id="image" name="image" >
                               <div class="input-group col-xs-12">
-                                <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image">
+                                <input type="text" class="form-control file-upload-info" placeholder="Upload Image">
                                 <span class="input-group-append">
-                                  <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
                                 </span>
                               </div>
                             </div>
@@ -179,13 +203,16 @@
                         </div>
                       </div>
 
-                      <button type="button" class="btn btn-outline-secondary btn-icon-text"> 
+                      <button type="button" class="btn btn-outline-secondary btn-icon-text" id="btnModifyCategory"> 
                         <i class="mdi mdi-file-check btn-icon-prepend"></i>Edit
                       </button>&emsp;
-                      <button type="button" class="btn btn-outline-danger btn-icon-text">
+                    </form>
+                    
+                      <form id="categoryStatus" action="categories_status_edit?category_id=${categoryDetail.category_id }" method="post">
+                      <button type="button" class="btn btn-outline-danger btn-icon-text" id="btnCategoryStatus">
                         <i class="mdi mdi-delete-forever btn-icon-prepend"></i>Delete</button>
 
-                    </form>
+                      </form>
                   </div>
                 </div>
               </div>

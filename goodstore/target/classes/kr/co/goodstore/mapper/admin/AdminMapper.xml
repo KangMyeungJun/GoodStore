@@ -13,7 +13,7 @@ where delete_flag='N'
 
  <!-- 카테고리 상세조회 -->
 <select id="categoryDetail" resultType="cd">
-select category_name ,image
+select category_id,category_name ,image
 from category 
 where category_id=#{category_id}
 </select>
@@ -23,18 +23,30 @@ where category_id=#{category_id}
 update category
 <set>
 <if test="category_name != null and category_name !='' ">
-category_name=#{category_name}
+category_name=#{category_name},
 </if>
 <if test="image != null and image !='' ">
-image=#{image}
+image=#{image},
 </if>
 </set>
 where category_id=#{category_id}
 </update>
 
+ <!--카테고리 상태변경   -->
+<update id="updateCategoryStatus" parameterType="int">
+
+update category
+set    delete_flag='Y'
+where  category_id=#{category_id}
+
+</update> 
+
+
+
 <!-- 카테고리 추가 -->
-<insert id="">
-insert into category(category_name, image)
+<insert id="addCategory" parameterType="cd">
+insert into category(category_id,category_name, image,upload_date)
+values(GOOD.SEQ_CATEGORY_ID.NEXTVAL,#{category_name},#{image},sysdate)
 </insert>
 
 
@@ -108,6 +120,40 @@ on i.category_id=c.category_id
 ${field} like '%' || #{keyword} ||'%'
 </if>
 </where>
+</select>
+
+<!-- 전체 주문 수 구하기(상태) -->
+<select id="orderCounts" resultType="int" parameterType="String">
+<!-- select count(*) as ocount,
+count(case when status='C' then 1 end) as ccount,
+count(case when status='R' then 1 end) as rcount from order_detail -->
+select count(*) 
+from order_detail
+where status=#{status}
+</select>
+
+<!-- 전체 주문 수 구하기() -->
+<select id="orderCount2" resultType="int">
+select count(*)
+from order_detail
+</select>
+
+<!-- 오늘 주문 수  -->
+<select id="todayOrdersCount1" resultType="int">
+select count(*)
+from orders o
+inner join order_detail od
+on od.order_id=o.order_id
+where to_char(order_date,'YYYY-MM-DD')=to_char(sysdate,'YYYY-MM-DD')
+</select>
+
+<!-- 오늘 주문 수(상태)  -->
+<select id="todayOrdersCount2" resultType="int" parameterType="String">
+select count(*)
+from orders o
+inner join order_detail od
+on od.order_id=o.order_id
+where to_char(order_date,'YYYY-MM-DD')=to_char(sysdate,'YYYY-MM-DD') and status=#{status}
 </select>
 
 
@@ -208,6 +254,18 @@ on od.order_id=o.order_id
 where status='C'    and to_char(order_date,'YYYY-MM-DD')=to_char(sysdate,'YYYY-MM-DD')
 </select>
 
+<!-- 로그인 -->
+<select id="login" parameterType="AdminVO" resultType="AdminVO">
+select id, password   <!-- 아이디만 있어도 된다. -->
+from admin
+where id=#{id} and password=#{password}
+</select>
+
+<!-- 비밀번호 변경 -->
+<update id="updatePassword" parameterType="String">
+update admin
+set    password=#{password}
+</update> 
 
 
 </mapper>

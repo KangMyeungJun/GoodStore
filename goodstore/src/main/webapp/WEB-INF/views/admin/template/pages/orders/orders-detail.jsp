@@ -29,6 +29,7 @@
       <!-- partial:../../partials/_sidebar.jsp -->
       
 <%@ include file="../../include/leftnavi.jsp" %>
+<%@ include file="../../include/topnavi.jsp" %>
  <script type="text/javascript">
 		const navActive = document.getElementById("nav-orders");
 		const uiShow = document.getElementById("ui-order");
@@ -46,7 +47,7 @@
     
 
 
-      <!-- 본문 -->
+      <%-- <!-- 본문 -->
       <div class="container-fluid page-body-wrapper">
         <!-- partial:../../partials/_navbar.jsp -->
         <nav class="navbar p-0 fixed-top d-flex flex-row">
@@ -128,7 +129,7 @@
               <span class="mdi mdi-format-line-spacing"></span>
             </button>
           </div>
-        </nav>
+        </nav> --%>
 <!----------------------------------------------------- 여기까지 좌,상단 nav bar ---------------------------------------------------------->
 
         <!-- partial -->
@@ -141,7 +142,7 @@
               <h3 class="page-title"> Orders </h3>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="orders.jsp">Orders</a></li>
+                  <li class="breadcrumb-item"><a href="orders">Orders</a></li>
                   <li class="breadcrumb-item active" aria-current="page">Order Status</li>
                   <li class="breadcrumb-item active" aria-current="page">Order Detail</li>
                 </ol>

@@ -30,6 +30,7 @@
       <!-- partial:../../partials/_sidebar.jsp -->
        <!-- leftSide -->     
  <%@ include file="../../include/leftnavi.jsp" %>
+ <%@ include file="../../include/topnavi.jsp" %>
 <script type="text/javascript"> 
 		const navActive = document.getElementById("nav-orders");
 		const uiShow = document.getElementById("ui-order");
@@ -59,7 +60,7 @@
 		</script>
  
 
-      <!-- 본문 -->
+      <%-- <!-- 본문 -->
       <div class="container-fluid page-body-wrapper">
         <!-- partial:../../partials/_navbar.jsp -->
         <nav class="navbar p-0 fixed-top d-flex flex-row">
@@ -141,7 +142,7 @@
               <span class="mdi mdi-format-line-spacing"></span>
             </button>
           </div>
-        </nav>
+        </nav> --%>
 
 <!----------------------------------------------------- 여기까지 좌,상단 nav bar ---------------------------------------------------------->
 
@@ -155,7 +156,7 @@
               <h3 class="page-title"> Orders </h3>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="#">Orders</a></li>
+                  <li class="breadcrumb-item"><a href="orders">Orders</a></li>
                   <li class="breadcrumb-item active" aria-current="page">Order Status</li>
                 </ol>
               </nav>
@@ -168,8 +169,8 @@
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title">Order Status</h4>
-                    <div>총 결제내역 : 15건 | 완료: 11건 | 대기중: 2건 | 취소:2건</div>
-                    <div>오늘 결제내역 : 15건 | 완료: 11건 | 대기중: 2건 | 취소:2건</div><br/>
+                    <div>총 결제내역 : ${totalOrderCount }건 | 완료:  ${totalOrderCCount}건 | 취소: ${totalOrderNCount}건 | 환불: ${totalOrderRCount}건</div>
+                    <div>오늘 결제내역 : ${todayOrderCoount}건 | 완료: ${todayOrderCCount }건 | 취소: ${todayOrderNCount }건 | 환불: ${todayOrderRCount }건</div><br/>
                     <form action="orders" id="nameSearchFrm" method="get">
                     <div class="form-group">
                       <div class="input-group">
@@ -182,13 +183,7 @@
                     </form>
                     
                     
-                       <div>
-                    전체레코드의 수 : ${ totalCnt }<br/>
-					한 화면에 보여줄 게시물의 수 : ${ pageScale }<br/>
-					총페이지 수 : ${ pageCnt }<br/>
-					시작번호  : ${ startNum }<br/>
-					끝번호  : ${  endNum }<br/>
-                    </div> 
+                 
                     
                     
                     

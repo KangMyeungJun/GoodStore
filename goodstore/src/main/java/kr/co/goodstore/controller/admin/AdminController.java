@@ -3,30 +3,45 @@ package kr.co.goodstore.controller.admin;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
+import java.io.IOException;
+import java.util.Iterator;
 import java.util.List;
 
-
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-
+import kr.co.goodstore.domain.admin.AdminVO;
 import kr.co.goodstore.domain.admin.BoardVO;
 import kr.co.goodstore.domain.admin.CategoryDomain;
+import kr.co.goodstore.domain.admin.CategoryForm;
 import kr.co.goodstore.domain.admin.MemberDomain;
 import kr.co.goodstore.domain.admin.OrdersDomain;
 import kr.co.goodstore.service.admin.AdminService;
+import kr.co.goodstore.service.admin.product.FileConvert;
 
+//@RequestMapping("/admin") //이따가 다 추가해주기!!!
 @Controller
 public class AdminController {
 	
 	@Autowired(required = false)
 	private AdminService cs;
 	
-	  @GetMapping("/index2")
+	@Autowired(required = false)
+	private final FileConvert fc = new FileConvert();
+	
+	  @GetMapping("/admin_index")
 	  public String welcome1(Model model) {
 		//  전체사용자 수
 		  int userCount1=cs.searchUserCount1();
@@ -63,7 +78,7 @@ public class AdminController {
 	
 	
 	//카테고리 조회
-	 @RequestMapping(value="/selectCategory",method=GET)
+	 @RequestMapping(value="/categories",method=GET)
 		public String searchCategory(Model model) {
 			
 			
@@ -83,7 +98,87 @@ public class AdminController {
 			 
 			 
 			 return "admin/template/pages/categories/categories-edit";    // views 그다음 폴더부터 쭈욱
-		 }//adminUsers
+		 }//adminCategoryDetail
+		 
+		 
+		 //category_detail(수정)
+		 @RequestMapping(value="/categories/detail/edit",method=POST)
+		public String modifyCategoryl(CategoryForm cForm) throws IOException {
+			// public String modifyCategoryl(CategoryForm cForm) throws IOException {
+			 
+					
+					  String thumbFile = fc.storeFile(cForm.getImage());
+					  
+					  CategoryDomain cDomain= new CategoryDomain();
+					  
+					  cDomain.setImage(thumbFile);
+					  cDomain.setCategory_name(cForm.getCategory_name());
+					  cDomain.setCategory_id(cForm.getCategory_id());
+					  
+					  System.out.println(cDomain.getCategory_name());
+					  System.out.println(cDomain.getImage());
+					  System.out.println(cDomain.getCategory_id());
+					 
+			 
+			 cs.modifyCategory(cDomain);
+			 
+			 
+			 return "redirect:/categories";    // views 그다음 폴더부터 쭈욱
+		 }//modifyCategoryl
+		 
+		 
+		 //category 삭제
+		 @RequestMapping(value="/categories_status_edit",method=POST)
+		 public String adminCategoryStatus( int category_id) {
+			 
+			 
+			cs.modifyCategoryStatus(category_id);
+			 
+			 
+			 return "redirect:/categories";   // views 그다음 폴더부터 쭈욱
+		 }//adminCategoryStatus
+		 
+		 
+			//카테고리 추가 폼
+			 @RequestMapping(value="/category_add",method=GET) 
+			  public String adminCategoryAddForm()  {
+				 
+			
+		 
+		  
+		  return "admin/template/pages/categories/categories-add";
+		  
+		  }//adminCategoryAddForm
+			 
+			 
+			 
+			//카테고리 추가
+			 @PostMapping("/category_addBtn")
+			  public String adminCategoryAdd(@ModelAttribute CategoryForm cForm) throws IOException {
+				 
+		
+				 
+				 
+				 String thumbFile = fc.storeFile(cForm.getImage());
+				 
+				 CategoryDomain cDomain= new CategoryDomain();
+				 
+				 cDomain.setImage(thumbFile);
+				cDomain.setCategory_name(cForm.getCategory_name());
+				
+				System.out.println("-------------------"+cForm.getCategory_name());
+				System.out.println("-------------------"+cForm.getImage());
+				System.out.println("-------------------"+cDomain.getCategory_name());
+				System.out.println("-------------------"+cDomain.getImage());
+				
+				 cs.addCategory(cDomain);
+				
+		 
+		  
+		  return "redirect:/categories";
+			 }//adminCategoryAdd
+			 
+			 
 	 
 	 
 	 //Users 조회
@@ -140,7 +235,7 @@ public class AdminController {
 		 
 		 
 		 return "admin/template/pages/users/users-edit";    // views 그다음 폴더부터 쭈욱
-	 }//adminUsers
+	 }//adminUsersDetail
 	 
 	 
 		
@@ -159,7 +254,7 @@ public class AdminController {
 	 
 	//주문 조회
 		 @RequestMapping(value="/orders",method=GET)
-		 public String adminOrders(Model model,BoardVO bVO) {
+		 public String adminOrders(Model model,BoardVO bVO,String status) {
 			 
 			 //1.주문수(전체 레코드 수 ) 뿌리기
 			 int totalCnt=cs.searchOrdersCount(bVO);
@@ -171,6 +266,23 @@ public class AdminController {
 				int startNum= cs.startNum(bVO.getCurrentPage(), pageScale);
 				//5. 끝번호
 				int endNum = cs.endNum(startNum, pageScale);
+				
+				
+				
+				//전체 주문수 
+				model.addAttribute("totalOrderCount",cs.searchOrdersCount2());
+				status="C";
+				model.addAttribute("totalOrderCCount",cs.searchordersCount1(status));
+				model.addAttribute("todayOrderCCount",cs.searchTodayOrdersCount2(status));
+				status="R";
+				model.addAttribute("totalOrderRCount",cs.searchordersCount1(status));
+				model.addAttribute("todayOrderRCount",cs.searchTodayOrdersCount2(status));
+				status="N";
+				model.addAttribute("totalOrderNCount",cs.searchordersCount1(status));
+				model.addAttribute("todayOrderNCount",cs.searchTodayOrdersCount2(status));
+				//오늘 주문수
+				model.addAttribute("todayOrderCoount",cs.searchTodayOrdersCount());
+				
 				
 				bVO.setStartNum(startNum);
 				bVO.setEndNum(endNum);
@@ -201,7 +313,7 @@ public class AdminController {
 			 
 			 
 			 return "admin/template/pages/orders/orders-detail";    // views 그다음 폴더부터 쭈욱
-		 }//adminUsers
+		 }//adminOrderDetail
 		 
 		  
 		 
@@ -213,8 +325,67 @@ public class AdminController {
 		  
 		  return "redirect:/orders";
 		  //redirect:http://localhost/goodstore/
-		  }//adminUserRemove
+		  }//adminOrderRemove
 		 
+		 //로그인 폼 
+		 @RequestMapping(value="/login_form",method=GET) 
+		  public String adminLoginForm(SessionStatus session) {
+			 session.setComplete();
+	 
+	  
+	  return "admin/template/pages/account/admin-login";
+	  //redirect:http://localhost/goodstore/
+	  }//adminLoginForm
+		 
+		 //로그인  프로세스
+		 @RequestMapping(value="/admin-login",method=POST) 
+		  public String adminLoginPorcess(AdminVO avo, HttpSession session, Model model,RedirectAttributes rttr) {
+			 
+			System.out.println(avo);
+		AdminVO adVO=	 cs.isAdmin(avo);
+		
+		
+		if(adVO == null) {
+			int result=0;
+		//	model.addAttribute("msg","아이디와 비밀번호가 일치하지 않습니다");
+			rttr.addFlashAttribute("result",result);
+			return "redirect:/login_form";
+		}else {
+			session.setAttribute("id", avo.getId());
+			return "redirect:/admin_index";
+			//"admin/template/admin_index";
+			
+		}
+			 
+	
+	 
+	  
+	  //redirect:http://localhost/goodstore/
+	  }//adminLoginForm
+		 
+		 //비밀번호 변경 폼
+		 @RequestMapping(value="/admin-setting",method=GET) 
+		  public String adminModifyPasswordForm() {
+			 
+	 
+	  
+	  return "admin/template/pages/account/admin-setting";
+	  //redirect:http://localhost/goodstore/
+	  }//adminLoginForm
+		 
+		 
+		 
+		//비밀번호 변경
+		  
+		  @RequestMapping(value="/modifyPaswword",method=POST) 
+			  public String adminModifyPassword(String password) {
+		  cs.modifyPassword(password);
+		  
+		  return "redirect:/admin_index";
+		  }//adminModifyPassword
+		 
+		 
+	
 		 
 	
 	

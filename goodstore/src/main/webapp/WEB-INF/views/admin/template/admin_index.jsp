@@ -32,13 +32,14 @@
       <!-- partial:partials/_sidebar.jsp -->
  <!-- leftSide -->     
  <%@ include file="include/leftnavi.jsp" %>
+ <%@ include file="include/topnavi.jsp" %>
 <script type="text/javascript"> 
 		const navActive = document.getElementById("nav-dashboard");
 		navActive.classList.add('active');
 		</script>
 
 
-      <!-- 본문 -->
+    <%--   <!-- 본문 -->
       <div class="container-fluid page-body-wrapper">
         <!-- partial:partials/_navbar.jsp -->
         <nav class="navbar p-0 fixed-top d-flex flex-row">
@@ -120,7 +121,7 @@
               <span class="mdi mdi-format-line-spacing"></span>
             </button>
           </div>
-        </nav>
+        </nav> --%>
 <!----------------------------------------------------- 여기까지 좌,상단 nav bar ---------------------------------------------------------->
 
         <!-- partial -->
@@ -246,7 +247,7 @@
                         <c:forEach var="categoryList" items="${categoryList }">
                           <div class="preview-item border-bottom">
                             <div class="preview-thumbnail">
-                              <img src="http://localhost/goodstore/upload/${categoryList.image }"/>
+                              <img src="http://localhost/goodstore/upload/${categoryList.image}"/>
                             </div>
                             <div class="preview-item-content d-sm-flex flex-grow">
                               <div class="flex-grow">

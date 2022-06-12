@@ -6,6 +6,7 @@
 <properties resource="properties/database.properties"/>
 <typeAliases>
 <typeAlias alias="AdminItemVO" type="kr.co.goodstore.vo.admin.product.AdminItemVO"/>
+<typeAlias alias="AdminVO" type="kr.co.goodstore.domain.admin.AdminVO"/>
 <typeAlias alias="AdminItemDomain" type="kr.co.goodstore.domain.admin.product.AdminItemDomain"/>
 <typeAlias alias="AdminCategoryDomain" type="kr.co.goodstore.domain.admin.product.AdminCategoryDomain"/>
 <typeAlias alias="AdminCompanyDomain" type="kr.co.goodstore.domain.admin.product.AdminCompanyDomain"/>

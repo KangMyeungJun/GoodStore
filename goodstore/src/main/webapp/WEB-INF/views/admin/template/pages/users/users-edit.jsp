@@ -31,6 +31,7 @@
       <!-- partial:../../partials/_sidebar.jsp -->
        <!-- leftSide -->     
  <%@ include file="../../include/leftnavi.jsp" %>
+ <%@ include file="../../include/topnavi.jsp" %>
  <script type="text/javascript">   
  
  $(function(){
@@ -52,7 +53,7 @@
  
 
 
-      <!-- 본문 -->
+      <%-- <!-- 본문 -->
       <div class="container-fluid page-body-wrapper">
         <!-- partial:../../partials/_navbar.jsp -->
         <nav class="navbar p-0 fixed-top d-flex flex-row">
@@ -134,7 +135,7 @@
               <span class="mdi mdi-format-line-spacing"></span>
             </button>
           </div>
-        </nav>
+        </nav> --%>
 <!----------------------------------------------------- 여기까지 좌,상단 nav bar ---------------------------------------------------------->
 
         <!-- partial -->
@@ -147,7 +148,7 @@
               <h3 class="page-title"> Users </h3>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="users.jsp">Users</a></li>
+                  <li class="breadcrumb-item"><a href="users">Users</a></li>
                   <li class="breadcrumb-item active" aria-current="page">User Status</li>
                   <li class="breadcrumb-item active" aria-current="page">User Edit</li>
                 </ol>

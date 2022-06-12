@@ -29,6 +29,7 @@
     <div class="container-scroller">
       <!-- partial:../../partials/_sidebar.jsp -->
       <%@ include file="../../include/leftnavi.jsp" %>
+      <%@ include file="../../include/topnavi.jsp" %>
 <script>
 		const navActive = document.getElementById("nav-category");
 		const uiShow = document.getElementById("ui-category");
@@ -39,7 +40,7 @@
 
 
 
-      <!-- 본문 -->
+      <%-- <!-- 본문 -->
       <div class="container-fluid page-body-wrapper">
         <!-- partial:../../partials/_navbar.jsp -->
         <nav class="navbar p-0 fixed-top d-flex flex-row">
@@ -77,7 +78,7 @@
                   <h6 class="p-3 mb-0">Profile</h6>
                   <div class="dropdown-divider"></div>
 
-                  <a class="dropdown-item preview-item" href="../../pages/account/admin-setting.jsp">
+                  <a class="dropdown-item preview-item" href="admin-setting">
                     <div class="preview-thumbnail">
                       <div class="preview-icon bg-dark rounded-circle">
                         <i class="mdi mdi-settings text-success"></i>
@@ -102,7 +103,7 @@
                   <div class="dropdown-divider"></div>
 
 
-                  <a class="dropdown-item preview-item" href="../../pages/account/admin-login.jsp">
+                  <a class="dropdown-item preview-item" href="login_form">
                     <div class="preview-thumbnail">
                       <div class="preview-icon bg-dark rounded-circle">
                         <i class="mdi mdi-logout text-danger"></i>
@@ -121,7 +122,7 @@
               <span class="mdi mdi-format-line-spacing"></span>
             </button>
           </div>
-        </nav>
+        </nav> --%>
 <!----------------------------------------------------- 여기까지 좌,상단 nav bar ---------------------------------------------------------->
 
         <!-- partial -->
@@ -134,7 +135,7 @@
               <h3 class="page-title"> Categories </h3>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="#">Categories</a></li>
+                  <li class="breadcrumb-item"><a href="categories">Categories</a></li>
                   <li class="breadcrumb-item active" aria-current="page">Category List</li>
                 </ol>
               </nav>
@@ -174,64 +175,10 @@
                           </c:forEach>
                           
 
-                          <div class="preview-item border-bottom">
-                            <div class="preview-thumbnail">
-                              <div class="preview-icon bg-success">
-                                <i class="mdi mdi-auto-fix"></i>
-                              </div>
-                            </div>
-                            <div class="preview-item-content d-sm-flex flex-grow">
-                              <div class="flex-grow">
-                                <h4 class="preview-subject">식물</h4>
-                                <a class="text-muted mb-0" href="categories-edit.jsp">edit</a>
-                              </div>
-                            </div>
-                          </div>
-
-                          <div class="preview-item border-bottom">
-                            <div class="preview-thumbnail">
-                              <div class="preview-icon bg-info">
-                                <i class="mdi mdi-camcorder-box"></i>
-                              </div>
-                            </div>
-                            <div class="preview-item-content d-sm-flex flex-grow">
-                              <div class="flex-grow">
-                                <h4 class="preview-subject">가구</h4>
-                                <a class="text-muted mb-0" href="categories-edit.jsp">edit</a>
-                              </div>
-                            </div>
-                          </div>
-
-                          <div class="preview-item border-bottom">
-                            <div class="preview-thumbnail">
-                              <div class="preview-icon bg-danger">
-                                <i class="mdi mdi-chart-bar"></i>
-                              </div>
-                            </div>
-                            <div class="preview-item-content d-sm-flex flex-grow">
-                              <div class="flex-grow">
-                                <h4 class="preview-subject">의상</h4>
-                                <a class="text-muted mb-0" href="categories-edit.jsp">edit</a>
-                              </div>
-                            </div>
-                          </div>
-
-                          <div class="preview-item border-bottom">
-                            <div class="preview-thumbnail">
-                              <div class="preview-icon bg-warning">
-                                <i class="mdi mdi-file-document"></i>
-                              </div>
-                            </div>
-                            <div class="preview-item-content d-sm-flex flex-grow">
-                              <div class="flex-grow">
-                                <h4 class="preview-subject">가구</h4>
-                                <a class="text-muted mb-0" href="categories-edit.jsp">edit</a>
-                              </div>
-                            </div>
-                          </div>
+                          
 
                           <br/>
-                          <a href="categories-add.jsp">
+                          <a href="category_add">
                           <button type="button" class="btn btn-primary btn-icon-text">
                             <i class="mdi mdi-upload btn-icon-prepend"></i>항목추가 </button>
                           </a>
