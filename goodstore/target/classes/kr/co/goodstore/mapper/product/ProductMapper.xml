@@ -38,8 +38,10 @@
 <result column="category_name" property="category_name"/>
 </resultMap>
 <select id="productList" parameterType="plVO" resultMap="pldResult">
+select rnum, it.*
+from (
 select row_number() over(<include refid="sort"/>) rnum, i.item_id, i.item_name, i.image, i.upload_date, 
-i.price, c.name com_name, c.type com_type, nvl(w.wish_count,0) wish_count, category_name
+i.price, c.name com_name, c.type com_type, nvl(w.wish_count,0) wish_count, category_name, i.category_id
 from item i
 JOIN company c
 ON i.company_id = c.company_id
@@ -57,6 +59,8 @@ item_name like '%'||#{keyword}||'%'
 </trim>
 </if>
 </where>
+) it
+where rnum between 1 and #{item_count}
 </select>
 
 
@@ -90,6 +94,15 @@ from sub_image
 where item_id=#{item_id}
 </select>
 
+<select id="productCategory" resultType="pcatd">
+select category_id, category_name
+from category
+</select>
+
+<select id="relatedProducts" parameterType="int" resultType="pld">
+select * from item
+where category_id = #{category_id}
+</select>
 
 <select id="productComment" parameterType="int" resultType="pcd">
 select review, item_id, email, star, upload_date
@@ -97,11 +110,17 @@ from item_comment i
 join member m
 on i.member_id = m.member_id
 where item_id=#{item_id}
+order by upload_date desc
 </select>
 
-<insert id="addCart">
+<select id="productCommentAdd" parameterType="pcommVO">
+insert into item_comment(item_comment_id, review, item_id, member_id, star, upload_date)
+values(seq_item_comment_id.nextval, '${review}', ${item_id}, ${member_id}, ${star}, SYSDATE)
+</select>
+
+<insert id="addCart" parameterType="pacVO">
 insert into cart(member_id, item_id, cart_id, quantity)
-values(#{member_id}, #{item_id}, SEQ_CART_ID.nextval, #{quantity});
+values(#{member_id}, #{item_id}, SEQ_CART_ID.nextval, #{quantity})
 </insert>
 
 </mapper>

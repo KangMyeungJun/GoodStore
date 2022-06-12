@@ -25,8 +25,11 @@
 <typeAlias type="kr.co.goodstore.domain.product.ProductListDomain" alias="pld"/>
 <typeAlias type="kr.co.goodstore.domain.product.ProductDomain" alias="pd"/>
 <typeAlias type="kr.co.goodstore.domain.product.ProductCommentDomain" alias="pcd"/>
+<typeAlias type="kr.co.goodstore.domain.product.ProductCategoryDomain" alias="pcatd"/>
 <typeAlias type="kr.co.goodstore.domain.product.SubImageDomain" alias="sid"/>
 <typeAlias type="kr.co.goodstore.vo.product.ProductListVO" alias="plVO"/>
+<typeAlias type="kr.co.goodstore.vo.product.ProductCommentVO" alias="pcommVO"/>
+<typeAlias type="kr.co.goodstore.vo.product.AddCartVO" alias="pacVO"/>
 <typeAlias type="kr.co.goodstore.domain.main.CategoryDomain" alias="maincd"/>
 <typeAlias type="kr.co.goodstore.domain.main.BlogDomain" alias="mainbd"/>
 <typeAlias type="kr.co.goodstore.domain.main.ItemDomain" alias="mainid"/>

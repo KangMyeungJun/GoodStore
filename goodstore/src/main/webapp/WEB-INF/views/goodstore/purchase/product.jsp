@@ -102,11 +102,11 @@ if(request.getParameter("keyword") != null){
 					</div>
 				</form>
 			</div>
-
-			<div class="row isotope-grid">
+			<div id="product-wrap">
+			<div class="row isotope-grid" id="product-list-wrap">
 		
 				<c:forEach var="productList" items="${ productList }">
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item ${productList.category_name}">
+				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item product-list-each ${productList.category_name}">
 					<!-- Block2 -->
 					<div class="block2">
 						<div class="block2-pic hov-img0">
@@ -121,7 +121,7 @@ if(request.getParameter("keyword") != null){
  								<c:out value="${ productList.com_name }"/>
 								</span>
 								
- 								<a href="product_detail/${ productList.item_id }" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+ 								<a href="product_detail/${productList.category_id}/${ productList.item_id }" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
  								<c:out value="${ productList.item_name }"/>									 
 								</a>
 
@@ -141,97 +141,187 @@ if(request.getParameter("keyword") != null){
 				</div>
 				</c:forEach>
 			</div>
+			</div>
 
 			<!-- Load more -->
 			<div class="flex-c-m flex-w w-full p-t-45">
-				<a href="#" class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">
+				<button class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04" id="load-more">
 					Load More
-				</a>
+				</button>
 			</div>
 		</div>
 	</div>
-<%-- <script src="${initParam.staticPath}js/main.js"></script> --%>
 <%@ include file="../common/footer.jsp" %>
-<%@ include file="../common/quick_view.jsp" %>
+<div id="quick-view-wrap"></div>
 <%@ include file="../common/common_js.jsp" %>
-
 <script>
+$('#load-more').click(function(){
+	var startNum = $('#product-list-wrap .product-list-each').length;
+	var addCnt = 8;
+	var item_count = startNum + addCnt
+	var productHtml = "";
+	
+	$.ajax({
+		url : 'load_more.action',
+		type : 'POST',
+		dataType : "text",
+		data : {
+			"item_count" : item_count,
+			"sort" : '<%=sortValue%>',
+			"keyword" : '<%=keywordValue%>'
+		},
+		success :function(result){
+			console.log("결과확인");
+//			$("#product_content").replaceWith(result);
+			var html = jQuery('<div>').html(result);
+			var contents = html.find('div#product_content').html();
+			$("#product-wrap").html(contents) 
+			quickBtn();
+
+		},
+		error : function(){
+			alert('에러입니다');
+		}
+	})
+}); 
+</script>
+<script>
+$(function(){quickBtn();});
+function quickBtn(){
+	$('.js-show-modal1').on('click',function(e){
+	    e.preventDefault();
+	    var bno = this.value;
+		console.log('click');
+		$.ajax({
+			url : "quick_view.action",
+			type : 'get',
+			data : {
+				item_id : bno
+			},
+			success:function(result){
+				console.log('성공');
+				var html = jQuery('<div>').html(result);
+				var contents = html.find('div#quick_view').html();
+				$("#quick-view-wrap").html(contents) 
+			    $('.js-modal1').addClass('show-modal1');
+				<c:import url="${initParam.staticPath}js/main.js"/>
+				<c:import url="${initParam.staticPath}js/slick-custom.js"/>
+				chkNumPro();
+				$('.js-addcart-detail').each(function(){
+			    	var nameProduct = $.trim(html.find('h4.quick-view-name').text())
+			    	$(this).on('click', function(){
+			    		$.ajax({
+			    			url : "add_cart.action",
+			    			type : "post",
+			    			data : {
+			    				item_id : bno,
+			    				quantity : numProduct
+			    			},
+			    			success:function(result){
+			    				
+			    				if(result == 1){
+ 				    	    		swal(nameProduct, "이/가 장바구니에 담겼습니다.", "success"); 
+			    				}else{
+			    					alert("로그인이 필요합니다");
+			    				}
+			    			},
+			    			error:function(){
+			    				alert("카트 담기 실패");
+			    			}
+			    		})
+			    	});
+			    }); //ajax add-cart 
+			},
+			error:function(request, status, error){
+				alert(request.status+"\n"+request.responseText+"\n"+error);
+			}
+			});//ajax
+		});
+	};
+var numProduct = 1;
+function chkNumPro(){
+    $('.btn-num-product-up').on('click', function(){
+        numProduct += 1;
+		console.log(numProduct);
+    });
+}
+</script>
+<!---------------------------------- 하드코딩 에러없으면 지움 ----------------------------->
+<!-- <script>
+function quickBtn(){
 $('.js-show-modal1').on('click',function(e){
     e.preventDefault();
     var bno = this.value;
-
-$.ajax({
-	url : "quick_view.action",
-	type : 'get',
-	data : {
-		item_id : bno
-	},
-	success:function(data){
-/* 		initialize image link attribute */
-	    $('.quick-view-main').attr('src','');
-	    $('.quick-view-sub').attr('src', '');
-	    $('.quick-view-expand').attr('href','');
-	    
-/* 	    first image box is filled with productDetail domain */
-		if(data.productDetail){
-		    $('.quick-view-title').html(data.productDetail.item_name);
-		    $('.quick-view-price').html(data.productDetail.price);
-		    $('.quick-view-summary').html(data.productDetail.summary);
-			$('.quick-view-main').eq(0).attr('src','${initParam.staticPath}images/'+data.productDetail.image);
-			$('.quick-view-sub').eq(0).attr('src','${initParam.staticPath}images/'+data.productDetail.image);
-			$('.quick-view-expand').eq(0).attr('href','${initParam.staticPath}images/'+data.productDetail.image);
+	console.log('click');
+	$.ajax({
+		url : "quick_view.action",
+		type : 'get',
+		data : {
+			item_id : bno
+		},
+		success:function(data){
+	/* 		initialize image link attribute */
+		    $('.quick-view-main').attr('src','');
+		    $('.quick-view-sub').attr('src', '');
+		    $('.quick-view-expand').attr('href','');
+		    $('.num-product').val(1);
+		    
+	/* 	    first image box is filled with productDetail domain */
+			if(data.productDetail){
+			    $('.quick-view-title').html(data.productDetail.item_name);
+			    $('.quick-view-price').html(data.productDetail.price);
+			    $('.quick-view-summary').html(data.productDetail.summary);
+				$('.quick-view-main').eq(0).attr('src','${initParam.staticPath}images/'+data.productDetail.image);
+				$('.quick-view-sub').eq(0).attr('src','${initParam.staticPath}images/'+data.productDetail.image);
+				$('.quick-view-expand').eq(0).attr('href','${initParam.staticPath}images/'+data.productDetail.image);
+			}
+			
+	/* 		other images are filled with subImage domain */
+			if(data.subImageList && data.subImageList.length){
+				var subImage = data['subImageList'];
+		    	for(var i in subImage){
+			    	var index = i-0+1;
+				    $('.quick-view-main').eq(index).attr('src','${initParam.staticPath}images/'+subImage[i]['sub_image']);
+				    $('.quick-view-sub').eq(index).attr('src', '${initParam.staticPath}images/'+subImage[i]['sub_image']);
+				    $('.quick-view-expand').eq(index).attr('href','${initParam.staticPath}images/'+subImage[i]['sub_image']);
+		    	}
+			}
+			
+		    $('.js-modal1').addClass('show-modal1');
+			  
+	 	    $('.js-addcart-detail').each(function(){
+		    	//var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
+		    	var nameProduct = $('.quick-view-title').html();
+		    	var numProduct = $('.num-product').val();
+		    	$(this).on('click', function(){
+		    		$.ajax({
+		    			url : "add_cart.action",
+		    			type : "post",
+		    			data : {
+		    				item_id : bno,
+		    				quantity : numProduct
+		    			},
+		    			success:function(result){
+		    				
+		    				if(result == 1){
+			    	    		swal(nameProduct, "is added to cart !", "success");
+		    				}else{
+		    					alert("로그인이 필요합니다");
+		    				}
+		    			},
+		    			error:function(){
+		    				alert("카트 담기 실패");
+		    			}
+		    		})
+		    	});
+		    }); 
+		},
+		error:function(request, status, error){
+			alert(request.status+"\n"+request.responseText+"\n"+error);
 		}
-		
-/* 		other images are filled with subImage domain */
-		if(data.subImageList && data.subImageList.length){
-			var subImage = data['subImageList'];
-	    	for(var i in subImage){
-		    	var index = i-0+1;
-			    $('.quick-view-main').eq(index).attr('src','${initParam.staticPath}images/'+subImage[i]['sub_image']);
-			    $('.quick-view-sub').eq(index).attr('src', '${initParam.staticPath}images/'+subImage[i]['sub_image']);
-			    $('.quick-view-expand').eq(index).attr('href','${initParam.staticPath}images/'+subImage[i]['sub_image']);
-	    	}
-		}
-		
-	    $('.js-modal1').addClass('show-modal1');
-		  
- 	    $('.js-addcart-detail').each(function(){
-	    	//var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
-	    	var nameProduct = $('.quick-view-title').html();
-	    	var numProduct = $('.num-product').val();
-	    	$(this).on('click', function(){
-	    		$.ajax({
-	    			url : "add_cart.action",
-	    			type : "post",
-	    			data : {
-	    				item_id : bno,
-	    				quantity : numProduct
-	    			},
-	    			success:function(result){
-	    				
-	    				if(result == 1){
-		    	    		swal(nameProduct, "is added to cart !", "success");
-	    				}else{
-	    					alert("로그인이 필요합니다");
-	    				}
-	    			},
-	    			error:function(){
-	    				alert("카트 담기 실패");
-	    			}
-	    		})
-	    	});
-	    }); 
-	},
-	error:function(request, status, error){
-		alert(request.status+"\n"+request.responseText+"\n"+error);
-	}
-	});//ajax
-
-});
-</script>
-<script>
-
-
-</script>
+		});//ajax
+	});
+};
+</script> -->
 </body>
 </html>

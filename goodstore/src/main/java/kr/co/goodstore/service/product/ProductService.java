@@ -7,11 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import kr.co.goodstore.dao.product.ProductDAO;
+import kr.co.goodstore.domain.product.ProductCategoryDomain;
 import kr.co.goodstore.domain.product.ProductCommentDomain;
 import kr.co.goodstore.domain.product.ProductDomain;
 import kr.co.goodstore.domain.product.ProductListDomain;
 import kr.co.goodstore.domain.product.SubImageDomain;
 import kr.co.goodstore.vo.product.AddCartVO;
+import kr.co.goodstore.vo.product.ProductCommentVO;
 import kr.co.goodstore.vo.product.ProductListVO;
 
 @Component
@@ -54,7 +56,31 @@ public class ProductService {
 
 		return list;
 	}//subImageList
+	
+	public List<ProductCategoryDomain> productCategory(){
+		List<ProductCategoryDomain> list=null;
 
+		try {
+			list=pDAO.productCategory();
+		}catch(PersistenceException pe){
+			pe.printStackTrace();
+		}
+
+		return list;
+	}//subImageList
+
+	public List<ProductListDomain> relatedProducts(int category_id){
+		List<ProductListDomain> list=null;
+
+		try {
+			list=pDAO.relatedProducts(category_id);
+		}catch(PersistenceException pe){
+			pe.printStackTrace();
+		}
+
+		return list;
+	}//relatedProducts
+	
 	public List<ProductCommentDomain> productComment(int item_id){
 		List<ProductCommentDomain> list=null;
 
@@ -66,6 +92,10 @@ public class ProductService {
 
 		return list;
 	}//productComment
+	
+	public void addProductComment(ProductCommentVO comment) throws Exception{
+		pDAO.addProductComment(comment);
+	}
 	
 	public void addCart(AddCartVO cart) throws Exception{
 		pDAO.addCart(cart);
