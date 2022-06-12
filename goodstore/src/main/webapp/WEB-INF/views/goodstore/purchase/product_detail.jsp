@@ -274,15 +274,11 @@
 						<div class="block2">
 							<div class="block2-pic hov-img0">
 								<img src="${initParam.staticPath}images/${relPro.image}" alt="IMG-PRODUCT">
-
-								<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-									Quick View
-								</a>
 							</div>
 
 							<div class="block2-txt flex-w flex-t p-t-14">
 								<div class="block2-txt-child1 flex-col-l ">
-									<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+									<a href="${initParam.commonUrl}product_detail/${relPro.category_id}/${ relPro.item_id }" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
 										${relPro.item_name}
 									</a>
 
@@ -308,7 +304,49 @@
 
 
 <%@ include file="../common/footer.jsp" %>
+<div id="quick-view-wrap"></div>
 <%@ include file="../common/common_js.jsp" %>
+<!------ addCart 관련 js ------>
+<script>
+var numProduct = 1;
+function chkNumPro(){
+    $('.btn-num-product-up').on('click', function(){
+        numProduct += 1;
+    });
+    $('.btn-num-product-down').on('click', function(){
+    	numProduct -= 1;
+    });
+}
+$('.js-addcart-detail').each(function(){
+   	var nameProduct = "${ productDetail.item_name }";
+   	var item_id = ${productDetail.item_id}
+	var postUrl = "${initParam.commonUrl}add_cart.action";
+	chkNumPro()
+   	$(this).on('click', function(){
+   	console.log(nameProduct, item_id, numProduct);
+   		$.ajax({
+   			url : postUrl,
+   			type : "post",
+   			data : {
+   				item_id : item_id,
+   				quantity : numProduct
+   			},
+   			success:function(result){
+   				
+   				if(result == 1){
+	    	    		swal(nameProduct, "이/가 장바구니에 담겼습니다.", "success"); 
+   				}else{
+   					alert("로그인이 필요합니다");
+   				}
+   			},
+   			error:function(){
+   				alert("카트 담기 실패");
+   			}
+   		})
+   	});
+   }); //ajax add-cart 
+</script>
+<!-------- comment 관련 js ------->
 <script>
 $('.comment-btn').on('click', function(e){
 	var review = $('.item-review').val();
@@ -338,7 +376,14 @@ $('.comment-btn').on('click', function(e){
 function clearComment(){
 	$('.item-review').val('');
 	$('.star-rating').val(0);
- 	$('.zmdi-star').attr('class','item-rating pointer zmdi zmdi-star-outline'); 
+    $('.wrap-rating').each(function(){   
+        var item = $(this).find('.item-rating');
+        var index = item.index(this);
+        for(i=0; i<=5; i++) {
+            $(item[i]).removeClass('zmdi-star');
+            $(item[i]).addClass('zmdi-star-outline');
+        }
+    });
 }
 </script>
 </body>
