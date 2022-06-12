@@ -19,7 +19,7 @@ public class RegisterContoller {
 	private RegisterService rs;
 
 	//회원가입
-	@GetMapping("/signup")
+	//@GetMapping("/signup")
 	public String signUp(String email, MemberVO mVO) {
 		int cnt = rs.searchEmail(email);
 		try {

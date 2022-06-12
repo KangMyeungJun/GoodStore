@@ -10,9 +10,31 @@ select category_name, image
 from category
 </select>
 
+<!-- 최신순 -->
+<select id="searchRecentlyItem" resultType="mainid">
+<![CDATA[
+select item_id, item_name, price, image from item where rownum < 9 order by upload_date desc
+]]>
+</select>
+<!-- 가격순 -->
+<select id="searchPriceOrderItem" resultType="mainid">
+<![CDATA[
+select item_id, item_name, price, image from item where rownum < 9 order by price
+]]>
+</select>
+
 <!-- 주문 많은 순 아이템 보여주기 -->
 <select id="searchBestItem" resultType="mainid">
-
+<![CDATA[
+select item_id,item_name,price,image
+from(
+select order_detail.item_id,item_name,price,image 
+from item,ORDER_DETAIL 
+where (item.item_id=order_detail.item_id)
+group by order_detail.item_id,price,item_name,image 
+order by count(*) desc)
+where rownum < 9
+]]>
 </select>
 
 <!-- 별점 순 아이템 보여주기 -->

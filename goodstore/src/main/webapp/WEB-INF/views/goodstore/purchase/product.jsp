@@ -175,9 +175,9 @@ $('#load-more').click(function(){
 			var html = jQuery('<div>').html(result);
 			var contents = html.find('div#product_content').html();
 			$("#product-wrap").html(contents) 
+			quickBtn();
 ///////////////////////main.js의 data-filter가 안먹힘 에러 해결필요 ///////////////////////
 //			<c:import url="${initParam.staticPath}js/main.js"/>
-			quickBtn();
 
 		},
 		error : function(){
