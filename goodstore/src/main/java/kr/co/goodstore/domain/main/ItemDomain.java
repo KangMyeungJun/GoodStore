@@ -14,5 +14,6 @@ public class ItemDomain {
 	private int item_id;
 	private int price; 
 	private int star;
+	private int category_id;
 	
 }

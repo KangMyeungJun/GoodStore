@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html lang="en">
 <head>
 	<title>Product Detail</title>
@@ -43,22 +44,22 @@
 							<div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
 
 							<div class="slick3 gallery-lb">
-								<div class="item-slick3" data-thumb="${initParam.staticPath}images/${ productDetail.image }">
+								<div class="item-slick3" data-thumb="${ initParam.uploadPath }${ productDetail.image }">
 									<div class="wrap-pic-w pos-relative">
-										<img src="${initParam.staticPath}images/${ productDetail.image }" alt="IMG-PRODUCT">
+										<img src="${ initParam.uploadPath }${ productDetail.image }" alt="IMG-PRODUCT">
 
-										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="${initParam.staticPath}images/${ productDetail.image }">
+										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="${ initParam.uploadPath }${ productDetail.image }">
 											<i class="fa fa-expand"></i>
 										</a>
 									</div>
 								</div>
 								
 								<c:forEach items="${subImageList}" var="subImage">
-								<div class="item-slick3" data-thumb="${initParam.staticPath}images/<c:out value="${ subImage.sub_image }"/>">
+								<div class="item-slick3" data-thumb="${ initParam.uploadPath }${ subImage.sub_image }">
 									<div class="wrap-pic-w pos-relative">
-										<img src="${initParam.staticPath}images/<c:out value="${ subImage.sub_image }"/>" alt="IMG-PRODUCT">
+										<img src="${ initParam.uploadPath }${ subImage.sub_image }" alt="IMG-PRODUCT">
 
-										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="${initParam.staticPath}images/<c:out value="${ subImage.sub_image }"/>">
+										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="${ initParam.uploadPath }${ subImage.sub_image }">
 											<i class="fa fa-expand"></i>
 										</a>
 									</div>
@@ -76,7 +77,7 @@
 						</h4>
 
 						<span class="mtext-106 cl2">
- 							<c:out value="${ productDetail.price }"/>원							
+							<fmt:formatNumber pattern="#,###" value="${productDetail.price}"/>원
 						</span>
 
 						<p class="stext-102 cl3 p-t-23">
@@ -273,7 +274,7 @@
 						<!-- Block2 -->
 						<div class="block2">
 							<div class="block2-pic hov-img0">
-								<img src="${initParam.staticPath}images/${relPro.image}" alt="IMG-PRODUCT">
+								<img src="${ initParam.uploadPath }${ relPro.image }" alt="IMG-PRODUCT">
 							</div>
 
 							<div class="block2-txt flex-w flex-t p-t-14">
@@ -283,7 +284,7 @@
 									</a>
 
 									<span class="stext-105 cl3">
-										${relPro.price}원
+										<fmt:formatNumber pattern="#,###" value="${relPro.price}"/>원
 									</span>
 								</div>
 
@@ -304,7 +305,6 @@
 
 
 <%@ include file="../common/footer.jsp" %>
-<div id="quick-view-wrap"></div>
 <%@ include file="../common/common_js.jsp" %>
 <!------ addCart 관련 js ------>
 <script>
