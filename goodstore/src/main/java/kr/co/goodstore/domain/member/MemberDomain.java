@@ -9,5 +9,6 @@ import lombok.ToString;
 @ToString
 public class MemberDomain {
 
-	private String email, password;
+	private String password;
+	private int member_id;
 }

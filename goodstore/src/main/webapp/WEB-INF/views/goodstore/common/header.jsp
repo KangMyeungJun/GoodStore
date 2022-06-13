@@ -70,13 +70,24 @@
 					<div class="wrap-icon-header flex-w flex-r-m h-full">
             <div class="login-desktop">
               <ul class="login-menu">
-                <li>
-                  <a href="signup.html">Sign Up</a>
-                </li>
-                <li>
-                  <a href="signin.html">Sign In</a>
-                </li>
-
+               <%-- <% String email=(String)session.getAttribute("loginEmail"); %> --%>
+                <c:out value="${sessionScope.loginEmail}"/>
+                <c:choose>
+                	<c:when test="${sessionScope.loginEmail eq null}">
+	                <li>
+	                  <a href="signup.html">Sign Up</a>
+	                </li>
+	                <li>
+	                  <a href="signin_page">Sign In</a>
+	                </li>
+	               </c:when>
+	               
+	               <c:otherwise>
+	                <li>
+	                  <a href="/logout">Sign Out</a>
+	                </li>
+	               </c:otherwise>
+				</c:choose>
                 <!-- 세션에서 유저의 로그인을 확인하면
                 <li>
                   <a href="signout.html">Sign Out</a>

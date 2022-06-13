@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ page session="false" %>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 	<title>GOOD STORE</title>
 	<meta charset="UTF-8">
