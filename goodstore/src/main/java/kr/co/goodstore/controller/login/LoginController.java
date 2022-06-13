@@ -55,10 +55,10 @@ public class LoginController {
 		
 		//HttpSession session=req.getSession();
 		//session.invalidate();
-		ss.setComplete();
-		//HttpSession session = req.getSession();
+		//ss.setComplete();
+		HttpSession session = req.getSession();
 		//System.out.println(ss.isComplete());
-		//session.invalidate();
+		session.invalidate();
 		
 		return "redirect:index";
 	}
