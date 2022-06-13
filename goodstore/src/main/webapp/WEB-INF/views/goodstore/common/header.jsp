@@ -186,11 +186,11 @@
 				</button>
 
 				<!-- 검색으로 넘겨주기 -->
-				<form class="wrap-search-header flex-w p-l-15">
+				<form action="${initParam.commonUrl}product" class="wrap-search-header flex-w p-l-15">
 					<button class="flex-c-m trans-04">
 						<i class="zmdi zmdi-search"></i>
 					</button>
-					<input class="plh3" type="text" name="search" placeholder="Search...">
+					<input class="plh3" type="text" name="keyword" placeholder="Search...">
 				</form>
 			</div>
 		</div>

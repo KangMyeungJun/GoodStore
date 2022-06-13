@@ -45,7 +45,6 @@ if(request.getParameter("keyword") != null){
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
 						All Products
 					</button>
-
 					<c:forEach var="category" items="${categoryList}">
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".<c:out value="${ category.category_name }"/>">
 						<c:out value="${ category.category_name }"/>

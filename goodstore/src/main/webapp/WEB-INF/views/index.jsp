@@ -312,9 +312,10 @@
 										<div class="block2-pic hov-img0">
 											<img class="home-store-img" src="${initParam.uploadPath }${item.image }" alt="IMG-PRODUCT">
 
-											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+											<button class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1" value="${item.item_id}">
 												Quick View
-											</a>
+											</button>
+
 										</div>
 
 										<div class="block2-txt flex-w flex-t p-t-14">
@@ -356,9 +357,9 @@
 										<div class="block2-pic hov-img0">
 											<img class="home-store-img" src="${initParam.uploadPath }${item.image }" alt="IMG-PRODUCT">
 
-											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+											<button class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1" value="${item.item_id}">
 												Quick View
-											</a>
+											</button>
 										</div>
 
 										<div class="block2-txt flex-w flex-t p-t-14">
@@ -546,6 +547,7 @@ function quickBtn(){
 	$('.js-show-modal1').on('click',function(e){
 	    e.preventDefault();
 	    var item_id = this.value;
+	    console.log(item_id);
 		$.ajax({
 			url : "quick_view.action",
 			type : 'get',
