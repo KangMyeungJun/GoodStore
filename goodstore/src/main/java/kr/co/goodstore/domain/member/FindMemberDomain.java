@@ -7,8 +7,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class MemberDomain {
+public class FindMemberDomain {
 
-	private String password;
-	private int member_id;
+	private String password,email;
 }

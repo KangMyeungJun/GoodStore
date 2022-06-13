@@ -42,9 +42,13 @@ public class CartController {
 	 */
 	@GetMapping("cart")
 	public String shoppingCart(HttpSession session,Model model ) {
-		
+		int id=(Integer) session.getAttribute("loginSession");
 		//세션 수정 넣어줘야함
-		model.addAttribute("cartItemList",cs.searchCartItems(1));
+		System.out.println("*****************************************");
+		System.out.println("*****************************************");
+		System.out.println("*****************************************");
+		System.out.println(id);
+		model.addAttribute("cartItemList",cs.searchCartItems(id));
 		//System.out.println(cs.searchCartItems(1));
 		
 		return "goodstore/purchase/cart";
@@ -61,9 +65,9 @@ public class CartController {
 	@RequestMapping(value="cart/quantity",method=RequestMethod.POST, 
 	produces="application/json;charset=UTF-8")
 	public String quantityBtn(HttpSession session, CartVO cVO) {
-		
+		int id=(Integer) session.getAttribute("loginSession");
 		//cVO.setMember_id(session.getAttribute("member_id"));
-		cVO.setMember_id(1); //임의로 지정해준 세션 아이디
+		cVO.setMember_id(id); //임의로 지정해준 세션 아이디
 		return cs.quantityChangeJSON(cVO);
 	}
 	
@@ -79,9 +83,11 @@ public class CartController {
 	@GetMapping(value="cart/address",produces="application/json;charset=UTF-8")
 	public String Btn(HttpSession session) {
 		
+		int id=(Integer) session.getAttribute("loginSession");
+		
 		//임의로 지정해준 세션 아이디
 		
-		return cs.addressJSON(1); //나중에 세션 번호 넣어줘야함.
+		return cs.addressJSON(id); //나중에 세션 번호 넣어줘야함.
 	}
 	
 	
@@ -114,9 +120,10 @@ public class CartController {
 	
 	
 	@PostMapping("purchase/success")
-	public String purchaseSuccess(PurchaseVO pVO,Model model) {
+	public String purchaseSuccess(PurchaseVO pVO,Model model,HttpSession session) {
+		int id=(Integer) session.getAttribute("loginSession");
 		
-		pVO.setMember_id(1); //세션에 있는 멤버 아이디 VO에 넣어주기
+		pVO.setMember_id(id); //세션에 있는 멤버 아이디 VO에 넣어주기
 		
 		System.out.println(pVO.getTotal_price());
 		
@@ -160,8 +167,9 @@ public class CartController {
 	@GetMapping("cart/header")
 	@ResponseBody
 	public String headerCart(HttpSession session) {
+		int id=(Integer) session.getAttribute("loginSession");
 		int cnt=0;
-		cnt=cs.searchCartItems(1).size();
+		cnt=cs.searchCartItems(id).size();
 		JSONObject json=new JSONObject();
 			json.put("count",cnt);
 		String data="";
