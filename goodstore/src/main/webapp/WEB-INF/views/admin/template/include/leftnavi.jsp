@@ -145,5 +145,19 @@
               </ul>
             </div>
           </li>
+          <li class="nav-item menu-items" id="nav-company">
+            <a class="nav-link" data-toggle="collapse" href="#ui-company" aria-expanded="false" aria-controls="ui-basic">
+              <span class="menu-icon">
+                <i class="mdi mdi-wrench"></i>
+              </span>
+              <span class="menu-title">Company</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="ui-company">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="${initParam.middlePath }/admin/company/">Company List</a></li>
+              </ul>
+            </div>
+          </li>
         </ul>
       </nav>

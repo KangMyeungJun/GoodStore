@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.goodstore.admin.company">
+<select id="selectCompanies" parameterType="PagingVO" resultType="AdminCompaniesDomain">
+select company_id,name,type
+from(
+select row_number() over(order by company_id desc) rnum, company_id,name,type
+from company 
+where name like '%'|| #{keyword} || '%'
+)
+<where>
+rnum between #{first} and #{last}
+</where>
+</select>
+
+<select id="selectCompanyCnt" parameterType="String" resultType="int">
+select count(*)
+from company 
+<where>
+<if test="String != null or String != ''">
+name like '%'|| #{keyword} || '%'
+</if>
+</where>
+</select>
+
+<select id="selectOneCompany" resultType="AdminCompaniesDomain" parameterType="Integer">
+select company_id,name,type
+from company
+where company_id=#{company_id}
+</select>
+
+<update id="updateCompany" parameterType="AdminCompanyVO">
+update company
+<trim prefix="SET" suffixOverrides=",">
+		<if test="name != null">name=#{name},</if>
+		<if test="type != null">type=#{type},</if>
+</trim>
+<where>
+company_id=#{company_id}
+</where>
+</update>
+
+<delete id="deleteCompany" parameterType="int">
+delete from company
+where company_id = #{company_id}
+</delete>
+
+<insert id="insertCompnay" parameterType="AdminCompanyVO">
+insert into company(company_id,name,type) values
+(GOOD.SEQ_COMPANY_ID.NEXTVAL,#{name},#{type})
+</insert>
+</mapper>
