@@ -44,6 +44,11 @@ public class AdminController {
 	@Autowired(required = false)
 	private final FileConvert fc = new FileConvert();
 	
+	@GetMapping("/admin")
+	public String redirectAdmin() {
+		return "redirect:/admin_index";
+	}
+	
 	  @GetMapping("/admin_index")
 	  public String welcome1(Model model) {
 		//  전체사용자 수
