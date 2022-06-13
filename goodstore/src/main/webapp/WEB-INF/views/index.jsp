@@ -1492,5 +1492,8 @@
 
 <%@ include file="goodstore/common/footer.jsp" %>
 <%@ include file="goodstore/common/common_js.jsp" %>
+<script type="text/javascript">
+history.replaceState({},null,location.pathname);
+</script>
 </body>
 </html>

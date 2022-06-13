@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.co.goodstore.domain.member.MemberDomain;
@@ -15,6 +16,7 @@ import kr.co.goodstore.service.login.LoginService;
 import kr.co.goodstore.vo.member.LoginVO;
 import kr.co.goodstore.vo.member.MemberVO;
 
+@SessionAttributes
 @Controller
 public class LoginController {
 
@@ -42,19 +44,22 @@ public class LoginController {
 			System.out.println("·Î±×ÀÎµÊ");
 			System.out.println(md.getMember_id());
 			//model.addAttribute("loginEmail", md.getEmail());
-			session.setAttribute("loginEmail", md.getMember_id());
+			session.setAttribute("loginSession", md.getMember_id());
 			return "index";
 		}
 		
 	}//loginResult
 	
-	@GetMapping("/logout")
-	public String memberLogout(HttpServletRequest req) {
+	@GetMapping("logout")
+	public String memberLogout(SessionStatus ss, HttpServletRequest req) {
 		
-		HttpSession session = req.getSession();
-		
+		HttpSession session=req.getSession();
 		session.invalidate();
+		//ss.setComplete();
+		//HttpSession session = req.getSession();
+		//System.out.println(ss.isComplete());
+		//session.invalidate();
 		
-		return "index";
+		return "redirect:index";
 	}
 }

@@ -2,7 +2,6 @@
          pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ page session="false" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -55,91 +54,6 @@ padding-right: 15px;
 <%@ include file="../common/header.jsp" %>
 
 <%@ include file="../common/sidebar.jsp" %>
-
-	<!-- Cart -->
-	<div class="wrap-header-cart js-panel-cart">
-		<div class="s-full js-hide-cart"></div>
-
-		<div class="header-cart flex-col-l p-l-65 p-r-25">
-			<div class="header-cart-title flex-w flex-sb-m p-b-8">
-				<span class="mtext-103 cl2">
-					Your Cart
-				</span>
-
-				<div class="fs-35 lh-10 cl2 p-lr-5 pointer hov-cl1 trans-04 js-hide-cart">
-					<i class="zmdi zmdi-close"></i>
-				</div>
-			</div>
-			
-			<div class="header-cart-content flex-w js-pscroll">
-				<ul class="header-cart-wrapitem w-full">
-					<li class="header-cart-item flex-w flex-t m-b-12">
-						<div class="header-cart-item-img">
-							<img src="${initParam.staticPath}images/item-cart-01.jpg" alt="IMG">
-						</div>
-
-						<div class="header-cart-item-txt p-t-8">
-							<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-								White Shirt Pleat
-							</a>
-
-							<span class="header-cart-item-info">
-								1 x $19.00
-							</span>
-						</div>
-					</li>
-
-					<li class="header-cart-item flex-w flex-t m-b-12">
-						<div class="header-cart-item-img">
-							<img src="${initParam.staticPath}images/item-cart-02.jpg" alt="IMG">
-						</div>
-
-						<div class="header-cart-item-txt p-t-8">
-							<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-								Converse All Star
-							</a>
-
-							<span class="header-cart-item-info">
-								1 x $39.00
-							</span>
-						</div>
-					</li>
-
-					<li class="header-cart-item flex-w flex-t m-b-12">
-						<div class="header-cart-item-img">
-							<img src="${initParam.staticPath}images/item-cart-03.jpg" alt="IMG">
-						</div>
-
-						<div class="header-cart-item-txt p-t-8">
-							<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-								Nixon Porter Leather
-							</a>
-
-							<span class="header-cart-item-info">
-								1 x $17.00
-							</span>
-						</div>
-					</li>
-				</ul>
-				
-				<div class="w-full">
-					<div class="header-cart-total w-full p-tb-40">
-						Total: $75.00
-					</div>
-
-					<div class="header-cart-buttons flex-w w-full" style="justify-content: center;">
-						<a href="cart" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
-							구매하기
-						</a>
-
-						<!-- <a href="shoping-cart.html" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
-							Check Out
-						</a> -->
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
 
 
 	<!-- breadcrumb -->
@@ -222,7 +136,7 @@ padding-right: 15px;
 											</div>
 											<!-- 수량 -->				
 											<input class="mtext-104 cl3 txt-center num-product" type="number"
-												name="num-product1" value="${cartItem.quantity}" id="${cartItem.cart_id}"/>
+												name="num-product2" value="${cartItem.quantity}" id="${cartItem.cart_id}"/>
 
 											<!-- <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m" >
 												<i class="fs-16 zmdi zmdi-plus"></i>
@@ -578,14 +492,13 @@ var coupon_id=0;
 			if(updown==1){//db에 넘겨주기 위해 원래 수량에 +1
 				
 				quantity=parseInt(quantity)+1
-				
+				document.getElementById(cart_id).value=quantity;
 				if(checkbox.checked){
 					t=parseInt(p)+parseInt(t); //최총 금액에 추가된 수량에 따른 해당상품의 값 넣어주기
 				}
 			}else if(updown==0){//db에 넘겨주기 위해 원래 수량에 -1
-				
-				
 				quantity=parseInt(quantity)-1
+				document.getElementById(cart_id).value=quantity;
 				//alert(quantity)
 					if(checkbox.checked){
 				 		t=parseInt(t)-parseInt(p);

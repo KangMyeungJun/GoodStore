@@ -70,10 +70,9 @@
 					<div class="wrap-icon-header flex-w flex-r-m h-full">
             <div class="login-desktop">
               <ul class="login-menu">
-               <%-- <% String email=(String)session.getAttribute("loginEmail"); %> --%>
-                <c:out value="${sessionScope.loginEmail}"/>
+               <%-- <c:out value="${sessionScope.loginSession}"/> --%>
                 <c:choose>
-                	<c:when test="${sessionScope.loginEmail eq null}">
+                	<c:when test="${sessionScope.loginSession eq null}">
 	                <li>
 	                  <a href="signup.html">Sign Up</a>
 	                </li>
@@ -84,7 +83,7 @@
 	               
 	               <c:otherwise>
 	                <li>
-	                  <a href="/logout">Sign Out</a>
+	                  <a href="logout">Sign Out</a>
 	                </li>
 	               </c:otherwise>
 				</c:choose>
