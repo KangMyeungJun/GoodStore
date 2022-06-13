@@ -3376,6 +3376,7 @@ input.num-product::-webkit-inner-spin-button {
 .home-blog-img {height:15vw;}
 .blog-thumbnail-img{height:25vw;}
 .blog-detail-img{height:25vw;}
+.product-list-img{height:20vw;}
 
 @media (max-width: 1600px) {
   .home-cat-img {height:25vw;}
@@ -3383,6 +3384,7 @@ input.num-product::-webkit-inner-spin-button {
   .home-blog-img {height:24vw;}
   .blog-thumbnail-img{height:30vw;}
   .blog-detail-img{height:35vw;}
+  .product-list-img{height:25vw;}
   
   }
 
@@ -3392,6 +3394,8 @@ input.num-product::-webkit-inner-spin-button {
     .home-blog-img {height:25vw;}
     .blog-thumbnail-img{height:35vw;}
     .blog-detail-img{height:45vw;}
+    .product-list-img{height:45vw;}
+    
   }
 
   @media (max-width: 767px) {
@@ -3400,6 +3404,8 @@ input.num-product::-webkit-inner-spin-button {
     .home-blog-img {height:30vw;}
     .blog-thumbnail-img{height:50vw;}
     .blog-detail-img{height:55vw;}
+    .product-list-img{height:65vw;}
+    
   }
 
 

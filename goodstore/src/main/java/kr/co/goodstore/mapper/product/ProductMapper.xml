@@ -110,7 +110,7 @@ from item_comment i
 join member m
 on i.member_id = m.member_id
 where item_id=#{item_id}
-order by upload_date desc
+order by upload_date
 </select>
 
 <select id="productCommentAdd" parameterType="pcommVO">

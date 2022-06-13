@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html lang="en">
 <head>
 	<title>Product Detail</title>
@@ -43,22 +44,22 @@
 							<div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
 
 							<div class="slick3 gallery-lb">
-								<div class="item-slick3" data-thumb="${initParam.staticPath}images/${ productDetail.image }">
+								<div class="item-slick3" data-thumb="${ initParam.uploadPath }${ productDetail.image }">
 									<div class="wrap-pic-w pos-relative">
-										<img src="${initParam.staticPath}images/${ productDetail.image }" alt="IMG-PRODUCT">
+										<img src="${ initParam.uploadPath }${ productDetail.image }" alt="IMG-PRODUCT">
 
-										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="${initParam.staticPath}images/${ productDetail.image }">
+										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="${ initParam.uploadPath }${ productDetail.image }">
 											<i class="fa fa-expand"></i>
 										</a>
 									</div>
 								</div>
 								
 								<c:forEach items="${subImageList}" var="subImage">
-								<div class="item-slick3" data-thumb="${initParam.staticPath}images/<c:out value="${ subImage.sub_image }"/>">
+								<div class="item-slick3" data-thumb="${ initParam.uploadPath }${ subImage.sub_image }">
 									<div class="wrap-pic-w pos-relative">
-										<img src="${initParam.staticPath}images/<c:out value="${ subImage.sub_image }"/>" alt="IMG-PRODUCT">
+										<img src="${ initParam.uploadPath }${ subImage.sub_image }" alt="IMG-PRODUCT">
 
-										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="${initParam.staticPath}images/<c:out value="${ subImage.sub_image }"/>">
+										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="${ initParam.uploadPath }${ subImage.sub_image }">
 											<i class="fa fa-expand"></i>
 										</a>
 									</div>
@@ -76,7 +77,7 @@
 						</h4>
 
 						<span class="mtext-106 cl2">
- 							<c:out value="${ productDetail.price }"/>원							
+							<fmt:formatNumber pattern="#,###" value="${productDetail.price}"/>원
 						</span>
 
 						<p class="stext-102 cl3 p-t-23">
@@ -273,21 +274,17 @@
 						<!-- Block2 -->
 						<div class="block2">
 							<div class="block2-pic hov-img0">
-								<img src="${initParam.staticPath}images/${relPro.image}" alt="IMG-PRODUCT">
-
-								<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-									Quick View
-								</a>
+								<img src="${ initParam.uploadPath }${ relPro.image }" alt="IMG-PRODUCT">
 							</div>
 
 							<div class="block2-txt flex-w flex-t p-t-14">
 								<div class="block2-txt-child1 flex-col-l ">
-									<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+									<a href="${initParam.commonUrl}product_detail/${relPro.category_id}/${ relPro.item_id }" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
 										${relPro.item_name}
 									</a>
 
 									<span class="stext-105 cl3">
-										${relPro.price}원
+										<fmt:formatNumber pattern="#,###" value="${relPro.price}"/>원
 									</span>
 								</div>
 
@@ -309,6 +306,47 @@
 
 <%@ include file="../common/footer.jsp" %>
 <%@ include file="../common/common_js.jsp" %>
+<!------ addCart 관련 js ------>
+<script>
+var numProduct = 1;
+function chkNumPro(){
+    $('.btn-num-product-up').on('click', function(){
+        numProduct += 1;
+    });
+    $('.btn-num-product-down').on('click', function(){
+    	numProduct -= 1;
+    });
+}
+$('.js-addcart-detail').each(function(){
+   	var nameProduct = "${ productDetail.item_name }";
+   	var item_id = ${productDetail.item_id}
+	var postUrl = "${initParam.commonUrl}add_cart.action";
+	chkNumPro()
+   	$(this).on('click', function(){
+   	console.log(nameProduct, item_id, numProduct);
+   		$.ajax({
+   			url : postUrl,
+   			type : "post",
+   			data : {
+   				item_id : item_id,
+   				quantity : numProduct
+   			},
+   			success:function(result){
+   				
+   				if(result == 1){
+	    	    		swal(nameProduct, "이/가 장바구니에 담겼습니다.", "success"); 
+   				}else{
+   					alert("로그인이 필요합니다");
+   				}
+   			},
+   			error:function(){
+   				alert("카트 담기 실패");
+   			}
+   		})
+   	});
+   }); //ajax add-cart 
+</script>
+<!-------- comment 관련 js ------->
 <script>
 $('.comment-btn').on('click', function(e){
 	var review = $('.item-review').val();
@@ -338,7 +376,14 @@ $('.comment-btn').on('click', function(e){
 function clearComment(){
 	$('.item-review').val('');
 	$('.star-rating').val(0);
- 	$('.zmdi-star').attr('class','item-rating pointer zmdi zmdi-star-outline'); 
+    $('.wrap-rating').each(function(){   
+        var item = $(this).find('.item-rating');
+        var index = item.index(this);
+        for(i=0; i<=5; i++) {
+            $(item[i]).removeClass('zmdi-star');
+            $(item[i]).addClass('zmdi-star-outline');
+        }
+    });
 }
 </script>
 </body>

@@ -269,14 +269,14 @@
 										<div class="block2-pic hov-img0">
 											<img class="home-store-img" src="${initParam.uploadPath }${item.image }" alt="IMG-PRODUCT">
 
-											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+											<button class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1" value="${item.item_id}">
 												Quick View
-											</a>
+											</button>
 										</div>
 
 										<div class="block2-txt flex-w flex-t p-t-14">
 											<div class="block2-txt-child1 flex-col-l ">
-												<a href="product_detail/${item.item_id }" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+												<a href="product_detail/${item.category_id}/${item.item_id }" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
 													${item.item_name }
 												</a>
 
@@ -532,8 +532,123 @@
 			</div>
 		</div>
 	</section>
-
 <%@ include file="goodstore/common/footer.jsp" %>
 <%@ include file="goodstore/common/common_js.jsp" %>
+<div id="quick-view-wrap"></div>
+<!--------- quickView, addToCart 구현 js ---------->
+<script>
+$(function(){
+	quickBtn();
+});
+
+function quickBtn(){
+	$('.js-show-modal1').on('click',function(e){
+	    e.preventDefault();
+	    var item_id = this.value;
+		$.ajax({
+			url : "quick_view.action",
+			type : 'get',
+			data : {
+				item_id : item_id
+			},
+			success:function(result){
+				console.log('성공');
+				var html = jQuery('<div>').html(result);
+				var contents = html.find('div#quick_view').html();
+				$("#quick-view-wrap").html(contents) 
+			    $('.js-modal1').addClass('show-modal1');
+				modal1();
+				slick3();
+				quantityBtn();
+				chkNumPro();
+				
+				$('.js-addcart-detail').each(function(){
+			    	var nameProduct = $.trim(html.find('h4.quick-view-name').text())
+			    	$(this).on('click', function(){
+			    		$.ajax({
+			    			url : "add_cart.action",
+			    			type : "post",
+			    			data : {
+			    				item_id : item_id,
+			    				quantity : numProduct
+			    			},
+			    			success:function(result){
+			    				
+			    				if(result == 1){
+ 				    	    		swal(nameProduct, "이/가 장바구니에 담겼습니다.", "success"); 
+			    				}else{
+			    					alert("로그인이 필요합니다");
+			    				}
+			    			},
+			    			error:function(){
+			    				alert("카트 담기 실패");
+			    			}
+			    		})
+			    	});
+			    }); //ajax add-cart 
+			},
+			error:function(request, status, error){
+				alert(request.status+"\n"+request.responseText+"\n"+error);
+			}
+			});//ajax
+		});
+	};
+	
+var numProduct = 1;
+function quantityBtn(){
+    $('.btn-num-product-down').on('click', function(){
+        var numProduct = Number($(this).next().val());
+        if(numProduct > 0) $(this).next().val(numProduct - 1);
+    });
+
+    $('.btn-num-product-up').on('click', function(){
+        var numProduct = Number($(this).prev().val());
+        $(this).prev().val(numProduct + 1);
+    });
+}
+ function chkNumPro(){
+    $('.btn-num-product-up').on('click', function(){
+        numProduct += 1;
+    });
+    $('.btn-num-product-down').on('click', function(){
+    	numProduct -= 1;
+    });
+}  
+function modal1(){
+    $('.js-show-modal1').on('click',function(e){
+        e.preventDefault();
+        $('.js-modal1').addClass('show-modal1');
+    });
+
+    $('.js-hide-modal1').on('click',function(){
+        $('.js-modal1').removeClass('show-modal1');
+    });
+}
+function slick3(){
+    $('.wrap-slick3').each(function(){
+        $(this).find('.slick3').slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            fade: true,
+            infinite: true,
+            autoplay: false,
+            autoplaySpeed: 6000,
+
+            arrows: true,
+            appendArrows: $(this).find('.wrap-slick3-arrows'),
+            prevArrow:'<button class="arrow-slick3 prev-slick3"><i class="fa fa-angle-left" aria-hidden="true"></i></button>',
+            nextArrow:'<button class="arrow-slick3 next-slick3"><i class="fa fa-angle-right" aria-hidden="true"></i></button>',
+
+            dots: true,
+            appendDots: $(this).find('.wrap-slick3-dots'),
+            dotsClass:'slick3-dots',
+            customPaging: function(slick, index) {
+                var portrait = $(slick.$slides[index]).data('thumb');
+                return '<img class="quick-view-sub" src=" ' + portrait + ' "/><div class="slick3-dot-overlay"></div>';
+            },  
+        });
+    });
+}
+</script>
 </body>
 </html>
