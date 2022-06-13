@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Component;
 
 import kr.co.goodstore.dao.MyBatisFramework;
+import kr.co.goodstore.domain.product.CartDomain;
 import kr.co.goodstore.domain.product.ProductCategoryDomain;
 import kr.co.goodstore.domain.product.ProductCommentDomain;
 import kr.co.goodstore.domain.product.ProductDomain;
@@ -86,11 +87,35 @@ public class ProductDAO {
 		if(ss!=null) {ss.close();}
 	}
 	
+	public List<CartDomain> selectOneCart(AddCartVO cartVO) throws Exception{
+		List<CartDomain> list = null;
+		
+		SqlSession ss=MyBatisFramework.getInstance().getMyBatisHandler();
+		list = ss.selectList(namespace+"selectOneCart", cartVO);
+		if(ss!=null) {ss.close();}
+		
+		return list;
+	}
+
 	public void addCart(AddCartVO cart) throws Exception{
 		SqlSession ss=MyBatisFramework.getInstance().getMyBatisHandler();
 		ss.insert(namespace+"addCart", cart);
 		ss.commit();
 		if(ss!=null) {ss.close();}		
+	}
+	
+	public void updateCart(AddCartVO cart) throws Exception{
+		SqlSession ss=MyBatisFramework.getInstance().getMyBatisHandler();
+		ss.update(namespace+"updateCart", cart);
+		ss.commit();
+		if(ss!=null) {ss.close();}		
+	}
+
+	public void deleteCart(AddCartVO cartVO) throws Exception{
+		SqlSession ss=MyBatisFramework.getInstance().getMyBatisHandler();
+		ss.insert(namespace+"deleteCart", cartVO);
+		ss.commit();
+		if(ss!=null) {ss.close();}	
 	}
 	
 	public void addWish(AddWishVO wishVO) throws Exception{

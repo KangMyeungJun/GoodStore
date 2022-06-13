@@ -226,6 +226,7 @@ $('#load-more').click(function(){
 			$("#product-wrap").html(contents) 
 			quickBtn();
 			isotope();
+			addWish();
 			if($('.how-active1') != null){
 				$('.how-active1').trigger('click');
 			}

@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import kr.co.goodstore.dao.product.ProductDAO;
+import kr.co.goodstore.dao.purchase.CartDAO;
+import kr.co.goodstore.domain.product.CartDomain;
 import kr.co.goodstore.domain.product.ProductCategoryDomain;
 import kr.co.goodstore.domain.product.ProductCommentDomain;
 import kr.co.goodstore.domain.product.ProductDomain;
@@ -99,8 +101,22 @@ public class ProductService {
 		pDAO.addProductComment(comment);
 	}
 	
+	public List<CartDomain> searchOneCart(AddCartVO cart)throws Exception{
+		List<CartDomain> list = null;
+		list = pDAO.selectOneCart(cart);
+		return list;
+	}
+	
 	public void addCart(AddCartVO cart) throws Exception{
 		pDAO.addCart(cart);
+	}
+	
+	public void modifyCart(AddCartVO cart) throws Exception{
+		pDAO.updateCart(cart);
+	}
+
+	public void removeCart(AddCartVO cartVO) throws Exception{
+		pDAO.deleteCart(cartVO);
 	}
 	
 	public void addWish(AddWishVO wishVO) throws Exception{

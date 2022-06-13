@@ -110,9 +110,9 @@
 						<!--  -->
 						<div class="flex-w flex-m p-l-100 p-t-40 respon7">
 							<div class="flex-m bor9 p-r-10 m-r-11">
-								<a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 js-addwish-detail tooltip100" data-tooltip="Add to Wishlist">
+								<button value="${productDetail.item_id}" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 js-addwish-detail tooltip100 add-wishlist" data-tooltip="Add to Wishlist">
 									<i class="zmdi zmdi-favorite"></i>
-								</a>
+								</button>
 							</div>
 
 							<a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Facebook">
@@ -289,10 +289,10 @@
 								</div>
 
 								<div class="block2-txt-child2 flex-r p-t-3">
-									<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+									<button value="${relPro.item_id}" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2 add-wishlist">
 										<img class="icon-heart1 dis-block trans-04" src="${initParam.staticPath}images/icons/icon-heart-01.png" alt="ICON">
 										<img class="icon-heart2 dis-block trans-04 ab-t-l" src="${initParam.staticPath}images/icons/icon-heart-02.png" alt="ICON">
-									</a>
+									</button>
 								</div>
 							</div>
 						</div>
@@ -310,6 +310,8 @@
 $(function(){
 	//change selected menu color
 	menuColor('Shop');
+	addWish();
+	addCart();
 });
 </script>
 <!------ addCart 관련 js ------>
@@ -323,6 +325,7 @@ function chkNumPro(){
     	numProduct -= 1;
     });
 }
+function addCart(){
 $('.js-addcart-detail').each(function(){
    	var nameProduct = "${ productDetail.item_name }";
    	var item_id = ${productDetail.item_id}
@@ -338,19 +341,19 @@ $('.js-addcart-detail').each(function(){
    				quantity : numProduct
    			},
    			success:function(result){
-   				
    				if(result == 1){
 	    	    		swal(nameProduct, "이/가 장바구니에 담겼습니다.", "success"); 
-   				}else{
-   					alert("로그인이 필요합니다");
-   				}
-   			},
-   			error:function(){
-   				alert("카트 담기 실패");
-   			}
+				}else{
+    	    		swal("에러", "로그인이 필요합니다", "error"); 
+				}
+			},
+			error:function(){
+	    		swal("에러","장바구니 추가 실패", "error"); 	
+			}
    		})
    	});
    }); //ajax add-cart 
+} 
 </script>
 <!-------- comment 관련 js ------->
 <script>
@@ -359,7 +362,7 @@ $('.comment-btn').on('click', function(e){
 	var star = $('.star-rating').val();
 	var item_id = ${productDetail.item_id};
 	var postUrl = "${initParam.commonUrl}add_comment.action";
-	console.log(typeof(review), typeof(star), typeof(item_id));
+	console.log(review, star, item_id);
 	e.preventDefault();
  	$.ajax({
 		url : postUrl,

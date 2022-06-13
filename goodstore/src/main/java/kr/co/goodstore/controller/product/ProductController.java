@@ -14,8 +14,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import kr.co.goodstore.domain.product.CartDomain;
 import kr.co.goodstore.domain.product.WishListDomain;
+import kr.co.goodstore.purchase.CartController;
+import kr.co.goodstore.purchase.domain.ItemDomain;
+import kr.co.goodstore.purchase.vo.CartListVO;
 import kr.co.goodstore.service.product.ProductService;
+import kr.co.goodstore.service.purchase.CartService;
 import kr.co.goodstore.vo.member.MemberVO;
 import kr.co.goodstore.vo.product.AddCartVO;
 import kr.co.goodstore.vo.product.AddWishVO;
@@ -26,7 +31,7 @@ import kr.co.goodstore.vo.product.ProductListVO;
 public class ProductController {
 	@Autowired(required = false)
 	private ProductService ps;
-
+	
 	@GetMapping("product")
 	public String product(Model model, ProductListVO plVO) {
 		model.addAttribute("productList", ps.productList(plVO));
@@ -78,17 +83,22 @@ public class ProductController {
 	
 	@PostMapping("add_cart.action")
 	@ResponseBody
-	public int addCart(AddCartVO cart, HttpSession session) throws Exception {
-		int result = 0;
-
+	public int addCart(AddCartVO cartVO, HttpSession session) throws Exception {
+		int result = 1;
 		/* 로그인 기능 구현 후 다시 확인 */
 		MemberVO member = (MemberVO)session.getAttribute("member");
-
 //		if (member != null) {
 //			cart.setMember_id(member.getMember_id());
-			cart.setMember_id(1);
-			ps.addCart(cart);
-			result = 1;
+		int member_id = 1;
+		cartVO.setMember_id(member_id);
+		List<CartDomain> list = ps.searchOneCart(cartVO);
+		
+		if(!list.isEmpty()) {
+			ps.modifyCart(cartVO);
+			return result;
+		}
+		ps.addCart(cartVO);
+		
 //		}
 
 		return result;
