@@ -16,7 +16,6 @@ import kr.co.goodstore.service.login.LoginService;
 import kr.co.goodstore.vo.member.LoginVO;
 import kr.co.goodstore.vo.member.MemberVO;
 
-@SessionAttributes
 @Controller
 public class LoginController {
 
@@ -37,11 +36,11 @@ public class LoginController {
 		
 		if(md==null) {
 			//model.addAttribute("loginErrMsg","이메일이나 비밀번호가 틀립니다.");
-			System.out.println("ssssssssssssss");
+			//System.out.println("ssssssssssssss");
 			redirectAttr.addFlashAttribute("loginErrMsg", "이메일이나 비밀번호가 틀립니다.");
 			return "redirect:signin_page";
 		}else {
-			System.out.println("로그인됨");
+			//System.out.println("로그인됨");
 			System.out.println(md.getMember_id());
 			//model.addAttribute("loginEmail", md.getEmail());
 			session.setAttribute("loginSession", md.getMember_id());
@@ -51,7 +50,7 @@ public class LoginController {
 	}//loginResult
 	
 	@GetMapping("logout")
-	public String memberLogout(SessionStatus ss, HttpServletRequest req) {
+	public String memberLogout( HttpServletRequest req) {
 		
 		//HttpSession session=req.getSession();
 		//session.invalidate();

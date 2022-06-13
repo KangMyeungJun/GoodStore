@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.goodstore.purchase.orderList">
+
+<!-- 주문 번호 조회 -->
+<select id="selectOrders" resultType="int" parameterType="int">
+select o.order_id
+from  orders o,member m,order_detail od
+where o.member_id=m.member_id and m.member_id=#{member_id} and od.order_id=o.order_id
+and
+(od.status is null or od.status='R' or od.status='C')
+group by o.order_id
+order by o.order_id desc
+</select>
+
+<!-- order_id 에 따른 주문 상세 내역 조회-->
+<select id="selectOrderDetails" resultType="kr.co.goodstore.domain.purchase.OrderListDomain" parameterType="int">
+select i.image,i.item_name,od.amount,i.item_id, od.detail_id,
+			o.order_id,i.price, od.status,to_char(o.order_date,'yyyymmddhh24mi') order_date
+from item i, order_detail od, orders o
+where od.order_id=o.order_id and od.item_id=i.item_id
+and i.delete_flag='N' and o.order_id=#{order_id} and
+(od.status is null or od.status='R' or od.status='C')
+</select>
+
+<!--모달창을 위한 order_id 에 따른 주문 상세 내역 조회-->
+<select id="selectOrderDetails2" resultType="kr.co.goodstore.domain.purchase.OrderListDomain" parameterType="int">
+select i.image,i.item_name,od.amount,i.item_id, od.detail_id,
+			o.order_id,i.price, od.status,to_char(o.order_date,'yyyymmddhh24mi') order_date
+from item i, order_detail od, orders o
+where od.order_id=o.order_id and od.item_id=i.item_id
+and i.delete_flag='N' and o.order_id=#{order_id} and od.status is null
+</select>
+
+
+<!-- 주문상세 상태 변경 -->
+<update id="updateOrderDetailStatus2"  parameterType="int">
+	update order_detail
+	set status='C'
+	where detail_id=#{detail_id}
+</update>
+
+<update id="updateOrderDetailStatus"  parameterType="java.util.HashMap">
+	update order_detail set status='C'
+	<where>
+		<if test="listProduct.size!=0">
+			detail_id in 
+			<foreach collection="listProduct"  index="i" open="(" item="detail_id" separator="," close=")">
+				#{detail_id}
+			</foreach>
+		</if>
+	</where>	
+</update>
+
+
+
+<select id="selectOrderDetailForRefund" resultType="kr.co.goodstore.domain.purchase.OrderListDomain" parameterType="java.util.HashMap">
+	select i.image,i.item_id,od.amount,od.detail_id,i.price,i.item_name
+	from  order_detail od, item i
+		<where>
+		<if test="listProduct.size!=0">
+			od.item_id=i.item_id and detail_id in
+			<foreach collection="listProduct"  index="i" open="(" item="detail_id" separator="," close=")">
+				#{detail_id}
+			</foreach>
+		</if>
+	</where>	
+</select>
+
+
+
+<update id="updateRefundStatus"  parameterType="kr.co.goodstore.vo.purchase.RefundVO">
+	update order_detail set status='R' ,refund_reason=#{reason} 
+	where detail_id=#{detail_id}
+</update>
+
+
+
+</mapper>

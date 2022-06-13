@@ -5,19 +5,10 @@
 <mapper namespace="kr.co.goodstore.register">
 <!-- 회원가입 -->
 <insert id="makeAccount" parameterType="kr.co.goodstore.vo.member.MemberVO">
-insert into member(
-	member_id, 
-	email, 
-	password, 
-	name, 
-	tel, 
-	join_date, 
-	zipcode, 
-	address, 
-	ip, 
-	address2
-) values(
-	#{member_id}, 
+insert into member(member_id,email,password,name,tel,join_date,zipcode,address,ip,withdrawal_flag,address2	
+) 
+values(
+	GOOD.SEQ_MEMBER_ID.NEXTVAL, 
 	#{email}, 
 	#{password}, 
 	#{name}, 
@@ -26,15 +17,23 @@ insert into member(
 	#{zipcode}, 
 	#{address}, 
 	#{ip}, 
+	'N',
 	#{address2}
 	)
 </insert>
 
 <!-- 이메일 중복 체크 -->
-<select id="emailChk" resultType="int">
+<select id="emailChk" resultType="int" parameterType='String'>
 select count(*)
 from member
 where email=#{email}
+</select>
+
+<!-- 이메일 중복 체크 -->
+<select id="telChk" resultType="int" parameterType='String'>
+select count(*)
+from member
+where tel=#{tel}
 </select>
 
 </mapper>

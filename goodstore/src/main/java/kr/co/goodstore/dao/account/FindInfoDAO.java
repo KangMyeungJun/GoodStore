@@ -36,17 +36,22 @@ public class FindInfoDAO {
 	 * @return
 	 * @throws PersistenceException
 	 */
-	public FindMemberDomain selectPassword(MemberVO mVO)throws PersistenceException{
-		FindMemberDomain md = null;
-		
+	public int selectPassword(MemberVO mVO)throws PersistenceException{
+		int cnt=0;
 		SqlSession ss = MyBatisFramework.getInstance().getMyBatisHandler();
 		
-		md=ss.selectOne("findpw", mVO);
-		
+		if(ss.selectOne("findpw", mVO)!=null) {
+			cnt=ss.selectOne("findpw", mVO);
+		}else {
+			cnt=0;
+		}
+		System.out.println(cnt);
 		if(ss != null){ss.close();}
 		
-		return md;
+		return cnt;
 	}//selectPassword
+	
+	
 	
 	/** 비밀번호 변경
 	 * @param mVO
@@ -55,11 +60,14 @@ public class FindInfoDAO {
 	 */
 	public int updatePassword(MemberVO mVO)throws PersistenceException{
 		int cnt = 0;
-		
+		System.out.println(cnt);
 		SqlSession ss = MyBatisFramework.getInstance().getMyBatisHandler();
 		
 		cnt=ss.update("updatepw", mVO);
 		
+		if(cnt!=0) {
+			ss.commit();
+		}
 		if(ss != null){ss.close();}
 		
 		return cnt;

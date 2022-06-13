@@ -152,7 +152,15 @@
                             <td><c:out value="${ordersList.price }"/></td>
                             <td><c:out value="${ordersList.order_date }"/></td>
                             <td>
+                            <c:if test="${ordersList.status eq 'R'}">
                               <div class="badge badge-outline-warning"><c:out value="${ordersList.status }"/></div>
+                            </c:if>
+                            <c:if test="${ordersList.status eq 'C'}">
+                              <div class="badge badge-outline-success"><c:out value="${ordersList.status }"/></div>
+                            </c:if>
+                            <c:if test="${ordersList.status eq 'N'}">
+                              <div class="badge badge-outline-danger"><c:out value="${ordersList.status }"/></div>
+                            </c:if>
                             </td>
                           </tr>
                           </c:forEach>

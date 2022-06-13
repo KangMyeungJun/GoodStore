@@ -364,7 +364,9 @@ public class AdminController {
 			return "redirect:/admin/login_form";
 		}else {
 			model.addAttribute("id", avo.getId());
-			return "admin/template/admin_index";
+			return "redirect:/admin_index";
+		
+		//	return "admin/template/admin_index";
 			
 		}
 			 

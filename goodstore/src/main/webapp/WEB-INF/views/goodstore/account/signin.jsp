@@ -15,13 +15,13 @@
 	<!-- breadcrumb -->
 	<div class="container">
 		<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
-			<a href="index.html" class="stext-109 cl8 hov-cl1 trans-04">
-				Home
+			<a href="index" class="stext-109 cl8 hov-cl1 trans-04">
+				홈
 				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
 			</a>
 
 			<span class="stext-109 cl4">
-				Sign in
+				로그인
 			</span>
 		</div>
 	</div>
@@ -51,9 +51,9 @@
             
 						<input type="button" value="Submit" class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer" onclick="loginHandle()"/>
             <div class="flex-c-m cl0 size-121 p-lr-15 m-t-50">
-              <a class="m-lr-10 cl2" href="email_search.html">아이디 찾기</a>
-              <a class="m-lr-10 cl2" href="password_search.html">비밀번호 찾기</a>
-              <a class="m-lr-10 cl1" href="signup.html">회원가입</a>
+              <a class="m-lr-10 cl2" href="find_email">아이디 찾기</a>
+              <a class="m-lr-10 cl2" href="password">비밀번호 찾기</a>
+              <a class="m-lr-10 cl1" href="signup">회원가입</a>
             </div>
 					</form>
 				</div>
@@ -67,7 +67,11 @@
 	if('${loginErrMsg}'=="이메일이나 비밀번호가 틀립니다."){
 		alert('${loginErrMsg}');
 	}
+	if('${newPass}'=="비밀번호가 새로 설정되었습니다."){
+		alert('${newPass}');
+	}
 	
+
 function loginHandle(){
 	if($("#email").val()==""){
 		alert("이메일을 입력해주세요.");
