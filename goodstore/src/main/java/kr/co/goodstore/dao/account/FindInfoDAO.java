@@ -5,6 +5,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Component;
 
 import kr.co.goodstore.dao.MyBatisFramework;
+import kr.co.goodstore.domain.member.FindMemberDomain;
 import kr.co.goodstore.domain.member.MemberDomain;
 import kr.co.goodstore.vo.member.MemberVO;
 
@@ -17,16 +18,16 @@ public class FindInfoDAO {
 	 * @return
 	 * @throws PersistenceException
 	 */
-	public MemberDomain selectEmail(MemberVO mVO)throws PersistenceException{
-		MemberDomain md = null;
+	public FindMemberDomain selectEmail(MemberVO mVO)throws PersistenceException{
+		FindMemberDomain fmd = null;
 		
 		SqlSession ss = MyBatisFramework.getInstance().getMyBatisHandler();
 		
-		md=ss.selectOne("findemail", mVO);
+		fmd=ss.selectOne("findemail", mVO);
 		
 		if(ss != null){ss.close();}
 		
-		return md;
+		return fmd;
 	}//selectEmail
 	
 	/**
@@ -35,8 +36,8 @@ public class FindInfoDAO {
 	 * @return
 	 * @throws PersistenceException
 	 */
-	public MemberDomain selectPassword(MemberVO mVO)throws PersistenceException{
-		MemberDomain md = null;
+	public FindMemberDomain selectPassword(MemberVO mVO)throws PersistenceException{
+		FindMemberDomain md = null;
 		
 		SqlSession ss = MyBatisFramework.getInstance().getMyBatisHandler();
 		

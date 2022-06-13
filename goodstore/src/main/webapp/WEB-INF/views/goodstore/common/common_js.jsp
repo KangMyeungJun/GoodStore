@@ -139,7 +139,6 @@
 	    	    		addBtn.removeClass('js-addedwish-b2');
 					}else{
 	    	    		swal("에러", "로그인이 필요합니다", "error"); 
-	    	    		location.reload();
 					}
 				},
 				error:function(){

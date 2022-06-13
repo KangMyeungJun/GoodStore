@@ -50,7 +50,7 @@ ON i.category_id = cat.category_id
 LEFT OUTER JOIN (select item_id, count(*) wish_count from wishlist group by item_id) w
 ON i.item_id = w.item_id
 <where>
-<if test="category_id != null and category_id != ''">
+<if test="category_id != null and category_id != 0">
 i.category_id=#{category_id}
 </if>
 <if test="keyword != null and keyword != ''">

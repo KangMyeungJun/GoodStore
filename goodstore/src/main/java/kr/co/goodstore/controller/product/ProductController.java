@@ -3,6 +3,7 @@ package kr.co.goodstore.controller.product;
 import java.io.Console;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,14 +69,12 @@ public class ProductController {
 	@PostMapping("add_comment.action")
 	public String addComment(ProductCommentVO comment, Model model, HttpSession session) throws Exception{
 
-		/* 로그인 기능 구현 후 다시 확인 */
-//		MemberVO member = (MemberVO) session.getAttribute("member");
-
-//		if (member != null) {
-//			comment.setMember_id(member.getMember_id());
-			comment.setMember_id(1);
+		Integer member = (Integer)session.getAttribute("loginSession");
+		if (member != null) {
+			comment.setMember_id(member);
 			ps.addProductComment(comment);
-//		}
+		}
+		
 		model.addAttribute("productComment", ps.productComment(comment.getItem_id()));
 		return "goodstore/purchase/comment_content";
 	}
@@ -84,23 +83,20 @@ public class ProductController {
 	@PostMapping("add_cart.action")
 	@ResponseBody
 	public int addCart(AddCartVO cartVO, HttpSession session) throws Exception {
-		int result = 1;
-		/* 로그인 기능 구현 후 다시 확인 */
-		MemberVO member = (MemberVO)session.getAttribute("member");
-//		if (member != null) {
-//			cart.setMember_id(member.getMember_id());
-		int member_id = 1;
-		cartVO.setMember_id(member_id);
-		List<CartDomain> list = ps.searchOneCart(cartVO);
-		
-		if(!list.isEmpty()) {
-			ps.modifyCart(cartVO);
-			return result;
-		}
-		ps.addCart(cartVO);
-		
-//		}
+		int result = 0;
+		Integer member_id = (Integer)session.getAttribute("loginSession");
 
+		if(member_id != null) {
+			cartVO.setMember_id(member_id);
+			List<CartDomain> list = ps.searchOneCart(cartVO);
+			
+			if(!list.isEmpty()) {
+				ps.modifyCart(cartVO);
+			}else{
+				ps.addCart(cartVO);
+			}
+			result = 1;
+		}		
 		return result;
 	}
 	
@@ -108,34 +104,28 @@ public class ProductController {
 	@ResponseBody
 	public int addWish(AddWishVO wishVO, HttpSession session) throws Exception {
 		int result = 0;
-		int item_id = wishVO.getItem_id();
-		MemberVO member = (MemberVO)session.getAttribute("member");
-		int member_id = 1;
-		wishVO.setMember_id(member_id);
-		List<WishListDomain> list = ps.searcWish(wishVO);
-		/* 로그인 기능 구현 후 다시 확인 */
-		
-//		if (member != null) {
-//			cart.setMember_id(member.getMember_id());
-		if(list.isEmpty()) {
-			ps.addWish(wishVO);
-			result = 1;
-		}else {
-			ps.removeWish(wishVO);
-			result = 2;
+		Integer member_id = (Integer)session.getAttribute("loginSession");
+
+		if(member_id != null) {
+			wishVO.setMember_id(member_id);
+			List<WishListDomain> list = ps.searcWish(wishVO);
+			if(list.isEmpty()) {
+				ps.addWish(wishVO);
+				result = 1;
+			}else {
+				ps.removeWish(wishVO);
+				result = 2;
+			}
 		}
-//		}
-		
 		return result;
 	}
 	
 	@GetMapping("wishlist")
-	public String wishlist(Model model,  HttpSession session) {
-		MemberVO member = (MemberVO)session.getAttribute("member");
-//		int member_id = member.getMember_id();
-		int member_id = 1;
+	public String wishlist(Model model, @RequestParam("member_id")int member_id) {
+		
 		model.addAttribute("categoryList", ps.productCategory());
 		model.addAttribute("wishlist", ps.searcWishList(member_id));
+		
 		return "goodstore/purchase/wishlist";
 	}
 	

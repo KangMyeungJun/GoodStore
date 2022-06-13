@@ -39,7 +39,7 @@
 <typeAlias type="kr.co.goodstore.domain.main.CategoryDomain" alias="maincd"/>
 <typeAlias type="kr.co.goodstore.domain.main.BlogDomain" alias="mainbd"/>
 <typeAlias type="kr.co.goodstore.domain.main.ItemDomain" alias="mainid"/>
-<typeAlias type="kr.co.goodstore.domain.member.MemberDomain" alias="memberdomain"/>
+<!-- <typeAlias type="kr.co.goodstore.domain.member.MemberDomain" alias="memberdomain"/> -->
 <typeAlias type="kr.co.goodstore.vo.member.MemberVO" alias="membervo"/>
 </typeAliases>
   <environments default="development">

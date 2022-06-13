@@ -207,33 +207,39 @@
 											<h5 class="mtext-108 cl2 p-b-7">
 												Add a review
 											</h5>
-
-											<div class="flex-w flex-m p-t-50 p-b-23">
-												<span class="stext-102 cl3 m-r-16">
-													Your Rating
-												</span>
-
-												<span class="wrap-rating fs-18 cl11 pointer">
-													<i class="item-rating pointer zmdi zmdi-star-outline"></i>
-													<i class="item-rating pointer zmdi zmdi-star-outline"></i>
-													<i class="item-rating pointer zmdi zmdi-star-outline"></i>
-													<i class="item-rating pointer zmdi zmdi-star-outline"></i>
-													<i class="item-rating pointer zmdi zmdi-star-outline"></i>
-													<input class="dis-none star-rating" type="number" name="star">
-												</span>
-											</div>
-
-											<div class="row p-b-25">
-												<div class="col-12 p-b-5">
-													<label class="stext-102 cl3" for="review">Your review</label>
-													<textarea class="size-110 bor8 stext-102 cl2 p-lr-20 p-tb-10 item-review" id="review" name="review"></textarea>
+											<c:choose>
+												<c:when test="${empty sessionScope.loginSession}">
+													<div class="m-t-20">로그인 후 이용해 주시길 바랍니다</div>
+												</c:when>
+												<c:otherwise>
+												<div class="flex-w flex-m p-t-50 p-b-23">
+													<span class="stext-102 cl3 m-r-16">
+														Your Rating
+													</span>
+	
+													<span class="wrap-rating fs-18 cl11 pointer">
+														<i class="item-rating pointer zmdi zmdi-star-outline"></i>
+														<i class="item-rating pointer zmdi zmdi-star-outline"></i>
+														<i class="item-rating pointer zmdi zmdi-star-outline"></i>
+														<i class="item-rating pointer zmdi zmdi-star-outline"></i>
+														<i class="item-rating pointer zmdi zmdi-star-outline"></i>
+														<input class="dis-none star-rating" type="number" name="star">
+													</span>
 												</div>
-
-											</div>
-											<input type="hidden" name="item_id" value="${productDetail.item_id}"/>
-											<button class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10 comment-btn">
-												Submit
-											</button>
+	
+												<div class="row p-b-25">
+													<div class="col-12 p-b-5">
+														<label class="stext-102 cl3" for="review">Your review</label>
+														<textarea class="size-110 bor8 stext-102 cl2 p-lr-20 p-tb-10 item-review" id="review" name="review"></textarea>
+													</div>
+	
+												</div>
+												<input type="hidden" name="item_id" value="${productDetail.item_id}"/>
+												<button class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10 comment-btn">
+													Submit
+												</button>
+												</c:otherwise>
+											</c:choose>
 										</div>
 									</div>
 								</div>

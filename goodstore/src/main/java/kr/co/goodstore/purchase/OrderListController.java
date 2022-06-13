@@ -24,9 +24,9 @@ public class OrderListController {
 	
 	@GetMapping("orderList")
 	public String orderList(HttpSession session,Model model) {
-		
+		int id=(Integer) session.getAttribute("loginSession");
 		//model.addAttribute("orderMap",os.searchOrderID(1)); //技记 蔼 持绢拎具 窃
-		model.addAttribute("listCnt",os.searchAllOrderIDs(1)); //技记 蔼 持绢拎具 窃
+		model.addAttribute("listCnt",os.searchAllOrderIDs(id)); //技记 蔼 持绢拎具 窃
 		return "goodstore/purchase/order_list";
 	}
 	
@@ -49,8 +49,8 @@ public class OrderListController {
 		//System.out.println("**************************************");
 		//searchParam.put("m_id", "1");
 		
-		
-		return os.searchOrderID(1, searchParam);
+		int id=(Integer) session.getAttribute("loginSession");
+		return os.searchOrderID(id, searchParam);
 	}
 	
 	

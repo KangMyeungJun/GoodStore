@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import kr.co.goodstore.domain.member.FindMemberDomain;
 import kr.co.goodstore.domain.member.MemberDomain;
 import kr.co.goodstore.service.account.FindInfoService;
 import kr.co.goodstore.vo.member.MemberVO;
@@ -31,13 +32,13 @@ public class FindInfoController {
 	//이메일 찾기 결과
 	@PostMapping("/email/result")
 	public String findEmailResult(@ModelAttribute MemberVO mVO, Model model) {
-		MemberDomain md = fis.searchEmail(mVO);
+		FindMemberDomain fmd = fis.searchEmail(mVO);
 		
-		if(md == null) {
+		if(fmd == null) {
 			model.addAttribute("check", 1);
 		}else {
 			model.addAttribute("check", 0);
-			model.addAttribute("email", md.getEmail());
+			model.addAttribute("email", fmd.getEmail());
 		}
 		
 		return "goodstore/account/email_result";
@@ -53,13 +54,13 @@ public class FindInfoController {
 	//비밀번호 찾기 결과
 	@GetMapping("/password/result")
 	public String findPasswordResult(@ModelAttribute MemberVO mVO, Model model) {
-		MemberDomain md = fis.searchPassword(mVO);
+		FindMemberDomain fmd = fis.searchPassword(mVO);
 		
-		if(md == null) {
+		if(fmd == null) {
 			model.addAttribute("check", 1);
 		}else {
 			model.addAttribute("check", 0);
-			model.addAttribute("findpwemail", md.getEmail());
+			model.addAttribute("findpwemail", fmd.getEmail());
 		}
 		
 		return "goodstore/account/password_result";

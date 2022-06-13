@@ -64,24 +64,24 @@ public class OrderListService {
 		
 		try {
 			//order_id list
-			idList=oDAO.selectOrderID(member_id); //오더 아이디의 개수 리스트
+			idList=oDAO.selectOrderID(member_id); //�삤�뜑 �븘�씠�뵒�쓽 媛쒖닔 由ъ뒪�듃
 			System.out.println(idList);
 			System.out.println(idList.size());
 			
 			
-			if(end>idList.size() && 0!=idList.size()) { //end가 리스트의 개수보다 크면
+			if(end>idList.size() && 0!=idList.size()) { //end媛� 由ъ뒪�듃�쓽 媛쒖닔蹂대떎 �겕硫�
 				
-				for(int i=start; i<idList.size();i++) {//2개면
-					//jsonArrSmall=new JSONArray();//array생성
-					//jsonTempSmall=new JSONObject();//object생성
-					listDomain=oDAO.selectOrderDetails(idList.get(i)); //오더 아이디 첫번째의 주문상세 
+				for(int i=start; i<idList.size();i++) {//2媛쒕㈃
+					//jsonArrSmall=new JSONArray();//array�깮�꽦
+					//jsonTempSmall=new JSONObject();//object�깮�꽦
+					listDomain=oDAO.selectOrderDetails(idList.get(i)); //�삤�뜑 �븘�씠�뵒 泥ル쾲吏몄쓽 二쇰Ц�긽�꽭 
 					//System.out.println(idList.get(i));
 					//System.out.println(listDomain);
-					//System.out.println("-------------디테일리스트--------------------");
+					//System.out.println("-------------�뵒�뀒�씪由ъ뒪�듃--------------------");
 					//System.out.println("---------------------------------");
 					//System.out.println("---------------------------------");
 					
-					for(int j=0; j<listDomain.size();j++){ //set처리
+					for(int j=0; j<listDomain.size();j++){ //set泥섎━
 						if(listDomain.get(j).getStatus()==null) {
 							listDomain.get(j).setStatus("배송완료");
 						}else if(listDomain.get(j).getStatus().equals("C")) {
@@ -130,14 +130,14 @@ public class OrderListService {
 					//map.put(idList.get(i),listDomain);
 				}//for
 				jsonData.put("data",jsonArr);
-//				System.out.println("최저ㅗㅇ!!!!!!!"+jsonData);
+//				System.out.println("理쒖��뀠�뀋!!!!!!!"+jsonData);
 			}else if(end<=idList.size() && 0!=idList.size()){
 				
 				
-				for(int i=start; i<end;i++) { //end가 리스트의 사이즈보다 크지 않다면 
+				for(int i=start; i<end;i++) { //end媛� 由ъ뒪�듃�쓽 �궗�씠利덈낫�떎 �겕吏� �븡�떎硫� 
 					listDomain=oDAO.selectOrderDetails(idList.get(i));
 //					System.out.println(listDomain);
-//					System.out.println("-------------디테일리스트--------------------");
+//					System.out.println("-------------�뵒�뀒�씪由ъ뒪�듃--------------------");
 //					System.out.println("---------------------------------");
 //					System.out.println("---------------------------------");
 					
@@ -178,7 +178,7 @@ public class OrderListService {
 						//System.out.println("****************222222222222");
 						
 						jsonData.put("data",jsonArr);
-//						System.out.println("*********json으로 map**********");
+//						System.out.println("*********json�쑝濡� map**********");
 //						System.out.println(jsonData);
 						jsonData.put("flag",1);
 					}//end if
@@ -253,7 +253,7 @@ public class OrderListService {
 	
 	
 	
-	public String searchOrderDetailsById2(int order_id){//모달 주문상세
+	public String searchOrderDetailsById2(int order_id){//紐⑤떖 二쇰Ц�긽�꽭
 		String json;
 		
 		List<OrderListDomain> list=null;
@@ -307,7 +307,7 @@ public class OrderListService {
 		
 		int cnt=0;
 		
-		//MyBatis에서 사용하기 위해 Map에 입력값을 넣는다.
+		//MyBatis�뿉�꽌 �궗�슜�븯湲� �쐞�빐 Map�뿉 �엯�젰媛믪쓣 �꽔�뒗�떎.
 		Map<String, Object> map=new HashMap<String, Object>();
 		
 		if(valueArr!=null) {
@@ -348,7 +348,7 @@ public class OrderListService {
 		
 		List<OrderListDomain> list=null;
 		
-		//MyBatis에서 사용하기 위해 Map에 입력값을 넣는다.
+		//MyBatis�뿉�꽌 �궗�슜�븯湲� �쐞�빐 Map�뿉 �엯�젰媛믪쓣 �꽔�뒗�떎.
 		Map<String, Object> map=new HashMap<String, Object>();
 		
 		if(valueArr!=null) {
@@ -406,7 +406,7 @@ public class OrderListService {
 		
 		int cnt=0;
 		
-		//MyBatis에서 사용하기 위해 Map에 입력값을 넣는다.
+		//MyBatis�뿉�꽌 �궗�슜�븯湲� �쐞�빐 Map�뿉 �엯�젰媛믪쓣 �꽔�뒗�떎.
 		//Map<String, Object> map=new HashMap<String, Object>();
 		
 //		if(valueArr!=null) {
@@ -419,23 +419,23 @@ public class OrderListService {
 		case 2:reason="색상 및 사이즈 변경"; break;
 		case 3:reason="상품 잘못 주문"; break;
 		case 4:reason="서비스 불만족"; break;
-		case 5:reason="상품 파손"; break;
+		case 5:reason="상품파손"; break;
 		}
 //		
 //		if(selectIndex==1) {
-//			reason="구매 의사 취소";
+//			reason="援щℓ �쓽�궗 痍⑥냼";
 //		}
 //		if(selectIndex==2) {
-//			reason="색상 및 사이즈 변경";
+//			reason="�깋�긽 諛� �궗�씠利� 蹂�寃�";
 //		}
 //		if(selectIndex==3) {
-//			reason="상품 잘못 주문"; 
+//			reason="�긽�뭹 �옒紐� 二쇰Ц"; 
 //		}
 //		if(selectIndex==4) {
-//			reason="서비스 불만족";
+//			reason="�꽌鍮꾩뒪 遺덈쭔議�";
 //		}
 //		if(selectIndex==5) {
-//			reason="상품 파손"; 
+//			reason="�긽�뭹 �뙆�넀"; 
 //		}
 		
 		//map.put("reason",reason);

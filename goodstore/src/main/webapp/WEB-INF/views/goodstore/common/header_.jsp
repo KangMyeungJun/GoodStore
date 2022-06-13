@@ -15,7 +15,7 @@
 
 					<div class="right-top-bar flex-w h-full">
 
-						<a href="${initParam.commonUrl}account_edit_chk.html" class="flex-c-m trans-04 p-lr-25">
+						<a href="account_edit_chk.html" class="flex-c-m trans-04 p-lr-25">
 							My Account
 						</a>
 
@@ -34,7 +34,7 @@
 				<nav class="limiter-menu-desktop container">
 					
 					<!-- Logo desktop -->		
-					<a href="${initParam.commonUrl}index.html" class="logo">
+					<a href="index.html" class="logo">
 						<img src="${initParam.staticPath}images/goodstore5.png" alt="IMG-LOGO">
 					</a>
 
@@ -42,23 +42,23 @@
 					<div class="menu-desktop">
 						<ul class="main-menu">
 							<li class="active-menu">
-								<a href="${initParam.commonUrl}index.html">Home</a>
+								<a href="index.html">Home</a>
 							</li>
 
 							<li class="label1" data-label1="hot">
-								<a href="${initParam.commonUrl}product.html">Shop</a>
+								<a href="product.html">Shop</a>
 							</li>
 
 							<li>
-								<a href="${initParam.commonUrl}cart">Cart</a>
+								<a href="cart">Cart</a>
 							</li>
 
 							<li>
-								<a href="${initParam.commonUrl}blog.html">Blog</a>
+								<a href="blog.html">Blog</a>
 							</li>
 
 							<li>
-								<a href="${initParam.commonUrl}about.html">About</a>
+								<a href="about.html">About</a>
 							</li>
 						</ul>
 					</div>
@@ -70,6 +70,7 @@
 					<div class="wrap-icon-header flex-w flex-r-m h-full">
             <div class="login-desktop">
               <ul class="login-menu">
+               <%-- <c:out value="${sessionScope.loginSession}"/> --%>
                 <c:choose>
                 	<c:when test="${sessionScope.loginSession eq null}">
 	                <li>
@@ -86,7 +87,6 @@
 	                </li>
 	               </c:otherwise>
 				</c:choose>
-
                 <!-- 세션에서 유저의 로그인을 확인하면
                 <li>
                   <a href="signout.html">Sign Out</a>
@@ -101,18 +101,16 @@
 						</div>
 							
 						<div class="flex-c-m h-full p-l-18"> 
-							<a href="${initParam.commonUrl}cart" class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11">
+							<a href="cart" class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11">
 								<i class="zmdi zmdi-shopping-cart"></i>
 							</a>
 						</div>
 						
-						<c:if test="${!empty sessionScope.loginSession}">
-            			<div class="flex-c-m h-full p-l-18">
-				            <a href="${initParam.commonUrl}wishlist?member_id=${sessionScope.loginSession}" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-" >
-								<i class="zmdi zmdi-favorite-outline"></i>
-							</a>
-            			</div>
-            			</c:if>
+            <div class="flex-c-m h-full p-l-18">
+            <a href="#" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-" >
+							<i class="zmdi zmdi-favorite-outline"></i>
+						</a>
+            </div>
 
 						<div class="flex-c-m h-full p-lr-19">
 							<div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 js-show-sidebar">
@@ -128,7 +126,7 @@
 		<div class="wrap-header-mobile">
 			<!-- Logo moblie -->		
 			<div class="logo-mobile">
-				<a href="${initParam.commonUrl}index.html"><img src="${initParam.staticPath}images/goodstore5.png" alt="IMG-LOGO"></a>
+				<a href="index.html"><img src="${initParam.staticPath}images/goodstore5.png" alt="IMG-LOGO"></a>
 			</div>
 
 			<!-- Icon header -->
@@ -159,9 +157,9 @@
 		<div class="menu-mobile">
 			<ul class="main-menu-m">
 				<li>
-					<a href="${initParam.commonUrl}index.html">Home</a>
+					<a href="index.html">Home</a>
 					<ul class="sub-menu-m">
-						<li><a href="${initParam.commonUrl}index.html">Homepage</a></li>
+						<li><a href="index.html">Homepage</a></li>
 					</ul>
 					<span class="arrow-main-menu-m">
 						<i class="fa fa-angle-right" aria-hidden="true"></i>
@@ -169,19 +167,19 @@
 				</li>
 
 				<li>
-					<a href="${initParam.commonUrl}product.html">Shop</a>
+					<a href="product.html">Shop</a>
 				</li>
 
 				<li>
-					<a href="${initParam.commonUrl}shoping-cart.html" class="label1 rs1" data-label1="hot">Features</a>
+					<a href="shoping-cart.html" class="label1 rs1" data-label1="hot">Features</a>
 				</li>
 
 				<li>
-					<a href="${initParam.commonUrl}blog">Blog</a>
+					<a href="blog">Blog</a>
 				</li>
 
 				<li>
-					<a href="${initParam.commonUrl}about">About</a>
+					<a href="#">About</a>
 				</li>
 
 			</ul>
@@ -198,11 +196,11 @@
 				</button>
 
 				<!-- 검색으로 넘겨주기 -->
-				<form action="${initParam.commonUrl}product" class="wrap-search-header flex-w p-l-15">
+				<form class="wrap-search-header flex-w p-l-15">
 					<button class="flex-c-m trans-04">
 						<i class="zmdi zmdi-search"></i>
 					</button>
-					<input class="plh3" type="text" name="keyword" placeholder="Search...">
+					<input class="plh3" type="text" name="search" placeholder="Search...">
 				</form>
 			</div>
 		</div>
