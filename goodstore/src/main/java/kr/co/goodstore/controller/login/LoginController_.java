@@ -18,7 +18,7 @@ import kr.co.goodstore.vo.member.MemberVO;
 
 @SessionAttributes
 @Controller
-public class LoginController {
+public class LoginController_ {
 
 	@Autowired(required = false)
 	private LoginService ls;
