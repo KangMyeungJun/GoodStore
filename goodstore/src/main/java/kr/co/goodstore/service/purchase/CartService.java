@@ -10,13 +10,13 @@ import org.json.simple.JSONObject;
 import org.springframework.stereotype.Service;
 
 import kr.co.goodstore.dao.purchase.CartDAO;
-import kr.co.goodstore.purchase.domain.CouponDomain;
-import kr.co.goodstore.purchase.domain.ItemDomain;
-import kr.co.goodstore.purchase.domain.MemberDomain;
-import kr.co.goodstore.purchase.domain.PurchaseSuccessDomain;
-import kr.co.goodstore.purchase.vo.CartVO;
-import kr.co.goodstore.purchase.vo.OrderDetailVO;
-import kr.co.goodstore.purchase.vo.PurchaseVO;
+import kr.co.goodstore.domain.purchase.CouponDomain;
+import kr.co.goodstore.domain.purchase.ItemDomain;
+import kr.co.goodstore.domain.purchase.MemberDomain;
+import kr.co.goodstore.domain.purchase.PurchaseSuccessDomain;
+import kr.co.goodstore.vo.purchase.CartVO;
+import kr.co.goodstore.vo.purchase.OrderDetailVO;
+import kr.co.goodstore.vo.purchase.PurchaseVO;
 import lombok.RequiredArgsConstructor;
 
 

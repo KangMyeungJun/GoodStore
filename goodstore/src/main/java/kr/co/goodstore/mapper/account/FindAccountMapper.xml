@@ -5,20 +5,22 @@
 <mapper namespace="kr.co.goodstore.account">
 <!-- 이메일 찾기 -->
 <select id="findemail" resultType="kr.co.goodstore.domain.member.FindMemberDomain" parameterType="membervo">
-select * 
+select email
 from member 
 where name=#{name} and tel=#{tel}
 </select>
 
 <!-- 비밀번호 찾기 -->
-<select id="findpw" resultType="kr.co.goodstore.domain.member.FindMemberDomain" parameterType="membervo">
-select * 
+<select id="findpw" resultType="int" parameterType="membervo">
+select member_id 
 from member 
 where email=#{email} and name=#{name} and tel=#{tel}
 </select>
 
 <!-- 비밀번호 변경 -->
 <update id="updatepw" parameterType="membervo">
-update member set password=#{password} where email=#{email}
+update member 
+set password=#{password} 
+where member_id=#{member_id}
 </update>
 </mapper>

@@ -491,14 +491,14 @@ var coupon_id=0;
 				 
 			if(updown==1){//db에 넘겨주기 위해 원래 수량에 +1
 				
+				//document.getElementById(cart_id).value=quantity;
 				quantity=parseInt(quantity)+1
-				document.getElementById(cart_id).value=quantity;
 				if(checkbox.checked){
 					t=parseInt(p)+parseInt(t); //최총 금액에 추가된 수량에 따른 해당상품의 값 넣어주기
 				}
 			}else if(updown==0){//db에 넘겨주기 위해 원래 수량에 -1
+				//document.getElementById(cart_id).value=quantity;
 				quantity=parseInt(quantity)-1
-				document.getElementById(cart_id).value=quantity;
 				//alert(quantity)
 					if(checkbox.checked){
 				 		t=parseInt(t)-parseInt(p);

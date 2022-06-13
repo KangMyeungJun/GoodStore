@@ -1,9 +1,7 @@
 package kr.co.goodstore.controller.product;
 
-import java.io.Console;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,12 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.goodstore.domain.product.CartDomain;
 import kr.co.goodstore.domain.product.WishListDomain;
-import kr.co.goodstore.purchase.CartController;
-import kr.co.goodstore.purchase.domain.ItemDomain;
-import kr.co.goodstore.purchase.vo.CartListVO;
 import kr.co.goodstore.service.product.ProductService;
-import kr.co.goodstore.service.purchase.CartService;
-import kr.co.goodstore.vo.member.MemberVO;
 import kr.co.goodstore.vo.product.AddCartVO;
 import kr.co.goodstore.vo.product.AddWishVO;
 import kr.co.goodstore.vo.product.ProductCommentVO;

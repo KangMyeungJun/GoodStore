@@ -15,6 +15,7 @@ public class FindInfoService {
 	@Autowired(required = false)
 	private FindInfoDAO fiDAO;
 	
+	
 	public FindMemberDomain searchEmail(MemberVO mVO) {
 		FindMemberDomain fmd = null;
 		
@@ -27,17 +28,20 @@ public class FindInfoService {
 		return fmd;
 	}//searchEmail
 	
-	public FindMemberDomain searchPassword(MemberVO mVO) {
-		FindMemberDomain fmd = null;
-		
+	
+	
+	public int searchPassword(MemberVO mVO) {
+		int cnt=0;
 		try {
-			fmd = fiDAO.selectPassword(mVO);
+			cnt = fiDAO.selectPassword(mVO);
 		}catch(PersistenceException pe) {
 			pe.printStackTrace();
 		}
 		
-		return fmd;
+		return cnt;
 	}//searchPassword
+	
+	
 
 	public int changePassword(MemberVO mVO) {
 		int cnt = 0;

@@ -44,6 +44,11 @@ public class AdminController {
 	@Autowired(required = false)
 	private final FileConvert fc = new FileConvert();
 	
+	@GetMapping("/admin")
+	public String redirectAdmin() {
+		return "redirect:/admin_index";
+	}
+	
 	  @GetMapping("/admin_index")
 	  public String welcome1(Model model) {
 		//  전체사용자 수
@@ -359,7 +364,9 @@ public class AdminController {
 			return "redirect:/admin/login_form";
 		}else {
 			model.addAttribute("id", avo.getId());
-			return "admin/template/admin_index";
+			return "redirect:/admin_index";
+		
+		//	return "admin/template/admin_index";
 			
 		}
 			 

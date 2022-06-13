@@ -653,6 +653,7 @@ function slick3(){
 }
 </script>
 <script type="text/javascript">
+
 history.replaceState({},null,location.pathname);
 </script>
 </body>

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
-<%@ page session="false" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <head>
 	<title>GOOD STORE</title>
@@ -23,12 +23,19 @@
 						</h4>
 
 						<div class="bor7 m-b-20 cl1 p-t-55" style="height:160px; width:600px; font-size:2rem; background-color:white;">
-              <span class="flex-c-m">test@google.com</span>
+              <c:choose>
+				<c:when test="${check eq 1}">
+             	 <span class="flex-c-m"><c:out value="${email}"/></span>
+				</c:when>              
+				<c:otherwise>
+				 <span class="flex-c-m">해당하는 회원이 존재하지 않습니다.</span>
+				</c:otherwise>
+              </c:choose>
 						</div>
             
             <div class="flex-c-m cl0 size-121 p-lr-15 m-t-50">
-              <a class="m-lr-10 cl2" href="signin.html">로그인</a>
-              <a class="m-lr-10 cl2" href="password_search.html">비밀번호 찾기</a>
+              <a class="m-lr-10 cl2" href=signin_page>로그인</a>
+              <a class="m-lr-10 cl2" href="password">비밀번호 찾기</a>
             </div>
 					</form>
 				</div>
@@ -37,6 +44,7 @@
 	</section>	
 	
 <%@ include file="../common/footer.jsp" %>
-<%@ include file="../common/common_js.jsp" %>		
+<%@ include file="../common/common_js.jsp" %>
+		
 </body>
 </html>

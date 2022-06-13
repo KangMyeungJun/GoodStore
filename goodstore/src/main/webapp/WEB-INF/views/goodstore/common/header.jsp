@@ -73,16 +73,16 @@
                 <c:choose>
                 	<c:when test="${sessionScope.loginSession eq null}">
 	                <li>
-	                  <a href="signup.html">Sign Up</a>
+	                  <a href="signup">회원가입</a>
 	                </li>
 	                <li>
-	                  <a href="signin_page">Sign In</a>
+	                  <a href="signin_page">로그인</a>
 	                </li>
 	               </c:when>
 	               
 	               <c:otherwise>
 	                <li>
-	                  <a href="logout">Sign Out</a>
+	                  <a href="logout">로그아웃</a>
 	                </li>
 	               </c:otherwise>
 				</c:choose>
