@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.goodstore.admin.product">
+
+
+<select id="selectAdminProducts" resultType="AdminItemDomain" parameterType="PagingVO">
+select item_id,category_name,item_name,price,stock
+from (
+select row_number() over(order by item.upload_date desc) rnum, item_id,category_name,
+			item_name,price,stock 
+from item, CATEGORY 
+<where>
+item.category_id = category.category_id and item.delete_flag='N'
+<if test="keyword != null or keyword != ''">
+and item_name like '%'|| #{keyword} || '%'
+</if>
+</where>
+)
+<where>
+rnum between #{first} and #{last}
+</where>
+</select>
+
+<select id="selectCntProducts" resultType="int" parameterType="String">
+select count(*) 
+from item, CATEGORY 
+<where>
+item.category_id = category.category_id and item.delete_flag='N'
+<if test="String != null or String != ''">
+and item_name like '%'|| #{keyword} || '%'
+</if>
+</where>
+</select>
+
+<select id="selectOneItem" resultType="AdminItemDomain" parameterType="Integer">
+ select item_id,item_name,stock,category.category_id,category_name,price,item.image image,description,summary,additional_info 
+ from item,category
+ where item.category_id = category.category_id  and item_id = #{item_id}
+</select>
+
+<select id="selectItemImages" resultType="String" parameterType="Integer">
+select sub_image from sub_image where item_id = #{item_id}
+</select>
+
+<select id="selectCategories" resultType="AdminCategoryDomain">
+select category_id,category_name from category
+</select>
+
+<select id="selectCompany" resultType="AdminCompanyDomain">
+  select company_id,name from company
+  </select>
+  
+<update id="updateItem" parameterType="AdminItemVO">
+update item
+<trim prefix="SET" suffixOverrides=",">
+		<if test="item_name != null">item_name=#{item_name},</if>
+		<if test="summary != null">summary=#{summary},</if>
+		<if test="description != null">description=#{description},</if>
+		<if test="price != null">price=#{price},</if>
+		<if test="image != null">image=#{image},</if>
+		<if test="stock != null">stock=#{stock},</if>
+		<if test="category_id != null">category_id=#{category_id},</if>
+		<if test="additional_info != null">additional_info=#{additional_info},</if>
+</trim>
+<where>
+item_id=#{item_id}
+</where>
+</update>
+
+<delete id="deleteSubImage" parameterType="String">
+delete from sub_image
+where sub_image=#{sub_image}
+</delete>
+
+
+<update id="insertSubImage" parameterType="AdminItemVO">
+<foreach collection="updateImageList" item="item" separator=" " open="insert all" close="select*from dual">
+into sub_image(item_id,sub_image) values
+(#{item_id},#{item})
+</foreach>
+</update>
+<update id="insertNewSubImage" parameterType="AdminItemVO">
+<foreach collection="updateImageList" item="item" separator=" " open="insert all" close="select*from dual">
+into sub_image(item_id,sub_image) values
+(GOOD.SEQ_ITEM_ID.CURRVAL,#{item})
+</foreach>
+</update>
+
+<update id="updateItemFlag" parameterType="Integer">
+update item set delete_flag = 'Y' where item_id=#{item_id} 
+</update>
+
+<insert id="insertItem" parameterType="AdminItemVO">
+insert into item(item_id,item_name,summary,description,price,image,stock,category_id,additional_info,company_id)
+values(GOOD.SEQ_ITEM_ID.NEXTVAL,#{item_name},#{summary},#{description},#{price},#{image},#{stock},#{category_id},#{additional_info},#{company_id})
+</insert>
+</mapper>

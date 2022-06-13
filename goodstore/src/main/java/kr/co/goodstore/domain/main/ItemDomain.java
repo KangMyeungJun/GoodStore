@@ -9,7 +9,11 @@ import lombok.ToString;
 @ToString
 public class ItemDomain {
 
-	private String item_name, image;
-	private int price, star;
+	private String item_name; 
+	private String image;
+	private int item_id;
+	private int price; 
+	private int star;
+	private int category_id;
 	
 }

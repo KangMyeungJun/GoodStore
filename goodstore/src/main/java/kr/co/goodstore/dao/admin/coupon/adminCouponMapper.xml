@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.goodstore.admin.coupon">
+<select id="selectAllCoupons" parameterType="PagingVO" resultType="adminCouponDomain">
+select  code,coupon_id, name, discount_rate,discount_price,upload_date,start_date,end_date
+from(
+select row_number() over(order by upload_date desc) rnum, code,coupon_id, name, discount_rate,discount_price,upload_date,start_date,end_date
+ from coupon
+ )
+ <where>
+ rnum between #{first} and #{last}
+ <if test="keyword != null or keyword != ''">
+and name like '%'|| #{keyword} || '%'
+</if>
+ </where>
+ 
+</select>
+<select id="selectCouponsCnt" resultType="int" parameterType="String">
+select count(*) from coupon
+<where>
+ <if test="keyword != null or keyword != ''">
+name like '%'|| #{keyword} || '%'
+</if>
+</where>
+</select>
+
+<update id="insertCoupons" parameterType="AdminCouponVO">
+<foreach collection="codeList" item="item" separator=" " open="insert all" close="select*from dual">
+into coupon(coupon_id,code,name,discount_rate,discount_price,upload_date,start_date,end_date,use_flag,admin_id) values
+(get_coupon_seq(),#{item},#{name},#{discount_rate},#{discount_price},sysdate,#{start_date},#{end_date},'Y',#{admin_id})
+</foreach>
+</update>
+
+<select id="selectOneCoupon" parameterType="int" resultType="adminCouponDomain">
+select coupon_id,code,name,discount_rate,discount_price,upload_date,
+to_char(start_date,'yyyy-MM-dd')start_date,to_char(end_date,'yyyy-MM-dd')end_date,use_flag 
+from coupon 
+where coupon_id = #{coupon_id}
+</select>
+
+<update id="insertCoupon" parameterType="AdminCouponVO">
+update coupon
+set code=#{code},name=#{name},
+discount_rate=#{discount_rate},
+discount_price=#{discount_price},
+start_date=TO_date(#{start_date},'yyyy-MM-dd'),
+end_date=TO_date(#{end_date},'yyyy-MM-dd')
+where coupon_id=#{coupon_id}
+</update>
+
+<update id="updateCouponsFlag" parameterType="int">
+update coupon
+set use_flag = 'N'
+where coupon_id=#{id}
+</update>
+</mapper>

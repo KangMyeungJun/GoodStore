@@ -6,7 +6,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Corona Admin</title>
+    <title>GoodStore</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="${initParam.staticPath}assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="${initParam.staticPath}assets/vendors/css/vendor.bundle.base.css">
@@ -37,12 +37,11 @@
               </div>
               <div class="row mt-5">
                 <div class="col-12 text-center mt-xl-2">
-                  <a class="text-white font-weight-medium" href="../../index.jsp">Back to home</a>
+                  <a class="text-white font-weight-medium" href="${initParam.middlePath }/index">Back to home</a>
                 </div>
               </div>
               <div class="row mt-5">
                 <div class="col-12 mt-xl-2">
-                  <p class="text-white font-weight-medium text-center">Copyright &copy; 2020 All rights reserved.</p>
                 </div>
               </div>
             </div>

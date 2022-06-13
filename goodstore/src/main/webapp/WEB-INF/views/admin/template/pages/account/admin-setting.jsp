@@ -10,6 +10,7 @@
     <!-- plugins:css -->
     <link rel="stylesheet" href="${initParam.staticPath}assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="${initParam.staticPath}assets/vendors/css/vendor.bundle.base.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <!-- endinject -->
     <!-- Plugin css for this page -->
     <!-- End plugin css for this page -->
@@ -19,6 +20,31 @@
     <link rel="stylesheet" href="${initParam.staticPath}assets/css/style.css">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="${initParam.staticPath}assets/images/favicon.png" />
+    
+    <script type="text/javascript">
+    $(function(){
+		 $("#modifyPasswordBtn").click(function(){
+			 if($("#password").val()==""){
+				 alert("새로운 비밀번호를 입력해주세요");
+				 return;
+			 }
+			 if($("#password2").val()==""){
+				 alert("확인 비밀번호를 입력해주세요");
+				 return;
+			 }
+			 if($("#password").val() != $("#password2").val()) {
+				 alert("비밀번호를 확인해주세요");
+				 return;
+			 }else{
+				 
+				alert("변경하시겠습니까?");
+			 }
+			 
+				$("#modifyPassword").submit();
+			})//click 
+		
+	});
+    </script>
   </head>
   <body>
     <div class="container-scroller">
@@ -28,21 +54,18 @@
             <div class="card col-lg-4 mx-auto">
               <div class="card-body px-5 py-5">
                 <h3 class="card-title text-left mb-3">Admin Settings</h3>
-                <form>
-                  <div class="form-group">
-                    <label>Current Password</label>
-                    <input type="text" class="form-control p_input">
-                  </div>
+                <form id="modifyPassword" method="post" action="${initParam.middlePath }/admin/modifyPaswword">
+                  
                   <div class="form-group">
                     <label>New Password</label>
-                    <input type="email" class="form-control p_input">
+                    <input type="password" class="form-control p_input" id="password" name="password">
                   </div>
                   <div class="form-group">
                     <label>Confirm Password</label>
-                    <input type="password" class="form-control p_input">
+                    <input type="password" class="form-control p_input" id="password2" name="password2">
                   </div>
                   <div class="text-center">
-                    <button type="submit" class="btn btn-primary btn-block enter-btn">Submit</button>
+                    <button type="button" class="btn btn-primary btn-block enter-btn" id="modifyPasswordBtn">Submit</button>
                   </div>
                 </form>
               </div>

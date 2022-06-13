@@ -3,19 +3,19 @@ package kr.co.goodstore.service.main;
 import java.util.List;
 
 import org.apache.ibatis.exceptions.PersistenceException;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import kr.co.goodstore.dao.main.MainPageDAO;
 import kr.co.goodstore.domain.main.BlogDomain;
 import kr.co.goodstore.domain.main.CategoryDomain;
 import kr.co.goodstore.domain.main.ItemDomain;
+import lombok.RequiredArgsConstructor;
 
-@Component
+@Service
+@RequiredArgsConstructor
 public class MainPageService {
 	
-	@Autowired(required = false)
-	private MainPageDAO mpDAO;
+	private final MainPageDAO mpDAO;
 	
 	public List<CategoryDomain> searchMainCatogory(){
 		List<CategoryDomain> list = null;
@@ -52,6 +52,30 @@ public class MainPageService {
 		
 		return list;
 	}//searchItemStar
+	
+	public List<ItemDomain> searchRecentlyItem(){
+		List<ItemDomain> list = null;
+		
+		try {
+			list = mpDAO.selectRecentlyItem();
+		}catch(PersistenceException pe) {
+			pe.printStackTrace();
+		}
+		
+		return list;
+	}//findRecentlyItem
+	
+	public List<ItemDomain> searchPriceOrderItem(){
+		List<ItemDomain> list = null;
+		
+		try {
+			list = mpDAO.selectPriceOrderItem();
+		}catch(PersistenceException pe) {
+			pe.printStackTrace();
+		}
+		
+		return list;
+	}//findRecentlyItem
 	
 	public List<BlogDomain> searchMainCBlog(){
 		List<BlogDomain> list = null;

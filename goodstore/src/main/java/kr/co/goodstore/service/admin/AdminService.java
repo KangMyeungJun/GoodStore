@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import kr.co.goodstore.dao.admin.AdminDAO;
+import kr.co.goodstore.domain.admin.AdminVO;
 import kr.co.goodstore.domain.admin.BoardVO;
 import kr.co.goodstore.domain.admin.CategoryDomain;
 import kr.co.goodstore.domain.admin.MemberDomain;
@@ -55,6 +56,35 @@ public class AdminService {
 		  return cnt;
 		  
 	 	}//modifyCategory
+	 	
+	 	//카테고리 상태변경
+	 	public int modifyCategoryStatus(int category_id) {
+	 		int cnt=0;
+		  
+		  try { 
+			  cnt=cDAO.updateCategoryStatus(category_id);
+		  }catch(PersistenceException pe) {
+		  pe.printStackTrace(); }//end catch
+		  
+		  return cnt;
+		  
+	 	}//modifyCategory
+	 	
+	 	
+	 	
+	 	
+	 	//카테고리추가
+	 	public int addCategory(CategoryDomain cDomain) {
+	 		int cnt=0;
+	 		
+	 		try { 
+	 			cnt=cDAO.insertCategory(cDomain);
+	 		}catch(PersistenceException pe) {
+	 			pe.printStackTrace(); }//end catch
+	 		
+	 		return cnt;
+	 		
+	 	}//addCategory
 	 
 	 
 	 
@@ -226,6 +256,62 @@ public class AdminService {
 			 
 			 return cnt;
 		 }
+		 
+		 //전체주문 수 구하기(상태)
+		 public int searchordersCount1(String status) {
+			 int cnt=0;
+			 
+			 try {
+				
+				 cnt=cDAO.selectOrdersCount1(status);
+			 }catch(PersistenceException pe) {
+				 pe.printStackTrace();
+			 }//end catch
+			 
+			 return cnt;
+		 }
+		 
+		 //전체주문 수 구하기()
+		 public int searchOrdersCount2() {
+			 int cnt=0;
+			 
+			 try {
+				 
+				 cnt=cDAO.selectOrdersCount2();
+			 }catch(PersistenceException pe) {
+				 pe.printStackTrace();
+			 }//end catch
+			 
+			 return cnt;
+		 }
+		 
+		 //오늘주문 수 구하기()
+		 public int searchTodayOrdersCount() {
+			 int cnt=0;
+			 
+			 try {
+				 
+				 cnt=cDAO.selectTodayOrdersCount();
+			 }catch(PersistenceException pe) {
+				 pe.printStackTrace();
+			 }//end catch
+			 
+			 return cnt;
+		 }
+		 
+		 //오늘주문 수 구하기(상태)
+		 public int searchTodayOrdersCount2(String status) {
+			 int cnt=0;
+			 
+			 try {
+				 
+				 cnt=cDAO.selectTodayOrdersCount2(status);
+			 }catch(PersistenceException pe) {
+				 pe.printStackTrace();
+			 }//end catch
+			 
+			 return cnt;
+		 }
 		 	 
 	 
 	 
@@ -243,10 +329,11 @@ public class AdminService {
 	 }//findOrders
 	 
 	 //order_detail 조회
-	 public OrdersDomain findOrderDetail(int order_id){
+	 //public OrdersDomain findOrderDetail(int order_id){
+	 public OrdersDomain findOrderDetail(OrdersDomain oDomain){
 		 OrdersDomain list=null;
 		 try {
-			 list=cDAO.orderDetail(order_id);
+			 list=cDAO.orderDetail(oDomain);
 		 }catch(PersistenceException pe) {
 			 pe.printStackTrace();
 		 }//end catch
@@ -350,10 +437,37 @@ public class AdminService {
 				 
 				 cnt=cDAO.selectTodayOrderCnt();
 			 }catch(PersistenceException pe) {
-				 pe.printStackTrace();
+				 pe.printStackTrace(); 
 			 }//end catch
 			 
 			 return cnt;
 		 }
+		 
+		//로그인
+		 	public AdminVO isAdmin(AdminVO aVO) {
+		 		AdminVO AdVO=null;
+			  
+			  try { 
+				  AdVO=cDAO.selectAdminLogin(aVO);
+			  }catch(PersistenceException pe) {
+			  pe.printStackTrace(); }//end catch
+			  
+			  return AdVO;
+			  
+		 	}//modifyCategory
+		 	
+		 	//비밀번호 변경
+		 	public int modifyPassword(String password) {
+		 		int cnt=0;
+			  
+			  try { 
+				  cnt=cDAO.updatePassword(password);
+			  }catch(PersistenceException pe) {
+			  pe.printStackTrace(); }//end catch
+			  
+			  return cnt;
+			  
+		 	}//modifyPassword
+		 
 
 }//class

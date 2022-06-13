@@ -215,7 +215,6 @@
     /*==================================================================
     [ +/- num product ]*/
     $('.btn-num-product-down').on('click', function(){
-    alert("dddd")
         var numProduct = Number($(this).next().val());
         if(numProduct > 0) $(this).next().val(numProduct - 1);
     });
@@ -277,7 +276,6 @@
     $('.js-hide-modal1').on('click',function(){
         $('.js-modal1').removeClass('show-modal1');
     });
-
-
+    
 
 })(jQuery);

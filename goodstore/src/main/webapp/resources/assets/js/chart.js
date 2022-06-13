@@ -112,7 +112,7 @@ $(function() {
     labels: [
       '취소',
       '완료',
-      '대기중',
+      '환불',
     ]
   };
   var doughnutPieOptions = {

@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Component;
 
 import kr.co.goodstore.dao.MyBatisFramework;
+import kr.co.goodstore.domain.admin.AdminVO;
 import kr.co.goodstore.domain.admin.BoardVO;
 import kr.co.goodstore.domain.admin.CategoryDomain;
 import kr.co.goodstore.domain.admin.MemberDomain;
@@ -52,8 +53,7 @@ public class AdminDAO {
 			 int cnt=0;
 			  
 			  //MyBatis Handler 생성 
-			 SqlSession ss= null;
-			  
+			 SqlSession ss= null;  
 			  try { 
 				ss=MyBatisFramework.getInstance().getMyBatisHandler();
 			  cnt=ss.update("modifyCategory",cDomain); 
@@ -64,9 +64,50 @@ public class AdminDAO {
 				  if(ss != null) {ss.close();}
 				  }//finally
 			  
+			  return cnt;
+			 }//updateCategory
+		 
+		 //카테고리 상태변경
+		 public int updateCategoryStatus(int category_id)throws PersistenceException{ 
+			 int cnt=0;
+			  
+			  //MyBatis Handler 생성 
+			 SqlSession ss= null;  
+			  try { 
+				ss=MyBatisFramework.getInstance().getMyBatisHandler();
+			  cnt=ss.update("updateCategoryStatus",category_id); 
+			   if(cnt == 1) { ss.commit(); }
+			 
+			  }finally {
+				  //MyBatis Handler 닫기 
+				  if(ss != null) {ss.close();}
+				  }//finally
 			  
 			  return cnt;
 			 }//updateCategory
+		 
+		 
+		 
+		 //카테고리 추가
+		 public int insertCategory(CategoryDomain cDomain)throws PersistenceException{ 
+			 int cnt=0;
+			  
+			  //MyBatis Handler 생성 
+			 SqlSession ss= null;
+			  
+			  try { 
+				ss=MyBatisFramework.getInstance().getMyBatisHandler();
+			  cnt=ss.insert("addCategory",cDomain); 
+			   if(cnt == 1) { ss.commit(); }
+			 
+			  }finally {
+				  //MyBatis Handler 닫기 
+				  if(ss != null) {ss.close();}
+				  }//finally
+			  
+			  
+			  return cnt;
+			 }//insertCategory
 		 
 		 
 	 
@@ -164,6 +205,57 @@ public class AdminDAO {
 		 return totalCnt;
 	 }	 	 
 	 
+	//전체 주문 구하기(상태)
+	 public int selectOrdersCount1(String status) {
+		 int totalCnt=0;
+		 
+		 //MyBatis Handler 얻기
+		 SqlSession ss=MyBatisFramework.getInstance().getMyBatisHandler();
+		 //쿼리문 실행
+		 totalCnt=ss.selectOne("orderCounts",status);  //Mapper 의 select문 아이디( 컬럼 여러개 한행=selectOne)
+		 //MyBatis Handler 닫기
+		 if(ss != null) {ss.close();}//end if
+		 return totalCnt;
+	 }
+	 
+	//전체 주문 구하기()
+		 public int selectOrdersCount2() {
+			 int totalCnt=0;
+			 
+			 //MyBatis Handler 얻기
+			 SqlSession ss=MyBatisFramework.getInstance().getMyBatisHandler();
+			 //쿼리문 실행
+			 totalCnt=ss.selectOne("orderCount2");  //Mapper 의 select문 아이디( 컬럼 여러개 한행=selectOne)
+			 //MyBatis Handler 닫기
+			 if(ss != null) {ss.close();}//end if
+			 return totalCnt;
+		 }
+		 
+		 //오늘 주문 구하기()
+		 public int selectTodayOrdersCount() {
+			 int totalCnt=0;
+			 
+			 //MyBatis Handler 얻기
+			 SqlSession ss=MyBatisFramework.getInstance().getMyBatisHandler();
+			 //쿼리문 실행
+			 totalCnt=ss.selectOne("todayOrdersCount1");  //Mapper 의 select문 아이디( 컬럼 여러개 한행=selectOne)
+			 //MyBatis Handler 닫기
+			 if(ss != null) {ss.close();}//end if
+			 return totalCnt;
+		 }
+		 
+		 //오늘 주문 구하기(상태)
+		 public int selectTodayOrdersCount2(String status) {
+			 int totalCnt=0;
+			 
+			 //MyBatis Handler 얻기
+			 SqlSession ss=MyBatisFramework.getInstance().getMyBatisHandler();
+			 //쿼리문 실행
+			 totalCnt=ss.selectOne("todayOrdersCount2",status);  //Mapper 의 select문 아이디( 컬럼 여러개 한행=selectOne)
+			 //MyBatis Handler 닫기
+			 if(ss != null) {ss.close();}//end if
+			 return totalCnt;
+		 }
 	 
 	 
 	 
@@ -183,13 +275,16 @@ public class AdminDAO {
 	 }//searchOrderss
 	 
 	//주문 상세 조회
-		 public OrdersDomain orderDetail(int order_id)throws PersistenceException{  // 컬럼 여러개 한행
+	// public OrdersDomain orderDetail(int order_id)throws PersistenceException{  // 컬럼 여러개 한행
+	 public OrdersDomain orderDetail(OrdersDomain oDomain)throws PersistenceException{  // 컬럼 여러개 한행
+			// public List<OrdersDomain> orderDetail(int order_id)throws PersistenceException{  // 컬럼 여러개 한행
 			 OrdersDomain list=null;
+				// List<OrdersDomain> list=null;
 			 
 			 //MyBatis Handler 얻기
 			 SqlSession ss=MyBatisFramework.getInstance().getMyBatisHandler();
 			 //쿼리문 실행
-			 list=ss.selectOne("orderDetail",order_id);  //Mapper 의 select문 아이디( 컬럼 여러개 한행=selectOne)
+			 list=ss.selectOne("orderDetail",oDomain);  //Mapper 의 select문 아이디( 컬럼 여러개 한행=selectOne)
 			 //MyBatis Handler 닫기
 			 System.out.println("====================="+list);
 			 if(ss != null) {ss.close();}//end if
@@ -297,6 +392,41 @@ public class AdminDAO {
 			 if(ss != null) {ss.close();}//end if
 			 return totalCnt;
 		 }
+		 
+		 //로그인
+		 public AdminVO selectAdminLogin(AdminVO aVO)throws PersistenceException{
+			 AdminVO AdVO=null;
+			 
+			 //MyBatis Handler 얻기
+			 SqlSession ss=MyBatisFramework.getInstance().getMyBatisHandler();
+			 //쿼리문 실행
+			 AdVO=ss.selectOne("login",aVO);  //Mapper 의 select문 아이디( 컬럼 여러개 한행=selectOne)
+			 //MyBatis Handler 닫기
+			 if(ss != null) {ss.close();}//end if
+			 
+			 return AdVO;
+		 }
+		 
+		 //비밀번호변경
+		 public int updatePassword(String password)throws PersistenceException{ 
+			 int cnt=0;
+			  
+			  //MyBatis Handler 생성 
+			 SqlSession ss= null;
+			  
+			  try { 
+				ss=MyBatisFramework.getInstance().getMyBatisHandler();
+			  cnt=ss.update("updatePassword",password); 
+			   if(cnt == 1) { ss.commit(); }
+			 
+			  }finally {
+				  //MyBatis Handler 닫기 
+				  if(ss != null) {ss.close();}
+				  }//finally
+			  
+			  
+			  return cnt;
+			 }//updatePassword
 	 
 
 }//class

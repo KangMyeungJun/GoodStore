@@ -51,7 +51,7 @@
 			e.preventDefault();
 		});
 
-		$('.js-addwish-b2').each(function(){
+/* 		$('.js-addwish-b2').each(function(){
 			var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
 			$(this).on('click', function(){
 				swal(nameProduct, "is added to wishlist !", "success");
@@ -70,16 +70,16 @@
 				$(this).addClass('js-addedwish-detail');
 				$(this).off('click');
 			});
-		});
+		}); */
 
 		/*---------------------------------------------*/
 
-		$('.js-addcart-detail').each(function(){
+/* 		$('.js-addcart-detail').each(function(){
 			var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
 			$(this).on('click', function(){
 				swal(nameProduct, "is added to cart !", "success");
 			});
-		});
+		}); */
 	</script>
 <!--===============================================================================================-->
 	<script src="${initParam.staticPath}vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
@@ -100,3 +100,52 @@
 	</script>
 <!--===============================================================================================-->
 	<script src="${initParam.staticPath}js/main.js"></script>
+	<script>
+    function menuColor(menuName){
+
+		$('.main-menu').children("li").each(function(index, obj){
+			$(this).removeClass('active-menu');
+			if($(this).children().text()==menuName){
+					$(this).addClass('active-menu');
+			}
+		})
+	};
+	</script>
+	<!-- wishlist 구현메서드 -->
+	<script>
+	function addWish(){
+		$('.add-wishlist').on('click',function(e){
+		    e.preventDefault();
+		    var item_id = this.value;
+		    var addBtn = $(this);
+		    //부모의 윗형제의 자식의 a태그 클래스명은 js-name-b2
+		    var nameProduct = $.trim($(this).parent().prev().children('a').text());
+	 		$.ajax({
+				url : "add_wish.action",
+				type : 'post',
+				data : {
+					item_id : item_id
+				},
+				success:function(result){
+					
+					if(result == 1){
+		    	    		swal(nameProduct, "이/가 위시리스트에 추가되었습니다.", "success"); 
+		    	    		addBtn.addClass('js-addedwish-b2');
+		    				console.log($(this));
+		    				$(this).off('click');
+					}
+		    		else if(result == 2){
+	    	    		swal(nameProduct, "이/가 위시리스트에서 제거되었습니다.", "warning"); 
+	    	    		addBtn.removeClass('js-addedwish-b2');
+					}else{
+	    	    		swal("에러", "로그인이 필요합니다", "error"); 
+	    	    		location.reload();
+					}
+				},
+				error:function(){
+		    		swal("에러","위시리스트 추가 실패", "error"); 	    					
+				}
+			})//end ajax 
+		});//end on click
+	}//end addWish
+	</script>
