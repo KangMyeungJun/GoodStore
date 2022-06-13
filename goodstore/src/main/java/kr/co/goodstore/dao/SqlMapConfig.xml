@@ -6,6 +6,7 @@
 <properties resource="properties/database.properties"/>
 <typeAliases>
 <typeAlias alias="AdminItemVO" type="kr.co.goodstore.vo.admin.product.AdminItemVO"/>
+<typeAlias alias="AdminCompaniesDomain" type="kr.co.goodstore.domain.admin.company.AdminCompaniesDomain"/>
 <typeAlias alias="AdminVO" type="kr.co.goodstore.domain.admin.AdminVO"/>
 <typeAlias alias="AdminItemDomain" type="kr.co.goodstore.domain.admin.product.AdminItemDomain"/>
 <typeAlias alias="AdminCategoryDomain" type="kr.co.goodstore.domain.admin.product.AdminCategoryDomain"/>
@@ -15,6 +16,7 @@
 <typeAlias alias="AdminBlogCommentDomain" type="kr.co.goodstore.domain.admin.blog.AdminBlogCommentDomain"/>
 <typeAlias alias="AdminPostVO" type="kr.co.goodstore.vo.admin.blog.AdminPostVO"/>
 <typeAlias alias="AdminTagVO" type="kr.co.goodstore.vo.admin.blog.AdminTagVO"/>
+<typeAlias alias="AdminCompanyVO" type="kr.co.goodstore.vo.admin.company.AdminCompanyVO"/>
 <typeAlias alias="AdminCouponVO" type="kr.co.goodstore.vo.admin.coupon.AdminCouponVO"/>
 <typeAlias alias="AdminCouponDomain" type="kr.co.goodstore.domain.admin.coupon.AdminCouponDomain"/>
 <typeAlias alias="PagingVO" type="kr.co.goodstore.paging.PagingVO"/>
@@ -65,5 +67,6 @@
 		<mapper resource="kr/co/goodstore/dao/admin/blog/adminBlogMapper.xml"/>
 		<mapper resource="kr/co/goodstore/dao/admin/blog/adminCommentMapper.xml"/>
 		<mapper resource="kr/co/goodstore/dao/admin/coupon/adminCouponMapper.xml"/>
+		<mapper resource="kr/co/goodstore/dao/admin/company/adminCompanyMapper.xml"/>
   </mappers>
 </configuration>
