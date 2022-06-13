@@ -37,6 +37,11 @@
 		
 		$(function(){
 			 $("#addBtn").click(function(){
+				 if($("#category_name").val() == "") {
+					 alert("카테고리 이름을 입력해주세요");
+					 $("#category_name").focus();
+					 return;
+				 }
 					alert("카테고리를 추가하시겠습니까??");
 					$("#categoryAddFrm").submit();
 				})//click 
@@ -93,7 +98,7 @@
                         </div>
                       </div>
 
-                      <div class="row">
+                      <%-- <div class="row">
                         <div class="col-md-6">
                           <div class="form-group row">
                             <label class="col-sm-3 col-form-label">Category Image</label>
@@ -102,7 +107,7 @@
                             </div>
                           </div>
                         </div>
-                      </div>
+                      </div> --%>
 
                       <div class="row">
                         <div class="col-md-6">

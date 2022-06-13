@@ -219,7 +219,7 @@ where o.order_id=#{order_id} -->
 <!-- 주문환불 -->
 <update id="updateOrderStatus" parameterType="int">
 update order_detail
-set    status='R'
+set    status='N'
 where  order_id=#{order_id}
 </update> 
 
