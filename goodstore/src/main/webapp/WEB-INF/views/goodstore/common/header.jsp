@@ -15,7 +15,7 @@
 
 					<div class="right-top-bar flex-w h-full">
 
-						<a href="account_edit_chk.html" class="flex-c-m trans-04 p-lr-25">
+						<a href="${initParam.commonUrl}account_edit_chk.html" class="flex-c-m trans-04 p-lr-25">
 							My Account
 						</a>
 
@@ -34,7 +34,7 @@
 				<nav class="limiter-menu-desktop container">
 					
 					<!-- Logo desktop -->		
-					<a href="index.html" class="logo">
+					<a href="${initParam.commonUrl}index.html" class="logo">
 						<img src="${initParam.staticPath}images/goodstore5.png" alt="IMG-LOGO">
 					</a>
 
@@ -42,23 +42,23 @@
 					<div class="menu-desktop">
 						<ul class="main-menu">
 							<li class="active-menu">
-								<a href="index.html">Home</a>
+								<a href="${initParam.commonUrl}index.html">Home</a>
 							</li>
 
 							<li class="label1" data-label1="hot">
-								<a href="product.html">Shop</a>
+								<a href="${initParam.commonUrl}product.html">Shop</a>
 							</li>
 
 							<li>
-								<a href="cart">Cart</a>
+								<a href="${initParam.commonUrl}cart">Cart</a>
 							</li>
 
 							<li>
-								<a href="blog.html">Blog</a>
+								<a href="${initParam.commonUrl}blog.html">Blog</a>
 							</li>
 
 							<li>
-								<a href="about.html">About</a>
+								<a href="${initParam.commonUrl}about.html">About</a>
 							</li>
 						</ul>
 					</div>
@@ -71,10 +71,10 @@
             <div class="login-desktop">
               <ul class="login-menu">
                 <li>
-                  <a href="signup.html">Sign Up</a>
+                  <a href="${initParam.commonUrl}signup.html">Sign Up</a>
                 </li>
                 <li>
-                  <a href="signin.html">Sign In</a>
+                  <a href="${initParam.commonUrl}signin.html">Sign In</a>
                 </li>
 
                 <!-- 세션에서 유저의 로그인을 확인하면
@@ -91,16 +91,16 @@
 						</div>
 							
 						<div class="flex-c-m h-full p-l-18"> 
-							<a href="cart" class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11">
+							<a href="${initParam.commonUrl}cart" class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11">
 								<i class="zmdi zmdi-shopping-cart"></i>
 							</a>
 						</div>
 						
-            <div class="flex-c-m h-full p-l-18">
-            <a href="#" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-" >
-							<i class="zmdi zmdi-favorite-outline"></i>
-						</a>
-            </div>
+            			<div class="flex-c-m h-full p-l-18">
+				            <a href="${initParam.commonUrl}wishlist" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-" >
+								<i class="zmdi zmdi-favorite-outline"></i>
+							</a>
+            			</div>
 
 						<div class="flex-c-m h-full p-lr-19">
 							<div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 js-show-sidebar">
@@ -116,7 +116,7 @@
 		<div class="wrap-header-mobile">
 			<!-- Logo moblie -->		
 			<div class="logo-mobile">
-				<a href="index.html"><img src="${initParam.staticPath}images/goodstore5.png" alt="IMG-LOGO"></a>
+				<a href="${initParam.commonUrl}index.html"><img src="${initParam.staticPath}images/goodstore5.png" alt="IMG-LOGO"></a>
 			</div>
 
 			<!-- Icon header -->
@@ -147,9 +147,9 @@
 		<div class="menu-mobile">
 			<ul class="main-menu-m">
 				<li>
-					<a href="index.html">Home</a>
+					<a href="${initParam.commonUrl}index.html">Home</a>
 					<ul class="sub-menu-m">
-						<li><a href="index.html">Homepage</a></li>
+						<li><a href="${initParam.commonUrl}index.html">Homepage</a></li>
 					</ul>
 					<span class="arrow-main-menu-m">
 						<i class="fa fa-angle-right" aria-hidden="true"></i>
@@ -157,19 +157,19 @@
 				</li>
 
 				<li>
-					<a href="product.html">Shop</a>
+					<a href="${initParam.commonUrl}product.html">Shop</a>
 				</li>
 
 				<li>
-					<a href="shoping-cart.html" class="label1 rs1" data-label1="hot">Features</a>
+					<a href="${initParam.commonUrl}shoping-cart.html" class="label1 rs1" data-label1="hot">Features</a>
 				</li>
 
 				<li>
-					<a href="blog">Blog</a>
+					<a href="${initParam.commonUrl}blog">Blog</a>
 				</li>
 
 				<li>
-					<a href="#">About</a>
+					<a href="${initParam.commonUrl}about">About</a>
 				</li>
 
 			</ul>

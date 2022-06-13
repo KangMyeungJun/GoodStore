@@ -115,7 +115,7 @@ order by upload_date
 
 <select id="productCommentAdd" parameterType="pcommVO">
 insert into item_comment(item_comment_id, review, item_id, member_id, star, upload_date)
-values(seq_item_comment_id.nextval, '${review}', ${item_id}, ${member_id}, ${star}, SYSDATE)
+values(seq_item_comment_id.nextval, '#{review}', #{item_id}, #{member_id}, ${star}, SYSDATE)
 </select>
 
 <insert id="addCart" parameterType="pacVO">
@@ -123,4 +123,37 @@ insert into cart(member_id, item_id, cart_id, quantity)
 values(#{member_id}, #{item_id}, SEQ_CART_ID.nextval, #{quantity})
 </insert>
 
+<insert id="addWish" parameterType="pawVO">
+insert into wishlist(member_id, item_id, wishlist_id)
+values(#{member_id}, #{item_id}, SEQ_WISHLIST_ID.nextval)
+</insert>
+
+<delete id="deleteWish" parameterType="pawVO">
+delete from wishlist where item_id=#{item_id} and member_id = #{member_id}
+</delete>
+
+<select id="selectWish" parameterType="pawVO" resultType="pwishd">
+select * from wishlist 
+<where>
+member_id = #{member_id}
+<if test="item_id != null and item_id != ''">
+<trim prefix="and" prefixOverrides="and">
+item_id = #{item_id}
+</trim>
+</if>
+</where>
+</select>
+
+<select id="selectWishList" parameterType="int" resultType="pwishd">
+select i.item_id, i.category_id, i.item_name, i.price, i.image, i.delete_flag, w.member_id, w.wishlist_id, c.type com_type,
+c.name com_name, cat.category_name
+from item i
+join (select * from wishlist where member_id = #{member_id}) w
+on i.item_id = w.item_id
+JOIN company c
+ON i.company_id = c.company_id
+JOIN category cat
+ON i.category_id = cat.category_id
+where i.delete_flag = 'N'
+</select>
 </mapper>

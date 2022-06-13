@@ -150,10 +150,10 @@ if(request.getParameter("keyword") != null){
 							</div>
 
 							<div class="block2-txt-child2 flex-r p-t-3">
-								<button value="${ productList.item_id }" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2 add-wishlist">
+								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
 									<img class="icon-heart1 dis-block trans-04" src="${initParam.staticPath}images/icons/icon-heart-01.png" alt="ICON">
 									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="${initParam.staticPath}images/icons/icon-heart-02.png" alt="ICON">
-								</button>
+								</a>
 							</div>
 						</div>
 					</div>
@@ -183,7 +183,6 @@ $(function(){
 	keepSort();
 	$('.js-show-filter').trigger('click');
 	menuColor('Shop');
-	addWish();
 
 });
 
@@ -285,12 +284,12 @@ var numProduct = 1;
 function quickBtn(){
 	$('.js-show-modal1').on('click',function(e){
 	    e.preventDefault();
-	    var item_id = this.value;
+	    var bno = this.value;
 		$.ajax({
 			url : "quick_view.action",
 			type : 'get',
 			data : {
-				item_id : item_id
+				item_id : bno
 			},
 			success:function(result){
 				console.log('성공');
@@ -310,7 +309,7 @@ function quickBtn(){
 			    			url : "add_cart.action",
 			    			type : "post",
 			    			data : {
-			    				item_id : item_id,
+			    				item_id : bno,
 			    				quantity : numProduct
 			    			},
 			    			success:function(result){
@@ -389,6 +388,11 @@ function slick3(){
         });
     });
 }//slick3 quick-view subImage 왼쪽정렬, 슬라이드
+</script>
+<!-- wishlist 구현메서드 -->
+<script>
+
+
 </script>
 </body>
 </html>

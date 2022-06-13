@@ -12,7 +12,9 @@ import kr.co.goodstore.domain.product.ProductCommentDomain;
 import kr.co.goodstore.domain.product.ProductDomain;
 import kr.co.goodstore.domain.product.ProductListDomain;
 import kr.co.goodstore.domain.product.SubImageDomain;
+import kr.co.goodstore.domain.product.WishListDomain;
 import kr.co.goodstore.vo.product.AddCartVO;
+import kr.co.goodstore.vo.product.AddWishVO;
 import kr.co.goodstore.vo.product.ProductCommentVO;
 import kr.co.goodstore.vo.product.ProductListVO;
 
@@ -101,5 +103,37 @@ public class ProductService {
 		pDAO.addCart(cart);
 	}
 	
+	public void addWish(AddWishVO wishVO) throws Exception{
+		pDAO.addWish(wishVO);
+	}	
 	
+	public void removeWish(AddWishVO wishVO) throws Exception{
+		pDAO.deleteWish(wishVO);
+	}
+	
+	public List<WishListDomain> searcWish(AddWishVO wishVO){
+		List<WishListDomain> list=null;
+
+		try {
+			list=pDAO.selectWish(wishVO);
+		}catch(PersistenceException pe){
+			pe.printStackTrace();
+		}
+		return list;
+	}
+	
+	public List<WishListDomain> searcWishList(int member_id){
+		List<WishListDomain> list=null;
+		
+		try {
+			list=pDAO.selectWishList(member_id);
+		}catch(PersistenceException pe){
+			pe.printStackTrace();
+		}
+		return list;
+	}
+	
+
+	
+
 }
