@@ -78,7 +78,7 @@ public class AdminController {
 	
 	
 	//카테고리 조회
-	 @RequestMapping(value="/categories",method=GET)
+	 @RequestMapping(value="/admin/categories",method=GET)
 		public String searchCategory(Model model) {
 			
 			
@@ -90,7 +90,7 @@ public class AdminController {
 		}//searchCategory
 	 
 	//category_detail(수정) 조회
-		 @RequestMapping(value="/categories_edit",method=GET)
+		 @RequestMapping(value="/admin/categories_edit",method=GET)
 			 public String adminCategoryDetail(Model model, int category_id) {
 			 
 			 
@@ -102,7 +102,7 @@ public class AdminController {
 		 
 		 
 		 //category_detail(수정)
-		 @RequestMapping(value="/categories/detail/edit",method=POST)
+		 @RequestMapping(value="/admin/categories/detail/edit",method=POST)
 		public String modifyCategoryl(CategoryForm cForm) throws IOException {
 			// public String modifyCategoryl(CategoryForm cForm) throws IOException {
 			 
@@ -123,24 +123,24 @@ public class AdminController {
 			 cs.modifyCategory(cDomain);
 			 
 			 
-			 return "redirect:/categories";    // views 그다음 폴더부터 쭈욱
+			 return "redirect:/admin/categories";    // views 그다음 폴더부터 쭈욱
 		 }//modifyCategoryl
 		 
 		 
 		 //category 삭제
-		 @RequestMapping(value="/categories_status_edit",method=POST)
+		 @RequestMapping(value="/admin/categories_status_edit",method=POST)
 		 public String adminCategoryStatus( int category_id) {
 			 
 			 
 			cs.modifyCategoryStatus(category_id);
 			 
 			 
-			 return "redirect:/categories";   // views 그다음 폴더부터 쭈욱
+			 return "redirect:/admin/categories";   // views 그다음 폴더부터 쭈욱
 		 }//adminCategoryStatus
 		 
 		 
 			//카테고리 추가 폼
-			 @RequestMapping(value="/category_add",method=GET) 
+			 @RequestMapping(value="/admin/category_add",method=GET) 
 			  public String adminCategoryAddForm()  {
 				 
 			
@@ -153,7 +153,7 @@ public class AdminController {
 			 
 			 
 			//카테고리 추가
-			 @PostMapping("/category_addBtn")
+			 @PostMapping("/admin/category_addBtn")
 			  public String adminCategoryAdd(@ModelAttribute CategoryForm cForm) throws IOException {
 				 
 		
@@ -182,7 +182,7 @@ public class AdminController {
 	 
 	 
 	 //Users 조회
-	 @RequestMapping(value="/users",method=GET)
+	 @RequestMapping(value="/admin/users",method=GET)
 	 public String adminUsers(Model model,BoardVO bVO) {
 		 //전체 사용자수 뿌리기
 		 int userCount1=cs.searchUserCount1();
@@ -224,7 +224,7 @@ public class AdminController {
 	 
 	 
 	 //user_detail(삭제) 조회
-	 @RequestMapping(value="/user_delete",method=GET)
+	 @RequestMapping(value="/admin/user_delete",method=GET)
 	 //public String adminUsers(Model model,@RequestParam("member_id") Integer member_id) {
 	// public String adminUsers(Model model,HttpServletRequest hq, int member_id) {
 		 public String adminUsersDetail(Model model, int member_id) {
@@ -241,19 +241,19 @@ public class AdminController {
 		
 		 //유저탈퇴시키기
 		  
-		  @RequestMapping(value="/user_remove",method=POST) 
+		  @RequestMapping(value="/admin/user_remove",method=POST) 
 		 // public String adminUserRemove(int member_id,Model model) {
 			  public String adminUserRemove(int member_id) {
 		//  model.addAttribute("msg", "삭제하시겠습니까?");
 		  cs.removeUser(member_id);
 		  
-		  return "redirect:/users";
+		  return "redirect:/admin/users";
 		  //redirect:http://localhost/goodstore/
 		  }//adminUserRemove
 		 	 
 	 
 	//주문 조회
-		 @RequestMapping(value="/orders",method=GET)
+		 @RequestMapping(value="/admin/orders",method=GET)
 		 public String adminOrders(Model model,BoardVO bVO,String status) {
 			 
 			 //1.주문수(전체 레코드 수 ) 뿌리기
@@ -304,12 +304,12 @@ public class AdminController {
 		 
 		 
 		 //order_detail 조회
-		 @RequestMapping(value="/order_detail",method=GET)
-			 public String adminOrderDetail(Model model, int order_id) {
+		 @RequestMapping(value="/admin/order_detail",method=GET)
+			 public String adminOrderDetail(Model model, OrdersDomain oDomain) {
 			 
 		//	 member_id=Integer.parseInt(hq.getParameter("member_id"));
 			 
-			 model.addAttribute("orderDetail",cs.findOrderDetail(order_id));
+			 model.addAttribute("orderDetail",cs.findOrderDetail(oDomain));
 			 
 			 
 			 return "admin/template/pages/orders/orders-detail";    // views 그다음 폴더부터 쭈욱
@@ -318,17 +318,17 @@ public class AdminController {
 		  
 		 
 		 //주문환불시키기
-		 @RequestMapping(value="/order_remove",method=POST) 
+		 @RequestMapping(value="/admin/order_remove",method=POST) 
 			  public String adminOrderRemove(int order_id) {
 		
 		  cs.removeOrder(order_id);
 		  
-		  return "redirect:/orders";
+		  return "redirect:/admin/orders";
 		  //redirect:http://localhost/goodstore/
 		  }//adminOrderRemove
 		 
 		 //로그인 폼 
-		 @RequestMapping(value="/login_form",method=GET) 
+		 @RequestMapping(value="/admin/login_form",method=GET) 
 		  public String adminLoginForm(SessionStatus session) {
 			 session.setComplete();
 	 
@@ -338,7 +338,7 @@ public class AdminController {
 	  }//adminLoginForm
 		 
 		 //로그인  프로세스
-		 @RequestMapping(value="/admin-login",method=POST) 
+		 @RequestMapping(value="/admin/admin-login",method=POST) 
 		  public String adminLoginPorcess(AdminVO avo, HttpSession session, Model model,RedirectAttributes rttr) {
 			 
 			System.out.println(avo);
@@ -349,7 +349,7 @@ public class AdminController {
 			int result=0;
 		//	model.addAttribute("msg","아이디와 비밀번호가 일치하지 않습니다");
 			rttr.addFlashAttribute("result",result);
-			return "redirect:/login_form";
+			return "redirect:/admin/login_form";
 		}else {
 			session.setAttribute("id", avo.getId());
 			return "redirect:/admin_index";
@@ -364,7 +364,7 @@ public class AdminController {
 	  }//adminLoginForm
 		 
 		 //비밀번호 변경 폼
-		 @RequestMapping(value="/admin-setting",method=GET) 
+		 @RequestMapping(value="/admin/admin-setting",method=GET) 
 		  public String adminModifyPasswordForm() {
 			 
 	 
@@ -377,7 +377,7 @@ public class AdminController {
 		 
 		//비밀번호 변경
 		  
-		  @RequestMapping(value="/modifyPaswword",method=POST) 
+		  @RequestMapping(value="/admin/modifyPaswword",method=POST) 
 			  public String adminModifyPassword(String password) {
 		  cs.modifyPassword(password);
 		  

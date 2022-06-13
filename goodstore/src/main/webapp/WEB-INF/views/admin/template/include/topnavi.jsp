@@ -40,7 +40,7 @@
                   <h6 class="p-3 mb-0">Profile</h6>
                   <div class="dropdown-divider"></div>
 
-                  <a class="dropdown-item preview-item" href="admin-setting">
+                  <a class="dropdown-item preview-item" href="${initParam.middlePath }/admin/admin-setting">
                     <div class="preview-thumbnail">
                       <div class="preview-icon bg-dark rounded-circle">
                         <i class="mdi mdi-settings text-success"></i>
@@ -65,7 +65,7 @@
                   <div class="dropdown-divider"></div>
 
 
-                  <a class="dropdown-item preview-item" href="login_form">
+                  <a class="dropdown-item preview-item" href="${initParam.middlePath }/admin/login_form">
                     <div class="preview-thumbnail">
                       <div class="preview-icon bg-dark rounded-circle">
                         <i class="mdi mdi-logout text-danger"></i>

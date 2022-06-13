@@ -189,7 +189,8 @@ from (select row_number() over(order by order_date desc) as rnum,
 </select>
 
 <!-- 주문 상세조회 -->
-<select id="orderDetail" resultType="od" parameterType="int">
+<select id="orderDetail" resultType="od" parameterType="od">
+<!-- <select id="orderDetail" resultType="od" parameterType="int"> -->
 select    m.name, o.order_id, o.order_date, od.status , i.item_id, i.item_name, i.price , c.category_name
 from member m
 inner join  orders o
@@ -200,7 +201,19 @@ inner join item i
 on od.item_id=i.item_id
 inner join category c
 on i.category_id=c.category_id
-where o.order_id=#{order_id}
+where o.order_id=#{order_id} and i.item_name=#{item_name}
+<!-- 
+select    m.name, o.order_id, o.order_date, od.status , i.item_id, i.item_name, i.price , c.category_name
+from member m
+inner join  orders o
+on   o.member_id=m.member_id
+inner join order_detail od
+on   od.order_id=o.order_id
+inner join item i
+on od.item_id=i.item_id
+inner join category c
+on i.category_id=c.category_id
+where o.order_id=#{order_id} -->
 </select>
 
 <!-- 주문환불 -->

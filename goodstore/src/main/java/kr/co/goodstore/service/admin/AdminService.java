@@ -329,10 +329,11 @@ public class AdminService {
 	 }//findOrders
 	 
 	 //order_detail Á¶È¸
-	 public OrdersDomain findOrderDetail(int order_id){
+	 //public OrdersDomain findOrderDetail(int order_id){
+	 public OrdersDomain findOrderDetail(OrdersDomain oDomain){
 		 OrdersDomain list=null;
 		 try {
-			 list=cDAO.orderDetail(order_id);
+			 list=cDAO.orderDetail(oDomain);
 		 }catch(PersistenceException pe) {
 			 pe.printStackTrace();
 		 }//end catch

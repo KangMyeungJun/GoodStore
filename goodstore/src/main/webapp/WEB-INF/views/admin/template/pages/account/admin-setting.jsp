@@ -54,7 +54,7 @@
             <div class="card col-lg-4 mx-auto">
               <div class="card-body px-5 py-5">
                 <h3 class="card-title text-left mb-3">Admin Settings</h3>
-                <form id="modifyPassword" method="post" action="modifyPaswword">
+                <form id="modifyPassword" method="post" action="${initParam.middlePath }/admin/modifyPaswword">
                   
                   <div class="form-group">
                     <label>New Password</label>

@@ -275,7 +275,8 @@ public class AdminDAO {
 	 }//searchOrderss
 	 
 	//주문 상세 조회
-	 public OrdersDomain orderDetail(int order_id)throws PersistenceException{  // 컬럼 여러개 한행
+	// public OrdersDomain orderDetail(int order_id)throws PersistenceException{  // 컬럼 여러개 한행
+	 public OrdersDomain orderDetail(OrdersDomain oDomain)throws PersistenceException{  // 컬럼 여러개 한행
 			// public List<OrdersDomain> orderDetail(int order_id)throws PersistenceException{  // 컬럼 여러개 한행
 			 OrdersDomain list=null;
 				// List<OrdersDomain> list=null;
@@ -283,7 +284,7 @@ public class AdminDAO {
 			 //MyBatis Handler 얻기
 			 SqlSession ss=MyBatisFramework.getInstance().getMyBatisHandler();
 			 //쿼리문 실행
-			 list=ss.selectOne("orderDetail",order_id);  //Mapper 의 select문 아이디( 컬럼 여러개 한행=selectOne)
+			 list=ss.selectOne("orderDetail",oDomain);  //Mapper 의 select문 아이디( 컬럼 여러개 한행=selectOne)
 			 //MyBatis Handler 닫기
 			 System.out.println("====================="+list);
 			 if(ss != null) {ss.close();}//end if
