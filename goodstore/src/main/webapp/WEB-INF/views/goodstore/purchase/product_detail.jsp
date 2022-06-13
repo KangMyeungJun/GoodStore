@@ -306,6 +306,12 @@
 
 <%@ include file="../common/footer.jsp" %>
 <%@ include file="../common/common_js.jsp" %>
+<script>
+$(function(){
+	//change selected menu color
+	menuColor('Shop');
+});
+</script>
 <!------ addCart 관련 js ------>
 <script>
 var numProduct = 1;

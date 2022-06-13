@@ -124,5 +124,11 @@
 	
 <%@ include file="footer.jsp" %>
 <%@ include file="common_js.jsp" %>	
+<script>
+$(function(){
+	//change selected menu color
+	menuColor('About');
+});
+</script>
 </body>
 </html>

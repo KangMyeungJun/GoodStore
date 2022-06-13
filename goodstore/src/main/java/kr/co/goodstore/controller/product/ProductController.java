@@ -1,5 +1,8 @@
 package kr.co.goodstore.controller.product;
 
+import java.io.Console;
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,9 +14,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import kr.co.goodstore.domain.product.WishListDomain;
 import kr.co.goodstore.service.product.ProductService;
 import kr.co.goodstore.vo.member.MemberVO;
 import kr.co.goodstore.vo.product.AddCartVO;
+import kr.co.goodstore.vo.product.AddWishVO;
 import kr.co.goodstore.vo.product.ProductCommentVO;
 import kr.co.goodstore.vo.product.ProductListVO;
 
@@ -58,7 +63,7 @@ public class ProductController {
 	@PostMapping("add_comment.action")
 	public String addComment(ProductCommentVO comment, Model model, HttpSession session) throws Exception{
 
-		/* ·Î±×ÀÎ ±â´É ±¸Çö ÈÄ ´Ù½Ã È®ÀÎ */
+		/* ë¡œê·¸ì¸ ê¸°ëŠ¥ êµ¬í˜„ í›„ ë‹¤ì‹œ í™•ì¸ */
 //		MemberVO member = (MemberVO) session.getAttribute("member");
 
 //		if (member != null) {
@@ -76,7 +81,7 @@ public class ProductController {
 	public int addCart(AddCartVO cart, HttpSession session) throws Exception {
 		int result = 0;
 
-		/* ·Î±×ÀÎ ±â´É ±¸Çö ÈÄ ´Ù½Ã È®ÀÎ */
+		/* ë¡œê·¸ì¸ ê¸°ëŠ¥ êµ¬í˜„ í›„ ë‹¤ì‹œ í™•ì¸ */
 		MemberVO member = (MemberVO)session.getAttribute("member");
 
 //		if (member != null) {
@@ -89,5 +94,39 @@ public class ProductController {
 		return result;
 	}
 	
+	@PostMapping("add_wish.action")
+	@ResponseBody
+	public int addWish(AddWishVO wishVO, HttpSession session) throws Exception {
+		int result = 0;
+		int item_id = wishVO.getItem_id();
+		MemberVO member = (MemberVO)session.getAttribute("member");
+		int member_id = 1;
+		wishVO.setMember_id(member_id);
+		List<WishListDomain> list = ps.searcWish(wishVO);
+		/* ë¡œê·¸ì¸ ê¸°ëŠ¥ êµ¬í˜„ í›„ ë‹¤ì‹œ í™•ì¸ */
+		
+//		if (member != null) {
+//			cart.setMember_id(member.getMember_id());
+		if(list.isEmpty()) {
+			ps.addWish(wishVO);
+			result = 1;
+		}else {
+			ps.removeWish(wishVO);
+			result = 2;
+		}
+//		}
+		
+		return result;
+	}
+	
+	@GetMapping("wishlist")
+	public String wishlist(Model model,  HttpSession session) {
+		MemberVO member = (MemberVO)session.getAttribute("member");
+//		int member_id = member.getMember_id();
+		int member_id = 1;
+		model.addAttribute("categoryList", ps.productCategory());
+		model.addAttribute("wishlist", ps.searcWishList(member_id));
+		return "goodstore/purchase/wishlist";
+	}
 	
 }
