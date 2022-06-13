@@ -143,11 +143,11 @@ public class OrderListService {
 					
 					for(int j=0; j<listDomain.size();j++){
 						if(listDomain.get(j).getStatus()==null) {
-							listDomain.get(j).setStatus("諛곗넚�셿猷�");
+							listDomain.get(j).setStatus("배송완료");
 						}else if(listDomain.get(j).getStatus().equals("C")) {
-							listDomain.get(j).setStatus("援щℓ�솗�젙");
+							listDomain.get(j).setStatus("구매확정");
 						}else {
-							listDomain.get(j).setStatus("諛섑뭹");
+							listDomain.get(j).setStatus("반품");
 						}
 					}//end for
 					
@@ -415,11 +415,11 @@ public class OrderListService {
 		
 		String reason="";
 		switch (selectIndex) {
-		case 1:reason="援щℓ �쓽�궗 痍⑥냼"; break;
-		case 2:reason="�깋�긽 諛� �궗�씠利� 蹂�寃�"; break;
-		case 3:reason="�긽�뭹 �옒紐� 二쇰Ц"; break;
-		case 4:reason="�꽌鍮꾩뒪 遺덈쭔議�"; break;
-		case 5:reason="�긽�뭹 �뙆�넀"; break;
+		case 1:reason="구매 의사 취소"; break;
+		case 2:reason="색상 및 사이즈 변경"; break;
+		case 3:reason="상품 잘못 주문"; break;
+		case 4:reason="서비스 불만족"; break;
+		case 5:reason="상품파손"; break;
 		}
 //		
 //		if(selectIndex==1) {

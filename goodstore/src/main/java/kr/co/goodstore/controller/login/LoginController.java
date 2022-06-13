@@ -53,9 +53,9 @@ public class LoginController {
 	@GetMapping("logout")
 	public String memberLogout(SessionStatus ss, HttpServletRequest req) {
 		
-		HttpSession session=req.getSession();
-		session.invalidate();
-		//ss.setComplete();
+		//HttpSession session=req.getSession();
+		//session.invalidate();
+		ss.setComplete();
 		//HttpSession session = req.getSession();
 		//System.out.println(ss.isComplete());
 		//session.invalidate();
