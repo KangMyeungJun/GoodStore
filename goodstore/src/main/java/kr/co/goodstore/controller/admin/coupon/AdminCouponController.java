@@ -85,8 +85,8 @@ public class AdminCouponController {
 	}
 	
 	@GetMapping("/add")
-	public String adminAddCoupon (HttpSession session) {
-		session.setAttribute("id", "asd123");
+	public String adminAddCoupon () {
+		
 		
 		
 		return "admin/template/pages/coupon/coupon-add";
