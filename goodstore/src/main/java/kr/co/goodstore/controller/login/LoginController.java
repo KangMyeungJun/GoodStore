@@ -45,7 +45,7 @@ public class LoginController {
 			System.out.println(md.getMember_id());
 			//model.addAttribute("loginEmail", md.getEmail());
 			session.setAttribute("loginSession", md.getMember_id());
-			return "index";
+			return "redirect:index";
 		}
 		
 	}//loginResult

@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import kr.co.goodstore.dao.account.FindInfoDAO;
+import kr.co.goodstore.domain.member.FindMemberDomain;
 import kr.co.goodstore.domain.member.MemberDomain;
 import kr.co.goodstore.vo.member.MemberVO;
 
@@ -14,28 +15,28 @@ public class FindInfoService {
 	@Autowired(required = false)
 	private FindInfoDAO fiDAO;
 	
-	public MemberDomain searchEmail(MemberVO mVO) {
-		MemberDomain md = null;
+	public FindMemberDomain searchEmail(MemberVO mVO) {
+		FindMemberDomain fmd = null;
 		
 		try {
-			md = fiDAO.selectEmail(mVO);
+			fmd = fiDAO.selectEmail(mVO);
 		}catch(PersistenceException pe) {
 			pe.printStackTrace();
 		}
 		
-		return md;
+		return fmd;
 	}//searchEmail
 	
-	public MemberDomain searchPassword(MemberVO mVO) {
-		MemberDomain md = null;
+	public FindMemberDomain searchPassword(MemberVO mVO) {
+		FindMemberDomain fmd = null;
 		
 		try {
-			md = fiDAO.selectPassword(mVO);
+			fmd = fiDAO.selectPassword(mVO);
 		}catch(PersistenceException pe) {
 			pe.printStackTrace();
 		}
 		
-		return md;
+		return fmd;
 	}//searchPassword
 
 	public int changePassword(MemberVO mVO) {
