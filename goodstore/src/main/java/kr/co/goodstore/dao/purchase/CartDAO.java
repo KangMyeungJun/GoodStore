@@ -9,13 +9,13 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import kr.co.goodstore.dao.MyBatisFramework;
-import kr.co.goodstore.purchase.domain.CouponDomain;
-import kr.co.goodstore.purchase.domain.ItemDomain;
-import kr.co.goodstore.purchase.domain.MemberDomain;
-import kr.co.goodstore.purchase.domain.PurchaseSuccessDomain;
-import kr.co.goodstore.purchase.vo.CartVO;
-import kr.co.goodstore.purchase.vo.OrderDetailVO;
-import kr.co.goodstore.purchase.vo.PurchaseVO;
+import kr.co.goodstore.domain.purchase.CouponDomain;
+import kr.co.goodstore.domain.purchase.ItemDomain;
+import kr.co.goodstore.domain.purchase.MemberDomain;
+import kr.co.goodstore.domain.purchase.PurchaseSuccessDomain;
+import kr.co.goodstore.vo.purchase.CartVO;
+import kr.co.goodstore.vo.purchase.OrderDetailVO;
+import kr.co.goodstore.vo.purchase.PurchaseVO;
 
 
 @Repository

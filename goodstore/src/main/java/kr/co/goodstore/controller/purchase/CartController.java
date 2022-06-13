@@ -1,4 +1,4 @@
-package kr.co.goodstore.purchase;
+package kr.co.goodstore.controller.purchase;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,11 +18,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import kr.co.goodstore.purchase.domain.PurchaseSuccessDomain;
-import kr.co.goodstore.purchase.vo.CartListVO;
-import kr.co.goodstore.purchase.vo.CartVO;
-import kr.co.goodstore.purchase.vo.PurchaseVO;
+import kr.co.goodstore.domain.purchase.PurchaseSuccessDomain;
 import kr.co.goodstore.service.purchase.CartService;
+import kr.co.goodstore.vo.purchase.CartListVO;
+import kr.co.goodstore.vo.purchase.CartVO;
+import kr.co.goodstore.vo.purchase.PurchaseVO;
 import lombok.RequiredArgsConstructor;
 
 @Controller

@@ -1,4 +1,4 @@
-package kr.co.goodstore.purchase;
+package kr.co.goodstore.controller.purchase;
 
 import java.util.HashMap;
 import java.util.List;

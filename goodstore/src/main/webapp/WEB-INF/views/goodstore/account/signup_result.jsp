@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
-<%@ page session="false" %>
+ <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>        
 <!DOCTYPE html>
 <head>
 	<title>GOOD STORE</title>
@@ -22,12 +22,12 @@
                   회원가입 완료
                 </h4>
             
-                <button class="flex-c-m cl0 m-tb-10 m-b-20 size-114 bg5 bor7 hov-btn3 trans-04 pointer m-l-20 mtext-110">
-                  메인페이지
-                </button>
-                <button class="flex-c-m cl0 stext-101 m-b-80 size-114 bg1 bor7 hov-btn3 trans-04 pointer m-l-20 mtext-110">
-                  로그인 하기
-                </button>
+                <a href="index"
+                class="flex-c-m cl0 m-tb-10 m-b-20 size-114 bg5 bor7 hov-btn3 trans-04 pointer m-l-20 mtext-110">
+                  메인페이지</a>
+                <a href="signin_page"
+                class="flex-c-m cl0 m-tb-10 m-b-20 size-114 bg5 bor7 hov-btn3 trans-04 pointer m-l-20 mtext-110">
+                  로그인 하기</a>
 
                 
 					</form>
@@ -38,5 +38,8 @@
 
 <%@ include file="../common/footer.jsp" %>
 <%@ include file="../common/common_js.jsp" %>		
+<script type="text/javascript">
+history.replaceState({},null,location.pathname);
+</script>
 </body>
 </html>

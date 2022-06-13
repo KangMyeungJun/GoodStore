@@ -23,8 +23,9 @@ public class RegisterDAO {
 		SqlSession ss = MyBatisFramework.getInstance().getMyBatisHandler();
 
 		cnt = ss.insert("makeAccount", mVO);
-		
-		if(cnt == 1) {
+		//System.out.println(cnt);
+		//System.out.println("-----------회원가입----------------");
+		if(cnt !=0) {
 			ss.commit();
 		}
 		
@@ -45,6 +46,22 @@ public class RegisterDAO {
 		SqlSession ss = MyBatisFramework.getInstance().getMyBatisHandler();
 
 		int result = ss.selectOne("emailChk", email);
+		
+		return result;
+	}//selectEmail
+	
+	
+	/**
+	 * 휴대폰 중복 체크
+	 * @param email
+	 * @return
+	 * @throws PersistenceException
+	 */
+	public int selectTel(String tel)throws PersistenceException {
+		
+		SqlSession ss = MyBatisFramework.getInstance().getMyBatisHandler();
+		
+		int result = ss.selectOne("telChk", tel);
 		
 		return result;
 	}//selectEmail

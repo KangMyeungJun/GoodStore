@@ -1,4 +1,4 @@
-package kr.co.goodstore.purchase.vo;
+package kr.co.goodstore.vo.purchase;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -16,7 +16,7 @@ order by o.order_id desc
 </select>
 
 <!-- order_id 에 따른 주문 상세 내역 조회-->
-<select id="selectOrderDetails" resultType="kr.co.goodstore.purchase.domain.OrderListDomain" parameterType="int">
+<select id="selectOrderDetails" resultType="kr.co.goodstore.domain.purchase.OrderListDomain" parameterType="int">
 select i.image,i.item_name,od.amount,i.item_id, od.detail_id,
 			o.order_id,i.price, od.status,to_char(o.order_date,'yyyymmddhh24mi') order_date
 from item i, order_detail od, orders o
@@ -26,7 +26,7 @@ and i.delete_flag='N' and o.order_id=#{order_id} and
 </select>
 
 <!--모달창을 위한 order_id 에 따른 주문 상세 내역 조회-->
-<select id="selectOrderDetails2" resultType="kr.co.goodstore.purchase.domain.OrderListDomain" parameterType="int">
+<select id="selectOrderDetails2" resultType="kr.co.goodstore.domain.purchase.OrderListDomain" parameterType="int">
 select i.image,i.item_name,od.amount,i.item_id, od.detail_id,
 			o.order_id,i.price, od.status,to_char(o.order_date,'yyyymmddhh24mi') order_date
 from item i, order_detail od, orders o
@@ -56,7 +56,7 @@ and i.delete_flag='N' and o.order_id=#{order_id} and od.status is null
 
 
 
-<select id="selectOrderDetailForRefund" resultType="kr.co.goodstore.purchase.domain.OrderListDomain" parameterType="java.util.HashMap">
+<select id="selectOrderDetailForRefund" resultType="kr.co.goodstore.domain.purchase.OrderListDomain" parameterType="java.util.HashMap">
 	select i.image,i.item_id,od.amount,od.detail_id,i.price,i.item_name
 	from  order_detail od, item i
 		<where>
@@ -71,7 +71,7 @@ and i.delete_flag='N' and o.order_id=#{order_id} and od.status is null
 
 
 
-<update id="updateRefundStatus"  parameterType="kr.co.goodstore.purchase.vo.RefundVO">
+<update id="updateRefundStatus"  parameterType="kr.co.goodstore.vo.purchase.RefundVO">
 	update order_detail set status='R' ,refund_reason=#{reason} 
 	where detail_id=#{detail_id}
 </update>

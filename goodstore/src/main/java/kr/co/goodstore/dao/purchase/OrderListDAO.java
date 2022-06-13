@@ -8,9 +8,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import kr.co.goodstore.dao.MyBatisFramework;
-import kr.co.goodstore.purchase.domain.ItemDomain;
-import kr.co.goodstore.purchase.domain.OrderListDomain;
-import kr.co.goodstore.purchase.vo.RefundVO;
+import kr.co.goodstore.domain.purchase.ItemDomain;
+import kr.co.goodstore.domain.purchase.OrderListDomain;
+import kr.co.goodstore.vo.purchase.RefundVO;
 
 
 @Repository

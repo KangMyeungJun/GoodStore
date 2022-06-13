@@ -13,9 +13,9 @@ import org.springframework.boot.configurationprocessor.json.JSONException;
 import org.springframework.stereotype.Service;
 
 import kr.co.goodstore.dao.purchase.OrderListDAO;
-import kr.co.goodstore.purchase.domain.ItemDomain;
-import kr.co.goodstore.purchase.domain.OrderListDomain;
-import kr.co.goodstore.purchase.vo.RefundVO;
+import kr.co.goodstore.domain.purchase.ItemDomain;
+import kr.co.goodstore.domain.purchase.OrderListDomain;
+import kr.co.goodstore.vo.purchase.RefundVO;
 import lombok.RequiredArgsConstructor;
 
 

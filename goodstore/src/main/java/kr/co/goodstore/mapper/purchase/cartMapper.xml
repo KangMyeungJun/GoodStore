@@ -5,7 +5,7 @@
 <mapper namespace="kr.co.goodstore.purchase.cart">
 
 <!-- 쇼핑 카트에서 장바구니에 담은 아이템 가져오기-->
-<select id="selectItems" resultType="kr.co.goodstore.purchase.domain.ItemDomain" parameterType="int">
+<select id="selectItems" resultType="kr.co.goodstore.domain.purchase.ItemDomain" parameterType="int">
 	select c.item_id,i.item_name,i.price,i.image,c.quantity,c.cart_id
 	from  cart c, item i
 	where c.item_id=i.item_id and c.member_id=#{memebr_id} and i.delete_flag='N'
@@ -13,7 +13,7 @@
 
 
 <!-- 쇼핑카트에서 상품 개수 바꿔서 저장 -->
-<update id="updateCartItem"  parameterType="kr.co.goodstore.purchase.vo.CartVO">
+<update id="updateCartItem"  parameterType="kr.co.goodstore.vo.purchase.CartVO">
 	update cart
 	set quantity=#{quantity}
 	where cart_id=#{cart_id}
@@ -21,7 +21,7 @@
 
 
 <!--회원 배송지 정보 -->
-<select id="selectAddress" resultType="kr.co.goodstore.purchase.domain.MemberDomain" parameterType="int">
+<select id="selectAddress" resultType="kr.co.goodstore.domain.purchase.MemberDomain" parameterType="int">
 	select name, tel, zipcode, address, address2
 	from member
 	where member_id=#{member_id}
@@ -44,7 +44,7 @@
 
 
 <!--쿠폰 정보 조회 -->
-<select id="selectCoupon" resultType="kr.co.goodstore.purchase.domain.CouponDomain" parameterType="String">
+<select id="selectCoupon" resultType="kr.co.goodstore.domain.purchase.CouponDomain" parameterType="String">
 	select coupon_id,name,discount_rate,discount_price,to_char(start_date,'yyyy-mm-dd') start_date,
 	to_char(end_date,'yyyy-mm-dd') end_date
 	from coupon
@@ -53,7 +53,7 @@
 
 
 <!-- 주문 insert -->
-<insert id="insertOrder" parameterType="kr.co.goodstore.purchase.vo.PurchaseVO">
+<insert id="insertOrder" parameterType="kr.co.goodstore.vo.purchase.PurchaseVO">
 	insert into orders(order_id,order_date,member_id,address_flag)
 	values( 
 		GOOD.SEQ_ORDER_ID.NEXTVAL,
@@ -65,7 +65,7 @@
 
 
 <!-- 주문 상세 insert -->
-<insert id="insertOrderDetail" parameterType="kr.co.goodstore.purchase.vo.OrderDetailVO">
+<insert id="insertOrderDetail" parameterType="kr.co.goodstore.vo.purchase.OrderDetailVO">
 	insert into order_detail(order_id,amount,item_id,detail_id)
 	values( 
 		GOOD.SEQ_ORDER_ID.CURRVAL,
@@ -78,7 +78,7 @@
 
 
 <!-- 배송지 insert -->
-<insert id="insertAddress" parameterType="kr.co.goodstore.purchase.vo.PurchaseVO">
+<insert id="insertAddress" parameterType="kr.co.goodstore.vo.purchase.PurchaseVO">
 	insert into address(order_id,zipcode,address,address2)
 	
 	values( 
@@ -91,7 +91,7 @@
 
 
 <!-- 쿠폰 사용 insert -->
-<insert id="insertUsedCoupon" parameterType="kr.co.goodstore.purchase.vo.PurchaseVO">
+<insert id="insertUsedCoupon" parameterType="kr.co.goodstore.vo.purchase.PurchaseVO">
 	insert into used_coupon(order_id,coupon_id)
 	values( 
 		GOOD.SEQ_ORDER_ID.CURRVAL,
@@ -102,7 +102,7 @@
 
 
 <!-- 쇼핑카트에서 상품 개수 바꿔서 저장 -->
-<update id="updateCouponFlag"  parameterType="kr.co.goodstore.purchase.vo.PurchaseVO">
+<update id="updateCouponFlag"  parameterType="kr.co.goodstore.vo.purchase.PurchaseVO">
 	update coupon
 	set use_flag='Y'
 	where coupon_id=#{coupon_id}
@@ -126,7 +126,7 @@
 
 <!--구매 직후 페이지에서 보여줄 정보 -->
 <select id="selectOrderDetailComplete" 
-	resultType="kr.co.goodstore.purchase.domain.MemberDomain" parameterType="int">
+	resultType="kr.co.goodstore.domain.purchase.MemberDomain" parameterType="int">
 	select name, tel, zipcode, address, address2
 	from member
 	where member_id=#{member_id}
@@ -142,7 +142,7 @@
 
 
 <!--회원 배송지 정보 -->
-<select id="selectOrderRightAfter"  resultType="kr.co.goodstore.purchase.domain.PurchaseSuccessDomain" 
+<select id="selectOrderRightAfter"  resultType="kr.co.goodstore.domain.purchase.PurchaseSuccessDomain" 
 		parameterType="int" >
 	select i.image,i.item_name,od.amount,i.item_id
 	from item i, order_detail od, orders o
