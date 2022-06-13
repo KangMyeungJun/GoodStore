@@ -2,6 +2,7 @@
          pageEncoding="UTF-8"%>
 <%@ page session="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <div id="product_content">
 <div class="row isotope-grid" id="product-list-wrap">
 <c:forEach var="productList" items="${ productList }">
@@ -25,7 +26,7 @@
 				</a>
 
 				<span class="stext-105 cl3">
-					<c:out value="${ productList.price }"/>원
+					<fmt:formatNumber pattern="#,###" value="${productList.price}"/>원
 				</span>
 			</div>
 
