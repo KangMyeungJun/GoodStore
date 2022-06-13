@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -32,6 +34,7 @@ import kr.co.goodstore.service.admin.AdminService;
 import kr.co.goodstore.service.admin.product.FileConvert;
 
 //@RequestMapping("/admin") //이따가 다 추가해주기!!!
+@SessionAttributes("id")
 @Controller
 public class AdminController {
 	
@@ -329,8 +332,13 @@ public class AdminController {
 		 
 		 //로그인 폼 
 		 @RequestMapping(value="/admin/login_form",method=GET) 
-		  public String adminLoginForm(SessionStatus session) {
+		  public String adminLoginForm(SessionStatus session, @SessionAttribute(required = false)String id) {
+			 System.out.println("=======before"+id+"============");
+			 System.out.println("=="+session.isComplete());
 			 session.setComplete();
+			 System.out.println("=="+session.isComplete());
+			 System.out.println("=======after"+id+"============");
+			 
 	 
 	  
 	  return "admin/template/pages/account/admin-login";
@@ -338,8 +346,8 @@ public class AdminController {
 	  }//adminLoginForm
 		 
 		 //로그인  프로세스
-		 @RequestMapping(value="/admin/admin-login",method=POST) 
-		  public String adminLoginPorcess(AdminVO avo, HttpSession session, Model model,RedirectAttributes rttr) {
+		 @RequestMapping(value="/admin/login_form",method=POST) 
+		  public String adminLoginPorcess(AdminVO avo, Model model,RedirectAttributes rttr) {
 			 
 			System.out.println(avo);
 		AdminVO adVO=	 cs.isAdmin(avo);
@@ -347,13 +355,11 @@ public class AdminController {
 		
 		if(adVO == null) {
 			int result=0;
-		//	model.addAttribute("msg","아이디와 비밀번호가 일치하지 않습니다");
 			rttr.addFlashAttribute("result",result);
 			return "redirect:/admin/login_form";
 		}else {
-			session.setAttribute("id", avo.getId());
-			return "redirect:/admin_index";
-			//"admin/template/admin_index";
+			model.addAttribute("id", avo.getId());
+			return "admin/template/admin_index";
 			
 		}
 			 

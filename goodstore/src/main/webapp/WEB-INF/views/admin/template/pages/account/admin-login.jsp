@@ -65,7 +65,7 @@
             <div class="card col-lg-4 mx-auto">
               <div class="card-body px-5 py-5">
                 <h3 class="card-title text-left mb-3">Admin Login</h3>
-                <form id="loginfrm" action="${initParam.middlePath }/admin/admin-login" method="post">
+                <form id="loginfrm" action="${initParam.middlePath }/admin/login_form" method="post">
                   <div class="form-group">
                     <label>Username or email *</label>
                     <input type="text" class="form-control p_input" id="id" name="id">

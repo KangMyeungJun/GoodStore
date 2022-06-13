@@ -30,7 +30,18 @@
         <beans:property name="maxInMemorySize" value="1048576" /> <!-- 1MB -->
         <beans:property name="defaultEncoding" value="utf-8" />
     </beans:bean> 
-
+    
+	<interceptors>
+		<interceptor>
+			<mapping path="/admin/**"/> 
+			<exclude-mapping path="/css/**"/>
+			<exclude-mapping path="*.ico"/>
+			<exclude-mapping path="/error"/>
+			<exclude-mapping path="/error-page/**"/>
+			<exclude-mapping path="/admin/login_form"/>		
+			<beans:bean id="adminInterceptor" class="kr.co.goodstore.config.interceptor.AdminInterceptor"/>
+		</interceptor>
+	</interceptors>
 	
 	<context:component-scan base-package="kr.co.goodstore.*" />
 	
