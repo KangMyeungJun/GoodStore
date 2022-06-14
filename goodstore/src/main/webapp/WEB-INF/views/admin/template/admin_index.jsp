@@ -165,7 +165,7 @@
                         <c:forEach var="categoryList" items="${categoryList }">
                           <div class="preview-item border-bottom">
                             <div class="preview-thumbnail">
-                              <img src="http://goodstore.sist.co.kr/goodstore/upload/${categoryList.image}"/>
+                              <img src="http://localhost/goodstore/upload/${categoryList.image}"/>
                             </div>
                             <div class="preview-item-content d-sm-flex flex-grow">
                               <div class="flex-grow">
