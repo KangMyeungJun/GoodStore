@@ -119,7 +119,7 @@ padding-right: 15px;
 										<div class="how-itemcart1">
 											<%-- <img src="${initParam.staticPath}images/item-cart-04.jpg" alt="IMG"> --%>
 											<!-- 상품상세로 가는 링크 넣어주기!!!! <a href -->
-											<img src="${initParam.staticPath}images/item-cart-04.jpg" alt="IMG">
+											<img src="${initParam.uploadPath}${cartItem.image}" alt="IMG">
 										</div>
 									</td>
 									<td class="column-2">${cartItem.item_name}
