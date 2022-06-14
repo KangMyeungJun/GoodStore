@@ -487,7 +487,8 @@ var coupon_id=0;
 			quantity=1;
 			location.href="http://goodstore.sist.co.kr/goodstore/cart"
 			alert("1개 이상 구매 가능합니다.")
-			
+			//document.getElementById(cart_id).value=1;
+			return;
 		}else{
 				 
 			if(updown==1){//db에 넘겨주기 위해 원래 수량에 +1
@@ -721,11 +722,7 @@ function purchaseDone(){
 			alert("구매할 상품을 선택해주세요.")
 		}//end else
 		
-		
-		
 	}
-		
-	
 	
 }//function
 ///////////////////////////////////////////////////////
