@@ -111,6 +111,7 @@
 		})
 	};
 	</script>
+<!--===============================================================================================-->
 	<!-- wishlist 구현메서드 -->
 	<script>
 	function addWish(){
@@ -118,10 +119,10 @@
 		    e.preventDefault();
 		    var item_id = this.value;
 		    var addBtn = $(this);
-		    //부모의 윗형제의 자식의 a태그 클래스명은 js-name-b2
 		    var nameProduct = $.trim($(this).parent().prev().children('a').text());
+		    var postUrl = "${initParam.commonUrl}add_wish.action";
 	 		$.ajax({
-				url : "add_wish.action",
+				url : postUrl,
 				type : 'post',
 				data : {
 					item_id : item_id
@@ -131,7 +132,6 @@
 					if(result == 1){
 		    	    		swal(nameProduct, "이/가 위시리스트에 추가되었습니다.", "success"); 
 		    	    		addBtn.addClass('js-addedwish-b2');
-		    				console.log($(this));
 		    				$(this).off('click');
 					}
 		    		else if(result == 2){
@@ -139,13 +139,14 @@
 	    	    		addBtn.removeClass('js-addedwish-b2');
 					}else{
 	    	    		swal("에러", "로그인이 필요합니다", "error"); 
-	    	    		location.reload();
 					}
 				},
 				error:function(){
-		    		swal("에러","위시리스트 추가 실패", "error"); 	    					
+		    		swal("에러","위시리스트 추가 실패", "error"); 	
+		    		console.log(item_id, numProduct);
 				}
 			})//end ajax 
 		});//end on click
 	}//end addWish
 	</script>
+<!--===============================================================================================-->

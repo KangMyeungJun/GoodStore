@@ -50,7 +50,7 @@ ON i.category_id = cat.category_id
 LEFT OUTER JOIN (select item_id, count(*) wish_count from wishlist group by item_id) w
 ON i.item_id = w.item_id
 <where>
-<if test="category_id != null and category_id != ''">
+<if test="category_id != null and category_id != 0">
 i.category_id=#{category_id}
 </if>
 <if test="keyword != null and keyword != ''">
@@ -88,7 +88,7 @@ where i.item_id = #{item_id}
 </select>
 
 
-<select id="subImage" parameterType="int" resultType="sid">
+<select id="subImage" parameterType="int" resultType="psid">
 select item_id, sub_image
 from sub_image
 where item_id=#{item_id}
@@ -115,13 +115,29 @@ order by upload_date
 
 <select id="productCommentAdd" parameterType="pcommVO">
 insert into item_comment(item_comment_id, review, item_id, member_id, star, upload_date)
-values(seq_item_comment_id.nextval, '#{review}', #{item_id}, #{member_id}, ${star}, SYSDATE)
+values(seq_item_comment_id.nextval, '${review}', ${item_id}, ${member_id}, ${star}, SYSDATE)
+</select>
+
+<select id="selectOneCart" parameterType="pacVO" resultType="psocd">
+select * from cart
+where item_id=#{item_id} and member_id=#{member_id}
 </select>
 
 <insert id="addCart" parameterType="pacVO">
 insert into cart(member_id, item_id, cart_id, quantity)
 values(#{member_id}, #{item_id}, SEQ_CART_ID.nextval, #{quantity})
 </insert>
+
+<update id="updateCart" parameterType="pacVO">
+update cart
+set quantity=#{quantity}
+where member_id=#{member_id} and item_id=#{item_id}
+</update>
+
+<delete id="deleteCart" parameterType="pacVO">
+delete from cart
+where member_id=#{member_id} and item_id=#{item_id}
+</delete>
 
 <insert id="addWish" parameterType="pawVO">
 insert into wishlist(member_id, item_id, wishlist_id)

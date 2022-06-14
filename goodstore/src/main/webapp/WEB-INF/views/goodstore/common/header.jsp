@@ -106,11 +106,13 @@
 							</a>
 						</div>
 						
+						<c:if test="${!empty sessionScope.loginSession}">
             			<div class="flex-c-m h-full p-l-18">
-				            <a href="${initParam.commonUrl}wishlist" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-" >
+				            <a href="${initParam.commonUrl}wishlist?member_id=${sessionScope.loginSession}" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-" >
 								<i class="zmdi zmdi-favorite-outline"></i>
 							</a>
             			</div>
+            			</c:if>
 
 						<div class="flex-c-m h-full p-lr-19">
 							<div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 js-show-sidebar">
@@ -196,11 +198,11 @@
 				</button>
 
 				<!-- 검색으로 넘겨주기 -->
-				<form class="wrap-search-header flex-w p-l-15">
+				<form action="${initParam.commonUrl}product" class="wrap-search-header flex-w p-l-15">
 					<button class="flex-c-m trans-04">
 						<i class="zmdi zmdi-search"></i>
 					</button>
-					<input class="plh3" type="text" name="search" placeholder="Search...">
+					<input class="plh3" type="text" name="keyword" placeholder="Search...">
 				</form>
 			</div>
 		</div>
