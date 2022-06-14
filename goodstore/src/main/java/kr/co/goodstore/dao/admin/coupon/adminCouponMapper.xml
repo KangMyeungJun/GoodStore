@@ -52,7 +52,7 @@ where coupon_id=#{coupon_id}
 
 <update id="updateCouponsFlag" parameterType="int">
 update coupon
-set use_flag = 'N'
+set use_flag = 'Y'
 where coupon_id=#{id}
 </update>
 </mapper>

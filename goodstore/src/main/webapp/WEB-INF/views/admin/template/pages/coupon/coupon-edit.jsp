@@ -175,7 +175,7 @@
 						    <div class="col-sm-9" style="margin-bottom: 10px">
 						    <input type="date" class="form-control" value="${coupon.end_date}" id="end_date" name="end_date"/>
                             </div>
-                            <label class="col-sm-3 col-form-label">쿠폰사용가능여부</label>
+                            <label class="col-sm-3 col-form-label">쿠폰사용여부</label>
                             <div class="col-sm-9" style="margin-bottom: 10px">
                               <input type="text" disabled="disabled" class="form-control" value="${coupon.use_flag}" style="background-color: #2A3038;"/>
                             </div>
