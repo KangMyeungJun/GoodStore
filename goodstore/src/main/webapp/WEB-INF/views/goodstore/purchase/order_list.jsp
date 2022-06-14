@@ -986,7 +986,7 @@ $(document).ready(function(){
 									"<input type='checkbox' name='productCheck' value='"+json.data[i].detail_id+"' style='zoom:1.3;' class='check'/>";
 								sentence2+="<div class='how-itemcart-j' style='margin-right: 0px;'>"
 								//경로 다시 설정해줘야함 json.data[i].image로
-								sentence2+="<img src='http://localhost/goodstore/resources/images/item-cart-04.jpg' alt='IMG'></div>"
+								sentence2+="<img src='http://goodstore.sist.co.kr/goodstore/resources/images/item-cart-04.jpg' alt='IMG'></div>"
 								sentence2+="<div class='product-info' style='width:150px;margin-left:20px;'>"+json.data[i].item_name+"</div>"
 								sentence2+="<div class='product-info1' style='margin-left:30px;'>"+json.data[i].amount+"개</div>"
 								sentence2+="<div class='product-info1' style=' margin-right:20px;'>"+price+"원</div></div>"

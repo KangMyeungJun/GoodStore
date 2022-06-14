@@ -203,7 +203,7 @@
 <%@ include file="../common/common_js.jsp" %>
 	<script>
 		$("#btn-to-order-list").click(function(){
-			location.href='http://localhost/goodstore/orderList';
+			location.href='http://goodstore.sist.co.kr/goodstore/orderList';
 		})
 	</script>
 

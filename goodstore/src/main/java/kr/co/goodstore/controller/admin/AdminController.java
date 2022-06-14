@@ -250,7 +250,7 @@ public class AdminController {
 		  cs.removeUser(member_id);
 		  
 		  return "redirect:/admin/users";
-		  //redirect:http://localhost/goodstore/
+		  //redirect:http://goodstore.sist.co.kr/goodstore/
 		  }//adminUserRemove
 		 	 
 	 
@@ -326,7 +326,7 @@ public class AdminController {
 		  cs.removeOrder(order_id);
 		  
 		  return "redirect:/admin/orders";
-		  //redirect:http://localhost/goodstore/
+		  //redirect:http://goodstore.sist.co.kr/goodstore/
 		  }//adminOrderRemove
 		 
 		 //로그인 폼 
@@ -341,7 +341,7 @@ public class AdminController {
 	 
 	  
 	  return "admin/template/pages/account/admin-login";
-	  //redirect:http://localhost/goodstore/
+	  //redirect:http://goodstore.sist.co.kr/goodstore/
 	  }//adminLoginForm
 		 
 		 //로그인  프로세스
@@ -367,7 +367,7 @@ public class AdminController {
 	
 	 
 	  
-	  //redirect:http://localhost/goodstore/
+	  //redirect:http://goodstore.sist.co.kr/goodstore/
 	  }//adminLoginForm
 		 
 		 //비밀번호 변경 폼
@@ -377,7 +377,7 @@ public class AdminController {
 	 
 	  
 	  return "admin/template/pages/account/admin-setting";
-	  //redirect:http://localhost/goodstore/
+	  //redirect:http://goodstore.sist.co.kr/goodstore/
 	  }//adminLoginForm
 		 
 		 
