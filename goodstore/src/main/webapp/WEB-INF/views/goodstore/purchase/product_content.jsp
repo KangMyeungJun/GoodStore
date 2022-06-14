@@ -19,8 +19,7 @@
 			<div class="block2-txt-child1 flex-col-l ">
 				<span class="stext-105 cl3">
 					<c:out value="${ productList.com_name }"/>
-				</span>
-				
+				</span>				
 					<a href="product_detail/${productList.category_id}/${ productList.item_id }" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
 					<c:out value="${ productList.item_name }"/>									 
 				</a>
@@ -31,10 +30,10 @@
 			</div>
 
 			<div class="block2-txt-child2 flex-r p-t-3">
-				<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+				<button value="${ productList.item_id }" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2 add-wishlist">
 					<img class="icon-heart1 dis-block trans-04" src="${initParam.staticPath}images/icons/icon-heart-01.png" alt="ICON">
 					<img class="icon-heart2 dis-block trans-04 ab-t-l" src="${initParam.staticPath}images/icons/icon-heart-02.png" alt="ICON">
-				</a>
+				</button>
 			</div>
 		</div>
 	</div>

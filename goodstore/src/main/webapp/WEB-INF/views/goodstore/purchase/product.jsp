@@ -10,6 +10,7 @@
 <% 
 String sortValue = "";
 String keywordValue = "";
+
 if(request.getParameter("sort") != null){
 	sortValue = request.getParameter("sort");
 }
@@ -45,9 +46,8 @@ if(request.getParameter("keyword") != null){
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
 						All Products
 					</button>
-
 					<c:forEach var="category" items="${categoryList}">
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".<c:out value="${ category.category_name }"/>">
+					<button value="${category.category_id}" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 category-btn" data-filter=".<c:out value="${ category.category_name }"/>">
 						<c:out value="${ category.category_name }"/>
 					</button>
 					</c:forEach>
@@ -77,6 +77,7 @@ if(request.getParameter("keyword") != null){
 						<button class="size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04">
 							<i class="zmdi zmdi-search"></i>
 						</button>
+						<input type="hidden" name="category_id" value=/>
 						<input type="hidden" name="sort" value="<%=sortValue%>"/>
 						<input class="mtext-107 cl2 size-114 plh2 p-r-15" type="text" name="keyword" placeholder="Search">
 						
@@ -197,18 +198,23 @@ function keepSort(){
 	});		
 }
 $(".filter-tope-group").children("button").on('click', function(){
-	sessionStorage.setItem("filterIndex", $(this).index() ); // 저장
+	sessionStorage.setItem("filterIndex", $(this).index()); // 저장
+	sessionStorage.setItem("category_id", $(this).val());
+	loadMore();
 });//keepSort 정렬 필터 유지
 
 </script>
 <!----------- load more 구현 js ------------>
 <script>
-$('#load-more').click(function(){
+function loadMore(){
 	var startNum = $('#product-list-wrap .product-list-each').length;
-	var addCnt = 8;
-	var item_count = startNum + addCnt
+	var addCnt = 4;
+	var item_count = startNum + addCnt;
 	var productHtml = "";
-	
+	var categoryId = 0;
+	if(sessionStorage.getItem("category_id")!=''){	
+		categoryId = sessionStorage.getItem("category_id");
+	}
 	$.ajax({
 		url : 'load_more.action',
 		type : 'POST',
@@ -216,7 +222,8 @@ $('#load-more').click(function(){
 		data : {
 			"item_count" : item_count,
 			"sort" : '<%=sortValue%>',
-			"keyword" : '<%=keywordValue%>'
+			"keyword" : '<%=keywordValue%>',
+			"category_id" : categoryId
 		},
 		success :function(result){
 			console.log("결과확인");
@@ -226,14 +233,18 @@ $('#load-more').click(function(){
 			$("#product-wrap").html(contents) 
 			quickBtn();
 			isotope();
-			if($('.how-active1') != null){
+			addWish();
+/* 			if($('.how-active1') != null){
 				$('.how-active1').trigger('click');
-			}
+			} */
 		},
 		error : function(){
 			alert('에러입니다');
 		}
-	})
+	})	
+}
+$('#load-more').click(function(){
+	loadMore(8);
 }); 
 
 function isotope(){
