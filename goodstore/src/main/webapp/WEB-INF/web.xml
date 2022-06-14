@@ -4,14 +4,14 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee; https://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 	
 	<!-- 배포시 주석해제 -->
-<!-- 	<error-page>
+	<error-page>
 		<error-code>404</error-code>
-		<location>/404</location>
+		<location>/error/404</location>
 	</error-page>
 	<error-page>
 		<error-code>500</error-code>
-		<location>/500</location>
-	</error-page> -->
+		<location>/error/500</location>
+	</error-page> 
 	
 	<!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
 	<context-param>

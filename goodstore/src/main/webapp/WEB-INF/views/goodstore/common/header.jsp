@@ -15,9 +15,9 @@
 
 					<div class="right-top-bar flex-w h-full">
 
-						<a href="${initParam.commonUrl}account_edit_chk.html" class="flex-c-m trans-04 p-lr-25">
+						<%-- <a href="${initParam.commonUrl}account_edit_chk.html" class="flex-c-m trans-04 p-lr-25">
 							My Account
-						</a>
+						</a> --%>
 
 						<a href="#" class="flex-c-m trans-04 p-lr-25">
 							KR
