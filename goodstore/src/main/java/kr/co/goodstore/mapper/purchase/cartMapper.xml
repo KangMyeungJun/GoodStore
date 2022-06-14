@@ -9,6 +9,7 @@
 	select c.item_id,i.item_name,i.price,i.image,c.quantity,c.cart_id
 	from  cart c, item i
 	where c.item_id=i.item_id and c.member_id=#{memebr_id} and i.delete_flag='N'
+	order by c.cart_id desc
 </select>
 
 
