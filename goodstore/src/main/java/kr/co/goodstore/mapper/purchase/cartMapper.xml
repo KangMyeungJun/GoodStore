@@ -48,7 +48,7 @@
 	select coupon_id,name,discount_rate,discount_price,to_char(start_date,'yyyy-mm-dd') start_date,
 	to_char(end_date,'yyyy-mm-dd') end_date
 	from coupon
-	where code=#{coupon_code} and use_flag='N'
+	where code=#{coupon_code} and use_flag='Y'
 </select>
 
 
@@ -104,7 +104,7 @@
 <!-- 쇼핑카트에서 상품 개수 바꿔서 저장 -->
 <update id="updateCouponFlag"  parameterType="kr.co.goodstore.vo.purchase.PurchaseVO">
 	update coupon
-	set use_flag='Y'
+	set use_flag='N'
 	where coupon_id=#{coupon_id}
 </update>
 
