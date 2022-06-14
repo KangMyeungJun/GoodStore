@@ -775,7 +775,7 @@ $(document).ready(function(){
 									list+="<div class='product-info' style='width:150px;margin-left:20px;'>"+json.data[i].item_name+"</div>";
 									list+="<div class='product-info1'>"+price+"원</div></div>";
 									list+="<input type='hidden' name='refundId' value='"+json.data[i].detail_id+"'/>";
-	
+	    
 								}//end for 
 								
 								document.getElementById('refund-list').innerHTML=list;
