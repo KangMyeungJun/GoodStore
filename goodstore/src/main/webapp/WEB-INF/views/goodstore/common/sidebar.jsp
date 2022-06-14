@@ -14,19 +14,19 @@
 			<div class="sidebar-content flex-w w-full p-lr-65 js-pscroll">
 				<ul class="sidebar-link w-full">
 					<li class="p-b-13">
-						<a href="index.html" class="stext-102 cl2 hov-cl1 trans-04">
+						<a href="${initParam.commonUrl}index.html" class="stext-102 cl2 hov-cl1 trans-04">
 							홈
 						</a>
 					</li>
 
 					<li class="p-b-13">
-						<a href="cart" class="stext-102 cl2 hov-cl1 trans-04">
+						<a href="${initParam.commonUrl}cart" class="stext-102 cl2 hov-cl1 trans-04">
 							장바구니
 						</a>
 					</li>
 
 					<li class="p-b-13">
-						<a href="account_edit_chk.html" class="stext-102 cl2 hov-cl1 trans-04">
+						<a href="${initParam.commonUrl}account_edit_chk.html" class="stext-102 cl2 hov-cl1 trans-04">
 							나의 계정
 						</a>
 					</li>
