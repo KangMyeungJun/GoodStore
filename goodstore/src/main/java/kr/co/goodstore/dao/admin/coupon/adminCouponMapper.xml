@@ -29,7 +29,7 @@ name like '%'|| #{keyword} || '%'
 <update id="insertCoupons" parameterType="AdminCouponVO">
 <foreach collection="codeList" item="item" separator=" " open="insert all" close="select*from dual">
 into coupon(coupon_id,code,name,discount_rate,discount_price,upload_date,start_date,end_date,use_flag,admin_id) values
-(get_coupon_seq(),#{item},#{name},#{discount_rate},#{discount_price},sysdate,#{start_date},#{end_date},'Y',#{admin_id})
+(get_coupon_seq(),#{item},#{name},#{discount_rate},#{discount_price},sysdate,#{start_date},#{end_date},'N',#{admin_id})
 </foreach>
 </update>
 
