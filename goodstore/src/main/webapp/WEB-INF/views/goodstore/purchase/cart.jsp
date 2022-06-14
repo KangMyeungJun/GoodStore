@@ -445,7 +445,7 @@ var coupon_id=0;
 					},
 					success:function(json){
 						if(json.success==1){
-						location.href="http://goodstore.sist.co.kr/goodstore/cart"
+						location.href="http://localhost/goodstore/cart"
 						}
 					}
 					
@@ -485,7 +485,7 @@ var coupon_id=0;
 		
 		if(updown==0 && parseInt(quantity)<=1){//개수 0일때 새로고침
 			quantity=1;
-			location.href="http://goodstore.sist.co.kr/goodstore/cart"
+			location.href="http://localhost/goodstore/cart"
 			alert("1개 이상 구매 가능합니다.")
 			
 		}else{

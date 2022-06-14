@@ -424,7 +424,7 @@
 										중증장애인생산품판매시설
 									</span>
 
-                  <span class="bg2 bor1 p-lr-15 m-r-2 m-b-1">
+                  					<span class="bg2 bor1 p-lr-15 m-r-2 m-b-1">
 										사회적기업
 									</span>
 							</div>
@@ -441,94 +441,72 @@
 						</div>
 					</div>
 				</div>
-
+				
 				<div class="col-sm-6 col-md-4 p-b-40">
 					<div class="blog-item">
 						<div class="hov-img0">
 							<a href="blog_detail.html">
-								<img class="home-blog-img" src="${initParam.staticPath}images/blog-02.jpg" alt="IMG-BLOG">
+								<img class="home-blog-img" src="${initParam.staticPath}images/blog-07.jpg" alt="IMG-BLOG">
 							</a>
 						</div>
 
 						<div class="p-t-15">
 							<div class="stext-107 flex-w p-b-14">
-								<span class="m-r-3">
-									<span class="cl4">
-										By
+									<span class="bg2 bor1 p-lr-15 m-r-2 m-b-1">
+										중증장애인생산품판매시설
 									</span>
 
-									<span class="cl5">
-										Nancy Ward
+                  					<span class="bg2 bor1 p-lr-15 m-r-2 m-b-1">
+										사회적기업
 									</span>
-								</span>
-
-								<span>
-									<span class="cl4">
-										on
-									</span>
-
-									<span class="cl5">
-										July 18, 2017
-									</span>
-								</span>
 							</div>
 
 							<h4 class="p-b-12">
 								<a href="blog_detail.html" class="mtext-101 cl2 hov-cl1 trans-04">
-									The Great Big List of Men’s Gifts for the Holidays
+									두리하나다울
 								</a>
 							</h4>
 
 							<p class="stext-108 cl6">
-								Nullam scelerisque, lacus sed consequat laoreet, dui enim iaculis leo, eu viverra ex nulla in tellus. Nullam nec ornare tellus, ac fringilla lacus. Ut sit ame
+								두리하나 다울에서는 지적, 자폐성 장애인들이 다함께 사는 삶을 꿈꾸며 정성과 사랑을 담아 빵과 쿠키를 굽고 있습니다.
 							</p>
 						</div>
 					</div>
 				</div>
-
+				
 				<div class="col-sm-6 col-md-4 p-b-40">
 					<div class="blog-item">
 						<div class="hov-img0">
 							<a href="blog_detail.html">
-								<img class="home-blog-img" src="${initParam.staticPath}images/blog-03.jpg" alt="IMG-BLOG">
+								<img class="home-blog-img" src="${initParam.staticPath}images/blog-08.jpg" alt="IMG-BLOG">
 							</a>
 						</div>
 
 						<div class="p-t-15">
 							<div class="stext-107 flex-w p-b-14">
-								<span class="m-r-3">
-									<span class="cl4">
-										By
+									<span class="bg2 bor1 p-lr-15 m-r-2 m-b-1">
+										화이통협동조합
 									</span>
 
-									<span class="cl5">
-										Nancy Ward
+                  					<span class="bg2 bor1 p-lr-15 m-r-2 m-b-1">
+										사회적기업
 									</span>
-								</span>
-
-								<span>
-									<span class="cl4">
-										on
-									</span>
-
-									<span class="cl5">
-										July 2, 2017 
-									</span>
-								</span>
 							</div>
 
 							<h4 class="p-b-12">
 								<a href="blog_detail.html" class="mtext-101 cl2 hov-cl1 trans-04">
-									5 Winter-to-Spring Fashion Trends to Try Now
+									화이통협동조합
 								</a>
 							</h4>
 
 							<p class="stext-108 cl6">
-								Proin nec vehicula lorem, a efficitur ex. Nam vehicula nulla vel erat tincidunt, sed hendrerit ligula porttitor. Fusce sit amet maximus nunc
+								지역 어르신이 가꾼 꽃을 꽃차 원료로 사용하여 어르신께 경제적, 사회적, 심리적 도움을 제공하고
+								꽃차 제조로 다문화 가정, 여성경력단절자, 어르신 등 취약계층의 고용을 창출하는 화이통협동조합 입니다.
 							</p>
 						</div>
 					</div>
 				</div>
+				
 			</div>
 		</div>
 	</section>
