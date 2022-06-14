@@ -32,11 +32,11 @@
 
 								<div class="flex-col-c-m size-123 bg9 how-pos5">
 									<span class="ltext-107 cl2 txt-center">
-										22
+										15
 									</span>
 
 									<span class="stext-109 cl3 txt-center">
-										Jan 2018
+										Jun 2022
 									</span>
 								</div>
 							</a>
@@ -49,7 +49,7 @@
 								</h4>
 
 								<p class="stext-117 cl6">
-                  누야하우스는 친환경 핸드메이드 제품(비누, 화장품)을 생산하여 취약계층의 고용창출을 목표로 자연사랑, 인간존중이라는 신념으로 착한제품, 신뢰할 수 있는 제품을 만들어 가는 장애인직업재활시설이자 사회적기업입니다.
+                  					누야하우스는 친환경 핸드메이드 제품(비누, 화장품)을 생산하여 취약계층의 고용창출을 목표로 자연사랑, 인간존중이라는 신념으로 착한제품, 신뢰할 수 있는 제품을 만들어 가는 장애인직업재활시설이자 사회적기업입니다.
 								</p>
 
 								<div class="flex-w flex-sb-m p-t-18">
@@ -60,22 +60,76 @@
 										</span>
 
 										<span>
-                      <p>
-                        <!--여기서부터 반복
-                        해당 포스트 태그 테이블 반복문 돌리되, 마지막 태그 뒤에는 <span class="tag-separator">안들어가도록
-                        -->
-                        직업재활시설
-                        <span class="tag-separator"></span>
-                        중증장애인생산품판매시설
-                        <span class="tag-separator"></span>
-                        사회적기업
-                        <!--반복문 끝-->
-                        <span class="cl12 m-l-4 m-r-6">|</span>
-                      </p>
+						                      <p>
+						                        직업재활시설
+						                        <span class="tag-separator"></span>
+						                        중증장애인생산품판매시설
+						                        <span class="tag-separator"></span>
+						                        사회적기업
+						                        <span class="cl12 m-l-4 m-r-6">|</span>
+						                      </p>
 										</span>
 
 										<span>
 											8 Comments
+										</span>
+									</span>
+
+									<a href="blog_detail.html" class="stext-101 cl2 hov-cl1 trans-04 m-tb-10">
+										Continue Reading
+
+										<i class="fa fa-long-arrow-right m-l-9"></i>
+									</a>
+								</div>
+							</div>
+						</div>
+						
+						<!-- item blog -->
+						<div class="p-b-63">
+							<a href="blog_detail.html" class="hov-img0 how-pos5-parent">
+								<img class="blog-thumbnail-img" src="${initParam.staticPath}images/blog-08.jpg" alt="IMG-BLOG">
+
+								<div class="flex-col-c-m size-123 bg9 how-pos5">
+									<span class="ltext-107 cl2 txt-center">
+										13
+									</span>
+
+									<span class="stext-109 cl3 txt-center">
+										Jun 2022
+									</span>
+								</div>
+							</a>
+
+							<div class="p-t-32">
+								<h4 class="p-b-15">
+									<a href="blog_detail.html" class="ltext-108 cl2 hov-cl1 trans-04">
+										화이통협동조합
+									</a>
+								</h4>
+
+								<p class="stext-117 cl6">
+								화이통협동조합은 지역 어르신이 가꾼 꽃을 꽃차 원료로 사용하여 어르신께 경제적, 사회적, 심리적 도움을 제공합니다.
+								꽃차 제조로 다문화 가정, 여성경력단절자, 어르신 등 취약계층의 고용을 창출하는 사회적기업입니다.
+								</p>
+
+								<div class="flex-w flex-sb-m p-t-18">
+									<span class="flex-w flex-m stext-111 cl2 p-r-30 m-tb-10">
+										<span>
+											<span class="cl4">By</span> Admin  
+											<span class="cl12 m-l-4 m-r-6">|</span>
+										</span>
+
+										<span>
+						                      <p>
+						                        중증장애인생산품판매시설
+						                        <span class="tag-separator"></span>
+						                        사회적기업
+						                        <span class="cl12 m-l-4 m-r-6">|</span>
+						                      </p>
+										</span>
+
+										<span>
+											5 Comments
 										</span>
 									</span>
 
@@ -91,15 +145,15 @@
 						<!-- item blog -->
 						<div class="p-b-63">
 							<a href="blog_detail.html" class="hov-img0 how-pos5-parent">
-								<img src="${initParam.staticPath}images/blog-05.jpg" alt="IMG-BLOG">
+								<img class="blog-thumbnail-img" src="${initParam.staticPath}images/blog-07.jpg" alt="IMG-BLOG">
 
 								<div class="flex-col-c-m size-123 bg9 how-pos5">
 									<span class="ltext-107 cl2 txt-center">
-										18
+										05
 									</span>
 
 									<span class="stext-109 cl3 txt-center">
-										Jan 2018
+										May 2022
 									</span>
 								</div>
 							</a>
@@ -107,12 +161,12 @@
 							<div class="p-t-32">
 								<h4 class="p-b-15">
 									<a href="blog_detail.html" class="ltext-108 cl2 hov-cl1 trans-04">
-										The Great Big List of Men’s Gifts for the Holidays 
+										두리하나다울
 									</a>
 								</h4>
 
 								<p class="stext-117 cl6">
-									Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce eget dictum tortor. Donec dictum vitae sapien eu varius
+								두리하나 다울에서는 지적, 자폐성 장애인들이 다함께 사는 삶을 꿈꾸며 정성과 사랑을 담아 빵과 쿠키를 굽고 있습니다.
 								</p>
 
 								<div class="flex-w flex-sb-m p-t-18">
@@ -123,12 +177,16 @@
 										</span>
 
 										<span>
-											StreetStyle, Fashion, Couple  
-											<span class="cl12 m-l-4 m-r-6">|</span>
+						                      <p>
+						                        중증장애인생산품판매시설
+						                        <span class="tag-separator"></span>
+						                        사회적기업
+						                        <span class="cl12 m-l-4 m-r-6">|</span>
+						                      </p>
 										</span>
 
 										<span>
-											8 Comments
+											2 Comments
 										</span>
 									</span>
 
@@ -141,67 +199,11 @@
 							</div>
 						</div>
 
-						<!-- item blog -->
-						<div class="p-b-63">
-							<a href="blog_detail.html" class="hov-img0 how-pos5-parent">
-								<img src="${initParam.staticPath}images/blog-06.jpg" alt="IMG-BLOG">
-
-								<div class="flex-col-c-m size-123 bg9 how-pos5">
-									<span class="ltext-107 cl2 txt-center">
-										16
-									</span>
-
-									<span class="stext-109 cl3 txt-center">
-										Jan 2018
-									</span>
-								</div>
-							</a>
-
-							<div class="p-t-32">
-								<h4 class="p-b-15">
-									<a href="blog_detail.html" class="ltext-108 cl2 hov-cl1 trans-04">
-										5 Winter-to-Spring Fashion Trends to Try Now
-									</a>
-								</h4>
-
-								<p class="stext-117 cl6">
-									Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce eget dictum tortor. Donec dictum vitae sapien eu varius
-								</p>
-
-								<div class="flex-w flex-sb-m p-t-18">
-									<span class="flex-w flex-m stext-111 cl2 p-r-30 m-tb-10">
-										<span>
-											<span class="cl4">By</span> Admin  
-											<span class="cl12 m-l-4 m-r-6">|</span>
-										</span>
-
-										<span>
-											StreetStyle, Fashion, Couple  
-											<span class="cl12 m-l-4 m-r-6">|</span>
-										</span>
-
-										<span>
-											8 Comments
-										</span>
-									</span>
-
-									<a href="blog_detail.html" class="stext-101 cl2 hov-cl1 trans-04 m-tb-10">
-										Continue Reading
-
-										<i class="fa fa-long-arrow-right m-l-9"></i>
-									</a>
-								</div>
-							</div>
-						</div>
 
 						<!-- Pagination -->
 						<div class="flex-l-m flex-w w-full p-t-10 m-lr--7">
 							<a href="#" class="flex-c-m how-pagination1 trans-04 m-all-7 active-pagination1">
 								1
-							</a>
-
-							<a href="#" class="flex-c-m how-pagination1 trans-04 m-all-7">
-								2
 							</a>
 						</div>
 					</div>

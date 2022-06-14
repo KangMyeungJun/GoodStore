@@ -1,3 +1,4 @@
+<%@page import="kr.co.goodstore.vo.product.ProductListVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -77,7 +78,6 @@ if(request.getParameter("keyword") != null){
 						<button class="size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04">
 							<i class="zmdi zmdi-search"></i>
 						</button>
-						<input type="hidden" name="category_id" value=/>
 						<input type="hidden" name="sort" value="<%=sortValue%>"/>
 						<input class="mtext-107 cl2 size-114 plh2 p-r-15" type="text" name="keyword" placeholder="Search">
 						
@@ -182,10 +182,9 @@ if(request.getParameter("keyword") != null){
 $(function(){
 	quickBtn();
 	keepSort();
-	$('.js-show-filter').trigger('click');
+//	$('.js-show-filter').trigger('click');
 	menuColor('Shop');
 	addWish();
-
 });
 
 function keepSort(){
@@ -198,23 +197,57 @@ function keepSort(){
 	});		
 }
 $(".filter-tope-group").children("button").on('click', function(){
-	sessionStorage.setItem("filterIndex", $(this).index()); // 저장
+	sessionStorage.setItem("filterIndex", $(this).index()); //저장
+	
 	sessionStorage.setItem("category_id", $(this).val());
-	loadMore();
+	console.log($(this).val());
+	if($(this).index()!=0){
+		loadCategoryItems();
+	}else{sessionStorage.removeItem("category_id")}
 });//keepSort 정렬 필터 유지
 
 </script>
 <!----------- load more 구현 js ------------>
 <script>
+function loadCategoryItems(){
+	var productHtml = "";
+	if(sessionStorage.getItem("category_id")!==null){	
+		var categoryId = sessionStorage.getItem("category_id");
+	}
+	$.ajax({
+		url : 'load_more.action',
+		type : 'POST',
+		dataType : "text",
+		data : {
+			"category_id" : categoryId,
+			"sort" : '<%=sortValue%>',
+			"keyword" : '<%=keywordValue%>',
+		},
+		success :function(result){
+			console.log("결과확인");
+			var html = jQuery('<div>').html(result);
+			var contents = html.find('div#product_content').html();
+			$("#product-wrap").html(contents) 
+			quickBtn();
+			isotope();
+			addWish();
+		},
+		error : function(){
+			alert('에러입니다');
+		}
+	})	
+}
+
 function loadMore(){
 	var startNum = $('#product-list-wrap .product-list-each').length;
 	var addCnt = 4;
 	var item_count = startNum + addCnt;
 	var productHtml = "";
-	var categoryId = 0;
-	if(sessionStorage.getItem("category_id")!=''){	
+	var categoryId
+	if(sessionStorage.getItem("category_id")!==null){	
 		categoryId = sessionStorage.getItem("category_id");
-	}
+	}else{categoryId = 0};
+
 	$.ajax({
 		url : 'load_more.action',
 		type : 'POST',
@@ -234,9 +267,6 @@ function loadMore(){
 			quickBtn();
 			isotope();
 			addWish();
-/* 			if($('.how-active1') != null){
-				$('.how-active1').trigger('click');
-			} */
 		},
 		error : function(){
 			alert('에러입니다');
@@ -244,7 +274,7 @@ function loadMore(){
 	})	
 }
 $('#load-more').click(function(){
-	loadMore(8);
+ 	loadMore(); 
 }); 
 
 function isotope(){
