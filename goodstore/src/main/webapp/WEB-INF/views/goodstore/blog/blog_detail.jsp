@@ -151,40 +151,7 @@
                 </div>
 
                 <p class="stext-102 cl6 m-b-20">
-                  포스트에 대한 테스트 댓글입니다 포스트에 대한 테스트 댓글입니다 포스트에 대한 테스트 댓글입니다 포스트에 대한 테스트 댓글입니다 포스트에 대한 테스트 댓글입니다 포스트에 대한 테스트 댓글입니다 
-                </p>
-              </div>
-              <div class="blog-detail-comment">
-                <div class="flex-w flex-sb-m p-b-10 m-t-10">
-                  <span class="mtext-107 cl2 p-r-20">
-                    test@google.com
-                  </span>
-                </div>
-
-                <p class="stext-102 cl6 m-b-20">
-                  포스트에 대한 테스트 댓글입니다 포스트에 대한 테스트 댓글입니다 포스트에 대한 테스트 댓글입니다 포스트에 대한 테스트 댓글입니다 포스트에 대한 테스트 댓글입니다 포스트에 대한 테스트 댓글입니다 
-                </p>
-              </div>
-              <div class="blog-detail-comment">
-                <div class="flex-w flex-sb-m p-b-10 m-t-10">
-                  <span class="mtext-107 cl2 p-r-20">
-                    test@google.com
-                  </span>
-                </div>
-
-                <p class="stext-102 cl6 m-b-20">
-                  포스트에 대한 테스트 댓글입니다 포스트에 대한 테스트 댓글입니다 포스트에 대한 테스트 댓글입니다 포스트에 대한 테스트 댓글입니다 포스트에 대한 테스트 댓글입니다 포스트에 대한 테스트 댓글입니다 
-                </p>
-              </div>
-              <div class="blog-detail-comment">
-                <div class="flex-w flex-sb-m p-b-10 m-t-10">
-                  <span class="mtext-107 cl2 p-r-20">
-                    test@google.com
-                  </span>
-                </div>
-
-                <p class="stext-102 cl6 m-b-20">
-                  포스트에 대한 테스트 댓글입니다 포스트에 대한 테스트 댓글입니다 포스트에 대한 테스트 댓글입니다 포스트에 대한 테스트 댓글입니다 포스트에 대한 테스트 댓글입니다 포스트에 대한 테스트 댓글입니다 
+					포스트에 대한 댓글입니다
                 </p>
               </div>
 
