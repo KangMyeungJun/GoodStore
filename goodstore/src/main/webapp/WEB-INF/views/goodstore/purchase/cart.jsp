@@ -318,6 +318,7 @@ padding-right: 15px;
 <%@ include file="../common/common_js.jsp" %>
 
 <script type="text/javascript">
+menuColor('Cart');
 var t="<c:out value='${t}'/>";
 
 var couponFlag=false;

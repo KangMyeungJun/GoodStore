@@ -25,11 +25,11 @@
 						</a>
 					</li>
 
-					<li class="p-b-13">
+					<%-- <li class="p-b-13">
 						<a href="${initParam.commonUrl}account_edit_chk.html" class="stext-102 cl2 hov-cl1 trans-04">
 							나의 계정
 						</a>
-					</li>
+					</li> --%>
 
 					<li class="p-b-13">
 						<a href="orderList" class="stext-102 cl2 hov-cl1 trans-04">
