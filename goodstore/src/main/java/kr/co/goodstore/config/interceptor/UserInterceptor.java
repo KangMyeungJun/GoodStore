@@ -20,7 +20,7 @@ public class UserInterceptor extends HandlerInterceptorAdapter{
 	HttpSession session =  request.getSession();
 	
 	if (session.getAttribute("loginSession") == null) {
-		response.sendRedirect(middlePath + "signin_page");
+		response.sendRedirect(middlePath + "/signin_page");
 		return false;
 	}
 	return true;	

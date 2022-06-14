@@ -36,10 +36,30 @@
 			<mapping path="/admin/**"/> 
 			<exclude-mapping path="/css/**"/>
 			<exclude-mapping path="*.ico"/>
-			<exclude-mapping path="/error"/>
+			<exclude-mapping path="/error/**"/>
 			<exclude-mapping path="/error-page/**"/>
 			<exclude-mapping path="/admin/login_form"/>		
 			<beans:bean id="adminInterceptor" class="kr.co.goodstore.config.interceptor.AdminInterceptor"/>
+		</interceptor>
+		<interceptor>
+			<mapping path="/logout"/> 
+			<mapping path="/cart"/> 
+			<mapping path="/cart/quantity"/> 
+			<mapping path="/cart/remove"/> 
+			<mapping path="/cart/coupon"/> 
+			<mapping path="/purchase/success"/> 
+			<mapping path="/cart/header"/> 
+			<mapping path="/orderList"/> 
+			<mapping path="/orderList/moreList"/> 
+			<mapping path="/orderList/check"/> 
+			<mapping path="/orderList/status"/> 
+			<mapping path="/orderList/refund"/> 
+			<mapping path="/orderList/refund/status"/> 
+			<exclude-mapping path="/css/**"/>
+			<exclude-mapping path="*.ico"/>
+			<exclude-mapping path="/error/**"/>
+			<exclude-mapping path="/error-page/**"/>
+			<beans:bean id="userInterceptor" class="kr.co.goodstore.config.interceptor.UserInterceptor"/>
 		</interceptor>
 	</interceptors>
 	
