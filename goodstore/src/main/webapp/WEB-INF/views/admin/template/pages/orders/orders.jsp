@@ -92,7 +92,7 @@
                     <form action="${initParam.middlePath }/admin/orders" id="nameSearchFrm" method="get">
                     <div class="form-group">
                       <div class="input-group">
-                        <input type="text" class="form-control"  name="keyword"  id="keyword"  placeholder="Search Name" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                        <input type="text" class="form-control"  name="keyword"  id="keyword"  placeholder="Search Buyer" aria-label="Recipient's username" aria-describedby="basic-addon2">
                         <div class="input-group-append">
                           <button class="btn btn-fw btn-outline-secondary"  id="btnNameSearch" type="button">Search</button>
                         </div>
