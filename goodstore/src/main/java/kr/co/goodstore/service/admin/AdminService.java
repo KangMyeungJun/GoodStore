@@ -342,7 +342,7 @@ public class AdminService {
 	 }//findOrderDetail
 	 
 	 
-	//유저 탈퇴시키기
+	//주문 환불
 	 	public int removeOrder(int order_id) {
 	 		int cnt=0;
 		  
