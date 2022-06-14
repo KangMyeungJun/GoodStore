@@ -293,7 +293,7 @@ public class AdminDAO {
 		 }//orderDetail
 		 
 		 
-		 //유저탈퇴 시키기 
+		 //주문환불 시키기 
 		 public int updateOrderStatus(int order_id)throws PersistenceException{ 
 			 int cnt=0;
 			  
