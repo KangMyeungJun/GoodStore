@@ -592,7 +592,7 @@ $(document).ready(function(){
 								trInfo+="<td class='column-1'><div class='how-itemcart1'>"
 								
 								//경로 수정해야함
-								trInfo+="<img src='${initParam.staticPath}images/item-cart-04.jpg' alt='IMG'></div></td>";
+								trInfo+="<img src='${initParam.uploadPath}"+json.data[i].image+"' alt='IMG'></div></td>";
 								trInfo+="<td class='column-2'>"+json.data[i].item_name+"</td>"		
 								trInfo+="<td class='column-3'>"+json.data[i].amount+"개</td>"
 								trInfo+="<td class='column-3'>"+price+"원</td>"
@@ -629,7 +629,7 @@ $(document).ready(function(){
 								trInfo+="<td class='column-1'><div class='how-itemcart1'>"
 								
 								//경로 수정해야함
-								trInfo+="<img src='${initParam.staticPath}images/item-cart-04.jpg' alt='IMG'></div></td>";
+								trInfo+="<img src='${initParam.uploadPath}"+json.data[i].image+"' alt='IMG'></div></td>";
 								trInfo+="<td class='column-2'>"+json.data[i].item_name+"</td>"		
 								trInfo+="<td class='column-3'>"+json.data[i].amount+"개</td>"
 								trInfo+="<td class='column-3'>"+price+"원</td>"
@@ -659,7 +659,7 @@ $(document).ready(function(){
 							trInfo+="<td class='column-1'><div class='how-itemcart1'>"
 							
 							//경로 수정해야함
-							trInfo+="<img src='${initParam.staticPath}images/item-cart-04.jpg' alt='IMG'></div></td>";
+							trInfo+="<img src='${initParam.uploadPath}"+json.data[i].image+"' alt='IMG'></div></td>";
 							trInfo+="<td class='column-2'>"+json.data[i].item_name+"</td>"		
 							trInfo+="<td class='column-3'>"+json.data[i].amount+"개</td>"
 							trInfo+="<td class='column-3'>"+price+"원</td>"
@@ -771,11 +771,11 @@ $(document).ready(function(){
 									
 									list+="<div class='row-div' ><div class='how-itemcart-j1' style='margin-right: 0px;'>";
 									//경로 변경 이미지!!!!!!
-									list+="<img src='${initParam.staticPath}images/item-cart-04.jpg' alt='IMG'></div>";
+									list+="<img src='${initParam.uploadPath}"+json.data[i].image+"' alt='IMG' style='width:60px;margin-right:60px;'></div>";
 									list+="<div class='product-info' style='width:150px;margin-left:20px;'>"+json.data[i].item_name+"</div>";
 									list+="<div class='product-info1'>"+price+"원</div></div>";
 									list+="<input type='hidden' name='refundId' value='"+json.data[i].detail_id+"'/>";
-	
+	    
 								}//end for 
 								
 								document.getElementById('refund-list').innerHTML=list;
@@ -984,9 +984,9 @@ $(document).ready(function(){
 								var price=p.toLocaleString('ko-KR');
 								sentence2+="<div class='row-div'>"+
 									"<input type='checkbox' name='productCheck' value='"+json.data[i].detail_id+"' style='zoom:1.3;' class='check'/>";
-								sentence2+="<div class='how-itemcart-j' style='margin-right: 0px;'>"
+								sentence2+="<div class='how-itemcart-j' style='width:60px;margin-right: 50px;margin-left: 20px;'>"
 								//경로 다시 설정해줘야함 json.data[i].image로
-								sentence2+="<img src='http://goodstore.sist.co.kr/goodstore/resources/images/item-cart-04.jpg' alt='IMG'></div>"
+								sentence2+="<img src='${initParam.uploadPath}"+json.data[i].image+"' alt='IMG' style='width:60px;'></div>"
 								sentence2+="<div class='product-info' style='width:150px;margin-left:20px;'>"+json.data[i].item_name+"</div>"
 								sentence2+="<div class='product-info1' style='margin-left:30px;'>"+json.data[i].amount+"개</div>"
 								sentence2+="<div class='product-info1' style=' margin-right:20px;'>"+price+"원</div></div>"
