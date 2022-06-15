@@ -64,30 +64,26 @@ public class OrderListService {
 		
 		try {
 			//order_id list
-			idList=oDAO.selectOrderID(member_id); //�삤�뜑 �븘�씠�뵒�쓽 媛쒖닔 由ъ뒪�듃
+			idList=oDAO.selectOrderID(member_id); 
 			System.out.println(idList);
 			System.out.println(idList.size());
 			
 			
-			if(end>idList.size() && 0!=idList.size()) { //end媛� 由ъ뒪�듃�쓽 媛쒖닔蹂대떎 �겕硫�
+			if(end>idList.size() && 0!=idList.size()) {
 				
-				for(int i=start; i<idList.size();i++) {//2媛쒕㈃
-					//jsonArrSmall=new JSONArray();//array�깮�꽦
-					//jsonTempSmall=new JSONObject();//object�깮�꽦
-					listDomain=oDAO.selectOrderDetails(idList.get(i)); //�삤�뜑 �븘�씠�뵒 泥ル쾲吏몄쓽 二쇰Ц�긽�꽭 
-					//System.out.println(idList.get(i));
-					//System.out.println(listDomain);
-					//System.out.println("-------------�뵒�뀒�씪由ъ뒪�듃--------------------");
-					//System.out.println("---------------------------------");
-					//System.out.println("---------------------------------");
+				for(int i=start; i<idList.size();i++) {
+					//jsonArrSmall=new JSONArray();//array
+					//jsonTempSmall=new JSONObject();//object
+					listDomain=oDAO.selectOrderDetails(idList.get(i)); 
+
 					
-					for(int j=0; j<listDomain.size();j++){ //set泥섎━
+					for(int j=0; j<listDomain.size();j++){ 
 						if(listDomain.get(j).getStatus()==null) {
-							listDomain.get(j).setStatus("배송완료");
+							listDomain.get(j).setStatus("��ۿϷ�");
 						}else if(listDomain.get(j).getStatus().equals("C")) {
-							listDomain.get(j).setStatus("구매확정");
+							listDomain.get(j).setStatus("����Ȯ��");
 						}else {
-							listDomain.get(j).setStatus("반품");
+							listDomain.get(j).setStatus("��ǰ");
 						}
 					}//end for
 				
@@ -130,24 +126,22 @@ public class OrderListService {
 					//map.put(idList.get(i),listDomain);
 				}//for
 				jsonData.put("data",jsonArr);
-//				System.out.println("理쒖��뀠�뀋!!!!!!!"+jsonData);
 			}else if(end<=idList.size() && 0!=idList.size()){
 				
 				
-				for(int i=start; i<end;i++) { //end媛� 由ъ뒪�듃�쓽 �궗�씠利덈낫�떎 �겕吏� �븡�떎硫� 
+				for(int i=start; i<end;i++) { 
 					listDomain=oDAO.selectOrderDetails(idList.get(i));
 //					System.out.println(listDomain);
-//					System.out.println("-------------�뵒�뀒�씪由ъ뒪�듃--------------------");
 //					System.out.println("---------------------------------");
 //					System.out.println("---------------------------------");
 					
 					for(int j=0; j<listDomain.size();j++){
 						if(listDomain.get(j).getStatus()==null) {
-							listDomain.get(j).setStatus("배송완료");
+							listDomain.get(j).setStatus("��ۿϷ�");
 						}else if(listDomain.get(j).getStatus().equals("C")) {
-							listDomain.get(j).setStatus("구매확정");
+							listDomain.get(j).setStatus("����Ȯ��");
 						}else {
-							listDomain.get(j).setStatus("반품");
+							listDomain.get(j).setStatus("��ǰ");
 						}
 					}//end for
 					
@@ -178,7 +172,6 @@ public class OrderListService {
 						//System.out.println("****************222222222222");
 						
 						jsonData.put("data",jsonArr);
-//						System.out.println("*********json�쑝濡� map**********");
 //						System.out.println(jsonData);
 						jsonData.put("flag",1);
 					}//end if
@@ -253,7 +246,7 @@ public class OrderListService {
 	
 	
 	
-	public String searchOrderDetailsById2(int order_id){//紐⑤떖 二쇰Ц�긽�꽭
+	public String searchOrderDetailsById2(int order_id){
 		String json;
 		
 		List<OrderListDomain> list=null;
@@ -307,7 +300,6 @@ public class OrderListService {
 		
 		int cnt=0;
 		
-		//MyBatis�뿉�꽌 �궗�슜�븯湲� �쐞�빐 Map�뿉 �엯�젰媛믪쓣 �꽔�뒗�떎.
 		Map<String, Object> map=new HashMap<String, Object>();
 		
 		if(valueArr!=null) {
@@ -348,7 +340,6 @@ public class OrderListService {
 		
 		List<OrderListDomain> list=null;
 		
-		//MyBatis�뿉�꽌 �궗�슜�븯湲� �쐞�빐 Map�뿉 �엯�젰媛믪쓣 �꽔�뒗�떎.
 		Map<String, Object> map=new HashMap<String, Object>();
 		
 		if(valueArr!=null) {
@@ -406,7 +397,6 @@ public class OrderListService {
 		
 		int cnt=0;
 		
-		//MyBatis�뿉�꽌 �궗�슜�븯湲� �쐞�빐 Map�뿉 �엯�젰媛믪쓣 �꽔�뒗�떎.
 		//Map<String, Object> map=new HashMap<String, Object>();
 		
 //		if(valueArr!=null) {
@@ -415,28 +405,13 @@ public class OrderListService {
 		
 		String reason="";
 		switch (selectIndex) {
-		case 1:reason="구매 의사 취소"; break;
-		case 2:reason="색상 및 사이즈 변경"; break;
-		case 3:reason="상품 잘못 주문"; break;
-		case 4:reason="서비스 불만족"; break;
-		case 5:reason="상품파손"; break;
+		case 1:reason="���� �ǻ� ���"; break;
+		case 2:reason="���� �� ������ ����"; break;
+		case 3:reason="��ǰ �߸� �ֹ�"; break;
+		case 4:reason="���� �Ҹ���"; break;
+		case 5:reason="��ǰ�ļ�"; break;
 		}
-//		
-//		if(selectIndex==1) {
-//			reason="援щℓ �쓽�궗 痍⑥냼";
-//		}
-//		if(selectIndex==2) {
-//			reason="�깋�긽 諛� �궗�씠利� 蹂�寃�";
-//		}
-//		if(selectIndex==3) {
-//			reason="�긽�뭹 �옒紐� 二쇰Ц"; 
-//		}
-//		if(selectIndex==4) {
-//			reason="�꽌鍮꾩뒪 遺덈쭔議�";
-//		}
-//		if(selectIndex==5) {
-//			reason="�긽�뭹 �뙆�넀"; 
-//		}
+
 		
 		//map.put("reason",reason);
 		rVO.setReason(reason);
