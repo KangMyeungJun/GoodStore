@@ -32,7 +32,7 @@
 					</li> --%>
 
 					<li class="p-b-13">
-						<a href="orderList" class="stext-102 cl2 hov-cl1 trans-04">
+						<a href="http://goodstore.sist.co.kr/orderList" class="stext-102 cl2 hov-cl1 trans-04">
 							주문내역
 						</a>
 					</li>
