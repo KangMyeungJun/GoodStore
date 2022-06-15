@@ -103,10 +103,9 @@
 						</div>
 
 						<div class="flex-w flex-sb-m bor15 p-t-18 p-b-15 p-lr-40 p-lr-15-sm">
-							<button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer" 
-								style="width: 200px; margin: 0 auto; font-size: 20px; margin-top: 30px; margin-bottom: 30px;" id="btn-to-order-list">
-							주문내역보기
-						</button>
+							<input type="button" value="주문내역보기"
+							 class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer" 
+								style="width: 200px; margin: 0 auto; font-size: 20px; margin-top: 30px; margin-bottom: 30px;" id="btn-to-order-list"/>
 						</div>
 					</div>
 				</div>
