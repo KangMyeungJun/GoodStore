@@ -189,7 +189,7 @@ public class AdminController {
 				
 		 
 		  
-		  return "redirect:/categories";
+		  return "redirect:/admin/categories";
 			 }//adminCategoryAdd
 			 
 			 
