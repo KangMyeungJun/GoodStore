@@ -89,7 +89,7 @@ $(function() {
   
   var doughnutPieData = {
     datasets: [{
-      data: [30, 40, 30],
+      data: [C, R, N],
       backgroundColor: [
         'rgba(255, 99, 132, 0.5)',
         'rgba(54, 162, 235, 0.5)',

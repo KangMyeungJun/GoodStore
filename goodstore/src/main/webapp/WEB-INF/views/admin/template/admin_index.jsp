@@ -36,6 +36,10 @@
 <script type="text/javascript"> 
 		const navActive = document.getElementById("nav-dashboard");
 		navActive.classList.add('active');
+		
+		 var R=${totalOrderRCount};
+		    var C=${totalOrderCCount};
+		    var N=${totalOrderNCount};
 		</script>
 
 
@@ -139,7 +143,7 @@
                     <div class="bg-gray-dark d-flex d-md-block d-xl-flex flex-row py-3 px-4 px-md-3 px-xl-4 rounded mt-3">
                       <div class="text-md-center text-xl-left">
                         <h6 class="mb-1">Tranfer to Stripe</h6>
-                        <p class="text-muted mb-0">07 Jan 2019, 09:12AM</p>
+                        <p class="text-muted mb-0">${today }</p>
                       </div>
                       <div class="align-self-center flex-grow text-right text-md-center text-xl-right py-md-2 py-xl-0">
                         <h6 class="font-weight-bold mb-0">$593</h6>
@@ -165,7 +169,8 @@
                         <c:forEach var="categoryList" items="${categoryList }">
                           <div class="preview-item border-bottom">
                             <div class="preview-thumbnail">
-                              <img src="http://localhost/goodstore/upload/${categoryList.image}"/>
+                              <%-- <img src="http://localhost/goodstore/upload/${categoryList.image}"/> --%>
+                               <img src="${ initParam.uploadPath }${categoryList.image}"/> 
                             </div>
                             <div class="preview-item-content d-sm-flex flex-grow">
                               <div class="flex-grow">
@@ -258,6 +263,11 @@
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
+    <script>
+   
+   
+    </script>
+    
     <script src="${initParam.staticPath}assets/vendors/js/vendor.bundle.base.js"></script>
     <!-- endinject -->
     <!-- Plugin js for this page -->
