@@ -290,7 +290,6 @@ public class AdminController {
 				model.addAttribute("todayOrderCCount",cs.searchTodayOrdersCount2(status));
 				status="R";
 				model.addAttribute("totalOrderRCount",cs.searchordersCount1(status));
-				System.out.println("-----------------"+cs.searchordersCount1(status));
 				model.addAttribute("todayOrderRCount",cs.searchTodayOrdersCount2(status));
 				status="N";
 				model.addAttribute("totalOrderNCount",cs.searchordersCount1(status));
@@ -312,7 +311,7 @@ public class AdminController {
 			 
 			 List<OrdersDomain> list= cs.findOrders(bVO);
 			 model.addAttribute("ordersList",list);
-			 System.out.println("=================" + list);
+			
 			 
 			 return "admin/template/pages/orders/orders";    // views 그다음 폴더부터 쭈욱
 		 }//adminOrders
