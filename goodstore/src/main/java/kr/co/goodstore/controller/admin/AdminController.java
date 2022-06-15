@@ -4,6 +4,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +45,7 @@ public class AdminController {
 	}
 	
 	  @GetMapping("/admin_index")
-	  public String welcome1(Model model) {
+	  public String welcome1(Model model,String status) {
 		//  전체사용자 수
 		  int userCount1=cs.searchUserCount1();
 		//오늘가입한 사용자 뿌리기
@@ -71,6 +72,17 @@ public class AdminController {
 			model.addAttribute("itemCount",itemCount);  
 			model.addAttribute("ordersCount",ordersCount);  
 			model.addAttribute("todayordersCount",todayordersCount);  
+			
+			
+			status="C";
+			model.addAttribute("totalOrderCCount",cs.searchordersCount1(status));
+			status="R";
+			model.addAttribute("totalOrderRCount",cs.searchordersCount1(status));
+			status="N";
+			model.addAttribute("totalOrderNCount",cs.searchordersCount1(status));
+			Date today=new Date();
+			model.addAttribute("today",today);
+			
 		  
 	  return "admin/template/admin_index";
 	  }
@@ -299,7 +311,7 @@ public class AdminController {
 			 
 			 List<OrdersDomain> list= cs.findOrders(bVO);
 			 model.addAttribute("ordersList",list);
-			 
+			
 			 
 			 return "admin/template/pages/orders/orders";    // views 그다음 폴더부터 쭈욱
 		 }//adminOrders

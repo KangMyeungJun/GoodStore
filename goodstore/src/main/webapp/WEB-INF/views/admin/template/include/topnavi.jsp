@@ -52,7 +52,7 @@
                   </a>
                   <div class="dropdown-divider"></div>
 
-                  <a class="dropdown-item preview-item" href="index">
+                  <a class="dropdown-item preview-item" href="${initParam.middlePath }/index">
                     <div class="preview-thumbnail">
                       <div class="preview-icon bg-dark rounded-circle">
                         <i class="mdi mdi-baby-face-outline text-info"></i>
